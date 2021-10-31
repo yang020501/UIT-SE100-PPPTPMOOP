@@ -6,7 +6,5 @@
         xmlns:local="clr-namespace:household_management"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <Button Content="Button" HorizontalAlignment="Left" Margin="329,140,0,0" VerticalAlignment="Top" Width="75"/>
 </Window>
