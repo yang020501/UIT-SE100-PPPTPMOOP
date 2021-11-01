@@ -52,7 +52,7 @@
                     <Grid Grid.Column="0">
                         <Button Background="Blue"
                         Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                        Width="{StaticResource ButtonWidth}"
+                        Width="100"
                         ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
                         Content="Login" />
                     </Grid>
@@ -60,7 +60,7 @@
                     <Grid Grid.Column="1">
                         <Button Background="Red"
                         Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                        Width="{StaticResource ButtonWidth}"
+                        Width="100"
                         ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
                         Content="Exist" />
                     </Grid>
