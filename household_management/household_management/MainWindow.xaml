@@ -5,6 +5,66 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:household_management"
         mc:Ignorable="d"
+         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="12"
+        TextOptions.TextRenderingMode="Auto"
+        TextOptions.TextFormattingMode="Ideal"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
         Title="MainWindow" Height="450" Width="800">
-    <Button Content="Button" HorizontalAlignment="Left" Margin="329,140,0,0" VerticalAlignment="Top" Width="311" Height="185"/>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="60"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.ColumnSpan ="2" Background="DarkBlue">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="110"></ColumnDefinition>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Button Content="Main menu" Margin="2" Width="110" Background="DarkBlue">
+
+                </Button>
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <Button Content="HouseHold" Margin="2" Width="150" Background="DarkBlue">
+
+                </Button>
+            </Grid>
+
+            <Grid Grid.Column="2">
+                <Button Content="Absence" Margin="2" Width="100" Background="DarkBlue">
+
+                </Button>
+            </Grid>
+
+            <Grid Grid.Column="3">
+                <Button Content="Temporary" Margin="2" Width="100" Background="DarkBlue">
+
+                </Button>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="1" Background="LightBlue">
+            <Image HorizontalAlignment="Left" Height="95" Margin="10,19,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="-0.89,-0.16" Source="Image/house sysmbo1.png"/>
+            <Label Content="HOUSEHOLD MANAGER" HorizontalAlignment="Left" Height="40" 
+                   Margin="110,39,0,0" VerticalAlignment="Top" Width="281" Foreground="DarkBlue"
+                   FontSize="25" FontFamily="Algerian" FontStyle="Italic" FontWeight="Bold"/>
+
+        </Grid>
+
+    </Grid>
 </Window>
