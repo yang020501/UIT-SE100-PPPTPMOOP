@@ -24,7 +24,7 @@
             </Grid.RenderTransform>
             <Button x:Name="btnExit" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Height="30" Margin="10,5,0,0" Click="btnExit_Click">
                 <Button.Background>
-                    <ImageBrush ImageSource="exite.jpg"/>
+                    <ImageBrush ImageSource="Resources/exite.jpg"/>
                 </Button.Background>
             </Button>
         </Grid>
