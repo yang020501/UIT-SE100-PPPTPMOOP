@@ -24,10 +24,10 @@ namespace household_management
             InitializeComponent();
         }
 
-        void btnExit_Click(object sender, RoutedEventArgs e)
+        private void btnExit_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
-            return;
+            Close();
         }
+
     }
 }
