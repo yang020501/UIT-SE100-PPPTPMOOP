@@ -9,7 +9,7 @@
     <Grid>
         <Button x:Name="btnHousehold"  HorizontalAlignment="Left" Height="90" Margin="219.8,126.6,0,0" VerticalAlignment="Top" Width="109" BorderBrush="#FFF4F5F7" RenderTransformOrigin="0.795,0.681" >
             <Button.Background>
-                <ImageBrush ImageSource="download.jpg"/>
+                <ImageBrush ImageSource="Resources/household.jpg"/>
             </Button.Background>
         </Button>
         <Grid HorizontalAlignment="Left" Height="40" Margin="160,-1,-1,0" VerticalAlignment="Top" Width="641" RenderTransformOrigin="0.5,0.5" Background="#FF4D60C0">
@@ -23,41 +23,41 @@
             </Grid.RenderTransform>
             <Button x:Name="btnExit" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Height="30" Margin="10,5,0,0" Click="btnExit_Click">
                 <Button.Background>
-                    <ImageBrush ImageSource="exite.jpg"/>
+                    <ImageBrush ImageSource="Resources/exite.jpg"/>
                 </Button.Background>
             </Button>
         </Grid>
         <Button x:Name="btnTransfer"  HorizontalAlignment="Left" Height="90" Margin="619.8,126.6,0,0" VerticalAlignment="Top" Width="109" BorderBrush="#FFF4F5F7" RenderTransformOrigin="0.795,0.681" >
             <Button.Background>
-                <ImageBrush ImageSource="exchange-arrow-transfer-icon-logo-vector-isloated-white-background-exchange-arrow-transfer-icon-logo-vector-isloated-white-170721323.jpg"/>
+                <ImageBrush ImageSource="Resources/transfer.jpg"/>
             </Button.Background>
         </Button>
         <Button x:Name="btnPopualtion"  HorizontalAlignment="Left" Height="90" Margin="419.8,126.6,0,0" VerticalAlignment="Top" Width="109" BorderBrush="#FFF4F5F7" RenderTransformOrigin="0.795,0.681" >
             <Button.Background>
-                <ImageBrush ImageSource="images.jpg"/>
+                <ImageBrush ImageSource="Resources/population.jpg"/>
             </Button.Background>
         </Button>
         <Button x:Name="btnAbsence"  HorizontalAlignment="Left" Height="90" Margin="219.8,272.6,0,0" VerticalAlignment="Top" Width="109" BorderBrush="#FFF4F5F7" RenderTransformOrigin="0.795,0.681" >
             <Button.Background>
-                <ImageBrush ImageSource="absence.jpg"/>
+                <ImageBrush ImageSource="Resources/absence.jpg"/>
             </Button.Background>
         </Button>
         <Button x:Name="btnResidence"  HorizontalAlignment="Left" Height="90" Margin="419.8,272.6,0,0" VerticalAlignment="Top" Width="109" BorderBrush="#FFF4F5F7" RenderTransformOrigin="0.795,0.681" >
             <Button.Background>
-                <ImageBrush ImageSource="tempresidence.jpg"/>
+                <ImageBrush ImageSource="Resources/tempresidence.jpg"/>
             </Button.Background>
         </Button>
         <Button x:Name="btnSearch"  HorizontalAlignment="Left" Height="90" Margin="619.8,272.6,0,0" VerticalAlignment="Top" Width="109" BorderBrush="#FFF4F5F7" RenderTransformOrigin="0.795,0.681" >
             <Button.Background>
-                <ImageBrush ImageSource="search.jpg"/>
+                <ImageBrush ImageSource="Resources/search.jpg"/>
             </Button.Background>
         </Button>
         <Grid HorizontalAlignment="Right" Height="412" VerticalAlignment="Top" Width="160" Margin="0,38,640,-0.4" Background="#FF3A404C">
-            <Image HorizontalAlignment="Left" Height="65" VerticalAlignment="Top" Width="65" Source="download-(1).jpg" Stretch="Fill"/>
+            <Image HorizontalAlignment="Left" Height="65" VerticalAlignment="Top" Width="65" Source="Resources/account.jpg" Stretch="Fill" OpacityMask="{x:Null}"/>
             <TextBlock x:Name="tblockRole" Margin="65,0,0,378" TextWrapping="Wrap" Text="Manager" VerticalAlignment="Bottom" Height="24" Foreground="#DDFAFAFA" Padding="10,2,0,0" FontWeight="Bold" FontSize="14"/>
             <TextBlock x:Name="tblockId" Margin="65,34,0,0" TextWrapping="Wrap" Text="19521409" VerticalAlignment="Top" Height="24" Foreground="#DDFAFAFA" Padding="10,2,0,0" FontSize="10"/>
             <StackPanel Margin="0,65,0,0" >
-                
+
             </StackPanel>
         </Grid>
         <Grid HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="160" Background="#FF3C3E71">

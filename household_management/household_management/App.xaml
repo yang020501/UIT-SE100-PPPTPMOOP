@@ -12,6 +12,7 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
 
             </ResourceDictionary.MergedDictionaries>
+            <BitmapImage x:Key="ImageSource" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="D:\Tài liệu\PpOOP\quanlyHoKhau\household_management\household_management\household.jpg"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
