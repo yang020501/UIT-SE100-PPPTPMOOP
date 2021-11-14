@@ -121,10 +121,31 @@
     <Folder Include="ViewModel\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Image\house sysmbo.jpg" />
+    <Resource Include="Resources\household.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Image\house sysmbo1.png" />
+    <Resource Include="Resources\absence.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\account.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\exite.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\population.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\search.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\tempresidence.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\transfer.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.2.1\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.2.1\build\MaterialDesignThemes.targets')" />
