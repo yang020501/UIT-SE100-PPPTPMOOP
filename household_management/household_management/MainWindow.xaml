@@ -22,7 +22,7 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </Grid.RenderTransform>
-            <Button x:Name="btnExit" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Height="30" Margin="10,5,0,0" Click="btnExit_Click">
+            <Button x:Name="btnExit" Content="Exit" HorizontalAlignment="Left" Width="30" Height="Auto" Margin="10,5,0,5" Click="btnExit_Click" Cursor="Hand">
                 <Button.Background>
                     <ImageBrush ImageSource="Resources/exite.jpg"/>
                 </Button.Background>
@@ -57,8 +57,18 @@
             <Image HorizontalAlignment="Left" Height="65" VerticalAlignment="Top" Width="65" Source="Resources/account.jpg" Stretch="Fill"/>
             <TextBlock x:Name="tblockRole" Margin="65,0,0,378" TextWrapping="Wrap" Text="Manager" VerticalAlignment="Bottom" Height="24" Foreground="#DDFAFAFA" Padding="10,2,0,0" FontWeight="Bold" FontSize="14"/>
             <TextBlock x:Name="tblockId" Margin="65,34,0,0" TextWrapping="Wrap" Text="19521409" VerticalAlignment="Top" Height="24" Foreground="#DDFAFAFA" Padding="10,2,0,0" FontSize="10"/>
-            <StackPanel Margin="0,65,0,0" >
-
+            <Grid HorizontalAlignment="Left" Height="347" Margin="0,65,0,0" VerticalAlignment="Top" Width="160"/>
+            <Button Content="" HorizontalAlignment="Left" Margin="0,367,0,0" VerticalAlignment="Top" Width="45" Height="45" Foreground="#FF3A404C">
+                <Button.BorderBrush>
+                    <ImageBrush/>
+                </Button.BorderBrush>
+                <Button.Background>
+                    <ImageBrush ImageSource="Resources/Logout.png"/>
+                </Button.Background>
+            </Button>
+            <StackPanel HorizontalAlignment="Left" Height="80" Margin="0,70,0,0" VerticalAlignment="Top" Width="160">
+                <Button Content="Report" Height="40" Background="{x:Null}" BorderBrush="#FF3A404C" Foreground="#FFF3F2F6" BorderThickness="0" Padding="0,4,16,4"/>
+                <Button Content="Button" Height="40" Background="{x:Null}" BorderBrush="#FF3A404C" Foreground="#FFF3F2F6" BorderThickness="0" Padding="0,4,16,4"/>
             </StackPanel>
         </Grid>
         <Grid HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="160" Background="#FF3C3E71">
