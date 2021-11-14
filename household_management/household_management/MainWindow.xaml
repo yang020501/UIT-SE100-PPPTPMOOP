@@ -5,9 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:household_management"
         mc:Ignorable="d"
-
-        Title="MainWindow" Height="450" Width="800" AllowsTransparency="True" WindowStyle="None" Background="#FFFDFAFA" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="12"
+        TextOptions.TextRenderingMode="Auto"
+        TextOptions.TextFormattingMode="Ideal"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="MainWindow" Height="450" Width="800">
     <Grid>
+
         <Button x:Name="btnHousehold"  HorizontalAlignment="Left" Height="90" Margin="219.8,126.6,0,0" VerticalAlignment="Top" Width="109" BorderBrush="#FFF4F5F7" RenderTransformOrigin="0.795,0.681" >
             <Button.Background>
                 <ImageBrush ImageSource="Resources/household.jpg"/>
@@ -60,9 +68,8 @@
             <StackPanel Margin="0,65,0,0" >
 
             </StackPanel>
-        </Grid>
-        <Grid HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="160" Background="#FF3C3E71">
-            <TextBlock x:Name="tblockName" HorizontalAlignment="Left" Text="Nguyễễ Hoànn Thnn Dưưư" VerticalAlignment="Top" Height="38" Width="160" Foreground="#DDFAFAFA" Padding="4,12,0,4" FontSize="10"/>
+
+     
         </Grid>
 
     </Grid>
