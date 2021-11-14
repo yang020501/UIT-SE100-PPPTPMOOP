@@ -5,65 +5,64 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:household_management"
         mc:Ignorable="d"
-         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-        TextElement.FontWeight="Regular"
-        TextElement.FontSize="12"
-        TextOptions.TextRenderingMode="Auto"
-        TextOptions.TextFormattingMode="Ideal"
-        Background="{DynamicResource MaterialDesignPaper}"
-        FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="MainWindow" Height="450" Width="800">
+
+        Title="MainWindow" Height="450" Width="800" AllowsTransparency="True" WindowStyle="None" Background="#FFFDFAFA" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="30"></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
-
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition Width="60"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-
-        <Grid Grid.ColumnSpan ="2" Background="DarkBlue">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="110"></ColumnDefinition>
-                <ColumnDefinition Width="150"></ColumnDefinition>
-                <ColumnDefinition Width="100"></ColumnDefinition>
-                <ColumnDefinition Width="100"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-
-            <Grid Grid.Column="0">
-                <Button Content="Main menu" Margin="2" Width="110" Background="DarkBlue">
-
-                </Button>
-            </Grid>
-
-            <Grid Grid.Column="1">
-                <Button Content="HouseHold" Margin="2" Width="150" Background="DarkBlue">
-
-                </Button>
-            </Grid>
-
-            <Grid Grid.Column="2">
-                <Button Content="Absence" Margin="2" Width="100" Background="DarkBlue">
-
-                </Button>
-            </Grid>
-
-            <Grid Grid.Column="3">
-                <Button Content="Temporary" Margin="2" Width="100" Background="DarkBlue">
-
-                </Button>
-            </Grid>
+        <Button x:Name="btnHousehold"  HorizontalAlignment="Left" Height="90" Margin="219.8,126.6,0,0" VerticalAlignment="Top" Width="109" BorderBrush="#FFF4F5F7" RenderTransformOrigin="0.795,0.681" >
+            <Button.Background>
+                <ImageBrush ImageSource="download.jpg"/>
+            </Button.Background>
+        </Button>
+        <Grid HorizontalAlignment="Left" Height="40" Margin="160,-1,-1,0" VerticalAlignment="Top" Width="641" RenderTransformOrigin="0.5,0.5" Background="#FF4D60C0">
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1" ScaleX="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Grid.RenderTransform>
+            <Button x:Name="btnExit" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Height="30" Margin="10,5,0,0" Click="btnExit_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="exite.jpg"/>
+                </Button.Background>
+            </Button>
         </Grid>
-
-        <Grid Grid.Row="1" Background="LightBlue">
-            <Image HorizontalAlignment="Left" Height="95" Margin="10,19,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="-0.89,-0.16" Source="Image/house sysmbo1.png"/>
-            <Label Content="HOUSEHOLD MANAGER" HorizontalAlignment="Left" Height="40" 
-                   Margin="110,39,0,0" VerticalAlignment="Top" Width="281" Foreground="DarkBlue"
-                   FontSize="25" FontFamily="Algerian" FontStyle="Italic" FontWeight="Bold"/>
-
+        <Button x:Name="btnTransfer"  HorizontalAlignment="Left" Height="90" Margin="619.8,126.6,0,0" VerticalAlignment="Top" Width="109" BorderBrush="#FFF4F5F7" RenderTransformOrigin="0.795,0.681" >
+            <Button.Background>
+                <ImageBrush ImageSource="exchange-arrow-transfer-icon-logo-vector-isloated-white-background-exchange-arrow-transfer-icon-logo-vector-isloated-white-170721323.jpg"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="btnPopualtion"  HorizontalAlignment="Left" Height="90" Margin="419.8,126.6,0,0" VerticalAlignment="Top" Width="109" BorderBrush="#FFF4F5F7" RenderTransformOrigin="0.795,0.681" >
+            <Button.Background>
+                <ImageBrush ImageSource="images.jpg"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="btnAbsence"  HorizontalAlignment="Left" Height="90" Margin="219.8,272.6,0,0" VerticalAlignment="Top" Width="109" BorderBrush="#FFF4F5F7" RenderTransformOrigin="0.795,0.681" >
+            <Button.Background>
+                <ImageBrush ImageSource="absence.jpg"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="btnResidence"  HorizontalAlignment="Left" Height="90" Margin="419.8,272.6,0,0" VerticalAlignment="Top" Width="109" BorderBrush="#FFF4F5F7" RenderTransformOrigin="0.795,0.681" >
+            <Button.Background>
+                <ImageBrush ImageSource="tempresidence.jpg"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="btnSearch"  HorizontalAlignment="Left" Height="90" Margin="619.8,272.6,0,0" VerticalAlignment="Top" Width="109" BorderBrush="#FFF4F5F7" RenderTransformOrigin="0.795,0.681" >
+            <Button.Background>
+                <ImageBrush ImageSource="search.jpg"/>
+            </Button.Background>
+        </Button>
+        <Grid HorizontalAlignment="Right" Height="412" VerticalAlignment="Top" Width="160" Margin="0,38,640,-0.4" Background="#FF3A404C">
+            <Image HorizontalAlignment="Left" Height="65" VerticalAlignment="Top" Width="65" Source="download-(1).jpg" Stretch="Fill"/>
+            <TextBlock x:Name="tblockRole" Margin="65,0,0,378" TextWrapping="Wrap" Text="Manager" VerticalAlignment="Bottom" Height="24" Foreground="#DDFAFAFA" Padding="10,2,0,0" FontWeight="Bold" FontSize="14"/>
+            <TextBlock x:Name="tblockId" Margin="65,34,0,0" TextWrapping="Wrap" Text="19521409" VerticalAlignment="Top" Height="24" Foreground="#DDFAFAFA" Padding="10,2,0,0" FontSize="10"/>
+            <StackPanel Margin="0,65,0,0" >
+                
+            </StackPanel>
+        </Grid>
+        <Grid HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="160" Background="#FF3C3E71">
+            <TextBlock x:Name="tblockName" HorizontalAlignment="Left" Text="Nguyễễ Hoànn Thnn Dưưư" VerticalAlignment="Top" Height="38" Width="160" Foreground="#DDFAFAFA" Padding="4,12,0,4" FontSize="10"/>
         </Grid>
 
     </Grid>
