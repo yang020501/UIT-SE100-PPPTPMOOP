@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:household_management"
         mc:Ignorable="d"
 
-        Title="MainWindow" Height="450" Width="800" AllowsTransparency="True" WindowStyle="None" Background="#FFFDFAFA" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" ShowInTaskbar="True">
+        Title="MainWindow" Height="450" Width="800" Background="#FFFDFAFA" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" ShowInTaskbar="True" AllowsTransparency="True" WindowStyle="None">
     <Grid>
         <Button x:Name="btnHousehold"  HorizontalAlignment="Left" Height="90" Margin="219.8,126.6,0,0" VerticalAlignment="Top" Width="109" BorderBrush="#FFF4F5F7" RenderTransformOrigin="0.795,0.681" >
             <Button.Background>
@@ -33,7 +33,7 @@
                 <ImageBrush ImageSource="Resources/transfer.jpg"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btnPopualtion"  HorizontalAlignment="Left" Height="90" Margin="419.8,126.6,0,0" VerticalAlignment="Top" Width="109" BorderBrush="#FFF4F5F7" RenderTransformOrigin="0.795,0.681" >
+        <Button x:Name="btnPopualtion"  HorizontalAlignment="Left" Height="90" Margin="419.8,126.6,0,0" VerticalAlignment="Top" Width="109" BorderBrush="#FFF4F5F7" RenderTransformOrigin="0.795,0.681" Click="btnPopualtion_Click" >
             <Button.Background>
                 <ImageBrush ImageSource="Resources/population.jpg"/>
             </Button.Background>
@@ -68,7 +68,7 @@
             </Button>
             <StackPanel HorizontalAlignment="Left" Height="80" Margin="0,70,0,0" VerticalAlignment="Top" Width="160">
                 <Button Content="Report" Height="40" Background="{x:Null}" BorderBrush="#FF3A404C" Foreground="#FFF3F2F6" BorderThickness="0" Padding="0,4,16,4"/>
-                <Button Content="Button" Height="40" Background="{x:Null}" BorderBrush="#FF3A404C" Foreground="#FFF3F2F6" BorderThickness="0" Padding="0,4,16,4"/>
+                <Button Content="Manage" Height="40" Background="{x:Null}" BorderBrush="#FF3A404C" Foreground="#FFF3F2F6" BorderThickness="0" Padding="0,4,16,4"/>
             </StackPanel>
         </Grid>
         <Grid HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="160" Background="#FF3C3E71">
