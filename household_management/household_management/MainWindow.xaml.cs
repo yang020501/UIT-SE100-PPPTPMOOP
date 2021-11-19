@@ -37,6 +37,10 @@ namespace household_management
             wd.ShowDialog();
         }
 
-
+        private void btnHousehold_Click(object sender, RoutedEventArgs e)
+        {
+            Household wd = new Household();
+            wd.ShowDialog();
+        }
     }
 }
