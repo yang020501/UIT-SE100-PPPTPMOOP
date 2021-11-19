@@ -8,7 +8,7 @@
 
         Title="MainWindow" Height="450" Width="800" Background="#FFFDFAFA" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" ShowInTaskbar="True" AllowsTransparency="True" WindowStyle="None">
     <Grid>
-        <Button x:Name="btnHousehold"  HorizontalAlignment="Left" Height="90" Margin="219.8,126.6,0,0" VerticalAlignment="Top" Width="109" BorderBrush="#FFF4F5F7" RenderTransformOrigin="0.795,0.681" >
+        <Button x:Name="btnHousehold"  HorizontalAlignment="Left" Height="90" Margin="219.8,126.6,0,0" VerticalAlignment="Top" Width="109" BorderBrush="#FFF4F5F7" RenderTransformOrigin="0.795,0.681" Click="btnHousehold_Click" >
             <Button.Background>
                 <ImageBrush ImageSource="Resources/household.jpg"/>
             </Button.Background>
