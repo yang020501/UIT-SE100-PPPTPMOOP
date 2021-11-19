@@ -23,5 +23,12 @@ namespace household_management.View
         {
             InitializeComponent();
         }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+     
     }
 }

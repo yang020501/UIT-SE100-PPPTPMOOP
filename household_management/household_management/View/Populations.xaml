@@ -66,7 +66,7 @@
                     HorizontalAlignment="Left" Height="34" Margin="75,418,0,0"  VerticalAlignment="Top" Width="220" materialDesign:HintAssist.Hint="Career" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBox
                     HorizontalAlignment="Left" Height="34" Margin="75,304,0,0"  VerticalAlignment="Top" Width="391" materialDesign:HintAssist.Hint="HouseHoldAdress" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
-                <Button Content="Add" Margin="576,495,0,0" Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="123" VerticalAlignment="Top"/>
+                <Button Content="Add" Margin="590,512,0,0" Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="123" VerticalAlignment="Top"/>
 
             </Grid>
         </Grid>
