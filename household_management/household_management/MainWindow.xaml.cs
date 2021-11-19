@@ -31,5 +31,12 @@ namespace household_management
         }
 
 
+        private void btnPopualtion_Click(object sender, RoutedEventArgs e)
+        {
+            Populations wd = new Populations();
+            wd.ShowDialog();
+        }
+
+
     }
 }
