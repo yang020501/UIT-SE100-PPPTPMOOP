@@ -31,11 +31,14 @@ namespace household_management
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         private void btnPopualtion_Click(object sender, RoutedEventArgs e)
         {
             Populations wd = new Populations();
             wd.ShowDialog();
         }
+=======
+>>>>>>> 834df12c97f21da48e3fdb6394d7e5371a2a12f1
 =======
 >>>>>>> 834df12c97f21da48e3fdb6394d7e5371a2a12f1
     }
