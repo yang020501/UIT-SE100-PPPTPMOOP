@@ -1,2 +1,3 @@
 # quanlyHoKhau
-to manage all residents information
+
+to manage all residents information basically
