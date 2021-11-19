@@ -15,13 +15,20 @@ using System.Windows.Shapes;
 namespace household_management.View
 {
     /// <summary>
-    /// Interaction logic for Household_Registration.xaml
+    /// Interaction logic for Populations.xaml
     /// </summary>
-    public partial class Household_Registration : Window
+    public partial class Populations : Window
     {
-        public Household_Registration()
+        public Populations()
         {
             InitializeComponent();
         }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+      
     }
 }
