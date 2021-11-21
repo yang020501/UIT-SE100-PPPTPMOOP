@@ -28,7 +28,7 @@
                 </Button.Background>
             </Button>
         </Grid>
-        <Button x:Name="btnTransfer"  HorizontalAlignment="Left" Height="90" Margin="619.8,126.6,0,0" VerticalAlignment="Top" Width="109" BorderBrush="#FFF4F5F7" RenderTransformOrigin="0.795,0.681" >
+        <Button x:Name="btnTransfer"  HorizontalAlignment="Left" Height="90" Margin="619.8,126.6,0,0" VerticalAlignment="Top" Width="109" BorderBrush="#FFF4F5F7" RenderTransformOrigin="0.795,0.681" Click="btnTransfer_Click" >
             <Button.Background>
                 <ImageBrush ImageSource="Resources/transfer.jpg"/>
             </Button.Background>
@@ -72,7 +72,7 @@
             </StackPanel>
         </Grid>
         <Grid HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="160" Background="#FF3C3E71">
-            <TextBlock x:Name="tblockName" HorizontalAlignment="Left" Text="Nguyễễ Hoànn Thnn Dưưư" VerticalAlignment="Top" Height="38" Width="160" Foreground="#DDFAFAFA" Padding="4,12,0,4" FontSize="10"/>
+            <TextBlock x:Name="tblockName" HorizontalAlignment="Left" Text="Nguyễn Hoàng Thái Dương" VerticalAlignment="Top" Height="38" Width="160" Foreground="#DDFAFAFA" Padding="4,12,0,4" FontSize="10"/>
         </Grid>
 
     </Grid>

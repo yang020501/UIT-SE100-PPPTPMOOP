@@ -13,7 +13,7 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Background="#FF4D60C0"  >
-            <Image  Width="37" Source="/household_management;component/Resources/tempresidence.jpg" Margin="10,6,535.4,2.2"/>
+            <Image Source="/household_management;component/Resources/tempresidence.jpg" Margin="10,6,538.4,7.6" Stretch="Fill"/>
 
 
             <Button x:Name="btnExit"  Height="Auto"  Cursor="Hand" Margin="545,6,5.4,7.2" RenderTransformOrigin="0.503,0.5" Click="btnExit_Click"  >
@@ -38,11 +38,11 @@
                     <materialDesign:PackIcon Kind="CardAccountDetails" Margin="29,183,0,0" Height="31" Width="32" />
                     <TextBox
                     HorizontalAlignment="Left" Height="34" Margin="82,364,0,0"  VerticalAlignment="Top" Width="208" materialDesign:HintAssist.Hint="HouseholdId" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
-                    <materialDesign:PackIcon Kind="HomeMapMarker" Margin="29,248,0,0" Height="31" Width="32" />
+                    <materialDesign:PackIcon Kind="HomeAccount" Margin="29,248,0,0" Height="31" Width="32" />
                     <TextBox Height="34" Margin="82,278,38.2,0"  VerticalAlignment="Top" materialDesign:HintAssist.Hint="Full Name Household Owner" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
                     <TextBox
                     HorizontalAlignment="Left" Height="34" Margin="82,444,0,0"  VerticalAlignment="Top" Width="391" materialDesign:HintAssist.Hint="Address" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
-                    <materialDesign:PackIcon Kind="MapMarker" Margin="29,410,0,0" Height="31" Width="32" />
+                    <materialDesign:PackIcon Kind="HomeMapMarker" Margin="29,410,0,0" Height="31" Width="32" />
                     <materialDesign:PackIcon Kind="CalendarRange" Margin="29,596,0,0" Height="31" Width="32" RenderTransformOrigin="0.444,1.213" />
                     <Label Content="From" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="82,595,0,0" Height="31" Width="49" FontSize="16"/>
                     <Label Content="(Today)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="147,596,0,0" Height="31" Width="107" FontSize="16" FontWeight="Bold" FontStyle="Italic"/>
@@ -56,6 +56,7 @@
                     <Label Content="Temporary Residence Address" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="82,492,0,0" Height="31" Width="248" FontSize="16" Padding="0,4,4,4" FontStyle="Italic"/>
                     <TextBox
                         HorizontalAlignment="Left" Height="34" Margin="82,523,0,0"  VerticalAlignment="Top" Width="391" materialDesign:HintAssist.Hint="Address" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+                    <materialDesign:PackIcon Kind="HomeExportOutline" Margin="29,492,0,0" Height="31" Width="32" />
                 </Grid>
             </Border>
             <Button Content="Add"  Height="34" Background="#FF4D60C0" Margin="240,720,242.4,0" VerticalAlignment="Top"/>
