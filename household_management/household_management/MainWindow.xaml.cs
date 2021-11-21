@@ -54,5 +54,11 @@ namespace household_management
             Residence wd = new Residence();
             wd.ShowDialog();
         }
+
+        private void btnTransfer_Click(object sender, RoutedEventArgs e)
+        {
+            Transfer wd = new Transfer();
+            wd.ShowDialog();
+        }
     }
 }

@@ -13,7 +13,7 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Background="#FF4D60C0"  >
-            <Image Height="30"   Width="37" Source="/household_management;component/Resources/household.jpg" Margin="10,6,517,5.6"/>
+            <Image Height="30"   Width="37" Source="/household_management;component/Resources/household.jpg" Margin="10,6,517,5.6" Stretch="Fill"/>
 
             <Button x:Name="btnExit" Content="Exit" Height="32" Cursor="Hand" Click="btnExit_Click" RenderTransformOrigin="17.79,0.656" Margin="529,0,0,5.6" HorizontalAlignment="Left" Width="30" VerticalAlignment="Bottom">
                 <Button.Background>
@@ -39,13 +39,13 @@
             <Grid Grid.Row="1">
                 <TextBox
                     HorizontalAlignment="Left" Height="34" Margin="96,44,0,0"  VerticalAlignment="Top" Width="415" materialDesign:HintAssist.Hint="Full Name" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
-                <materialDesign:PackIcon Kind="Account" Margin="42,47,0,0" Height="31" Width="32" />
+                <materialDesign:PackIcon Kind="HomeAccount" Margin="42,47,0,0" Height="31" Width="32" />
                 <materialDesign:PackIcon Kind="CardAccountDetails" Margin="42,107,0,0" Height="31" Width="32" RenderTransformOrigin="0.438,1.342" />
                 <TextBox
                     HorizontalAlignment="Left" Height="34" Margin="96,104,0,0"  VerticalAlignment="Top" Width="220" materialDesign:HintAssist.Hint="Id" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"  materialDesign:HintAssist.HelperText="12 digits numbers" />
                 <TextBox
                     HorizontalAlignment="Left" Height="34" Margin="96,184,0,0"  VerticalAlignment="Top" Width="415" materialDesign:HintAssist.Hint="Address" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
-                <materialDesign:PackIcon Kind="MapMarker" Margin="42,187,0,0" Height="31" Width="32" />
+                <materialDesign:PackIcon Kind="HomeMapMarker" Margin="42,187,0,0" Height="31" Width="32" />
                 <materialDesign:PackIcon Kind="Map" Margin="42,253,0,0" Height="31" Width="32" />
                 <ComboBox
                         materialDesign:HintAssist.Hint="Area" Margin="96,253,387,144.8" FontSize="14">
