@@ -40,7 +40,7 @@
                 <TextBox
                     HorizontalAlignment="Left" Height="34" Margin="75,66,0,0"  VerticalAlignment="Top" Width="193" materialDesign:HintAssist.Hint="FamilyName" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBox
-                    HorizontalAlignment="Left" Height="34" Margin="344,63,0,0"  VerticalAlignment="Top" Width="297" materialDesign:HintAssist.Hint="Name" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+                    HorizontalAlignment="Left" Height="34" Margin="344,63,0,0"  VerticalAlignment="Top" Width="369" materialDesign:HintAssist.Hint="Name" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
                 <materialDesign:PackIcon Kind="Account" Margin="23,66,0,0" Height="31" Width="32" />
                 <TextBox
                     HorizontalAlignment="Left" Height="34" Margin="75,174,0,0"  VerticalAlignment="Top" Width="220" materialDesign:HintAssist.Hint="Id" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"  materialDesign:HintAssist.HelperText="12 digits numbers" />
@@ -49,7 +49,7 @@
                 <RadioButton Content="Male" HorizontalAlignment="Left" Margin="465,128,0,0" VerticalAlignment="Top"  Height="28" RenderTransformOrigin="0.615,0.157"/>
                 <DatePicker
                     materialDesign:HintAssist.Hint="Date of birth"
-                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="75,112,440.2,410.4" Height="44" FontSize="14" />
+                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="75,112,440.2,410.4" Height="44" FontSize="16" />
                 <TextBox
                     HorizontalAlignment="Left" Height="34" Margin="75,246,0,0"  VerticalAlignment="Top" Width="391" materialDesign:HintAssist.Hint="Address" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
                 <materialDesign:PackIcon Kind="MapMarker" Margin="23,249,0,0" Height="31" Width="32" />
@@ -57,7 +57,7 @@
                 <TextBox
                     HorizontalAlignment="Left" Height="34" Margin="518,246,0,0"  VerticalAlignment="Top" Width="195" materialDesign:HintAssist.Hint="Place of birth" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBox
-                    HorizontalAlignment="Left" Height="34" Margin="378,174,0,0"  VerticalAlignment="Top" Width="236" materialDesign:HintAssist.Hint="HouseholdId" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+                    HorizontalAlignment="Left" Height="34" Margin="344,177,0,0"  VerticalAlignment="Top" Width="236" materialDesign:HintAssist.Hint="HouseholdId" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBox
                     HorizontalAlignment="Left" Height="34" Margin="75,361,0,0"  VerticalAlignment="Top" Width="128" materialDesign:HintAssist.Hint="Religon" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
                 <materialDesign:PackIcon Kind="Cross" Margin="23,364,0,0" Height="31" Width="32" RenderTransformOrigin="0.825,-1.055" />
@@ -66,7 +66,7 @@
                     HorizontalAlignment="Left" Height="34" Margin="75,418,0,0"  VerticalAlignment="Top" Width="220" materialDesign:HintAssist.Hint="Career" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBox
                     HorizontalAlignment="Left" Height="34" Margin="75,304,0,0"  VerticalAlignment="Top" Width="391" materialDesign:HintAssist.Hint="HouseHoldAdress" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
-                <Button Content="Add" Margin="590,512,0,0" Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="123" VerticalAlignment="Top"/>
+                <Button Content="Add" Margin="284,512,0,0" Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="123" VerticalAlignment="Top"/>
 
             </Grid>
         </Grid>

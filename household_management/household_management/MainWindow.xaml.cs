@@ -42,5 +42,17 @@ namespace household_management
             Household wd = new Household();
             wd.ShowDialog();
         }
+
+        private void btnAbsence_Click(object sender, RoutedEventArgs e)
+        {
+            Absence wd = new Absence();
+            wd.ShowDialog();
+        }
+
+        private void btnResidence_Click(object sender, RoutedEventArgs e)
+        {
+            Residence wd = new Residence();
+            wd.ShowDialog();
+        }
     }
 }

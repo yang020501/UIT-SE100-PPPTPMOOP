@@ -66,6 +66,9 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Absence.xaml.cs">
+      <DependentUpon>Absence.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Household.xaml.cs">
       <DependentUpon>Household.xaml</DependentUpon>
     </Compile>
@@ -79,7 +82,14 @@
     <Compile Include="View\Populations.xaml.cs">
       <DependentUpon>Populations.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Residence.xaml.cs">
+      <DependentUpon>Residence.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Absence.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -92,6 +102,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Populations.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Residence.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

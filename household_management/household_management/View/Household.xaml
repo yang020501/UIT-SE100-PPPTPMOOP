@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:household_management.View"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Household" Height="641.2" Width="564" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowDrop="True" ResizeMode="NoResize">
+        Title="Household" Height="641.2" Width="564" WindowStartupLocation="CenterScreen" AllowDrop="True" ResizeMode="NoResize" AllowsTransparency="True" WindowStyle="None">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition  Height="0.07*"></RowDefinition>
@@ -48,7 +48,7 @@
                 <materialDesign:PackIcon Kind="MapMarker" Margin="42,187,0,0" Height="31" Width="32" />
                 <materialDesign:PackIcon Kind="Map" Margin="42,253,0,0" Height="31" Width="32" />
                 <ComboBox
-                        materialDesign:HintAssist.Hint="Area" Margin="96,253,308,178.6">
+                        materialDesign:HintAssist.Hint="Area" Margin="96,253,387,144.8" FontSize="14">
                     <ComboBoxItem
                         Content="1" />
                     <ComboBoxItem
