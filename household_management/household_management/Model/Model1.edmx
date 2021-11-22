@@ -1,0 +1,770 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HoKhauModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Family_Household">
+          <Key>
+            <PropertyRef Name="Id_Household" />
+            <PropertyRef Name="Id_Owner" />
+            <PropertyRef Name="Id_Person" />
+          </Key>
+          <Property Name="Id_Household" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Id_Owner" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Id_Person" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Name_Person" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Household_Registration">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Stt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="IdOfOwner" Type="varchar" MaxLength="12" />
+          <Property Name="NameOfOwner" Type="varchar" MaxLength="100" />
+          <Property Name="Address" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Population">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Stt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="Id_Household" Type="varchar" MaxLength="5" />
+          <Property Name="PlaceOfBirth" Type="varchar" MaxLength="500" />
+          <Property Name="Address" Type="varchar" MaxLength="500" />
+          <Property Name="DateOfBirth" Type="date" />
+          <Property Name="Sex" Type="bit" />
+          <Property Name="Relegion" Type="varchar" MaxLength="100" />
+          <Property Name="Career" Type="varchar" MaxLength="200" />
+          <Property Name="isAbsence" Type="bit" />
+          <Property Name="isTResidence" Type="bit" />
+        </EntityType>
+        <EntityType Name="Temporary_Absence">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Stt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Id_Owner" Type="varchar" MaxLength="12" />
+          <Property Name="NameOfOwner" Type="varchar" MaxLength="100" />
+          <Property Name="Id_Household" Type="varchar" MaxLength="5" />
+          <Property Name="HouseOwnerName" Type="varchar" MaxLength="100" />
+          <Property Name="CreateDate" Type="date" />
+          <Property Name="ExpireDate" Type="date" />
+        </EntityType>
+        <EntityType Name="Temporary_Residence">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Stt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Id_Owner" Type="varchar" MaxLength="12" />
+          <Property Name="NameOfOwner" Type="varchar" MaxLength="100" />
+          <Property Name="Id_Household" Type="varchar" MaxLength="5" />
+          <Property Name="HouseOwnerName" Type="varchar" MaxLength="100" />
+          <Property Name="PAddress" Type="varchar(max)" />
+          <Property Name="TAddress" Type="varchar(max)" />
+          <Property Name="CreateDate" Type="date" />
+          <Property Name="ExpireDate" Type="date" />
+        </EntityType>
+        <EntityType Name="Transfer_Household">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Stt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Id_Owner" Type="varchar" MaxLength="12" />
+          <Property Name="CreateDate" Type="date" />
+          <Property Name="Id_Household" Type="varchar" MaxLength="5" />
+          <Property Name="Old_Address" Type="varchar(max)" />
+          <Property Name="New_Address" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameRole" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="100" />
+          <Property Name="Password" Type="varchar(max)" />
+          <Property Name="Tier" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="DateOfBirth" Type="date" />
+          <Property Name="Sex" Type="bit" />
+          <Property Name="IdentityNum" Type="varchar" MaxLength="12" />
+        </EntityType>
+        <Association Name="FK__Family_Ho__Id_Ho__30F848ED">
+          <End Role="Household_Registration" Type="Self.Household_Registration" Multiplicity="1" />
+          <End Role="Family_Household" Type="Self.Family_Household" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Household_Registration">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Family_Household">
+              <PropertyRef Name="Id_Household" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Family_Ho__Id_Ow__31EC6D26">
+          <End Role="Population" Type="Self.Population" Multiplicity="1" />
+          <End Role="Family_Household" Type="Self.Family_Household" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Population">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Family_Household">
+              <PropertyRef Name="Id_Owner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Family_Ho__Id_Pe__32E0915F">
+          <End Role="Population" Type="Self.Population" Multiplicity="1" />
+          <End Role="Family_Household" Type="Self.Family_Household" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Population">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Family_Household">
+              <PropertyRef Name="Id_Person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Household__IdOfO__2D27B809">
+          <End Role="Population" Type="Self.Population" Multiplicity="0..1" />
+          <End Role="Household_Registration" Type="Self.Household_Registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Population">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Household_Registration">
+              <PropertyRef Name="IdOfOwner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Temporary__Id_Ho__36B12243">
+          <End Role="Household_Registration" Type="Self.Household_Registration" Multiplicity="0..1" />
+          <End Role="Temporary_Absence" Type="Self.Temporary_Absence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Household_Registration">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Temporary_Absence">
+              <PropertyRef Name="Id_Household" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Temporary__Id_Ho__3B75D760">
+          <End Role="Household_Registration" Type="Self.Household_Registration" Multiplicity="0..1" />
+          <End Role="Temporary_Residence" Type="Self.Temporary_Residence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Household_Registration">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Temporary_Residence">
+              <PropertyRef Name="Id_Household" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Temporary__Id_Ow__35BCFE0A">
+          <End Role="Population" Type="Self.Population" Multiplicity="0..1" />
+          <End Role="Temporary_Absence" Type="Self.Temporary_Absence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Population">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Temporary_Absence">
+              <PropertyRef Name="Id_Owner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Temporary__Id_Ow__3A81B327">
+          <End Role="Population" Type="Self.Population" Multiplicity="0..1" />
+          <End Role="Temporary_Residence" Type="Self.Temporary_Residence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Population">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Temporary_Residence">
+              <PropertyRef Name="Id_Owner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transfer___Id_Ho__403A8C7D">
+          <End Role="Household_Registration" Type="Self.Household_Registration" Multiplicity="0..1" />
+          <End Role="Transfer_Household" Type="Self.Transfer_Household" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Household_Registration">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Transfer_Household">
+              <PropertyRef Name="Id_Household" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transfer___Id_Ow__3F466844">
+          <End Role="Population" Type="Self.Population" Multiplicity="0..1" />
+          <End Role="Transfer_Household" Type="Self.Transfer_Household" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Population">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Transfer_Household">
+              <PropertyRef Name="Id_Owner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__Tier__267ABA7A">
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRole">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="Tier" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Id_Household_w_Id">
+          <End Role="Household_Registration" Type="Self.Household_Registration" Multiplicity="0..1" />
+          <End Role="Population" Type="Self.Population" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Household_Registration">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Population">
+              <PropertyRef Name="Id_Household" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HoKhauModelStoreContainer">
+          <EntitySet Name="Family_Household" EntityType="Self.Family_Household" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Household_Registration" EntityType="Self.Household_Registration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Population" EntityType="Self.Population" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Temporary_Absence" EntityType="Self.Temporary_Absence" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Temporary_Residence" EntityType="Self.Temporary_Residence" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transfer_Household" EntityType="Self.Transfer_Household" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Family_Ho__Id_Ho__30F848ED" Association="Self.FK__Family_Ho__Id_Ho__30F848ED">
+            <End Role="Household_Registration" EntitySet="Household_Registration" />
+            <End Role="Family_Household" EntitySet="Family_Household" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Family_Ho__Id_Ow__31EC6D26" Association="Self.FK__Family_Ho__Id_Ow__31EC6D26">
+            <End Role="Population" EntitySet="Population" />
+            <End Role="Family_Household" EntitySet="Family_Household" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Family_Ho__Id_Pe__32E0915F" Association="Self.FK__Family_Ho__Id_Pe__32E0915F">
+            <End Role="Population" EntitySet="Population" />
+            <End Role="Family_Household" EntitySet="Family_Household" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Household__IdOfO__2D27B809" Association="Self.FK__Household__IdOfO__2D27B809">
+            <End Role="Population" EntitySet="Population" />
+            <End Role="Household_Registration" EntitySet="Household_Registration" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Temporary__Id_Ho__36B12243" Association="Self.FK__Temporary__Id_Ho__36B12243">
+            <End Role="Household_Registration" EntitySet="Household_Registration" />
+            <End Role="Temporary_Absence" EntitySet="Temporary_Absence" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Temporary__Id_Ho__3B75D760" Association="Self.FK__Temporary__Id_Ho__3B75D760">
+            <End Role="Household_Registration" EntitySet="Household_Registration" />
+            <End Role="Temporary_Residence" EntitySet="Temporary_Residence" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Temporary__Id_Ow__35BCFE0A" Association="Self.FK__Temporary__Id_Ow__35BCFE0A">
+            <End Role="Population" EntitySet="Population" />
+            <End Role="Temporary_Absence" EntitySet="Temporary_Absence" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Temporary__Id_Ow__3A81B327" Association="Self.FK__Temporary__Id_Ow__3A81B327">
+            <End Role="Population" EntitySet="Population" />
+            <End Role="Temporary_Residence" EntitySet="Temporary_Residence" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transfer___Id_Ho__403A8C7D" Association="Self.FK__Transfer___Id_Ho__403A8C7D">
+            <End Role="Household_Registration" EntitySet="Household_Registration" />
+            <End Role="Transfer_Household" EntitySet="Transfer_Household" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transfer___Id_Ow__3F466844" Association="Self.FK__Transfer___Id_Ow__3F466844">
+            <End Role="Population" EntitySet="Population" />
+            <End Role="Transfer_Household" EntitySet="Transfer_Household" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__Tier__267ABA7A" Association="Self.FK__Users__Tier__267ABA7A">
+            <End Role="UserRole" EntitySet="UserRole" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Id_Household_w_Id" Association="Self.Fk_Id_Household_w_Id">
+            <End Role="Household_Registration" EntitySet="Household_Registration" />
+            <End Role="Population" EntitySet="Population" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HoKhauModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Family_Household">
+          <Key>
+            <PropertyRef Name="Id_Household" />
+            <PropertyRef Name="Id_Owner" />
+            <PropertyRef Name="Id_Person" />
+          </Key>
+          <Property Name="Id_Household" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Id_Owner" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Id_Person" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name_Person" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Household_Registration" Relationship="Self.FK__Family_Ho__Id_Ho__30F848ED" FromRole="Family_Household" ToRole="Household_Registration" />
+          <NavigationProperty Name="Population" Relationship="Self.FK__Family_Ho__Id_Ow__31EC6D26" FromRole="Family_Household" ToRole="Population" />
+          <NavigationProperty Name="Population1" Relationship="Self.FK__Family_Ho__Id_Pe__32E0915F" FromRole="Family_Household" ToRole="Population" />
+        </EntityType>
+        <EntityType Name="Household_Registration">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Stt" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdOfOwner" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="NameOfOwner" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Family_Household" Relationship="Self.FK__Family_Ho__Id_Ho__30F848ED" FromRole="Household_Registration" ToRole="Family_Household" />
+          <NavigationProperty Name="Population" Relationship="Self.FK__Household__IdOfO__2D27B809" FromRole="Household_Registration" ToRole="Population" />
+          <NavigationProperty Name="Temporary_Absence" Relationship="Self.FK__Temporary__Id_Ho__36B12243" FromRole="Household_Registration" ToRole="Temporary_Absence" />
+          <NavigationProperty Name="Temporary_Residence" Relationship="Self.FK__Temporary__Id_Ho__3B75D760" FromRole="Household_Registration" ToRole="Temporary_Residence" />
+          <NavigationProperty Name="Transfer_Household" Relationship="Self.FK__Transfer___Id_Ho__403A8C7D" FromRole="Household_Registration" ToRole="Transfer_Household" />
+          <NavigationProperty Name="Populations" Relationship="Self.Fk_Id_Household_w_Id" FromRole="Household_Registration" ToRole="Population" />
+        </EntityType>
+        <EntityType Name="Population">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Stt" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Household" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="PlaceOfBirth" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="Sex" Type="Boolean" />
+          <Property Name="Relegion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Career" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="isAbsence" Type="Boolean" />
+          <Property Name="isTResidence" Type="Boolean" />
+          <NavigationProperty Name="Family_Household" Relationship="Self.FK__Family_Ho__Id_Ow__31EC6D26" FromRole="Population" ToRole="Family_Household" />
+          <NavigationProperty Name="Family_Household1" Relationship="Self.FK__Family_Ho__Id_Pe__32E0915F" FromRole="Population" ToRole="Family_Household" />
+          <NavigationProperty Name="Household_Registration" Relationship="Self.FK__Household__IdOfO__2D27B809" FromRole="Population" ToRole="Household_Registration" />
+          <NavigationProperty Name="Household_Registration1" Relationship="Self.Fk_Id_Household_w_Id" FromRole="Population" ToRole="Household_Registration" />
+          <NavigationProperty Name="Temporary_Absence" Relationship="Self.FK__Temporary__Id_Ow__35BCFE0A" FromRole="Population" ToRole="Temporary_Absence" />
+          <NavigationProperty Name="Temporary_Residence" Relationship="Self.FK__Temporary__Id_Ow__3A81B327" FromRole="Population" ToRole="Temporary_Residence" />
+          <NavigationProperty Name="Transfer_Household" Relationship="Self.FK__Transfer___Id_Ow__3F466844" FromRole="Population" ToRole="Transfer_Household" />
+        </EntityType>
+        <EntityType Name="Temporary_Absence">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Stt" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Id_Owner" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="NameOfOwner" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Household" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="HouseOwnerName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="0" />
+          <Property Name="ExpireDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Household_Registration" Relationship="Self.FK__Temporary__Id_Ho__36B12243" FromRole="Temporary_Absence" ToRole="Household_Registration" />
+          <NavigationProperty Name="Population" Relationship="Self.FK__Temporary__Id_Ow__35BCFE0A" FromRole="Temporary_Absence" ToRole="Population" />
+        </EntityType>
+        <EntityType Name="Temporary_Residence">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Stt" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Id_Owner" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="NameOfOwner" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Household" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="HouseOwnerName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="0" />
+          <Property Name="ExpireDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Household_Registration" Relationship="Self.FK__Temporary__Id_Ho__3B75D760" FromRole="Temporary_Residence" ToRole="Household_Registration" />
+          <NavigationProperty Name="Population" Relationship="Self.FK__Temporary__Id_Ow__3A81B327" FromRole="Temporary_Residence" ToRole="Population" />
+        </EntityType>
+        <EntityType Name="Transfer_Household">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Stt" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Id_Owner" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="0" />
+          <Property Name="Id_Household" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Old_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="New_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Household_Registration" Relationship="Self.FK__Transfer___Id_Ho__403A8C7D" FromRole="Transfer_Household" ToRole="Household_Registration" />
+          <NavigationProperty Name="Population" Relationship="Self.FK__Transfer___Id_Ow__3F466844" FromRole="Transfer_Household" ToRole="Population" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameRole" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Users__Tier__267ABA7A" FromRole="UserRole" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Tier" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="Sex" Type="Boolean" />
+          <Property Name="IdentityNum" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UserRole" Relationship="Self.FK__Users__Tier__267ABA7A" FromRole="Users" ToRole="UserRole" />
+        </EntityType>
+        <Association Name="FK__Family_Ho__Id_Ho__30F848ED">
+          <End Role="Household_Registration" Type="Self.Household_Registration" Multiplicity="1" />
+          <End Role="Family_Household" Type="Self.Family_Household" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Household_Registration">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Family_Household">
+              <PropertyRef Name="Id_Household" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Family_Ho__Id_Ow__31EC6D26">
+          <End Role="Population" Type="Self.Population" Multiplicity="1" />
+          <End Role="Family_Household" Type="Self.Family_Household" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Population">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Family_Household">
+              <PropertyRef Name="Id_Owner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Family_Ho__Id_Pe__32E0915F">
+          <End Role="Population" Type="Self.Population" Multiplicity="1" />
+          <End Role="Family_Household" Type="Self.Family_Household" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Population">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Family_Household">
+              <PropertyRef Name="Id_Person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Household__IdOfO__2D27B809">
+          <End Role="Population" Type="Self.Population" Multiplicity="0..1" />
+          <End Role="Household_Registration" Type="Self.Household_Registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Population">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Household_Registration">
+              <PropertyRef Name="IdOfOwner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Temporary__Id_Ho__36B12243">
+          <End Role="Household_Registration" Type="Self.Household_Registration" Multiplicity="0..1" />
+          <End Role="Temporary_Absence" Type="Self.Temporary_Absence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Household_Registration">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Temporary_Absence">
+              <PropertyRef Name="Id_Household" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Temporary__Id_Ho__3B75D760">
+          <End Role="Household_Registration" Type="Self.Household_Registration" Multiplicity="0..1" />
+          <End Role="Temporary_Residence" Type="Self.Temporary_Residence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Household_Registration">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Temporary_Residence">
+              <PropertyRef Name="Id_Household" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transfer___Id_Ho__403A8C7D">
+          <End Role="Household_Registration" Type="Self.Household_Registration" Multiplicity="0..1" />
+          <End Role="Transfer_Household" Type="Self.Transfer_Household" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Household_Registration">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Transfer_Household">
+              <PropertyRef Name="Id_Household" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Id_Household_w_Id">
+          <End Role="Household_Registration" Type="Self.Household_Registration" Multiplicity="0..1" />
+          <End Role="Population" Type="Self.Population" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Household_Registration">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Population">
+              <PropertyRef Name="Id_Household" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Temporary__Id_Ow__35BCFE0A">
+          <End Role="Population" Type="Self.Population" Multiplicity="0..1" />
+          <End Role="Temporary_Absence" Type="Self.Temporary_Absence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Population">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Temporary_Absence">
+              <PropertyRef Name="Id_Owner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Temporary__Id_Ow__3A81B327">
+          <End Role="Population" Type="Self.Population" Multiplicity="0..1" />
+          <End Role="Temporary_Residence" Type="Self.Temporary_Residence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Population">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Temporary_Residence">
+              <PropertyRef Name="Id_Owner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transfer___Id_Ow__3F466844">
+          <End Role="Population" Type="Self.Population" Multiplicity="0..1" />
+          <End Role="Transfer_Household" Type="Self.Transfer_Household" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Population">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Transfer_Household">
+              <PropertyRef Name="Id_Owner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__Tier__267ABA7A">
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRole">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="Tier" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HoKhauEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Family_Household" EntityType="Self.Family_Household" />
+          <EntitySet Name="Household_Registration" EntityType="Self.Household_Registration" />
+          <EntitySet Name="Populations" EntityType="Self.Population" />
+          <EntitySet Name="Temporary_Absence" EntityType="Self.Temporary_Absence" />
+          <EntitySet Name="Temporary_Residence" EntityType="Self.Temporary_Residence" />
+          <EntitySet Name="Transfer_Household" EntityType="Self.Transfer_Household" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK__Family_Ho__Id_Ho__30F848ED" Association="Self.FK__Family_Ho__Id_Ho__30F848ED">
+            <End Role="Household_Registration" EntitySet="Household_Registration" />
+            <End Role="Family_Household" EntitySet="Family_Household" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Family_Ho__Id_Ow__31EC6D26" Association="Self.FK__Family_Ho__Id_Ow__31EC6D26">
+            <End Role="Population" EntitySet="Populations" />
+            <End Role="Family_Household" EntitySet="Family_Household" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Family_Ho__Id_Pe__32E0915F" Association="Self.FK__Family_Ho__Id_Pe__32E0915F">
+            <End Role="Population" EntitySet="Populations" />
+            <End Role="Family_Household" EntitySet="Family_Household" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Household__IdOfO__2D27B809" Association="Self.FK__Household__IdOfO__2D27B809">
+            <End Role="Population" EntitySet="Populations" />
+            <End Role="Household_Registration" EntitySet="Household_Registration" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Temporary__Id_Ho__36B12243" Association="Self.FK__Temporary__Id_Ho__36B12243">
+            <End Role="Household_Registration" EntitySet="Household_Registration" />
+            <End Role="Temporary_Absence" EntitySet="Temporary_Absence" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Temporary__Id_Ho__3B75D760" Association="Self.FK__Temporary__Id_Ho__3B75D760">
+            <End Role="Household_Registration" EntitySet="Household_Registration" />
+            <End Role="Temporary_Residence" EntitySet="Temporary_Residence" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transfer___Id_Ho__403A8C7D" Association="Self.FK__Transfer___Id_Ho__403A8C7D">
+            <End Role="Household_Registration" EntitySet="Household_Registration" />
+            <End Role="Transfer_Household" EntitySet="Transfer_Household" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Id_Household_w_Id" Association="Self.Fk_Id_Household_w_Id">
+            <End Role="Household_Registration" EntitySet="Household_Registration" />
+            <End Role="Population" EntitySet="Populations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Temporary__Id_Ow__35BCFE0A" Association="Self.FK__Temporary__Id_Ow__35BCFE0A">
+            <End Role="Population" EntitySet="Populations" />
+            <End Role="Temporary_Absence" EntitySet="Temporary_Absence" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Temporary__Id_Ow__3A81B327" Association="Self.FK__Temporary__Id_Ow__3A81B327">
+            <End Role="Population" EntitySet="Populations" />
+            <End Role="Temporary_Residence" EntitySet="Temporary_Residence" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transfer___Id_Ow__3F466844" Association="Self.FK__Transfer___Id_Ow__3F466844">
+            <End Role="Population" EntitySet="Populations" />
+            <End Role="Transfer_Household" EntitySet="Transfer_Household" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__Tier__267ABA7A" Association="Self.FK__Users__Tier__267ABA7A">
+            <End Role="UserRole" EntitySet="UserRoles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HoKhauModelStoreContainer" CdmEntityContainer="HoKhauEntities">
+          <EntitySetMapping Name="Family_Household">
+            <EntityTypeMapping TypeName="HoKhauModel.Family_Household">
+              <MappingFragment StoreEntitySet="Family_Household">
+                <ScalarProperty Name="Id_Household" ColumnName="Id_Household" />
+                <ScalarProperty Name="Id_Owner" ColumnName="Id_Owner" />
+                <ScalarProperty Name="Id_Person" ColumnName="Id_Person" />
+                <ScalarProperty Name="Name_Person" ColumnName="Name_Person" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Household_Registration">
+            <EntityTypeMapping TypeName="HoKhauModel.Household_Registration">
+              <MappingFragment StoreEntitySet="Household_Registration">
+                <ScalarProperty Name="Stt" ColumnName="Stt" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdOfOwner" ColumnName="IdOfOwner" />
+                <ScalarProperty Name="NameOfOwner" ColumnName="NameOfOwner" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Populations">
+            <EntityTypeMapping TypeName="HoKhauModel.Population">
+              <MappingFragment StoreEntitySet="Population">
+                <ScalarProperty Name="Stt" ColumnName="Stt" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id_Household" ColumnName="Id_Household" />
+                <ScalarProperty Name="PlaceOfBirth" ColumnName="PlaceOfBirth" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Relegion" ColumnName="Relegion" />
+                <ScalarProperty Name="Career" ColumnName="Career" />
+                <ScalarProperty Name="isAbsence" ColumnName="isAbsence" />
+                <ScalarProperty Name="isTResidence" ColumnName="isTResidence" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Temporary_Absence">
+            <EntityTypeMapping TypeName="HoKhauModel.Temporary_Absence">
+              <MappingFragment StoreEntitySet="Temporary_Absence">
+                <ScalarProperty Name="Stt" ColumnName="Stt" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_Owner" ColumnName="Id_Owner" />
+                <ScalarProperty Name="NameOfOwner" ColumnName="NameOfOwner" />
+                <ScalarProperty Name="Id_Household" ColumnName="Id_Household" />
+                <ScalarProperty Name="HouseOwnerName" ColumnName="HouseOwnerName" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Temporary_Residence">
+            <EntityTypeMapping TypeName="HoKhauModel.Temporary_Residence">
+              <MappingFragment StoreEntitySet="Temporary_Residence">
+                <ScalarProperty Name="Stt" ColumnName="Stt" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_Owner" ColumnName="Id_Owner" />
+                <ScalarProperty Name="NameOfOwner" ColumnName="NameOfOwner" />
+                <ScalarProperty Name="Id_Household" ColumnName="Id_Household" />
+                <ScalarProperty Name="HouseOwnerName" ColumnName="HouseOwnerName" />
+                <ScalarProperty Name="PAddress" ColumnName="PAddress" />
+                <ScalarProperty Name="TAddress" ColumnName="TAddress" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transfer_Household">
+            <EntityTypeMapping TypeName="HoKhauModel.Transfer_Household">
+              <MappingFragment StoreEntitySet="Transfer_Household">
+                <ScalarProperty Name="Stt" ColumnName="Stt" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_Owner" ColumnName="Id_Owner" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Id_Household" ColumnName="Id_Household" />
+                <ScalarProperty Name="Old_Address" ColumnName="Old_Address" />
+                <ScalarProperty Name="New_Address" ColumnName="New_Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="HoKhauModel.UserRole">
+              <MappingFragment StoreEntitySet="UserRole">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NameRole" ColumnName="NameRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="HoKhauModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Tier" ColumnName="Tier" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="IdentityNum" ColumnName="IdentityNum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -54,6 +54,7 @@
                         Style="{StaticResource MaterialDesignRaisedDarkButton}"
                         Width="100"
                         ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
+                        Click="Login_Click"
                         Content="Login" />
                     </Grid>
 
