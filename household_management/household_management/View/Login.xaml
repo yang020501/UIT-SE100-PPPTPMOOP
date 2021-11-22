@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:household_management.View"
         
         mc:Ignorable="d"
+        DataContext="{StaticResource LoginVM}"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -15,6 +16,7 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         Title="Login" Height="300" Width="400">
+        
     <Grid>
         <materialDesign:Card Width="380" Height="200" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid>
@@ -63,6 +65,7 @@
                         Style="{StaticResource MaterialDesignRaisedDarkButton}"
                         Width="100"
                         ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
+                        Click="Exist_Click"
                         Content="Exist" />
                     </Grid>
                 </Grid>
