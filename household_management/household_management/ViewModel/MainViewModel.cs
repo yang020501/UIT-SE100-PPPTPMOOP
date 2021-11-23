@@ -19,13 +19,19 @@ namespace household_management.ViewModel
                 p.Hide();
                 View.Login wd = new View.Login();
                 wd.ShowDialog();
-                var login = new View.Login();
-                if (!login.isExist)
+
+                if (wd.DataContext == null)
+                    return;
+
+                var loginVM = wd.DataContext as LoginViewModel;
+                if (loginVM.isLogin)
                 {
                     p.Show();
                 }
-
-                p.Close();
+                else
+                {
+                    p.Close();
+                }
             });
         }
     }

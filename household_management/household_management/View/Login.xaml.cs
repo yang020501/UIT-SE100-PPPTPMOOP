@@ -23,19 +23,8 @@ namespace household_management.View
         {
             InitializeComponent();
         }
+       
 
-        public bool isExist { get; set; }
-
-        private void Login_Click(object sender, RoutedEventArgs e)
-        {
-            isExist = false;
-            this.Close();
-        }
-
-        private void Exist_Click(object sender, RoutedEventArgs e)
-        {
-            isExist = true;
-            this.Close();
-        }
+        
     }
 }
