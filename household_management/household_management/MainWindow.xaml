@@ -11,7 +11,10 @@
         Title="MainWindow" Height="450" Width="800" Background="#FFFDFAFA" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" ShowInTaskbar="True" AllowsTransparency="True" WindowStyle="None">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding LoadWindowCommand}" CommandParameter="{Binding ElementName=MainWindowX}"></i:InvokeCommandAction>
+            <i:InvokeCommandAction Command="{Binding LoadWindowCommand}" 
+                                   CommandParameter="{Binding ElementName=MainWindowX}">
+                
+            </i:InvokeCommandAction>
         </i:EventTrigger>
     </i:Interaction.Triggers>
 
