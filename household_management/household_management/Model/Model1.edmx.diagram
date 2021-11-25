@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="7f8d9548ac6945829fca375e8b274855" Name="Diagram1">
+      <Diagram DiagramId="6ceb511446af447e9e4ba9d89c3598bd" Name="Diagram1">
         <EntityTypeShape EntityType="HoKhauModel.Family_Household" Width="1.5" PointX="5.25" PointY="8.25" IsExpanded="true" />
         <EntityTypeShape EntityType="HoKhauModel.Household_Registration" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
         <EntityTypeShape EntityType="HoKhauModel.Population" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />

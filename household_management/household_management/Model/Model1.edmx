@@ -14,7 +14,7 @@
           <Property Name="Id_Household" Type="varchar" MaxLength="5" Nullable="false" />
           <Property Name="Id_Owner" Type="varchar" MaxLength="12" Nullable="false" />
           <Property Name="Id_Person" Type="varchar" MaxLength="12" Nullable="false" />
-          <Property Name="Name_Person" Type="varchar" MaxLength="100" />
+          <Property Name="Name_Person" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Household_Registration">
           <Key>
@@ -23,8 +23,8 @@
           <Property Name="Stt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Id" Type="varchar" MaxLength="5" Nullable="false" />
           <Property Name="IdOfOwner" Type="varchar" MaxLength="12" />
-          <Property Name="NameOfOwner" Type="varchar" MaxLength="100" />
-          <Property Name="Address" Type="varchar(max)" />
+          <Property Name="NameOfOwner" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Population">
           <Key>
@@ -32,15 +32,15 @@
           </Key>
           <Property Name="Stt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Id" Type="varchar" MaxLength="12" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
           <Property Name="Photo" Type="varchar(max)" />
           <Property Name="Id_Household" Type="varchar" MaxLength="5" />
-          <Property Name="PlaceOfBirth" Type="varchar" MaxLength="500" />
-          <Property Name="Address" Type="varchar" MaxLength="500" />
+          <Property Name="PlaceOfBirth" Type="nvarchar" MaxLength="500" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
           <Property Name="DateOfBirth" Type="date" />
           <Property Name="Sex" Type="bit" />
-          <Property Name="Relegion" Type="varchar" MaxLength="100" />
-          <Property Name="Career" Type="varchar" MaxLength="200" />
+          <Property Name="Relegion" Type="nvarchar" MaxLength="100" />
+          <Property Name="Career" Type="nvarchar" MaxLength="200" />
           <Property Name="isAbsence" Type="bit" />
           <Property Name="isTResidence" Type="bit" />
         </EntityType>
@@ -51,9 +51,9 @@
           <Property Name="Stt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Id" Type="varchar" MaxLength="5" Nullable="false" />
           <Property Name="Id_Owner" Type="varchar" MaxLength="12" />
-          <Property Name="NameOfOwner" Type="varchar" MaxLength="100" />
+          <Property Name="NameOfOwner" Type="nvarchar" MaxLength="100" />
           <Property Name="Id_Household" Type="varchar" MaxLength="5" />
-          <Property Name="HouseOwnerName" Type="varchar" MaxLength="100" />
+          <Property Name="HouseOwnerName" Type="nvarchar" MaxLength="100" />
           <Property Name="CreateDate" Type="date" />
           <Property Name="ExpireDate" Type="date" />
         </EntityType>
@@ -64,11 +64,11 @@
           <Property Name="Stt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Id" Type="varchar" MaxLength="5" Nullable="false" />
           <Property Name="Id_Owner" Type="varchar" MaxLength="12" />
-          <Property Name="NameOfOwner" Type="varchar" MaxLength="100" />
+          <Property Name="NameOfOwner" Type="nvarchar" MaxLength="100" />
           <Property Name="Id_Household" Type="varchar" MaxLength="5" />
-          <Property Name="HouseOwnerName" Type="varchar" MaxLength="100" />
-          <Property Name="PAddress" Type="varchar(max)" />
-          <Property Name="TAddress" Type="varchar(max)" />
+          <Property Name="HouseOwnerName" Type="nvarchar" MaxLength="100" />
+          <Property Name="PAddress" Type="nvarchar(max)" />
+          <Property Name="TAddress" Type="nvarchar(max)" />
           <Property Name="CreateDate" Type="date" />
           <Property Name="ExpireDate" Type="date" />
         </EntityType>
@@ -81,15 +81,15 @@
           <Property Name="Id_Owner" Type="varchar" MaxLength="12" />
           <Property Name="CreateDate" Type="date" />
           <Property Name="Id_Household" Type="varchar" MaxLength="5" />
-          <Property Name="Old_Address" Type="varchar(max)" />
-          <Property Name="New_Address" Type="varchar(max)" />
+          <Property Name="Old_Address" Type="nvarchar(max)" />
+          <Property Name="New_Address" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="UserRole">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NameRole" Type="varchar" MaxLength="50" />
+          <Property Name="NameRole" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -99,7 +99,7 @@
           <Property Name="Username" Type="varchar" MaxLength="100" />
           <Property Name="Password" Type="varchar(max)" />
           <Property Name="Tier" Type="int" />
-          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
           <Property Name="PhotoUser" Type="varchar(max)" />
           <Property Name="DateOfBirth" Type="date" />
           <Property Name="Sex" Type="bit" />
@@ -321,7 +321,7 @@
           <Property Name="Id_Household" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Id_Owner" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Id_Person" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Name_Person" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Name_Person" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Household_Registration" Relationship="Self.FK__Family_Ho__Id_Ho__30F848ED" FromRole="Family_Household" ToRole="Household_Registration" />
           <NavigationProperty Name="Population" Relationship="Self.FK__Family_Ho__Id_Ow__31EC6D26" FromRole="Family_Household" ToRole="Population" />
           <NavigationProperty Name="Population1" Relationship="Self.FK__Family_Ho__Id_Pe__32E0915F" FromRole="Family_Household" ToRole="Population" />
@@ -333,8 +333,8 @@
           <Property Name="Stt" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Id" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IdOfOwner" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
-          <Property Name="NameOfOwner" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NameOfOwner" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Family_Household" Relationship="Self.FK__Family_Ho__Id_Ho__30F848ED" FromRole="Household_Registration" ToRole="Family_Household" />
           <NavigationProperty Name="Population" Relationship="Self.FK__Household__IdOfO__2D27B809" FromRole="Household_Registration" ToRole="Population" />
           <NavigationProperty Name="Temporary_Absence" Relationship="Self.FK__Temporary__Id_Ho__36B12243" FromRole="Household_Registration" ToRole="Temporary_Absence" />
@@ -348,15 +348,15 @@
           </Key>
           <Property Name="Stt" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Id" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Id_Household" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="PlaceOfBirth" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PlaceOfBirth" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
           <Property Name="Sex" Type="Boolean" />
-          <Property Name="Relegion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Career" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Relegion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Career" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="isAbsence" Type="Boolean" />
           <Property Name="isTResidence" Type="Boolean" />
           <NavigationProperty Name="Family_Household" Relationship="Self.FK__Family_Ho__Id_Ow__31EC6D26" FromRole="Population" ToRole="Family_Household" />
@@ -374,9 +374,9 @@
           <Property Name="Stt" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Id" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Id_Owner" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
-          <Property Name="NameOfOwner" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NameOfOwner" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Id_Household" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="HouseOwnerName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="HouseOwnerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="CreateDate" Type="DateTime" Precision="0" />
           <Property Name="ExpireDate" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Household_Registration" Relationship="Self.FK__Temporary__Id_Ho__36B12243" FromRole="Temporary_Absence" ToRole="Household_Registration" />
@@ -389,11 +389,11 @@
           <Property Name="Stt" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Id" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Id_Owner" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
-          <Property Name="NameOfOwner" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NameOfOwner" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Id_Household" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="HouseOwnerName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="PAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="TAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="HouseOwnerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="CreateDate" Type="DateTime" Precision="0" />
           <Property Name="ExpireDate" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Household_Registration" Relationship="Self.FK__Temporary__Id_Ho__3B75D760" FromRole="Temporary_Residence" ToRole="Household_Registration" />
@@ -408,8 +408,8 @@
           <Property Name="Id_Owner" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
           <Property Name="CreateDate" Type="DateTime" Precision="0" />
           <Property Name="Id_Household" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="Old_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="New_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Old_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="New_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Household_Registration" Relationship="Self.FK__Transfer___Id_Ho__403A8C7D" FromRole="Transfer_Household" ToRole="Household_Registration" />
           <NavigationProperty Name="Population" Relationship="Self.FK__Transfer___Id_Ow__3F466844" FromRole="Transfer_Household" ToRole="Population" />
         </EntityType>
@@ -418,7 +418,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NameRole" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NameRole" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Users" Relationship="Self.FK__Users__Tier__267ABA7A" FromRole="UserRole" ToRole="Users" />
         </EntityType>
         <EntityType Name="User">
@@ -429,7 +429,7 @@
           <Property Name="Username" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Tier" Type="Int32" />
-          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="PhotoUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
           <Property Name="Sex" Type="Boolean" />
