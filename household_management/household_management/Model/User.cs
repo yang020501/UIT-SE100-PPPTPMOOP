@@ -19,6 +19,7 @@ namespace household_management.Model
         public string Password { get; set; }
         public Nullable<int> Tier { get; set; }
         public string Name { get; set; }
+        public string PhotoUser { get; set; }
         public Nullable<System.DateTime> DateOfBirth { get; set; }
         public Nullable<bool> Sex { get; set; }
         public string IdentityNum { get; set; }

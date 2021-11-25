@@ -33,6 +33,7 @@
           <Property Name="Stt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Id" Type="varchar" MaxLength="12" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="Photo" Type="varchar(max)" />
           <Property Name="Id_Household" Type="varchar" MaxLength="5" />
           <Property Name="PlaceOfBirth" Type="varchar" MaxLength="500" />
           <Property Name="Address" Type="varchar" MaxLength="500" />
@@ -99,6 +100,7 @@
           <Property Name="Password" Type="varchar(max)" />
           <Property Name="Tier" Type="int" />
           <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="PhotoUser" Type="varchar(max)" />
           <Property Name="DateOfBirth" Type="date" />
           <Property Name="Sex" Type="bit" />
           <Property Name="IdentityNum" Type="varchar" MaxLength="12" />
@@ -347,6 +349,7 @@
           <Property Name="Stt" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Id" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Id_Household" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="PlaceOfBirth" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
@@ -427,6 +430,7 @@
           <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Tier" Type="Int32" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PhotoUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
           <Property Name="Sex" Type="Boolean" />
           <Property Name="IdentityNum" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
@@ -667,6 +671,7 @@
                 <ScalarProperty Name="Stt" ColumnName="Stt" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="Id_Household" ColumnName="Id_Household" />
                 <ScalarProperty Name="PlaceOfBirth" ColumnName="PlaceOfBirth" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
@@ -738,6 +743,7 @@
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Tier" ColumnName="Tier" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PhotoUser" ColumnName="PhotoUser" />
                 <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
                 <ScalarProperty Name="Sex" ColumnName="Sex" />
                 <ScalarProperty Name="IdentityNum" ColumnName="IdentityNum" />

@@ -28,6 +28,7 @@ namespace household_management.Model
         public int Stt { get; set; }
         public string Id { get; set; }
         public string Name { get; set; }
+        public string Photo { get; set; }
         public string Id_Household { get; set; }
         public string PlaceOfBirth { get; set; }
         public string Address { get; set; }
