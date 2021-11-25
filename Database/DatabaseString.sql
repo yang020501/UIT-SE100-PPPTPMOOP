@@ -1,6 +1,6 @@
-USE [master]
+﻿USE [master]
 GO
-/****** Object:  Database [HoKhau]    Script Date: 11/22/2021 1:05:36 PM ******/
+/****** Object:  Database [HoKhau]    Script Date: 11/25/2021 7:01:40 PM ******/
 CREATE DATABASE [HoKhau]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -82,7 +82,7 @@ ALTER DATABASE [HoKhau] SET QUERY_STORE = OFF
 GO
 USE [HoKhau]
 GO
-/****** Object:  Table [dbo].[Family_Household]    Script Date: 11/22/2021 1:05:36 PM ******/
+/****** Object:  Table [dbo].[Family_Household]    Script Date: 11/25/2021 7:01:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -91,7 +91,7 @@ CREATE TABLE [dbo].[Family_Household](
 	[Id_Household] [varchar](5) NOT NULL,
 	[Id_Owner] [varchar](12) NOT NULL,
 	[Id_Person] [varchar](12) NOT NULL,
-	[Name_Person] [varchar](100) NULL,
+	[Name_Person] [nvarchar](100) NULL,
  CONSTRAINT [Pk_Family_Household] PRIMARY KEY CLUSTERED 
 (
 	[Id_Household] ASC,
@@ -100,7 +100,7 @@ CREATE TABLE [dbo].[Family_Household](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Household_Registration]    Script Date: 11/22/2021 1:05:36 PM ******/
+/****** Object:  Table [dbo].[Household_Registration]    Script Date: 11/25/2021 7:01:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -109,15 +109,15 @@ CREATE TABLE [dbo].[Household_Registration](
 	[Stt] [int] IDENTITY(1,1) NOT NULL,
 	[Id] [varchar](5) NOT NULL,
 	[IdOfOwner] [varchar](12) NULL,
-	[NameOfOwner] [varchar](100) NULL,
-	[Address] [varchar](max) NULL,
+	[NameOfOwner] [nvarchar](100) NULL,
+	[Address] [nvarchar](max) NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Population]    Script Date: 11/22/2021 1:05:36 PM ******/
+/****** Object:  Table [dbo].[Population]    Script Date: 11/25/2021 7:01:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -125,23 +125,24 @@ GO
 CREATE TABLE [dbo].[Population](
 	[Stt] [int] IDENTITY(1,1) NOT NULL,
 	[Id] [varchar](12) NOT NULL,
-	[Name] [varchar](100) NULL,
+	[Name] [nvarchar](100) NULL,
+	[Photo] [varchar](max) NULL,
 	[Id_Household] [varchar](5) NULL,
-	[PlaceOfBirth] [varchar](500) NULL,
-	[Address] [varchar](500) NULL,
+	[PlaceOfBirth] [nvarchar](500) NULL,
+	[Address] [nvarchar](500) NULL,
 	[DateOfBirth] [date] NULL,
 	[Sex] [bit] NULL,
-	[Relegion] [varchar](100) NULL,
-	[Career] [varchar](200) NULL,
+	[Relegion] [nvarchar](100) NULL,
+	[Career] [nvarchar](200) NULL,
 	[isAbsence] [bit] NULL,
 	[isTResidence] [bit] NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Temporary_Absence]    Script Date: 11/22/2021 1:05:36 PM ******/
+/****** Object:  Table [dbo].[Temporary_Absence]    Script Date: 11/25/2021 7:01:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -150,9 +151,9 @@ CREATE TABLE [dbo].[Temporary_Absence](
 	[Stt] [int] IDENTITY(1,1) NOT NULL,
 	[Id] [varchar](5) NOT NULL,
 	[Id_Owner] [varchar](12) NULL,
-	[NameOfOwner] [varchar](100) NULL,
+	[NameOfOwner] [nvarchar](100) NULL,
 	[Id_Household] [varchar](5) NULL,
-	[HouseOwnerName] [varchar](100) NULL,
+	[HouseOwnerName] [nvarchar](100) NULL,
 	[CreateDate] [date] NULL,
 	[ExpireDate] [date] NULL,
 PRIMARY KEY CLUSTERED 
@@ -161,7 +162,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Temporary_Residence]    Script Date: 11/22/2021 1:05:36 PM ******/
+/****** Object:  Table [dbo].[Temporary_Residence]    Script Date: 11/25/2021 7:01:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -170,11 +171,11 @@ CREATE TABLE [dbo].[Temporary_Residence](
 	[Stt] [int] IDENTITY(1,1) NOT NULL,
 	[Id] [varchar](5) NOT NULL,
 	[Id_Owner] [varchar](12) NULL,
-	[NameOfOwner] [varchar](100) NULL,
+	[NameOfOwner] [nvarchar](100) NULL,
 	[Id_Household] [varchar](5) NULL,
-	[HouseOwnerName] [varchar](100) NULL,
-	[PAddress] [varchar](max) NULL,
-	[TAddress] [varchar](max) NULL,
+	[HouseOwnerName] [nvarchar](100) NULL,
+	[PAddress] [nvarchar](max) NULL,
+	[TAddress] [nvarchar](max) NULL,
 	[CreateDate] [date] NULL,
 	[ExpireDate] [date] NULL,
 PRIMARY KEY CLUSTERED 
@@ -183,7 +184,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Transfer_Household]    Script Date: 11/22/2021 1:05:36 PM ******/
+/****** Object:  Table [dbo].[Transfer_Household]    Script Date: 11/25/2021 7:01:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -194,29 +195,29 @@ CREATE TABLE [dbo].[Transfer_Household](
 	[Id_Owner] [varchar](12) NULL,
 	[CreateDate] [date] NULL,
 	[Id_Household] [varchar](5) NULL,
-	[Old_Address] [varchar](max) NULL,
-	[New_Address] [varchar](max) NULL,
+	[Old_Address] [nvarchar](max) NULL,
+	[New_Address] [nvarchar](max) NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[UserRole]    Script Date: 11/22/2021 1:05:36 PM ******/
+/****** Object:  Table [dbo].[UserRole]    Script Date: 11/25/2021 7:01:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[UserRole](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[NameRole] [varchar](50) NULL,
+	[NameRole] [nvarchar](50) NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Users]    Script Date: 11/22/2021 1:05:36 PM ******/
+/****** Object:  Table [dbo].[Users]    Script Date: 11/25/2021 7:01:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -226,7 +227,8 @@ CREATE TABLE [dbo].[Users](
 	[Username] [varchar](100) NULL,
 	[Password] [varchar](max) NULL,
 	[Tier] [int] NULL,
-	[Name] [varchar](100) NULL,
+	[Name] [nvarchar](100) NULL,
+	[PhotoUser] [varchar](max) NULL,
 	[DateOfBirth] [date] NULL,
 	[Sex] [bit] NULL,
 	[IdentityNum] [varchar](12) NULL,
@@ -286,15 +288,37 @@ ALTER TABLE [dbo].[Temporary_Residence]  WITH CHECK ADD  CONSTRAINT [CreateDate_
 GO
 ALTER TABLE [dbo].[Temporary_Residence] CHECK CONSTRAINT [CreateDate_w_ExpireDatex]
 GO
+
+SET IDENTITY_INSERT [dbo].[UserRole] ON 
+INSERT [dbo].[UserRole] ([NameRole]) VALUES ('Manager')
+INSERT [dbo].[UserRole] ([NameRole]) VALUES ('Employee')
+SET IDENTITY_INSERT [dbo].[UserRole] OFF
+GO
+
+SET IDENTITY_INSERT [dbo].[Users] ON
+INSERT [dbo].Users ([Username], [Password], [Tier], [Name], [DateOfBirth], [Sex], [IdentityNum]) VALUES ('DUONG1', 'ZHVvbmcxMjM=', '2', N'Nguyễn Hoàng Thái Dương', '2001-03-14', '1', '564502310213')
+INSERT [dbo].Users ([Username], [Password], [Tier], [Name], [DateOfBirth], [Sex], [IdentityNum]) VALUES ('DUY1', 'ZHVvbmcxMjM=', '2', N'Nguyễn Âu Duy', '2001-04-11', '1', '785420057035')
+INSERT [dbo].Users ([Username], [Password], [Tier], [Name], [DateOfBirth], [Sex], [IdentityNum]) VALUES ('ADMIN', 'YWRtaW4=', '1', 'Admin', '2021-09-05', '1', '000000000000')
+INSERT [dbo].Users ([Username], [Password], [Tier], [Name], [DateOfBirth], [Sex], [IdentityNum]) VALUES ('MANAGER', 'bWFuYWdlcjEyMw==', '1', 'Diabolic Esper', '2099-01-15', '1', '101010101010')
+SET IDENTITY_INSERT [dbo].[Users] OFF
+GO
+
+SET IDENTITY_INSERT [dbo].[Population] ON
+INSERT [dbo].Population (Id, Name, DateOfBirth, PlaceOfBirth, Sex, Relegion, Career) VALUES ('445577249830', N'Lê Trọng Nhân', '2001-01-25', N'TP Hồ Chí Minh', '1', 'Christianity', 'Teacher')
+INSERT [dbo].Population (Id, Name, DateOfBirth, PlaceOfBirth, Sex, Relegion, Career) VALUES ('398807346472', N'Lương Thành Long', '1987-05-14', N'TP Hồ Chí Minh', '1', 'Budha', 'Student')
+INSERT [dbo].Population (Id, Name, DateOfBirth, PlaceOfBirth, Sex, Relegion, Career) VALUES ('393650225257', N'Nguyễn Thành Nam', '1995-12-20', N'TP Đà Nẵng', '1', 'Budha', 'Graphic Designer')
+INSERT [dbo].Population (Id, Name, DateOfBirth, PlaceOfBirth, Sex, Relegion, Career) VALUES ('288341482322', 'Abra Freezor', '1914-11-13', 'Senneterre', '1', 'Christianity', 'Software Engineer II')
+INSERT [dbo].Population (Id, Name, DateOfBirth, PlaceOfBirth, Sex, Relegion, Career) VALUES ('969687522747', 'Berty Massey', '2001-01-25', 'Gandapura', '0', 'Christianity', 'Statistician II')
+INSERT [dbo].Population (Id, Name, DateOfBirth, PlaceOfBirth, Sex, Relegion, Career) VALUES ('270987964659', 'Harold Pinke', '1978-04-17', 'La Palma', '1', 'Christianity', 'Structural Engineer')
+INSERT [dbo].Population (Id, Name, DateOfBirth, PlaceOfBirth, Sex, Relegion, Career) VALUES ('645812284406', N'Lê Phương Linh', '2005-01-30', N'TP Bình Dương', '0', 'Christianity', 'Systems Administrator II')
+INSERT [dbo].Population (Id, Name, DateOfBirth, PlaceOfBirth, Sex, Relegion, Career) VALUES ('327687535047', N'Vương Minh Nhi', '1999-05-15', N'Long An', '0', 'Budha', 'Pharmacist')
+INSERT [dbo].Population (Id, Name, DateOfBirth, PlaceOfBirth, Sex, Relegion, Career) VALUES ('219575051297', 'Elyssa Snawdon', '1983-10-10', 'Lodon', '0', 'Christianity', 'Executive Secretary')
+INSERT [dbo].Population (Id, Name, DateOfBirth, PlaceOfBirth, Sex, Relegion, Career) VALUES ('881681367233', 'Betti Tuvey', '2001-09-26', 'Hetou', '0', 'Budha', 'Occupational Therapist')
+SET IDENTITY_INSERT [dbo].[Population] OFF
+GO
+
+
 USE [master]
 GO
 ALTER DATABASE [HoKhau] SET  READ_WRITE 
 GO
-insert into UserRole(NameRole) values ('Manager')
-insert into UserRole(NameRole) values ('Employee')
-
-insert into Users(Username, Password, Tier, Name, DateOfBirth, Sex, IdentityNum) values('DUONG1', 'ZHVvbmcxMjM=', '2', 'Nguyen Hoang Thai Duong', '2001-03-14', '1', '564502310213')
-insert into Users(Username, Password, Tier, Name, DateOfBirth, Sex, IdentityNum) values('DUY1', 'ZHVvbmcxMjM=', '2', 'Nguyen Au Duy', '2001-04-11', '1', '785420057035')
-insert into Users(Username, Password, Tier, Name, DateOfBirth, Sex, IdentityNum) values('ADMIN', 'YWRtaW4=', '1', 'Admin', '2021-09-05', '1', '000000000000')
-insert into Users(Username, Password, Tier, Name, DateOfBirth, Sex, IdentityNum) values('MANAGER', 'bWFuYWdlcjEyMw==', '1', 'Diabolic Esper', '2099-01-15', '1', '101010101010')
-
