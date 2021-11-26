@@ -48,7 +48,7 @@
                     materialDesign:HintAssist.Foreground="Black"
                     materialDesign:TextFieldAssist.UnderlineBrush="Black"
                     Style="{StaticResource MaterialDesignFloatingHintPasswordBox}">
-                        <i:Interaction.Triggers>
+                        <i:Interaction.Triggers> 
                             <i:EventTrigger EventName="PasswordChanged">
                                 <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}" 
                                                        CommandParameter="{Binding ElementName=FloatingPasswordBox}"/>
