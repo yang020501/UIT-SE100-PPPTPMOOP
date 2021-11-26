@@ -11,6 +11,7 @@ namespace household_management.ViewModel
     class MainViewModel : BaseViewModel
     {
         public ICommand LoadWindowCommand{ get; set; }
+        public ICommand LoadPopuationWindowCommand { get; set; }
         public bool isLoad = false;
         public MainViewModel()
         {
@@ -32,6 +33,12 @@ namespace household_management.ViewModel
                 {
                     p.Close();
                 }
+            });
+
+            LoadPopuationWindowCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                View.Populations wd = new View.Populations();
+                wd.Show();              
             });
         }
     }

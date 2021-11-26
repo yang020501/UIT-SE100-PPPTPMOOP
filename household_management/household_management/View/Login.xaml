@@ -65,6 +65,7 @@
 
                     <Grid Grid.Column="0">
                         <Button Background="Blue"
+                        IsDefault="True"
                         Style="{StaticResource MaterialDesignRaisedDarkButton}"
                         Width="100"
                         ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"

@@ -13,7 +13,6 @@
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadWindowCommand}" 
                                    CommandParameter="{Binding ElementName=MainWindowX}">
-                
             </i:InvokeCommandAction>
         </i:EventTrigger>
     </i:Interaction.Triggers>
@@ -44,7 +43,7 @@
                 <ImageBrush ImageSource="Resources/transfer.jpg"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btnPopualtion"  HorizontalAlignment="Left" Height="90" Margin="419.8,126.6,0,0" VerticalAlignment="Top" Width="109" BorderBrush="#FFF4F5F7" RenderTransformOrigin="0.795,0.681" Click="btnPopualtion_Click" >
+        <Button x:Name="btnPopualtion"  HorizontalAlignment="Left" Height="90" Margin="419.8,126.6,0,0" VerticalAlignment="Top" Width="109" BorderBrush="#FFF4F5F7" RenderTransformOrigin="0.795,0.681" Click="btnPopualtion_Click" Command="{Binding LoadPopuationWindowCommand}" >
             <Button.Background>
                 <ImageBrush ImageSource="Resources/population.jpg"/>
             </Button.Background>
