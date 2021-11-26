@@ -14,7 +14,12 @@
         TextOptions.TextFormattingMode="Ideal"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
+<<<<<<< Updated upstream
         Title="Login" Height="300" Width="400">
+=======
+        Title="Login" Height="300" Width="400" WindowStartupLocation="CenterScreen">
+        
+>>>>>>> Stashed changes
     <Grid>
         <materialDesign:Card Width="380" Height="200" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid>
