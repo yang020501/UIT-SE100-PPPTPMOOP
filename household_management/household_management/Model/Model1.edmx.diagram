@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6ceb511446af447e9e4ba9d89c3598bd" Name="Diagram1">
+        <EntityTypeShape EntityType="HoKhauModel.Family_Household" Width="1.5" PointX="5.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HoKhauModel.Household_Registration" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HoKhauModel.Population" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HoKhauModel.Temporary_Absence" Width="1.5" PointX="8.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="HoKhauModel.Temporary_Residence" Width="1.5" PointX="5.25" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HoKhauModel.Transfer_Household" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HoKhauModel.UserRole" Width="1.5" PointX="7.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HoKhauModel.User" Width="1.5" PointX="10" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="HoKhauModel.FK__Family_Ho__Id_Ho__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="HoKhauModel.FK__Family_Ho__Id_Ow__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="HoKhauModel.FK__Family_Ho__Id_Pe__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="HoKhauModel.FK__Household__IdOfO__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="HoKhauModel.FK__Temporary__Id_Ho__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="HoKhauModel.FK__Temporary__Id_Ho__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="HoKhauModel.FK__Transfer___Id_Ho__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="HoKhauModel.Fk_Id_Household_w_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="HoKhauModel.FK__Temporary__Id_Ow__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="HoKhauModel.FK__Temporary__Id_Ow__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="HoKhauModel.FK__Transfer___Id_Ow__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="HoKhauModel.FK__Users__Tier__267ABA7A" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

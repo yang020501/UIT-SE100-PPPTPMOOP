@@ -23,5 +23,8 @@ namespace household_management.View
         {
             InitializeComponent();
         }
+       
+
+        
     }
 }

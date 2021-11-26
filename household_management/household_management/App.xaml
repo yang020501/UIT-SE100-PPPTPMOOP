@@ -10,7 +10,7 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
-
+                <ResourceDictionary Source="/ResourcesXAML/MainResources.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
             <BitmapImage x:Key="ImageSource" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="D:\Tài liệu\PpOOP\quanlyHoKhau\household_management\household_management\household.jpg"/>
         </ResourceDictionary>
