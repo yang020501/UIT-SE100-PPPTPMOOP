@@ -17,7 +17,7 @@
             <Image Height="30" Margin="0,5,857,5" HorizontalAlignment="Right" Width="37" Source="/household_management;component/Resources/population.jpg" Stretch="Fill"/>
 
 
-            <Button x:Name="btnExit" Content="Exit" HorizontalAlignment="Left" Width="30" Height="Auto" Margin="869,5,0,5" Cursor="Hand" Click="btnExit_Click">
+            <Button x:Name="btnExit"  HorizontalAlignment="Left" Width="30" Height="Auto" Margin="869,5,0,5" Cursor="Hand" Click="btnExit_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="/household_management;component/Resources/exite.jpg"/>
                 </Button.Background>
