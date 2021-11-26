@@ -60,5 +60,11 @@ namespace household_management
             Transfer wd = new Transfer();
             wd.ShowDialog();
         }
+
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            Search wd = new Search();
+            wd.ShowDialog();
+        }
     }
 }

@@ -47,7 +47,9 @@ namespace household_management.ViewModel
             else
             {
                 isLogin = false;
-                MessageBox.Show("Wrong password or user name");
+
+                MessageBox.Show("Wrong password or user name","Warning!",MessageBoxButton.OK,MessageBoxImage.Error);
+
             }
         }        
         public static string Base64Encode(string plainText)

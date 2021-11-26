@@ -15,22 +15,18 @@ using System.Windows.Shapes;
 namespace household_management.View
 {
     /// <summary>
-    /// Interaction logic for Household.xaml
+    /// Interaction logic for Search.xaml
     /// </summary>
-    public partial class Household : Window
+    public partial class Search : Window
     {
-        public Household()
+        public Search()
         {
             InitializeComponent();
-
-
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
-
-       
     }
 }
