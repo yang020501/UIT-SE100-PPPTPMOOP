@@ -44,10 +44,44 @@ namespace household_management.ViewModel
             List<Model.Household_Registration> list_of_household = Model.DataProvider.Ins.DB.Household_Registration.ToList<Model.Household_Registration>();
             Gender = true;
 
-            HouseholdIDChangeCommand = new RelayCommand<TextBox>((p) => { return true; }, (p) => { });
+            HouseholdIDChangeCommand = new RelayCommand<TextBox>((p) => { return true; }, (p) => {
+                if(list_of_household.Count() != 0)
+                {
+                    foreach(Model.Household_Registration x in list_of_household)
+                    {
+                        if(x.Id == p.Text)
+                        {
+                            HouseholdAddress = x.Address;
+                            break;
+                        }
+                    }
+                }
+            });
 
             AddingCommand = new RelayCommand<object>((p) => 
             { 
+                if(FamilyName == null || Name == null)
+                {
+                    return false;
+                }
+                
+                if(Id == null)
+                {
+                    return false;
+                }
+
+                List<Model.Population> list_of_population = Model.DataProvider.Ins.DB.Populations.ToList<Model.Population>();
+                if(list_of_population.Count() != 0)
+                {
+                    foreach(Model.Population x in list_of_population)
+                    {
+                        if(x.Id == Id)
+                        {
+                            return false;
+                        }
+                    }
+                }
+
                 return true; 
             }, (p) => 
             {
