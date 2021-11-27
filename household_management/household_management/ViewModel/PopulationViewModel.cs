@@ -76,7 +76,7 @@ namespace household_management.ViewModel
             });
         }
 
-      
+        
 
        
     }
