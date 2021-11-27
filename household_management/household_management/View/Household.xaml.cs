@@ -22,15 +22,15 @@ namespace household_management.View
         public Household()
         {
             InitializeComponent();
-
-
+            tbFullName.Focus();
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             Close();
+    
         }
 
-       
+        
     }
 }
