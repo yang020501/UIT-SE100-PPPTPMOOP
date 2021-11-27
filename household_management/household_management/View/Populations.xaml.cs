@@ -22,13 +22,12 @@ namespace household_management.View
         public Populations()
         {
             InitializeComponent();
-        }
+            
+        }      
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            this.Close();
         }
-
-      
     }
 }

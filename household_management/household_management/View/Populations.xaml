@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:household_management.View"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
+        DataContext="{StaticResource PopulationVM}"
 
         Title="Populations" Height="606.051" Width="904.034" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" AllowsTransparency="True" WindowStyle="None">
     <Grid>
@@ -17,7 +18,7 @@
             <Image Height="30" Margin="0,5,857,5" HorizontalAlignment="Right" Width="37" Source="/household_management;component/Resources/population.jpg" Stretch="Fill"/>
 
 
-            <Button x:Name="btnExit"  HorizontalAlignment="Left" Width="30" Height="Auto" Margin="869,5,0,5" Cursor="Hand" Click="btnExit_Click">
+            <Button x:Name="btnExit" Click="btnExit_Click" HorizontalAlignment="Left" Width="30" Height="Auto" Margin="869,5,0,5" Cursor="Hand">
                 <Button.Background>
                     <ImageBrush ImageSource="/household_management;component/Resources/exite.jpg"/>
                 </Button.Background>
@@ -37,36 +38,40 @@
                 </Grid>
             </Border>
             <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="234*"/>
+                    <ColumnDefinition Width="7*"/>
+                </Grid.ColumnDefinitions>
                 <TextBox
-                    HorizontalAlignment="Left" Height="34" Margin="75,66,0,0"  VerticalAlignment="Top" Width="193" materialDesign:HintAssist.Hint="FamilyName" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+                    HorizontalAlignment="Left" Height="34" Margin="75,66,0,0"  VerticalAlignment="Top" Width="193" materialDesign:HintAssist.Hint="FamilyName" TextWrapping="Wrap" FontSize="16" Text="{Binding FamilyName, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBox
-                    HorizontalAlignment="Left" Height="34" Margin="344,63,0,0"  VerticalAlignment="Top" Width="369" materialDesign:HintAssist.Hint="Name" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+                    HorizontalAlignment="Left" Height="34" Margin="344,63,0,0"  VerticalAlignment="Top" Width="369" materialDesign:HintAssist.Hint="Name" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"/>
                 <materialDesign:PackIcon Kind="Account" Margin="23,66,0,0" Height="31" Width="32" />
                 <TextBox
-                    HorizontalAlignment="Left" Height="34" Margin="75,174,0,0"  VerticalAlignment="Top" Width="220" materialDesign:HintAssist.Hint="Id" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"  materialDesign:HintAssist.HelperText="12 digits numbers" />
+                    HorizontalAlignment="Left" Height="34" Margin="75,174,0,0"  VerticalAlignment="Top" Width="220" materialDesign:HintAssist.Hint="Id" TextWrapping="Wrap" FontSize="16" Text="{Binding Id, UpdateSourceTrigger=PropertyChanged}"  materialDesign:HintAssist.HelperText="12 digits numbers" />
                 <materialDesign:PackIcon Kind="CardAccountDetails" Margin="23,177,0,0" Height="31" Width="32" RenderTransformOrigin="0.438,1.342" />
-                <RadioButton Content="Female" HorizontalAlignment="Left" Margin="537,128,0,0" VerticalAlignment="Top"  Height="28" RenderTransformOrigin="0.615,0.157"/>
-                <RadioButton Content="Male" HorizontalAlignment="Left" Margin="465,128,0,0" VerticalAlignment="Top"  Height="28" RenderTransformOrigin="0.615,0.157"/>
+                <RadioButton Content="Female" HorizontalAlignment="Left" Margin="537,128,0,0" VerticalAlignment="Top"  Height="28" RenderTransformOrigin="0.615,0.157" GroupName="Gender" Name="FemaleChoise" IsChecked="{Binding isFemale, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" CommandParameter="{Binding ElementName=FemaleChoise}"/>
+                <RadioButton Content="Male" HorizontalAlignment="Left" Margin="465,128,0,0" VerticalAlignment="Top"  Height="28" RenderTransformOrigin="0.615,0.157" GroupName="Gender" Name="MaleChoise" IsChecked="{Binding isMale, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" CommandParameter="{Binding ElementName=MaleChoise}"/>
                 <DatePicker
-                    materialDesign:HintAssist.Hint="Date of birth"
-                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="75,112,440.2,410.4" Height="44" FontSize="16" />
+                    materialDesign:HintAssist.Hint="Date of birth" Text="{Binding DateOfBirth}"
+                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="75,112,419,410" Height="44" FontSize="16" />
                 <TextBox
-                    HorizontalAlignment="Left" Height="34" Margin="75,246,0,0"  VerticalAlignment="Top" Width="391" materialDesign:HintAssist.Hint="Address" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+                    HorizontalAlignment="Left" Height="34" Margin="75,246,0,0"  VerticalAlignment="Top" Width="391" materialDesign:HintAssist.Hint="Address" TextWrapping="Wrap" FontSize="16" Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}"/>
                 <materialDesign:PackIcon Kind="MapMarker" Margin="23,249,0,0" Height="31" Width="32" />
                 <Label Content="Gender:" HorizontalAlignment="Left" Margin="387,130,0,0" VerticalAlignment="Top" Height="26" Width="73" FontSize="16"/>
                 <TextBox
-                    HorizontalAlignment="Left" Height="34" Margin="518,246,0,0"  VerticalAlignment="Top" Width="195" materialDesign:HintAssist.Hint="Place of birth" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+                    HorizontalAlignment="Left" Height="34" Margin="518,246,0,0"  VerticalAlignment="Top" Width="195" materialDesign:HintAssist.Hint="Place of birth" TextWrapping="Wrap" FontSize="16" Text="{Binding PlaceOfBirth, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"/>
                 <TextBox
-                    HorizontalAlignment="Left" Height="34" Margin="477,174,0,0"  VerticalAlignment="Top" Width="236" materialDesign:HintAssist.Hint="HouseholdId" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+                    HorizontalAlignment="Left" Height="34" Margin="477,174,0,0"  VerticalAlignment="Top" Width="236" materialDesign:HintAssist.Hint="HouseholdId" TextWrapping="Wrap" FontSize="16" Text="{Binding HouseholdId, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"/>
                 <TextBox
-                    HorizontalAlignment="Left" Height="34" Margin="75,403,0,0"  VerticalAlignment="Top" Width="128" materialDesign:HintAssist.Hint="Religon" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+                    HorizontalAlignment="Left" Height="34" Margin="75,403,0,0"  VerticalAlignment="Top" Width="128" materialDesign:HintAssist.Hint="Religon" TextWrapping="Wrap" FontSize="16" Text="{Binding Religion, UpdateSourceTrigger=PropertyChanged}"/>
                 <materialDesign:PackIcon Kind="Cross" Margin="23,406,0,0" Height="31" Width="32" RenderTransformOrigin="0.825,-1.055" />
-                <materialDesign:PackIcon Kind="Briefcase" Margin="23,463,0,72.4" Height="Auto" Width="32" RenderTransformOrigin="0.412,1.303" VerticalAlignment="Stretch" />
+                <materialDesign:PackIcon Kind="Briefcase" Margin="23,463,0,72" Height="Auto" Width="32" RenderTransformOrigin="0.412,1.303" VerticalAlignment="Stretch" />
                 <TextBox
-                    HorizontalAlignment="Left" Height="34" Margin="75,460,0,0"  VerticalAlignment="Top" Width="220" materialDesign:HintAssist.Hint="Career" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+                    HorizontalAlignment="Left" Height="34" Margin="75,460,0,0"  VerticalAlignment="Top" Width="220" materialDesign:HintAssist.Hint="Career" TextWrapping="Wrap" FontSize="16" Text="{Binding Carrer, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBox
-                    HorizontalAlignment="Left" Height="34" Margin="75,338,0,0"  VerticalAlignment="Top" Width="391" materialDesign:HintAssist.Hint="HouseHold Adress" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
-                <Button Content="Add" Margin="284,512,0,0" Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="123" VerticalAlignment="Top"/>
+                    HorizontalAlignment="Left" Height="34" Margin="75,338,0,0"  VerticalAlignment="Top" Width="391" materialDesign:HintAssist.Hint="HouseHold Adress" TextWrapping="Wrap" FontSize="16" Text="{Binding HouseholdAddress, UpdateSourceTrigger=PropertyChanged}"/>
+                <Button Command="{Binding AddingCommand}" Content="Add" Margin="284,512,0,0" Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="123" VerticalAlignment="Top" Name="AddButton" CommandParameter="{Binding ElementName=AddButton}"/>
                 <Label Content="Household Address" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="75,302,0,0" Height="31" Width="232" FontSize="16" Padding="0,4,4,4"/>
                 <Label Content="Household Id:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="334,187,0,0" Height="21" Width="126" FontSize="16" Padding="0"/>
                 <materialDesign:PackIcon Kind="HomeMapMarker" Margin="23,341,0,0" Height="31" Width="32" />

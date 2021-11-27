@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -31,15 +32,52 @@ namespace household_management.ViewModel
         private string _Religion;
         public string Religion { get => _Religion; set { _Religion = value; OnPropertyChanged(); } }
         private string _Carrer;
-        public string Carrer { get => _Carrer; set { _Carrer = value; OnPropertyChanged(); } }
-
-        ICommand HouseholdId_Change { get; set; }
-
+        public string Carrer { get => _Carrer; set { _Carrer = value; OnPropertyChanged(); } } 
+        public ICommand AddingCommand { get; set; }
+        public ICommand HouseholdIDChangeCommand { get; set; }
+        private bool _isFemale;
+        public bool isFemale { get => _isFemale; set { _isFemale = value; OnPropertyChanged(); } }
+        private bool _isMale;
+        public bool isMale { get => _isMale; set { _isMale = value; OnPropertyChanged(); } }
         public PopulationViewModel()
         {
-            Model.Population x = new Model.Population();
-            HouseholdId_Change = new RelayCommand<TextBox>((p) => { return true; }, (p) => { /*Xữ lí khi HouseholdID thay đổi*/ });
+            List<Model.Household_Registration> list_of_household = Model.DataProvider.Ins.DB.Household_Registration.ToList<Model.Household_Registration>();
+            Gender = true;
 
+            HouseholdIDChangeCommand = new RelayCommand<TextBox>((p) => { return true; }, (p) => { });
+
+            AddingCommand = new RelayCommand<object>((p) => 
+            { 
+                return true; 
+            }, (p) => 
+            {
+                Model.Population population = new Model.Population();
+                if(isFemale == true)
+                {
+                    Gender = false;
+                }
+                
+                if(isMale == true)
+                {
+                    Gender = true;
+                }
+                population.Name = FamilyName.Trim() + " " + Name.Trim();
+                population.DateOfBirth = DateOfBirth;
+                population.PlaceOfBirth = PlaceOfBirth;
+                population.Sex = Gender;
+                population.Relegion = Religion;
+                population.Address = Address;
+                population.Id = Id;
+                population.Id_Household = HouseholdId;
+
+                Model.DataProvider.Ins.DB.Populations.Add(population);
+                Model.DataProvider.Ins.DB.SaveChanges();
+                    
+            });
         }
+
+      
+
+       
     }
 }

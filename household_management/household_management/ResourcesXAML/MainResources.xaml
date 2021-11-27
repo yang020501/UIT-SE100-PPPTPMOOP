@@ -3,7 +3,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <viewmodel:MainViewModel x:Key="MainVM"></viewmodel:MainViewModel>
     <viewmodel:LoginViewModel x:Key="LoginVM"></viewmodel:LoginViewModel>
-
     <viewmodel:HouseholdViewModel x:Key="HouseholdVM"></viewmodel:HouseholdViewModel>
+
+
 
 </ResourceDictionary>
