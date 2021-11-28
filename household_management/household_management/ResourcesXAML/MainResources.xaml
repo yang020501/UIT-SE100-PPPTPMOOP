@@ -5,6 +5,8 @@
     <viewmodel:LoginViewModel x:Key="LoginVM"></viewmodel:LoginViewModel>
     <viewmodel:HouseholdViewModel x:Key="HouseholdVM"></viewmodel:HouseholdViewModel>
     <viewmodel:PopulationViewModel x:Key="PopulationVM"></viewmodel:PopulationViewModel>
+
     <viewmodel:SearchViewModel x:Key="SearchVM"></viewmodel:SearchViewModel>
+
 
 </ResourceDictionary>
