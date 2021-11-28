@@ -55,6 +55,9 @@
                 <TabItem
                      Header="{materialDesign:PackIcon Kind=FileSwapOutline, Size=24}"
                      Style="{StaticResource MaterialDesignNavigationRailTabItem}">
+                    <DataGrid  IsReadOnly="True" AutoGenerateColumns="True" ItemsSource="{Binding DvTransfer,UpdateSourceTrigger=PropertyChanged}"  >
+
+                    </DataGrid>
 
                 </TabItem>
                 <TabItem
