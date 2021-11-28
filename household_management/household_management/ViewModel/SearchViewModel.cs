@@ -14,22 +14,40 @@ namespace household_management.ViewModel
     class SearchViewModel : BaseViewModel
     {
         DataTable dt;
+
         DataView dvPopulations;
         public DataView DvPopulations { get => dvPopulations; set => dvPopulations = value; }
         DataView dvHousehold;
         public DataView DvHousehold { get => dvHousehold; set => dvHousehold = value; }
+        DataView dvTransfer;
+        public DataView DvTransfer { get => dvTransfer; set => dvTransfer = value; }
 
         private ObservableCollection<Population> _PopulationsList;
         public ObservableCollection<Population> PopulationsList { get => _PopulationsList; set { _PopulationsList = value; OnPropertyChanged(); } }
+
         private ObservableCollection<Household_Registration> _HouseholdList;
         public ObservableCollection<Household_Registration> HouseholdList { get => _HouseholdList; set { _HouseholdList = value; OnPropertyChanged(); } }
+                
+        private ObservableCollection<Transfer_Household> _TransferList;
+        public ObservableCollection<Transfer_Household> TransferList { get => _TransferList; set { _TransferList = value; OnPropertyChanged(); } }
+
+       
 
         public SearchViewModel()
         {
+            NewTableHousehold();
             NewTablePopulations();
-            NewTableHousehold();         
+            NewTableTransfer();
 
-            
+          
+        }
+
+        private void NewTableTransfer()
+        {
+            TransferList = new ObservableCollection<Transfer_Household>(DataProvider.Ins.DB.Transfer_Household);
+            dt = new DataTable();
+
+            dvTransfer = new DataView(dt);
         }
 
         private void NewTableHousehold()
@@ -41,7 +59,7 @@ namespace household_management.ViewModel
             dt.Columns.Add("Id");
             dt.Columns.Add("Name");
             dt.Columns.Add("Address");
-
+            //fill datatable
             for (int i = 0; i < HouseholdList.Count; i++)
             {
                 dt.Rows.Add
@@ -55,6 +73,7 @@ namespace household_management.ViewModel
                     );
                 ;
             }
+            //add View
             dvHousehold = new DataView(dt);
 
         }
@@ -80,7 +99,7 @@ namespace household_management.ViewModel
                     (
                          PopulationsList[i].Stt.ToString(),
                          PopulationsList[i].Id.ToString(),
-                         PopulationsList[i].Name.ToString(),
+                         PopulationsList[i].Name.ToString(), 
                          PopulationsList[i].PlaceOfBirth.ToString(),
                          PopulationsList[i].DateOfBirth.ToString(),
                          PopulationsList[i].Sex.ToString(),
