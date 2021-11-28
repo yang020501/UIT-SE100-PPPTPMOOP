@@ -27,7 +27,7 @@ namespace household_management.ViewModel
 
             btnAdd = new RelayCommand<object>((p) =>
             {
-                if(Id == null || Name == null || Address == null)
+                if(Id == null || Name == null || Address == null || Id.Length > 12)
                 {
                     return false;
                 }
@@ -36,14 +36,58 @@ namespace household_management.ViewModel
             },
             (p) =>
             {
-                IdHousehold = GenarateId();
-                Model.Household_Registration x = new Model.Household_Registration();
-                x.Id = IdHousehold;
-                x.IdOfOwner = Id;
-                x.Address = Address;
-                x.NameOfOwner = Name;
+                List<Model.Population> list_of_population = Model.DataProvider.Ins.DB.Populations.ToList<Model.Population>();
 
-                Model.DataProvider.Ins.DB.Household_Registration.Add(x);
+                if(list_of_population.Count() != 0)
+                {
+                    foreach (Model.Population x in list_of_population)
+                    {
+                        if (x.Id == Id)
+                        {
+                            IdHousehold = GenarateId();
+                            Model.Household_Registration household = new Model.Household_Registration();
+                            household.Id = IdHousehold;
+                            household.IdOfOwner = Id;
+                            household.Address = Address;
+                            household.NameOfOwner = Name;
+
+                            Model.DataProvider.Ins.DB.Household_Registration.Add(household);
+                            Model.DataProvider.Ins.DB.SaveChanges();
+                            break;
+                        }
+                    }
+                }
+                //Tạo và save nhân khẩu 
+                Model.Population population = new Model.Population();
+
+                population.Name = Name.Trim();
+                DateTime tmp = new DateTime();
+                tmp = DateTime.ParseExact("01/01/1900", "dd/MM/yyyy", null);
+                population.DateOfBirth = tmp;
+                population.PlaceOfBirth = " ";
+                population.Sex = true;
+                population.Relegion = " ";
+                population.Address = Address;
+                population.Career = " ";
+                population.Id = Id;               
+
+                Model.DataProvider.Ins.DB.Populations.Add(population);
+                Model.DataProvider.Ins.DB.SaveChanges();
+
+                //Tạo và save hộ khẩu của người vừa khai
+                IdHousehold = GenarateId();
+                Model.Household_Registration xx = new Model.Household_Registration();
+                xx.Id = IdHousehold;
+                xx.IdOfOwner = Id;
+                xx.Address = Address;
+                xx.NameOfOwner = Name;
+
+                Model.DataProvider.Ins.DB.Household_Registration.Add(xx);
+                Model.DataProvider.Ins.DB.SaveChanges();
+
+                //Sửa nhân khẩu vừa làm
+                var change = Model.DataProvider.Ins.DB.Populations.Where(x => x.Id == Id).SingleOrDefault();
+                change.Id_Household = IdHousehold;
                 Model.DataProvider.Ins.DB.SaveChanges();
             });
         }

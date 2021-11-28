@@ -43,6 +43,11 @@ namespace household_management.ViewModel
         {
             List<Model.Household_Registration> list_of_household = Model.DataProvider.Ins.DB.Household_Registration.ToList<Model.Household_Registration>();
             Gender = true;
+            PlaceOfBirth = " ";
+            HouseholdId = " ";
+            Address = " ";
+            Carrer = " ";
+            Religion = "None";
 
             HouseholdIDChangeCommand = new RelayCommand<TextBox>((p) => { return true; }, (p) => {
                 if(list_of_household.Count() != 0)
@@ -65,7 +70,7 @@ namespace household_management.ViewModel
                     return false;
                 }
                 
-                if(Id == null)
+                if(Id == null || Id.Length > 12)
                 {
                     return false;
                 }
@@ -100,6 +105,7 @@ namespace household_management.ViewModel
                 population.PlaceOfBirth = PlaceOfBirth;
                 population.Sex = Gender;
                 population.Relegion = Religion;
+                population.Career = Carrer;
                 population.Address = Address;
                 population.Id = Id;
                 population.Id_Household = HouseholdId;
@@ -109,9 +115,6 @@ namespace household_management.ViewModel
                     
             });
         }
-
-        
-
-       
+          
     }
 }
