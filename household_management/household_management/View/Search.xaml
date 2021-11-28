@@ -63,11 +63,12 @@
                 <TabItem
                      Header="{materialDesign:PackIcon Kind=AccountArrowLeft, Size=24}"
                      Style="{StaticResource MaterialDesignNavigationRailTabItem}">
-
+                    <DataGrid  IsReadOnly="True" AutoGenerateColumns="True" ItemsSource="{Binding DvResidence,UpdateSourceTrigger=PropertyChanged}"  />
                 </TabItem>
                 <TabItem
                      Header="{materialDesign:PackIcon Kind=AccountArrowRight, Size=24}"
                      Style="{StaticResource MaterialDesignNavigationRailTabItem}">
+                    <DataGrid  IsReadOnly="True" AutoGenerateColumns="True" ItemsSource="{Binding DvAbsence,UpdateSourceTrigger=PropertyChanged}"  />
 
                 </TabItem>
 

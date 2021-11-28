@@ -15,12 +15,22 @@ namespace household_management.ViewModel
     {
         DataTable dt;
 
+
         DataView dvPopulations;
-        public DataView DvPopulations { get => dvPopulations; set => dvPopulations = value; }
+        public DataView DvPopulations { get => dvPopulations; set { dvPopulations = value; OnPropertyChanged(); }}
+
         DataView dvHousehold;
-        public DataView DvHousehold { get => dvHousehold; set => dvHousehold = value; }
+        public DataView DvHousehold { get => dvHousehold; set { dvHousehold = value; OnPropertyChanged(); } }
+
         DataView dvTransfer;
-        public DataView DvTransfer { get => dvTransfer; set => dvTransfer = value; }
+        public DataView DvTransfer { get => dvTransfer; set { dvTransfer = value; OnPropertyChanged(); } }
+
+        DataView dvAbsence;
+        public DataView DvAbsence { get => dvAbsence; set { dvAbsence = value; OnPropertyChanged(); } }
+
+        DataView dvResidence;
+        public DataView DvResidence { get => dvResidence; set { dvResidence = value; OnPropertyChanged(); } }
+
 
         private ObservableCollection<Population> _PopulationsList;
         public ObservableCollection<Population> PopulationsList { get => _PopulationsList; set { _PopulationsList = value; OnPropertyChanged(); } }
@@ -31,15 +41,91 @@ namespace household_management.ViewModel
         private ObservableCollection<Transfer_Household> _TransferList;
         public ObservableCollection<Transfer_Household> TransferList { get => _TransferList; set { _TransferList = value; OnPropertyChanged(); } }
 
-       
+        private ObservableCollection<Temporary_Absence> _AbsencesList;
+        public ObservableCollection<Temporary_Absence> AbsencesList { get => _AbsencesList; set { _AbsencesList = value; OnPropertyChanged(); } }
+               
+        private ObservableCollection<Temporary_Residence> _ResidencesList;
+        public ObservableCollection<Temporary_Residence> ResidencesList { get => _ResidencesList; set { _ResidencesList = value; OnPropertyChanged(); } }
 
+   
         public SearchViewModel()
         {
             NewTableHousehold();
             NewTablePopulations();
             NewTableTransfer();
+            NewTableAbsence();
+            NewTableResidence();
+        }
 
-          
+        private void NewTableResidence()
+        {
+            ResidencesList = new ObservableCollection<Temporary_Residence>(DataProvider.Ins.DB.Temporary_Residence);
+            dt = new DataTable();
+
+            dt.Columns.Add("Ordinal Number");
+            dt.Columns.Add("Id");
+            dt.Columns.Add("Id_Owner");
+            dt.Columns.Add("Name Owner");
+            dt.Columns.Add("Id_Household");
+            dt.Columns.Add("Name_HouseholdOwner");
+            dt.Columns.Add("Absence Address");
+            dt.Columns.Add("Residence Address");
+            dt.Columns.Add("Create Date");
+            dt.Columns.Add("Expire Date");
+
+            for (int i = 0; i < ResidencesList.Count; i++)
+            {
+                dt.Rows.Add
+                    (
+                       ResidencesList[i].Stt.ToString(),
+                       ResidencesList[i].Id.ToString(),
+                       ResidencesList[i].Id_Owner.ToString(),
+                       ResidencesList[i].NameOfOwner.ToString(),
+                       ResidencesList[i].Id_Household.ToString(),
+                       ResidencesList[i].HouseOwnerName.ToString(),
+                       ResidencesList[i].PAddress.ToString(),
+                       ResidencesList[i].TAddress.ToString(),
+                       ResidencesList[i].CreateDate.ToString(),
+                       ResidencesList[i].ExpireDate.ToString()
+                    );
+
+            }
+            dvResidence = new DataView(dt);
+        }
+
+        private void NewTableAbsence()
+        {
+            AbsencesList = new ObservableCollection<Temporary_Absence>(DataProvider.Ins.DB.Temporary_Absence);
+            dt = new DataTable();
+
+            dt.Columns.Add("Ordinal Number");
+            dt.Columns.Add("Id");
+            dt.Columns.Add("Id_Owner");
+            dt.Columns.Add("Name Owner");
+            dt.Columns.Add("Id_Household");
+            dt.Columns.Add("Name_HouseholdOwner");
+            dt.Columns.Add("Absence Address");
+            dt.Columns.Add("Create Date");
+            dt.Columns.Add("Expire Date");
+
+            //fill datatable
+            for (int i = 0; i <AbsencesList.Count; i++)
+            {
+                dt.Rows.Add
+                    (
+                       AbsencesList[i].Stt.ToString(),
+                       AbsencesList[i].Id.ToString(),
+                       AbsencesList[i].Id_Owner.ToString(),
+                       AbsencesList[i].NameOfOwner.ToString(),
+                       AbsencesList[i].Id_Household.ToString(),
+                       AbsencesList[i].HouseOwnerName.ToString(),
+                       AbsencesList[i].Household_Registration.Address.ToString(),
+                       AbsencesList[i].CreateDate.ToString(),
+                       AbsencesList[i].ExpireDate.ToString()
+                    );
+                
+            }
+            dvAbsence = new DataView(dt);
         }
 
         private void NewTableTransfer()
@@ -47,6 +133,27 @@ namespace household_management.ViewModel
             TransferList = new ObservableCollection<Transfer_Household>(DataProvider.Ins.DB.Transfer_Household);
             dt = new DataTable();
 
+            dt.Columns.Add("Ordinal Number");
+            dt.Columns.Add("Id");
+            dt.Columns.Add("Id_Owner");
+            dt.Columns.Add("Name Owner");
+            dt.Columns.Add("Id_Household");
+            dt.Columns.Add("Old Address");
+            dt.Columns.Add("New Address");
+            //fill datatable
+            for (int i = 0; i < TransferList.Count; i++)
+            {
+                dt.Rows.Add
+                    (
+                        TransferList[i].Stt.ToString(),
+                        TransferList[i].Id.ToString(),
+                        TransferList[i].Id_Owner.ToString(),
+                        TransferList[i].Population.Name.ToString(),
+                        TransferList[i].Old_Address.ToString(),
+                        TransferList[i].New_Address.ToString()
+                    ); 
+                ;
+            }
             dvTransfer = new DataView(dt);
         }
 
@@ -54,7 +161,7 @@ namespace household_management.ViewModel
         {
             HouseholdList = new ObservableCollection<Household_Registration>(DataProvider.Ins.DB.Household_Registration);
             dt = new DataTable();
-            dt.Columns.Add("Stt");
+            dt.Columns.Add("Ordinal Number");
             dt.Columns.Add("Id_Household");
             dt.Columns.Add("Id");
             dt.Columns.Add("Name");
@@ -82,7 +189,7 @@ namespace household_management.ViewModel
         {
             PopulationsList = new ObservableCollection<Population>(DataProvider.Ins.DB.Populations);
             dt = new DataTable();
-            dt.Columns.Add("Stt");
+            dt.Columns.Add("Ordinal Number");
             dt.Columns.Add("Id");
             dt.Columns.Add("Name");
             dt.Columns.Add("Id_Household");
