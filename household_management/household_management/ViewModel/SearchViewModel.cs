@@ -65,7 +65,7 @@ namespace household_management.ViewModel
             dt.Columns.Add("Ordinal Number");
             dt.Columns.Add("Id");
             dt.Columns.Add("Id_Owner");
-            dt.Columns.Add("Name Owner");
+            dt.Columns.Add("Name");
             dt.Columns.Add("Id_Household");
             dt.Columns.Add("Name_HouseholdOwner");
             dt.Columns.Add("Absence Address");
@@ -101,7 +101,7 @@ namespace household_management.ViewModel
             dt.Columns.Add("Ordinal Number");
             dt.Columns.Add("Id");
             dt.Columns.Add("Id_Owner");
-            dt.Columns.Add("Name Owner");
+            dt.Columns.Add("Name");
             dt.Columns.Add("Id_Household");
             dt.Columns.Add("Name_HouseholdOwner");
             dt.Columns.Add("Absence Address");
@@ -136,7 +136,7 @@ namespace household_management.ViewModel
             dt.Columns.Add("Ordinal Number");
             dt.Columns.Add("Id");
             dt.Columns.Add("Id_Owner");
-            dt.Columns.Add("Name Owner");
+            dt.Columns.Add("Name");
             dt.Columns.Add("Id_Household");
             dt.Columns.Add("Old Address");
             dt.Columns.Add("New Address");
@@ -185,7 +185,7 @@ namespace household_management.ViewModel
 
         }
 
-        private void NewTablePopulations()
+        public  void NewTablePopulations()
         {
             PopulationsList = new ObservableCollection<Population>(DataProvider.Ins.DB.Populations);
             dt = new DataTable();

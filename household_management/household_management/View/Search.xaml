@@ -32,10 +32,10 @@
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
 
-            <TabControl Grid.Row="2"
+            <TabControl x:Name="tablist" Grid.Row="2"
                 Style="{StaticResource MaterialDesignNavigatilRailTabControl}"
                 materialDesign:ColorZoneAssist.Mode="Dark" Background="White" >
-                <TabItem
+                <TabItem x:Name="tabHousehold" MouseLeftButtonDown="tabHousehold_MouseLeftButtonDown"
                     Header="{materialDesign:PackIcon Kind=BookOpenOutline, Size=24}"
                     Style="{StaticResource MaterialDesignNavigationRailTabItem}">
                     <DataGrid  IsReadOnly="True" AutoGenerateColumns="True" ItemsSource="{Binding DvHousehold,UpdateSourceTrigger=PropertyChanged}"  >
@@ -43,36 +43,37 @@
                     </DataGrid>
 
                 </TabItem>
-                <TabItem
+                <TabItem x:Name="tabPopulation" MouseLeftButtonDown="tabHousehold_MouseLeftButtonDown"
                      Header="{materialDesign:PackIcon Kind=Account, Size=24}"
                      Style="{StaticResource MaterialDesignNavigationRailTabItem}" >
 
-                    <DataGrid  IsReadOnly="True" AutoGenerateColumns="True" ItemsSource="{Binding DvPopulations,UpdateSourceTrigger=PropertyChanged}"  >
-                        
+                    <DataGrid x:Name="dtgPopulations"  IsReadOnly="True" AutoGenerateColumns="True" ItemsSource="{Binding DvPopulations,UpdateSourceTrigger=PropertyChanged}"  >
+
                     </DataGrid>
-                    
+
                 </TabItem>
-                <TabItem
+                <TabItem x:Name="tabTransfer"
                      Header="{materialDesign:PackIcon Kind=FileSwapOutline, Size=24}"
-                     Style="{StaticResource MaterialDesignNavigationRailTabItem}">
+                     Style="{StaticResource MaterialDesignNavigationRailTabItem}" IsSelected="False" MouseLeftButtonDown="tabHousehold_MouseLeftButtonDown">
                     <DataGrid  IsReadOnly="True" AutoGenerateColumns="True" ItemsSource="{Binding DvTransfer,UpdateSourceTrigger=PropertyChanged}"  >
 
                     </DataGrid>
 
                 </TabItem>
-                <TabItem
+                <TabItem x:Name="tabResidence"  MouseLeftButtonDown="tabHousehold_MouseLeftButtonDown"
                      Header="{materialDesign:PackIcon Kind=AccountArrowLeft, Size=24}"
-                     Style="{StaticResource MaterialDesignNavigationRailTabItem}">
+                     Style="{StaticResource MaterialDesignNavigationRailTabItem}" IsSelected="False">
                     <DataGrid  IsReadOnly="True" AutoGenerateColumns="True" ItemsSource="{Binding DvResidence,UpdateSourceTrigger=PropertyChanged}"  />
                 </TabItem>
-                <TabItem
+                <TabItem x:Name="tabAbsence"  MouseLeftButtonDown="tabHousehold_MouseLeftButtonDown"
                      Header="{materialDesign:PackIcon Kind=AccountArrowRight, Size=24}"
-                     Style="{StaticResource MaterialDesignNavigationRailTabItem}">
+                     Style="{StaticResource MaterialDesignNavigationRailTabItem}" IsSelected="False">
                     <DataGrid  IsReadOnly="True" AutoGenerateColumns="True" ItemsSource="{Binding DvAbsence,UpdateSourceTrigger=PropertyChanged}"  />
 
                 </TabItem>
 
             </TabControl>
+            <TextBox x:Name="txtSearch" TextChanged="txtSearch_TextChanged" HorizontalAlignment="Left" Height="78" Margin="274,68,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="722"/>
         </Grid>
 
     </Grid>
