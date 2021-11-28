@@ -28,5 +28,7 @@ namespace household_management.View
         {
             Close();
         }
+
+        
     }
 }

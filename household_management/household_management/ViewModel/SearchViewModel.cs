@@ -6,30 +6,59 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 
 namespace household_management.ViewModel
 {
     class SearchViewModel : BaseViewModel
     {
         DataTable dt;
-        DataView dv;
-        public DataView Dv { get => dv; set => dv = value; }
-        
-        
+        DataView dvPopulations;
+        public DataView DvPopulations { get => dvPopulations; set => dvPopulations = value; }
+        DataView dvHousehold;
+        public DataView DvHousehold { get => dvHousehold; set => dvHousehold = value; }
+
         private ObservableCollection<Population> _PopulationsList;
         public ObservableCollection<Population> PopulationsList { get => _PopulationsList; set { _PopulationsList = value; OnPropertyChanged(); } }
-
+        private ObservableCollection<Household_Registration> _HouseholdList;
+        public ObservableCollection<Household_Registration> HouseholdList { get => _HouseholdList; set { _HouseholdList = value; OnPropertyChanged(); } }
 
         public SearchViewModel()
         {
             NewTablePopulations();
-            
+            NewTableHousehold();         
 
-          
-             
             
-            populateListView(dv);
         }
+
+        private void NewTableHousehold()
+        {
+            HouseholdList = new ObservableCollection<Household_Registration>(DataProvider.Ins.DB.Household_Registration);
+            dt = new DataTable();
+            dt.Columns.Add("Stt");
+            dt.Columns.Add("Id_Household");
+            dt.Columns.Add("Id");
+            dt.Columns.Add("Name");
+            dt.Columns.Add("Address");
+
+            for (int i = 0; i < HouseholdList.Count; i++)
+            {
+                dt.Rows.Add
+                    (
+                        HouseholdList[i].Stt.ToString(),
+                        HouseholdList[i].Id.ToString(),
+                        HouseholdList[i].IdOfOwner.ToString(),
+                        HouseholdList[i].NameOfOwner.ToString(),
+                        HouseholdList[i].Address.ToString()
+
+                    );
+                ;
+            }
+            dvHousehold = new DataView(dt);
+
+        }
+
         private void NewTablePopulations()
         {
             PopulationsList = new ObservableCollection<Population>(DataProvider.Ins.DB.Populations);
@@ -59,7 +88,7 @@ namespace household_management.ViewModel
                          PopulationsList[i].Career.ToString()
                     );
             }
-            dv = new DataView(dt);
+            dvPopulations = new DataView(dt);
         }
 
 
