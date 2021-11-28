@@ -130,6 +130,7 @@
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\PopulationViewModel.cs" />
+    <Compile Include="ViewModel\SearchViewModel.cs" />
     <Compile Include="View\Absence.xaml.cs">
       <DependentUpon>Absence.xaml</DependentUpon>
     </Compile>
