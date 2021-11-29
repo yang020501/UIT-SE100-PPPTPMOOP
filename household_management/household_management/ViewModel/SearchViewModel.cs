@@ -7,7 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Forms;
 using System.Windows.Input;
+
 
 namespace household_management.ViewModel
 {
@@ -47,7 +50,14 @@ namespace household_management.ViewModel
         private ObservableCollection<Temporary_Residence> _ResidencesList;
         public ObservableCollection<Temporary_Residence> ResidencesList { get => _ResidencesList; set { _ResidencesList = value; OnPropertyChanged(); } }
 
-   
+      
+
+        public TextChangedEventHandler txtChanged;
+        string txtSearch;
+        public string TxtSearch { get => txtSearch; set { txtSearch = value; OnPropertyChanged(); } } 
+
+
+
         public SearchViewModel()
         {
             NewTableHousehold();
@@ -55,8 +65,15 @@ namespace household_management.ViewModel
             NewTableTransfer();
             NewTableAbsence();
             NewTableResidence();
-        }
+            txtChanged += new TextChangedEventHandler(this.textChanged);
+            txtSearch = "Search";
 
+            
+        }
+        private void textChanged(object sender, TextChangedEventArgs e)
+        {
+           
+        }      
         private void NewTableResidence()
         {
             ResidencesList = new ObservableCollection<Temporary_Residence>(DataProvider.Ins.DB.Temporary_Residence);
@@ -98,7 +115,7 @@ namespace household_management.ViewModel
             AbsencesList = new ObservableCollection<Temporary_Absence>(DataProvider.Ins.DB.Temporary_Absence);
             dt = new DataTable();
 
-            dt.Columns.Add("Ordinal Number");
+            dt.Columns.Add("OrdinalNumber");
             dt.Columns.Add("Id");
             dt.Columns.Add("Id_Owner");
             dt.Columns.Add("Name");
@@ -133,7 +150,7 @@ namespace household_management.ViewModel
             TransferList = new ObservableCollection<Transfer_Household>(DataProvider.Ins.DB.Transfer_Household);
             dt = new DataTable();
 
-            dt.Columns.Add("Ordinal Number");
+            dt.Columns.Add("OrdinalNumber");
             dt.Columns.Add("Id");
             dt.Columns.Add("Id_Owner");
             dt.Columns.Add("Name");
@@ -161,7 +178,7 @@ namespace household_management.ViewModel
         {
             HouseholdList = new ObservableCollection<Household_Registration>(DataProvider.Ins.DB.Household_Registration);
             dt = new DataTable();
-            dt.Columns.Add("Ordinal Number");
+            dt.Columns.Add("OrdinalNumber");
             dt.Columns.Add("Id_Household");
             dt.Columns.Add("Id");
             dt.Columns.Add("Name");
@@ -189,7 +206,7 @@ namespace household_management.ViewModel
         {
             PopulationsList = new ObservableCollection<Population>(DataProvider.Ins.DB.Populations);
             dt = new DataTable();
-            dt.Columns.Add("Ordinal Number");
+            dt.Columns.Add("OrdinalNumber");
             dt.Columns.Add("Id");
             dt.Columns.Add("Name");
             dt.Columns.Add("Id_Household");
