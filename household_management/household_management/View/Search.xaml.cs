@@ -20,11 +20,22 @@ namespace household_management.View
     /// </summary>
     public partial class Search : Window
     {
+        private ViewModel.SearchViewModel searchView = new ViewModel.SearchViewModel();
+        List<RadioButton> radioButtons = new List<RadioButton>();
         public Search()
         {
             InitializeComponent();
+            txtSearch.Focus();
+            AddRadio();
         }
-        private ViewModel.SearchViewModel searchView = new ViewModel.SearchViewModel();
+
+        private void AddRadio()
+        {
+            radioButtons.Add(rdName);
+            radioButtons.Add(rdId);
+            radioButtons.Add(rdOrdinalNumber);
+            radioButtons.Add(rdId_Household);
+        }
 
         private void TabItemFalse()
         {
@@ -35,35 +46,38 @@ namespace household_management.View
             tabTransfer.IsSelected = false;
         }
 
-        
+
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             Close();
+           
         }
 
         private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
-        {            
+        {
+            
             ItemCollection tabitemlist = tablist.Items;
-            foreach(TabItem item in tabitemlist)
+            foreach (TabItem item in tabitemlist)
             {
-                if(item.IsSelected)
+                if (item.IsSelected)
                 {
-                    doSearch((DataGrid)item.Content,getdtv(item.Name));
+                    doSearch((DataGrid)item.Content, getdtv(item.Name));
                     break;
                 }
-            }          
-            
+            }
+
+
         }
 
         private DataView getdtv(string name)
         {
-            
+
             switch (name)
             {
                 case "tabHousehold": return searchView.DvHousehold;
                 case "tabPopulation": return searchView.DvPopulations;
-                case "tabTransfer":return searchView.DvTransfer;
+                case "tabTransfer": return searchView.DvTransfer;
                 case "tabAbsence": return searchView.DvAbsence;
                 case "tabResidence": return searchView.DvResidence;
 
@@ -72,11 +86,19 @@ namespace household_management.View
 
         }
 
-        private void doSearch(DataGrid dtg,DataView dtv)
+        private void doSearch(DataGrid dtg, DataView dtv)
         {
+            string form="";
             if (dtv.Count < 0)
                 return;
-            dtv.RowFilter = string.Format("Name Like '%{0}%'", txtSearch.Text);
+            foreach (RadioButton item in radioButtons)
+            {
+                if((bool)item.IsChecked)
+                {
+                    form += item.Name.Substring(2) + " Like  '%{0}%'";
+                }
+            }
+            dtv.RowFilter = string.Format(form, txtSearch.Text);
             dtg.ItemsSource = dtv;
         }
 
@@ -85,6 +107,7 @@ namespace household_management.View
             TabItem item = (TabItem)sender;
             TabItemFalse();
             item.IsSelected = true;
+            txtSearch.Focus();
         }
     }
 }
