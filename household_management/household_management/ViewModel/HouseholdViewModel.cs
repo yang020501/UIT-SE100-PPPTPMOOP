@@ -36,6 +36,7 @@ namespace household_management.ViewModel
             },
             (p) =>
             {
+                bool check_have_population = false;
                 List<Model.Population> list_of_population = Model.DataProvider.Ins.DB.Populations.ToList<Model.Population>();
 
                 if(list_of_population.Count() != 0)
@@ -44,6 +45,7 @@ namespace household_management.ViewModel
                     {
                         if (x.Id == Id)
                         {
+                            check_have_population = true;
                             IdHousehold = GenarateId();
                             Model.Household_Registration household = new Model.Household_Registration();
                             household.Id = IdHousehold;
@@ -52,43 +54,50 @@ namespace household_management.ViewModel
                             household.NameOfOwner = Name;
 
                             Model.DataProvider.Ins.DB.Household_Registration.Add(household);
+
+                            var change = Model.DataProvider.Ins.DB.Populations.Where(y => y.Id == Id).SingleOrDefault();
+                            change.Id_Household = IdHousehold;
+
                             Model.DataProvider.Ins.DB.SaveChanges();
                             break;
                         }
                     }
                 }
-                //Tạo và save nhân khẩu 
-                Model.Population population = new Model.Population();
+                if (!check_have_population)
+                {
+                    //Tạo và save nhân khẩu 
+                    Model.Population population = new Model.Population();
 
-                population.Name = Name.Trim();
-                DateTime tmp = new DateTime();
-                tmp = DateTime.ParseExact("01/01/1900", "dd/MM/yyyy", null);
-                population.DateOfBirth = tmp;
-                population.PlaceOfBirth = " ";
-                population.Sex = true;
-                population.Relegion = " ";
-                population.Address = Address;
-                population.Career = " ";
-                population.Id = Id;               
+                    population.Name = Name.Trim();
+                    DateTime tmp = new DateTime();
+                    tmp = DateTime.ParseExact("01/01/1900", "dd/MM/yyyy", null);
+                    population.DateOfBirth = tmp;
+                    population.PlaceOfBirth = " ";
+                    population.Sex = true;
+                    population.Relegion = " ";
+                    population.Address = Address;
+                    population.Career = " ";
+                    population.Id = Id;
 
-                Model.DataProvider.Ins.DB.Populations.Add(population);
-                Model.DataProvider.Ins.DB.SaveChanges();
+                    Model.DataProvider.Ins.DB.Populations.Add(population);
 
-                //Tạo và save hộ khẩu của người vừa khai
-                IdHousehold = GenarateId();
-                Model.Household_Registration xx = new Model.Household_Registration();
-                xx.Id = IdHousehold;
-                xx.IdOfOwner = Id;
-                xx.Address = Address;
-                xx.NameOfOwner = Name;
 
-                Model.DataProvider.Ins.DB.Household_Registration.Add(xx);
-                Model.DataProvider.Ins.DB.SaveChanges();
+                    //Tạo và save hộ khẩu của người vừa khai
+                    IdHousehold = GenarateId();
+                    Model.Household_Registration xx = new Model.Household_Registration();
+                    xx.Id = IdHousehold;
+                    xx.IdOfOwner = Id;
+                    xx.Address = Address;
+                    xx.NameOfOwner = Name;
 
-                //Sửa nhân khẩu vừa làm
-                var change = Model.DataProvider.Ins.DB.Populations.Where(x => x.Id == Id).SingleOrDefault();
-                change.Id_Household = IdHousehold;
-                Model.DataProvider.Ins.DB.SaveChanges();
+                    Model.DataProvider.Ins.DB.Household_Registration.Add(xx);
+
+
+                    //Sửa nhân khẩu vừa làm
+                    var change = Model.DataProvider.Ins.DB.Populations.Where(x => x.Id == Id).SingleOrDefault();
+                    change.Id_Household = IdHousehold;
+                    Model.DataProvider.Ins.DB.SaveChanges();
+                }
             });
         }
         private void Clear(Window p)
