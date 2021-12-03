@@ -62,24 +62,26 @@
                 <Label Content="Gender:" HorizontalAlignment="Left" Margin="387,130,0,0" VerticalAlignment="Top" Height="26" Width="73" FontSize="16"/>
                 <TextBox
                     HorizontalAlignment="Left" Height="34" Margin="518,246,0,0"  VerticalAlignment="Top" Width="195" materialDesign:HintAssist.Hint="Place of birth" TextWrapping="Wrap" FontSize="16" Text="{Binding PlaceOfBirth, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"/>
-                <TextBox Name="IdH"
+                <TextBox Name="IdH" 
                     HorizontalAlignment="Left" Height="34" Margin="477,174,0,0"  VerticalAlignment="Top" Width="236" materialDesign:HintAssist.Hint="HouseholdId" TextWrapping="Wrap" FontSize="16" Text="{Binding HouseholdId, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2">
                     <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="IdHouseholdChange">
-                            <i:InvokeCommandAction Command="{Binding HouseholdIDChangeCommand}" 
-                                                       CommandParameter="{Binding ElementName=IdH}"/>
+                        <i:EventTrigger EventName="TextChanged">
+                            <i:InvokeCommandAction Command="{Binding HouseholdIDChangeCommand}" CommandParameter="{Binding ElementName=IdH}"/>
                     </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </TextBox>
                
                 <TextBox
-                    HorizontalAlignment="Left" Height="34" Margin="75,403,0,0"  VerticalAlignment="Top" Width="128" materialDesign:HintAssist.Hint="Religon" TextWrapping="Wrap" FontSize="16" Text="{Binding Religion, UpdateSourceTrigger=PropertyChanged}"/>
+                    HorizontalAlignment="Left" Height="34" Margin="75,403,0,0"  VerticalAlignment="Top" Width="128" materialDesign:HintAssist.Hint="Religon" TextWrapping="Wrap" FontSize="16" Text="{Binding Religion, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
                 <materialDesign:PackIcon Kind="Cross" Margin="23,406,0,0" Height="31" Width="32" RenderTransformOrigin="0.825,-1.055" />
                 <materialDesign:PackIcon Kind="Briefcase" Margin="23,463,0,72" Height="Auto" Width="32" RenderTransformOrigin="0.412,1.303" VerticalAlignment="Stretch" />
                 <TextBox
                     HorizontalAlignment="Left" Height="34" Margin="75,460,0,0"  VerticalAlignment="Top" Width="220" materialDesign:HintAssist.Hint="Career" TextWrapping="Wrap" FontSize="16" Text="{Binding Carrer, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBox
-                    HorizontalAlignment="Left" Height="34" Margin="75,338,0,0"  VerticalAlignment="Top" Width="391" materialDesign:HintAssist.Hint="HouseHold Adress" TextWrapping="Wrap" FontSize="16" Text="{Binding HouseholdAddress, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                    HorizontalAlignment="Left" Height="34" Margin="75,338,0,0"  VerticalAlignment="Top" Width="391" 
+                    materialDesign:HintAssist.Hint="HouseHold Adress" TextWrapping="Wrap" FontSize="16" 
+                    Text="{Binding HouseholdAddress, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                    IsReadOnly="True"/>
                 <Button Command="{Binding AddingCommand}" Content="Add" Margin="284,512,0,0" Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="123" VerticalAlignment="Top" Name="AddButton" CommandParameter="{Binding ElementName=AddButton}"/>
                 <Label Content="Household Address" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="75,302,0,0" Height="31" Width="232" FontSize="16" Padding="0,4,4,4"/>
                 <Label Content="Household Id:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="334,187,0,0" Height="21" Width="126" FontSize="16" Padding="0"/>

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +13,7 @@ namespace household_management.ViewModel
 {
     class PopulationViewModel : BaseViewModel
     {
+        private static bool isOpen = false;
         private string _FamilyName;
         public string FamilyName { get => _FamilyName; set { _FamilyName = value; OnPropertyChanged(); } }
         private string _Name;
@@ -39,28 +42,34 @@ namespace household_management.ViewModel
         public bool isFemale { get => _isFemale; set { _isFemale = value; OnPropertyChanged(); } }
         private bool _isMale;
         public bool isMale { get => _isMale; set { _isMale = value; OnPropertyChanged(); } }
+        
         public PopulationViewModel()
-        {
+        {   
             List<Model.Household_Registration> list_of_household = Model.DataProvider.Ins.DB.Household_Registration.ToList<Model.Household_Registration>();
-            Gender = true;
-            PlaceOfBirth = " ";
-            HouseholdId = " ";
-            Address = " ";
-            Carrer = " ";
-            Religion = "None";
+            if (!isOpen)
+            {
+                Gender = true;
+                PlaceOfBirth = " ";
+                HouseholdId = " ";
+                Address = " ";
+                Carrer = " ";
+                Religion = "None";
+                isOpen = true;
+            }    
 
-            HouseholdIDChangeCommand = new RelayCommand<TextBox>((p) => { return true; }, (p) => {
-                if(list_of_household.Count() != 0)
+            HouseholdIDChangeCommand = new RelayCommand<TextBox>((p) => { return true; }, (p) => {              
+                if (list_of_household.Count() != 0)
                 {
-                    foreach(Model.Household_Registration x in list_of_household)
+                    foreach (Model.Household_Registration x in list_of_household)
                     {
-                        if(x.Id == p.Text)
+                        if (x.Id.Trim() == p.Text.Trim())
                         {
-                            HouseholdAddress = x.Address;
+                            HouseholdAddress = x.Address;                           
                             break;
                         }
                     }
                 }
+                
             });
 
             AddingCommand = new RelayCommand<object>((p) => 
@@ -115,6 +124,8 @@ namespace household_management.ViewModel
                     
             });
         }
-          
+
+        
+
     }
 }
