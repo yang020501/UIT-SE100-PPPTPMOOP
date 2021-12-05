@@ -7,10 +7,10 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         DataContext="{StaticResource SearchVM}"
-        Title="Search" Height="682" Width="1325.6" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None">
+        Title="Search" Height="761.2" Width="1325.6" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.07*"></RowDefinition>
+            <RowDefinition Height="0.06*"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Background="#FF4D60C0" HorizontalAlignment="Right" >
@@ -27,60 +27,34 @@
         </Grid>
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.15*"></RowDefinition>
-                <RowDefinition Height="0.8*"></RowDefinition>
-                <RowDefinition></RowDefinition>
+                <RowDefinition Height="0.12*"></RowDefinition>
+                <RowDefinition Height="1.4*"></RowDefinition>
             </Grid.RowDefinitions>
-
-            <TabControl x:Name="tablist" Grid.Row="2"
-                Style="{StaticResource MaterialDesignNavigatilRailTabControl}"
-                materialDesign:ColorZoneAssist.Mode="Dark" Background="White" >
-                <TabItem x:Name="tabHousehold" MouseLeftButtonDown="tabHousehold_MouseLeftButtonDown"
-                    Header="{materialDesign:PackIcon Kind=BookOpenOutline, Size=24}"
-                    Style="{StaticResource MaterialDesignNavigationRailTabItem}">
-                    <DataGrid  IsReadOnly="True" AutoGenerateColumns="True" ItemsSource="{Binding DvHousehold,UpdateSourceTrigger=PropertyChanged}"  >
-
-                    </DataGrid>
-
-                </TabItem>
-                <TabItem x:Name="tabPopulation" MouseLeftButtonDown="tabHousehold_MouseLeftButtonDown"
-                     Header="{materialDesign:PackIcon Kind=Account, Size=24}"
-                     Style="{StaticResource MaterialDesignNavigationRailTabItem}" >
-
-                    <DataGrid x:Name="dtgPopulations"  IsReadOnly="True" AutoGenerateColumns="True" ItemsSource="{Binding DvPopulations,UpdateSourceTrigger=PropertyChanged}"  >
-
-                    </DataGrid>
-
-                </TabItem>
-                <TabItem x:Name="tabTransfer"
-                     Header="{materialDesign:PackIcon Kind=FileSwapOutline, Size=24}"
-                     Style="{StaticResource MaterialDesignNavigationRailTabItem}" IsSelected="False" MouseLeftButtonDown="tabHousehold_MouseLeftButtonDown">
-                    <DataGrid  IsReadOnly="True" AutoGenerateColumns="True" ItemsSource="{Binding DvTransfer,UpdateSourceTrigger=PropertyChanged}"  >
-
-                    </DataGrid>
-
-                </TabItem>
-                <TabItem x:Name="tabResidence"  MouseLeftButtonDown="tabHousehold_MouseLeftButtonDown"
-                     Header="{materialDesign:PackIcon Kind=AccountArrowLeft, Size=24}"
-                     Style="{StaticResource MaterialDesignNavigationRailTabItem}" IsSelected="False">
-                    <DataGrid  IsReadOnly="True" AutoGenerateColumns="True" ItemsSource="{Binding DvResidence,UpdateSourceTrigger=PropertyChanged}"  />
-                </TabItem>
-                <TabItem x:Name="tabAbsence"  MouseLeftButtonDown="tabHousehold_MouseLeftButtonDown"
-                     Header="{materialDesign:PackIcon Kind=AccountArrowRight, Size=24}"
-                     Style="{StaticResource MaterialDesignNavigationRailTabItem}" IsSelected="False">
-                    <DataGrid  IsReadOnly="True" AutoGenerateColumns="True" ItemsSource="{Binding DvAbsence,UpdateSourceTrigger=PropertyChanged}"  />
-
-                </TabItem>
-
-            </TabControl>
 
             <Grid Background="#FF303030" Grid.Row="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition   Width="Auto" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
+                <ComboBox
+                         SelectedIndex="{Binding SelectedIndex}"   
+                         BorderThickness="0"
+                         materialDesign:ColorZoneAssist.Mode="Dark"
+                         materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource MaterialDesignPaper}"
+                         BorderBrush="White" Padding="0,19,0,12" Margin="42,0,549.2,0" Foreground="White" FontSize="14">
+                    <ComboBoxItem
+                             Content="Popualtions" />
+                    <ComboBoxItem
+                             Content="Household" />
+                    <ComboBoxItem
+                             Content="Transfer" />
+                    <ComboBoxItem
+                             Content="Absencce"  />
+                    <ComboBoxItem
+                             Content="Residence"  />
+                </ComboBox>
                 <Button Grid.Column="0"
-                    Style="{DynamicResource MaterialDesignToolButton}" Background="{x:Null}" Margin="195,0,475,-0.2" Height="Auto">
+                    Style="{DynamicResource MaterialDesignToolButton}" Margin="195,0,475,-0.2" Height="Auto">
                     <materialDesign:PackIcon 
                          Kind="Search"
                          Opacity="1" Height="23" Width="36" Foreground="#FFF6E9E9"/>
@@ -88,19 +62,26 @@
                 <TextBox
                      x:Name="txtSearch"
                      Background="White"
-                     TextChanged="txtSearch_TextChanged"
                      Grid.Column="0"
                      Margin="254,8,10.2,5.8"
                      materialDesign:HintAssist.Hint="Search Here"
                      materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                      BorderThickness="0"
                      MinWidth="200"
-                     VerticalAlignment="Center" Foreground="#FF0C0B0B" Height="35" FontSize="16" Padding="8,6,0,8" />
-                <RadioButton x:Name="rdName" Content="Name" Foreground="#FFF6E9E9" BorderBrush="#FFF6E9E9"  BorderThickness="4" Background="#FFF6E9E9" FontSize="16" FontWeight="Bold" Margin="48.8,0,-146.4,-0.2" Grid.Column="1" Padding="4,0,0,2" IsChecked="True"/>
-                <RadioButton x:Name="rdOrdinalNumber" Content="Ordinalnumber" Foreground="#FFF6E9E9" BorderBrush="#FFF6E9E9"  BorderThickness="4" Background="#FFF6E9E9" FontSize="16" FontWeight="Bold" Margin="155.8,0,-254.4,-0.2" Grid.Column="1" Padding="4,0,0,2"/>
-                <RadioButton x:Name="rdId" Content="Id" Foreground="#FFF6E9E9" BorderBrush="#FFF6E9E9"  BorderThickness="4" Background="#FFF6E9E9" FontSize="16" FontWeight="Bold" Margin="349.8,0,-376.4,-0.2" Grid.Column="1" Padding="4,0,0,2"/>
-                <RadioButton x:Name="rdId_Household" Content="Id_Household" Foreground="#FFF6E9E9" BorderBrush="#FFF6E9E9"  BorderThickness="4" Background="#FFF6E9E9" FontSize="16" FontWeight="Bold" Margin="449.8,2,-548,-2.2" Grid.Column="1" Padding="4,0,0,2"/>
+                     VerticalAlignment="Center" Foreground="#FF0C0B0B" Height="35" FontSize="16" Padding="8,6,0,8"
+                     Text="{Binding txtSearch,UpdateSourceTrigger=PropertyChanged,Mode=OneWayToSource}">
+                     
+                </TextBox>
+                <RadioButton IsChecked="{Binding rdName,UpdateSourceTrigger=PropertyChanged}" x:Name="rdName" Content="Name" Foreground="#FFF6E9E9" BorderBrush="#FFF6E9E9"  BorderThickness="4" Background="#FFF6E9E9" FontSize="16" FontWeight="Bold" Margin="48.8,0,-146.4,-0.2" Grid.Column="1" Padding="4,0,0,2" />
+                <RadioButton IsChecked="{Binding rdOrdinalNumber,UpdateSourceTrigger=PropertyChanged}" x:Name="rdOrdinalNumber" Content="Ordinalnumber" Foreground="#FFF6E9E9" BorderBrush="#FFF6E9E9"  BorderThickness="4" Background="#FFF6E9E9" FontSize="16" FontWeight="Bold" Margin="155.8,0,-254.4,-0.2" Grid.Column="1" Padding="4,0,0,2"/>
+                <RadioButton IsChecked="{Binding rdId,UpdateSourceTrigger=PropertyChanged}" x:Name="rdId" Content="Id" Foreground="#FFF6E9E9" BorderBrush="#FFF6E9E9"  BorderThickness="4" Background="#FFF6E9E9" FontSize="16" FontWeight="Bold" Margin="349.8,0,-376.4,-0.2" Grid.Column="1" Padding="4,0,0,2"/>
+                <RadioButton IsChecked="{Binding rdId_Household,UpdateSourceTrigger=PropertyChanged}" x:Name="rdId_Household" Content="Id_Household" Foreground="#FFF6E9E9" BorderBrush="#FFF6E9E9"  BorderThickness="4" Background="#FFF6E9E9" FontSize="16" FontWeight="Bold" Margin="449.8,2,-548,-2.2" Grid.Column="1" Padding="4,0,0,2"/>
 
+            </Grid>
+            <Grid Grid.Row="1">
+                <Frame x:Name="Main" NavigationUIVisibility="Visible" Content="{Binding Main,UpdateSourceTrigger=PropertyChanged}"  Grid.Column="0" Margin="0,0,1,-0.4">
+                </Frame>
+               
             </Grid>
         </Grid>
 

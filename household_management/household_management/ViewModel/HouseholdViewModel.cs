@@ -102,7 +102,7 @@ namespace household_management.ViewModel
         }
         private void Clear(Window p)
         {
-            List<Control> list = new List<Control>();
+            
           
 
         }
