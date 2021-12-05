@@ -29,6 +29,19 @@ namespace household_management.ViewModel
             NewTablePopulations();
         }
 
+        private Population _Selected;
+        public Population Selected
+        {
+            get => _Selected;
+            set 
+            {
+                _Selected = value;
+                if(_Selected != null)
+                {
+                    _txtName = Selected.Name;
+                }
+            }
+        }
         public void NewTablePopulations()
         {
             PopulationsList = new ObservableCollection<Population>(DataProvider.Ins.DB.Populations);
@@ -63,15 +76,8 @@ namespace household_management.ViewModel
         public void doSearch(DataGrid dtg ,string find,string form)
         {
             form += " Like '%{0}%'";
-            if (dvPopulations.Count < 0)
+            if (dvPopulations.Count < 0) // if nothing return 
                 return;
-            //foreach (RadioButton item in radioButtons)
-            //{
-            //    if ((bool)item.IsChecked)
-            //    {
-            //        form += item.Name.Substring(2) + " Like  '%{0}%'";
-            //    }
-            //}
             DvPopulations.RowFilter = string.Format(form, find);
             dtg.ItemsSource = DvPopulations;
             OnPropertyChanged("DvPopulations");
