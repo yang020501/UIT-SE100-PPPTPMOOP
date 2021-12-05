@@ -66,13 +66,18 @@ namespace household_management.ViewModel
 
 
         PPVViewModel pPVView = new PPVViewModel();
-        PopulationsPageView view = new PopulationsPageView();
+
+        PopulationsPageView pView = new PopulationsPageView();
+        HouseholdPageView hView = new HouseholdPageView();
+        TransferPageView tView = new TransferPageView();
+        AbsencePageView aView = new AbsencePageView();
+        ResidencePageView rView = new ResidencePageView();
 
         Frame main = new Frame();
         public Frame Main { get => main; set { main = value; OnPropertyChanged(); } }
 
 
-        // biding txtSearc changed
+        // biding txtSearch changed
         private string _txtSearch;
         public string txtSearch
         { 
@@ -81,10 +86,11 @@ namespace household_management.ViewModel
             { 
                 _txtSearch = value;
                 OnPropertyChanged();
-                pPVView.doSearch(view.dtg, _txtSearch, getrd());              
+                pPVView.doSearch(pView.dtg, _txtSearch, getrd());              
             } 
         }
 
+        // get rdName 
         private  string getrd()
         {
             if (rdName)
@@ -98,8 +104,6 @@ namespace household_management.ViewModel
             return "Name";
         }
 
-
-
         // switch tab Search
         private int _SelectedIndex;
         public int SelectedIndex 
@@ -108,14 +112,41 @@ namespace household_management.ViewModel
             set 
             { 
                 _SelectedIndex = value; OnPropertyChanged(); 
-                if(_SelectedIndex == 0)
+                switch(_SelectedIndex)
                 {
-                    open();
+                    case 0: openPopulationsPage(); break;
+                    case 1: openHouseholdPageView(); break;
+                    case 2: openTransferPageView(); break;
+                    case 3: openAbsencePageView();  break;
+                    case 4: openResidencePageView(); break;
                     
                 }
             } 
         }
 
+        private void openResidencePageView()
+        {
+            main.Content = rView;
+        }
+            private void openTransferPageView()
+        {
+            main.Content = tView;
+        }
+
+        private void openAbsencePageView()
+        {
+            main.Content = aView;
+        }
+
+        private void openHouseholdPageView()
+        {
+          
+            main.Content = hView;
+        }
+        private void openPopulationsPage()
+        {                       
+            main.Content = pView;
+        }
 
         public SearchViewModel()
         {
@@ -124,11 +155,7 @@ namespace household_management.ViewModel
             // set mode search  through Name
             rdName = true;    
         }
-
-        private void open()
-        {
-            main.Content = view;  
-        }
+       
 
         private void NewTableResidence()
         {
@@ -257,45 +284,6 @@ namespace household_management.ViewModel
             dvHousehold = new DataView(dt);
 
         }
-
-        public  void NewTablePopulations()
-        {
-            PopulationsList = new ObservableCollection<Population>(DataProvider.Ins.DB.Populations);
-            dt = new DataTable();
-            dt.Columns.Add("OrdinalNumber");
-            dt.Columns.Add("Id");
-            dt.Columns.Add("Name");
-            dt.Columns.Add("Id_Household");
-            dt.Columns.Add("PlaceOfBirth");
-            dt.Columns.Add("Address");
-            dt.Columns.Add("DateOfBirth");
-            dt.Columns.Add("Sex");
-            dt.Columns.Add("Religion");
-            dt.Columns.Add("Career");
-            //fill datatable
-            for (int i = 0; i < PopulationsList.Count; i++)
-            {
-                dt.Rows.Add
-                    (
-                         PopulationsList[i].Stt.ToString(),
-                         PopulationsList[i].Id.ToString(),
-                         PopulationsList[i].Name.ToString(), 
-                         PopulationsList[i].PlaceOfBirth.ToString(),
-                         PopulationsList[i].DateOfBirth.ToString(),
-                         PopulationsList[i].Sex.ToString(),
-                         PopulationsList[i].Relegion.ToString(),
-                         PopulationsList[i].Career.ToString()
-                    );
-            }
-            dvPopulations = new DataView(dt);
-        }
-
-
-        private void populateListView(DataView dv)
-        {
-            
-        }
-
         
     }
 }

@@ -135,8 +135,14 @@
     <Compile Include="View\Absence.xaml.cs">
       <DependentUpon>Absence.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\AbsencePageView.xaml.cs">
+      <DependentUpon>AbsencePageView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Household.xaml.cs">
       <DependentUpon>Household.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HouseholdPageView.xaml.cs">
+      <DependentUpon>HouseholdPageView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
@@ -154,11 +160,17 @@
     <Compile Include="View\Residence.xaml.cs">
       <DependentUpon>Residence.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ResidencePageView.xaml.cs">
+      <DependentUpon>ResidencePageView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Search.xaml.cs">
       <DependentUpon>Search.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Transfer.xaml.cs">
       <DependentUpon>Transfer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TransferPageView.xaml.cs">
+      <DependentUpon>TransferPageView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <SubType>Designer</SubType>
@@ -172,7 +184,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\AbsencePageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Household.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HouseholdPageView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -192,11 +212,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ResidencePageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Search.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Transfer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TransferPageView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

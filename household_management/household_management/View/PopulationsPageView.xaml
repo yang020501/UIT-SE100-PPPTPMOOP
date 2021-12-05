@@ -21,7 +21,8 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="1" >
-            <TextBox x:Name="txtName" 
+            <TextBox x:Name="txtName"
+                     Text="{Binding txtName,UpdateSourceTrigger=PropertyChanged}"
                     HorizontalAlignment="Left" Height="34" Margin="90,23,0,0"  VerticalAlignment="Top" Width="369" materialDesign:HintAssist.Hint="Name" TextWrapping="Wrap" FontSize="16" />
             <materialDesign:PackIcon Kind="Account" Margin="30,26,0,0" Height="31" Width="32" />
             <TextBox
@@ -61,8 +62,13 @@
         <Image Grid.Column="0" HorizontalAlignment="Left" Height="160" Margin="45,42,0,0" VerticalAlignment="Top" Width="127" Source="/household_management;component/Resources/account.jpg"/>
         </Grid>
         <Grid Grid.Row="1">
-            <DataGrid x:Name="dtg" 
-                IsReadOnly="True" AutoGenerateColumns="True" ItemsSource="{Binding DvPopulations,UpdateSourceTrigger=PropertyChanged}">
+            <DataGrid 
+                x:Name="dtg" 
+                
+                AutoGenerateColumns="True" 
+                ItemsSource="{Binding DvPopulations,UpdateSourceTrigger=PropertyChanged}"
+                SelectedValue="{Binding Selected,UpdateSourceTrigger=PropertyChanged}"
+                >
             </DataGrid>
         </Grid>
     </Grid>
