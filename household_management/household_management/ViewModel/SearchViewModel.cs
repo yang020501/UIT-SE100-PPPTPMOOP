@@ -1,4 +1,5 @@
 ﻿using household_management.Model;
+using household_management.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,7 +11,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Windows.Input;
-
+using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace household_management.ViewModel
 {
@@ -20,7 +21,7 @@ namespace household_management.ViewModel
 
 
         DataView dvPopulations;
-        public DataView DvPopulations { get => dvPopulations; set { dvPopulations = value; OnPropertyChanged(); }}
+        public DataView DvPopulations { get => dvPopulations; set { dvPopulations = value; OnPropertyChanged(); } }
 
         DataView dvHousehold;
         public DataView DvHousehold { get => dvHousehold; set { dvHousehold = value; OnPropertyChanged(); } }
@@ -40,40 +41,95 @@ namespace household_management.ViewModel
 
         private ObservableCollection<Household_Registration> _HouseholdList;
         public ObservableCollection<Household_Registration> HouseholdList { get => _HouseholdList; set { _HouseholdList = value; OnPropertyChanged(); } }
-                
+
         private ObservableCollection<Transfer_Household> _TransferList;
         public ObservableCollection<Transfer_Household> TransferList { get => _TransferList; set { _TransferList = value; OnPropertyChanged(); } }
 
         private ObservableCollection<Temporary_Absence> _AbsencesList;
         public ObservableCollection<Temporary_Absence> AbsencesList { get => _AbsencesList; set { _AbsencesList = value; OnPropertyChanged(); } }
-               
+
         private ObservableCollection<Temporary_Residence> _ResidencesList;
         public ObservableCollection<Temporary_Residence> ResidencesList { get => _ResidencesList; set { _ResidencesList = value; OnPropertyChanged(); } }
+        
+   
+        private bool _rdId_Household;
+        public bool rdId_Household { get => _rdId_Household; set { _rdId_Household = value; OnPropertyChanged(); } }
 
-      
+        private bool _rdId;
+        public bool rdId { get => _rdId; set { _rdId = value; OnPropertyChanged(); } }
 
-        public TextChangedEventHandler txtChanged;
-        string txtSearch;
-        public string TxtSearch { get => txtSearch; set { txtSearch = value; OnPropertyChanged(); } } 
+        private bool _rdName;
+        public bool rdName { get => _rdName; set { _rdName = value; OnPropertyChanged(); } }
 
+        private bool _rdOrdinalNumber;
+        public bool rdOrdinalNumber { get => _rdOrdinalNumber; set { _rdOrdinalNumber = value; OnPropertyChanged(); } }
+
+
+        PPVViewModel pPVView = new PPVViewModel();
+        PopulationsPageView view = new PopulationsPageView();
+
+        Frame main = new Frame();
+        public Frame Main { get => main; set { main = value; OnPropertyChanged(); } }
+
+
+        // biding txtSearc changed
+        private string _txtSearch;
+        public string txtSearch
+        { 
+            get => _txtSearch;
+            set
+            { 
+                _txtSearch = value;
+                OnPropertyChanged();
+                pPVView.doSearch(view.dtg, _txtSearch, getrd());              
+            } 
+        }
+
+        private  string getrd()
+        {
+            if (rdName)
+                return "Name";
+            else if (rdOrdinalNumber)
+                return "OrdinalNumber";
+            else if (rdId)
+                return "Id";
+            else if (rdId_Household)
+                return "Id_Household";
+            return "Name";
+        }
+
+
+
+        // switch tab Search
+        private int _SelectedIndex;
+        public int SelectedIndex 
+        { 
+            get => _SelectedIndex; 
+            set 
+            { 
+                _SelectedIndex = value; OnPropertyChanged(); 
+                if(_SelectedIndex == 0)
+                {
+                    open();
+                    
+                }
+            } 
+        }
 
 
         public SearchViewModel()
         {
-            NewTableHousehold();
-            NewTablePopulations();
-            NewTableTransfer();
-            NewTableAbsence();
-            NewTableResidence();
-            txtChanged += new TextChangedEventHandler(this.textChanged);
-            txtSearch = "Search";
-
-            
+            //set default combox box = Populations
+            SelectedIndex = 0;
+            // set mode search  through Name
+            rdName = true;    
         }
-        private void textChanged(object sender, TextChangedEventArgs e)
+
+        private void open()
         {
-           
-        }      
+            main.Content = view;  
+        }
+
         private void NewTableResidence()
         {
             ResidencesList = new ObservableCollection<Temporary_Residence>(DataProvider.Ins.DB.Temporary_Residence);

@@ -130,6 +130,7 @@
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\PopulationViewModel.cs" />
+    <Compile Include="ViewModel\PPVViewModel.cs" />
     <Compile Include="ViewModel\SearchViewModel.cs" />
     <Compile Include="View\Absence.xaml.cs">
       <DependentUpon>Absence.xaml</DependentUpon>
@@ -146,6 +147,9 @@
     </Compile>
     <Compile Include="View\Populations.xaml.cs">
       <DependentUpon>Populations.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PopulationsPageView.xaml.cs">
+      <DependentUpon>PopulationsPageView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Residence.xaml.cs">
       <DependentUpon>Residence.xaml</DependentUpon>
@@ -177,6 +181,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Populations.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PopulationsPageView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
