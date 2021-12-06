@@ -13,7 +13,7 @@ namespace household_management.ViewModel
 {
     class PopulationViewModel : BaseViewModel
     {
-        private static bool isOpen = false;
+
         private string _FamilyName;
         public string FamilyName { get => _FamilyName; set { _FamilyName = value; OnPropertyChanged(); } }
         private string _Name;
@@ -39,6 +39,7 @@ namespace household_management.ViewModel
         public ICommand AddingCommand { get; set; }
         public ICommand ResetCommand { get; set; }
         public ICommand HouseholdIDChangeCommand { get; set; }
+        public ICommand ClearCommand { get; set; }
         private bool _isFemale;
         public bool isFemale { get => _isFemale; set { _isFemale = value; OnPropertyChanged(); } }
         private bool _isMale;
@@ -46,17 +47,22 @@ namespace household_management.ViewModel
         
         public PopulationViewModel()
         {   
-            List<Model.Household_Registration> list_of_household = Model.DataProvider.Ins.DB.Household_Registration.ToList<Model.Household_Registration>();
-            if (!isOpen)
-            {
+            List<Model.Household_Registration> list_of_household = Model.DataProvider.Ins.DB.Household_Registration.ToList<Model.Household_Registration>();         
+
+            ClearCommand = new RelayCommand<Window>((p) => { return true; }, (p) => {
+                FamilyName = null;
+                Name = null;
                 Gender = true;
-                PlaceOfBirth = " ";
-                HouseholdId = " ";
-                Address = " ";
-                Carrer = " ";
-                Religion = "None";
-                isOpen = true;
-            }
+                PlaceOfBirth = null;
+                HouseholdId = null;
+                Address = null;
+                Carrer = null;
+                Religion = null;
+                Id = null;
+                View.Populations wd = new View.Populations();
+                wd.Show();
+                p.Close();
+            });
 
             ResetCommand = new RelayCommand<Window>((p) => { return true; }, (p) => {
                 View.Populations wd = new View.Populations();
@@ -106,7 +112,7 @@ namespace household_management.ViewModel
 
                 return true; 
             }, (p) => 
-            {
+            {              
                 Model.Population population = new Model.Population();
                 if(isFemale == true)
                 {
@@ -119,17 +125,43 @@ namespace household_management.ViewModel
                 }
                 population.Name = FamilyName.Trim() + " " + Name.Trim();
                 population.DateOfBirth = DateOfBirth;
+
+                if(PlaceOfBirth == null)
+                {
+                    PlaceOfBirth = " ";
+                }              
                 population.PlaceOfBirth = PlaceOfBirth;
+
+                if(isFemale == false && isMale == false)
+                {
+                    Gender = true;
+                }
                 population.Sex = Gender;
+
+                if (Religion == null)
+                {
+                    Religion = "None";
+                }
                 population.Relegion = Religion;
+
+                if (Carrer == null)
+                {
+                    Carrer = " ";
+                }
                 population.Career = Carrer;
+
+                if (Address == null)
+                {
+                    Address = " ";
+                }
                 population.Address = Address;
-                population.Id = Id;
+                population.Id = Id;              
                 population.Id_Household = HouseholdId;
 
                 Model.DataProvider.Ins.DB.Populations.Add(population);
                 Model.DataProvider.Ins.DB.SaveChanges();
-                    
+                isMale = false;
+                isFemale = false;
             });
         }
 

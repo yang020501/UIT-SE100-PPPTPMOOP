@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:household_management.View"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
+        Name="HouseholdWindowX"
         DataContext="{StaticResource HouseholdVM}"
         
         Title="Household" Height="641.2" Width="564" WindowStartupLocation="CenterScreen" AllowDrop="True" ResizeMode="NoResize" AllowsTransparency="True" WindowStyle="None">
@@ -66,7 +67,7 @@
             </Grid>
             <Grid Grid.Row="2">
                 <Button   Content="Add"  Height="34" Background="#FF4D60C0" Margin="178,5,291,0" VerticalAlignment="Top" Command="{Binding btnAdd}"/>
-                <Button   Content="Clear"  Height="34" Background="#FF4D60C0" Margin="331,5,138,0" VerticalAlignment="Top" Command="{Binding btnClear}"/>
+                <Button   Content="Clear"  Height="34" Background="#FF4D60C0" Margin="331,5,138,0" VerticalAlignment="Top" Command="{Binding btnClear}" CommandParameter="{Binding ElementName=HouseholdWindowX}"/>
 
             </Grid>
 
