@@ -70,6 +70,7 @@ namespace household_management.ViewModel
                     }
                 }
                 
+
             });
 
             AddingCommand = new RelayCommand<object>((p) => 
