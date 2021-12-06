@@ -37,6 +37,7 @@ namespace household_management.ViewModel
         private string _Carrer;
         public string Carrer { get => _Carrer; set { _Carrer = value; OnPropertyChanged(); } } 
         public ICommand AddingCommand { get; set; }
+        public ICommand ResetCommand { get; set; }
         public ICommand HouseholdIDChangeCommand { get; set; }
         private bool _isFemale;
         public bool isFemale { get => _isFemale; set { _isFemale = value; OnPropertyChanged(); } }
@@ -55,7 +56,13 @@ namespace household_management.ViewModel
                 Carrer = " ";
                 Religion = "None";
                 isOpen = true;
-            }    
+            }
+
+            ResetCommand = new RelayCommand<Window>((p) => { return true; }, (p) => {
+                View.Populations wd = new View.Populations();
+                wd.Show();
+                p.Close();
+            });
 
             HouseholdIDChangeCommand = new RelayCommand<TextBox>((p) => { return true; }, (p) => {              
                 if (list_of_household.Count() != 0)

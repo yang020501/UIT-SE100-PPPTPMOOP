@@ -65,8 +65,8 @@
                     HorizontalAlignment="Left" Height="34" Margin="96,316,0,0"  VerticalAlignment="Top" Width="220" materialDesign:HintAssist.Hint="IdFMember" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"  materialDesign:HintAssist.HelperText="12 digits numbers" />
             </Grid>
             <Grid Grid.Row="2">
-                <Button   Content="Add"  Height="34" Background="#FF4D60C0" Margin="183,5,286,0" VerticalAlignment="Top" Command="{Binding btnAdd}"/>
-                <Button   Content="Clear"  Height="34" Background="#FF4D60C0" Margin="341,5,128,0" VerticalAlignment="Top" Command="{Binding btnClear}"/>
+                <Button   Content="Add"  Height="34" Background="#FF4D60C0" Margin="178,5,291,0" VerticalAlignment="Top" Command="{Binding btnAdd}"/>
+                <Button   Content="Clear"  Height="34" Background="#FF4D60C0" Margin="331,5,138,0" VerticalAlignment="Top" Command="{Binding btnClear}"/>
 
             </Grid>
 
