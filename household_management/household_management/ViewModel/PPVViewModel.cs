@@ -6,16 +6,20 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace household_management.ViewModel
 {
     class PPVViewModel : BaseViewModel
     {
-        DataTable dt;
+        DataTable dt ;
 
-        private string _txtName;
-        public string txtName { get => _txtName; set { _txtName = value; OnPropertyChanged(); } }
+        private  string _Name;
+        public string Name { get => _Name; set { _Name = value; OnPropertyChanged(); } }
+
+        private String _Id;
+        public String Id { get => _Id; set { _Id = value; OnPropertyChanged(); } }
 
         DataView dvPopulations;
         public DataView DvPopulations { get => dvPopulations; set { dvPopulations = value; OnPropertyChanged(); } }
@@ -29,16 +33,22 @@ namespace household_management.ViewModel
             NewTablePopulations();
         }
 
-        private Population _Selected;
-        public Population Selected
+        private DataRowView _Selected;
+        public DataRowView Selected
         {
             get => _Selected;
-            set 
+            set
             {
                 _Selected = value;
-                if(_Selected != null)
+                OnPropertyChanged();
+                if (Selected != null)
                 {
-                    _txtName = Selected.Name;
+                    Name = (string)Selected.Row["Name"];
+                    Id = (string)Selected.Row["Id"];
+                    this.OnPropertyChanged();
+                    MessageBox.Show(Name);
+
+
                 }
             }
         }
@@ -54,7 +64,7 @@ namespace household_management.ViewModel
             dt.Columns.Add("Address");
             dt.Columns.Add("DateOfBirth");
             dt.Columns.Add("Sex");
-            dt.Columns.Add("Religion");
+            dt.Columns.Add("Relegion");
             dt.Columns.Add("Career");
             //fill datatable
             for (int i = 0; i < PopulationsList.Count; i++)

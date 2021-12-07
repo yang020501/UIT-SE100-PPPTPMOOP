@@ -79,7 +79,8 @@
 
             </Grid>
             <Grid Grid.Row="1">
-                <Frame x:Name="Main" NavigationUIVisibility="Visible" Content="{Binding Main,UpdateSourceTrigger=PropertyChanged}"  Grid.Column="0" Margin="0,0,1,-0.4">
+                <Frame
+                    x:Name="Main" NavigationUIVisibility="Visible" Content="{Binding Main,UpdateSourceTrigger=PropertyChanged}"   Grid.Column="0" >
                 </Frame>
                
             </Grid>

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using household_management.Model;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +25,27 @@ namespace household_management.View
         public PopulationsPageView()
         {
             InitializeComponent();
+        }
+
+        private void dtg_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataRowView selected = (DataRowView)dtg.SelectedValue;
+            txtName.Text = (string)selected.Row["Name"];
+            txtId.Text = (string)selected.Row["Id"];
+            txtHId.Text = (string)selected.Row["Id_Household"];
+            txtAddress.Text = (string)selected.Row["Address"];
+            txtPBirth.Text = (string)selected.Row["PlaceOfBirth"];
+            dpBirth.Text = (string)selected.Row["DateOfBirth"];
+            //txtCareer.Text = (string)selected.Row["Career"];
+            //txtRelegion.Text = (string)selected.Row["Religion"];
+            MessageBox.Show((string)selected.Row["Name"]);
+            
+        }
+
+        private void dtg_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            MessageBox.Show("Ngu");
+            
         }
     }
 }

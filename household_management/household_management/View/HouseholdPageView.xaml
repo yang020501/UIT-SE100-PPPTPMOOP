@@ -9,6 +9,7 @@
       Title="HouseholdPageView" Background="#FFAE1A1A">
 
     <Grid>
-        
+        <TextBox HorizontalAlignment="Left" Height="57" Margin="134,118,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="191" Foreground="#FFF4E9E9" FontSize="36"/>
+
     </Grid>
 </Page>
