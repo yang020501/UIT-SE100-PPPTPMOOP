@@ -38,6 +38,7 @@ namespace household_management.ViewModel
             dt.Columns.Add("AbsenceAddress");
             dt.Columns.Add("CreateDate");
             dt.Columns.Add("ExpireDate");
+            dt.Columns.Add("Photo");
 
             //fill datatable
             for (int i = 0; i < AbsenceList.Count; i++)
@@ -54,6 +55,7 @@ namespace household_management.ViewModel
                        //AbsenceList[i].Household_Registration.Address.ToString(),
                        //AbsenceList[i].CreateDate.ToString(),
                        //AbsenceList[i].ExpireDate.ToString()
+                       
                        CheckData(AbsenceList[i])
                     ); 
 
@@ -63,7 +65,7 @@ namespace household_management.ViewModel
         // Check if any fields is null
         private string[] CheckData(Temporary_Absence item)
         {
-            string[] list = new string[9];
+            string[] list = new string[10];
             list[0] = check(item.Stt);
             list[1] = check(item.Id);
             list[2] = check(item.Id_Owner);
@@ -73,6 +75,7 @@ namespace household_management.ViewModel
             list[6] = check(item.Household_Registration.Address);
             list[7] = check(item.CreateDate);
             list[8] = check(item.ExpireDate);
+            list[9] = check(item.Household_Registration.Population.Photo);
             return list;
         }
         // Convert null, string or any type to Valid view data

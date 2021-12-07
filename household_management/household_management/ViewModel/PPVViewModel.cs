@@ -125,7 +125,7 @@ namespace household_management.ViewModel
             }
             return txt.ToString();
         }
-
+        
         public void doSearch(DataGrid dtg ,string find,string form)
         {
             form += " Like '%{0}%'";
