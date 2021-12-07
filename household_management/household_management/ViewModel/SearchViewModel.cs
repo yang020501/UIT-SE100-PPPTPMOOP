@@ -86,7 +86,7 @@ namespace household_management.ViewModel
             { 
                 _txtSearch = value;
                 OnPropertyChanged();
-                pPVView.doSearch(pView.dtg, _txtSearch, getrd());              
+                pPVView.doSearch(pView.dtg, _txtSearch, getrd());
             } 
         }
 
