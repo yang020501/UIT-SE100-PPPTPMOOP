@@ -8,7 +8,7 @@
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" x:Class="household_management.View.PopulationsPageView"
       mc:Ignorable="d"
       DataContext="{StaticResource PPV_VM}"
-      Title="PopulationsPageView" Background="#FFF4F4F9" Height="661.6" Width="1325.6">
+      Title="PopulationsPageView" Background="White" Height="661.6" Width="1325.6">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -63,26 +63,34 @@
             <Image Grid.Column="0" HorizontalAlignment="Left" Height="160" Margin="45,42,0,0" VerticalAlignment="Top" Width="127" Source="/household_management;component/Resources/account.jpg"/>
         </Grid>
         <Grid Grid.Row="1">
-            <DataGrid 
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition ></ColumnDefinition>
+                <ColumnDefinition Width="0.2*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <DataGrid Grid.Column="0"
+                
                 x:Name="dtg" 
                 IsReadOnly="False"
                 AutoGenerateColumns="False" 
                 ItemsSource="{Binding DvPopulations,UpdateSourceTrigger=PropertyChanged}"
-                SelectionChanged="dtg_SelectionChanged"  
+                SelectionChanged="dtg_SelectionChanged" Grid.ColumnSpan="2" Margin="0,0,220.6,26"  
                 >
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="OrdinalNumber" Binding="{Binding OrdinalNumber}"/>
+                    <DataGridTextColumn Header="Number" Binding="{Binding OrdinalNumber}"/>
                     <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
                     <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
-                    <DataGridTextColumn Header="Id_Household" Binding="{Binding Id_Household}"/>
-                    <DataGridTextColumn Header="PlaceOfBirth" Binding="{Binding PlaceOfBirth}"/>
-                    <DataGridTextColumn Header="Address" Binding="{Binding Address}"/>
-                    <DataGridTextColumn Header="DateOfBirth" Binding="{Binding DateOfBirth}"/>
                     <DataGridTextColumn Header="Sex" Binding="{Binding Sex}"/>
+                    <DataGridTextColumn Header="DateOfBirth" Binding="{Binding DateOfBirth}"/>
+                    <DataGridTextColumn Header="PlaceOfBirth" Binding="{Binding PlaceOfBirth}"/>                             
+                    <DataGridTextColumn Header="Id_Household" Binding="{Binding Id_Household}"/>
+                    <DataGridTextColumn Header="Address" Binding="{Binding Address}"/>                   
                     <DataGridTextColumn Header="Relegion" Binding="{Binding Relegion}"/>
                     <DataGridTextColumn Header="Career" Binding="{Binding Career}"/>
                 </DataGrid.Columns>
             </DataGrid>
+            <Grid Grid.Column="1">
+                
+            </Grid>
         </Grid>
     </Grid>
 </Page>

@@ -9,19 +9,19 @@
         Title="Absence" Height="723.6" Width="577.6" AllowsTransparency="True" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.07*"></RowDefinition>
+            <RowDefinition Height="0.05*"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Background="#FF4D60C0"  >
-            <Image Source="/household_management;component/Resources/absence.jpg" Margin="10,8,533.6,8.2" Stretch="Fill"/>
+            <Image Source="/household_management;component/Resources/absence.jpg" Margin="10,6,539.6,5.4" Stretch="Fill"/>
 
 
-            <Button x:Name="btnExit"  Height="Auto"  Cursor="Hand" Margin="540,6,4.6,7.2" RenderTransformOrigin="0.503,0.5" Click="btnExit_Click"  >
+            <Button x:Name="btnExit"  Height="Auto"  Cursor="Hand" Margin="545,4,4.6,5.4" RenderTransformOrigin="0.503,0.5" Click="btnExit_Click"  >
                 <Button.Background>
                     <ImageBrush ImageSource="/household_management;component/Resources/exite.jpg"/>
                 </Button.Background>
             </Button>
-            <Label Content="Temporary Absence Certificate" FontWeight="Bold" FontSize="14" Foreground="#DDE1E6F3" Margin="52,7,292.6,7.8"/>
+            <Label Content="Temporary Absence Certificate" FontWeight="Bold" FontSize="14" Foreground="#DDE1E6F3" Margin="43,7,301.6,5.4" Padding="4,0,4,4"/>
 
         </Grid>
         <Grid Grid.Row="1" Background="#FF9FF1F9">
@@ -54,7 +54,7 @@
                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="329,481,21.4,69" Height="54" FontSize="16" FontWeight="Bold" FontStyle="Italic" Padding="0" />
                 </Grid>
             </Border>
-            <Button Content="Add"  Height="34" Background="#FF4D60C0" Margin="241,638,241.6,0" VerticalAlignment="Top"/>
+            <Button Content="Add"  Height="34" Background="#FF4D60C0" Margin="239,651,243.6,0" VerticalAlignment="Top"/>
         </Grid>
     </Grid>
 </Window>

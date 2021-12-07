@@ -65,7 +65,8 @@ namespace household_management.ViewModel
         public bool rdOrdinalNumber { get => _rdOrdinalNumber; set { _rdOrdinalNumber = value; OnPropertyChanged(); } }
 
 
-        PPVViewModel pPVView = new PPVViewModel();
+        PPVViewModel pPVVM = new PPVViewModel();
+        APVViewModel aPVVM = new APVViewModel();
 
         PopulationsPageView pView = new PopulationsPageView();
         HouseholdPageView hView = new HouseholdPageView();
@@ -83,10 +84,14 @@ namespace household_management.ViewModel
         { 
             get => _txtSearch;
             set
-            { 
+            {
                 _txtSearch = value;
                 OnPropertyChanged();
-                pPVView.doSearch(pView.dtg, _txtSearch, getrd());
+                switch (SelectedIndex)
+                {
+                    case 0: pPVVM.doSearch(pView.dtg, _txtSearch, getrd()); break;
+                    case 3: aPVVM.doSearch(aView.dtg, _txtSearch, getrd()); break;
+                }
             } 
         }
 
