@@ -36,16 +36,15 @@ namespace household_management.View
             txtAddress.Text = (string)selected.Row["Address"];
             txtPBirth.Text = (string)selected.Row["PlaceOfBirth"];
             dpBirth.Text = (string)selected.Row["DateOfBirth"];
-            //txtCareer.Text = (string)selected.Row["Career"];
-            //txtRelegion.Text = (string)selected.Row["Religion"];
+            txtCareer.Text = (string)selected.Row["Career"];
+            txtRelegion.Text = (string)selected.Row["Relegion"];
+            if ((string)selected.Row["Gender"] == "Male")
+                MaleChoise.IsChecked = true;
+            else
+                FemaleChoise.IsChecked = true;
             MessageBox.Show((string)selected.Row["Name"]);
             
         }
 
-        private void dtg_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
-        {
-            MessageBox.Show("Ngu");
-            
-        }
     }
 }
