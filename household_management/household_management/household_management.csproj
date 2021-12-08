@@ -130,6 +130,7 @@
     </Compile>
     <Compile Include="ViewModel\APVViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\FamilyViewModel.cs" />
     <Compile Include="ViewModel\HouseholdViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
@@ -143,6 +144,9 @@
     </Compile>
     <Compile Include="View\AbsencePageView.xaml.cs">
       <DependentUpon>AbsencePageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\FamilyMem.xaml.cs">
+      <DependentUpon>FamilyMem.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Household.xaml.cs">
       <DependentUpon>Household.xaml</DependentUpon>
@@ -191,6 +195,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\AbsencePageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\FamilyMem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

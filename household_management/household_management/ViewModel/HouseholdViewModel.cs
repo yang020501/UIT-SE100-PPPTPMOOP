@@ -18,12 +18,41 @@ namespace household_management.ViewModel
         public string Id { get => _Id; set { _Id = value; OnPropertyChanged(); } }
         private string _Address;
         public string Address { get => _Address; set { _Address = value; OnPropertyChanged(); } }
-        private string IdHousehold;
+        private string _IdHousehold;
+        public string IdHousehold { get => _IdHousehold; set { _IdHousehold = value; OnPropertyChanged(); } }
         public ICommand btnClear { get; set; }
         public ICommand btnAdd { get; set; }
+        public ICommand btnFamily { get; set; }
+        public ICommand HouseholdAddressChangeCommand { get; set; }
+
+        public static string current_IdHousehold;
+        public static string current_Address_Household;
         public HouseholdViewModel()
         {
-            btnClear = new RelayCommand<Window>((p) => { return true; }, (p) => { Clear(p); });
+            IdHousehold = GenarateId();
+            current_IdHousehold = IdHousehold;
+
+            HouseholdAddressChangeCommand = new RelayCommand<TextBox>((p) => { return true; }, (p) =>
+            {
+                current_Address_Household = Address;
+            });
+
+            btnFamily = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                View.FamilyMem wd = new FamilyMem();
+                wd.Show();
+            });
+
+            btnClear = new RelayCommand<Window>((p) => { return true; }, (p) => 
+            {
+                Name = null;
+                Id = null;
+                Address = null;
+                IdHousehold = null;
+                View.Household wd = new View.Household();
+                wd.Show();              
+                p.Close();
+            });
 
             btnAdd = new RelayCommand<object>((p) =>
             {
@@ -45,8 +74,7 @@ namespace household_management.ViewModel
                     {
                         if (x.Id == Id)
                         {
-                            check_have_population = true;
-                            IdHousehold = GenarateId();
+                            check_have_population = true;                          
                             Model.Household_Registration household = new Model.Household_Registration();
                             household.Id = IdHousehold;
                             household.IdOfOwner = Id;
@@ -59,6 +87,7 @@ namespace household_management.ViewModel
                             change.Id_Household = IdHousehold;
 
                             Model.DataProvider.Ins.DB.SaveChanges();
+                            IdHousehold = null;
                             break;
                         }
                     }
@@ -97,6 +126,8 @@ namespace household_management.ViewModel
                     var change = Model.DataProvider.Ins.DB.Populations.Where(x => x.Id == Id).SingleOrDefault();
                     change.Id_Household = IdHousehold;
                     Model.DataProvider.Ins.DB.SaveChanges();
+
+                    IdHousehold = null;
                 }
             });
         }

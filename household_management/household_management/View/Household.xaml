@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:household_management.View"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
         Name="HouseholdWindowX"
         DataContext="{StaticResource HouseholdVM}"
@@ -47,7 +48,18 @@
                 <TextBox
                     HorizontalAlignment="Left" Height="34" Margin="96,104,0,0"  VerticalAlignment="Top" Width="220" materialDesign:HintAssist.Hint="Id" TextWrapping="Wrap" FontSize="16" Text="{Binding Id, UpdateSourceTrigger=PropertyChanged}"  materialDesign:HintAssist.HelperText="12 digits numbers" />
                 <TextBox
-                    HorizontalAlignment="Left" Height="34" Margin="96,184,0,0"  VerticalAlignment="Top" Width="415" materialDesign:HintAssist.Hint="Address" TextWrapping="Wrap" FontSize="16" Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}"/>
+                    HorizontalAlignment="Left" Height="34" Margin="96,184,0,0"  
+                    VerticalAlignment="Top" Width="415" materialDesign:HintAssist.Hint="Address" 
+                    TextWrapping="Wrap" FontSize="16" Name="AddressBox"
+                    Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}">
+
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="TextChanged">
+                            <i:InvokeCommandAction Command="{Binding HouseholdAddressChangeCommand}" CommandParameter="{Binding ElementName=AddressBox}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </TextBox>
+                
                 <materialDesign:PackIcon Kind="HomeMapMarker" Margin="42,187,0,0" Height="31" Width="32" />
                 <materialDesign:PackIcon Kind="Map" Margin="42,253,0,0" Height="31" Width="32" />
                 <ComboBox
@@ -64,6 +76,9 @@
                 <materialDesign:PackIcon Kind="AccountPlus" Margin="42,319,0,0" Height="31" Width="32" />
                 <TextBox
                     HorizontalAlignment="Left" Height="34" Margin="96,316,0,0"  VerticalAlignment="Top" Width="220" materialDesign:HintAssist.Hint="IdFMember" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"  materialDesign:HintAssist.HelperText="12 digits numbers" />
+                <Button Content="Add Member" HorizontalAlignment="Left" Margin="384,318,0,0" 
+                        VerticalAlignment="Top" Width="118" Background="#FF4D60C0"
+                        Command="{Binding btnFamily}"/>
             </Grid>
             <Grid Grid.Row="2">
                 <Button   Content="Add"  Height="34" Background="#FF4D60C0" Margin="178,5,291,0" VerticalAlignment="Top" Command="{Binding btnAdd}"/>
