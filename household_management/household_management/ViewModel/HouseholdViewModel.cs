@@ -20,27 +20,50 @@ namespace household_management.ViewModel
         public string Address { get => _Address; set { _Address = value; OnPropertyChanged(); } }
         private string _IdHousehold;
         public string IdHousehold { get => _IdHousehold; set { _IdHousehold = value; OnPropertyChanged(); } }
+        private string _IdMembers;
+        public string IdMembers { get => _IdMembers; set { _IdMembers = value; OnPropertyChanged(); } }
+        public static string Id_Family;
         public ICommand btnClear { get; set; }
         public ICommand btnAdd { get; set; }
         public ICommand btnFamily { get; set; }
         public ICommand HouseholdAddressChangeCommand { get; set; }
+        public ICommand ReloadCommand { get; set; }
 
         public static string current_IdHousehold;
         public static string current_Address_Household;
         public HouseholdViewModel()
         {
             IdHousehold = GenarateId();
-            current_IdHousehold = IdHousehold;
+            
+
+            ReloadCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                IdMembers = Id_Family;
+                View.Household wd = new View.Household();
+                wd.Show();
+                p.Close();
+            });
 
             HouseholdAddressChangeCommand = new RelayCommand<TextBox>((p) => { return true; }, (p) =>
             {
                 current_Address_Household = Address;
             });
 
-            btnFamily = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            btnFamily = new RelayCommand<Window>((p) => 
+            { 
+                if(Address == null)
+                {
+                    return false;
+                }
+
+                return true; 
+            }
+            , (p) =>
             {
+                current_IdHousehold = IdHousehold;
+                current_Address_Household = Address;
                 View.FamilyMem wd = new FamilyMem();
-                wd.Show();
+                wd.ShowDialog();
             });
 
             btnClear = new RelayCommand<Window>((p) => { return true; }, (p) => 

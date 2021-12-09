@@ -7,23 +7,18 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
-        Name="FamilyWindowX"
+        Name="FamilyWindowX"        
         DataContext="{StaticResource FamilyVM}"
-        Title="FamilyMem" Height="650" Width="1000">
+        Title="FamilyMem" Height="650" Width="1000" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.07*"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Background="#FF4D60C0" HorizontalAlignment="Right" Width="904" RenderTransformOrigin="0.792,0.56">
-            <Image Height="30" Margin="0,5,857,5" HorizontalAlignment="Right" Width="37" Source="/household_management;component/Resources/population.jpg" Stretch="Fill"/>
+        <Grid Grid.Row="0" Background="#FF4D60C0" HorizontalAlignment="Right" Width="992" RenderTransformOrigin="0.792,0.56">
+            <Image Height="30" Margin="0,4,935,6" HorizontalAlignment="Right" Width="37" Source="/household_management;component/Resources/population.jpg" Stretch="Fill"/>
 
-            <Button x:Name="btnExit" Click="btnExit_Click" HorizontalAlignment="Left" Width="30" Height="Auto" Margin="869,5,0,5" Cursor="Hand">
-                <Button.Background>
-                    <ImageBrush ImageSource="/household_management;component/Resources/exite.jpg"/>
-                </Button.Background>
-            </Button>
-            <Label Content="Populations" HorizontalAlignment="Right" Margin="0,7,703,6" Width="149" FontWeight="Bold" FontSize="14" Foreground="#DDE1E6F3"/>
+            <Label Content="Family member" HorizontalAlignment="Right" Margin="0,7,781,6" Width="149" FontWeight="Bold" FontSize="14" Foreground="#DDE1E6F3"/>
 
         </Grid>
 
@@ -54,7 +49,7 @@
                 <RadioButton Content="Male" HorizontalAlignment="Left" Margin="465,128,0,0" VerticalAlignment="Top"  Height="28" RenderTransformOrigin="0.615,0.157" GroupName="Gender" Name="MaleChoise" IsChecked="{Binding isMale, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" CommandParameter="{Binding ElementName=MaleChoise}"/>
                 <DatePicker
                     materialDesign:HintAssist.Hint="Date of birth" Text="{Binding DateOfBirth}"
-                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="75,112,419,410" Height="44" FontSize="16" />
+                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="75,112,419,451" Height="44" FontSize="16" />
                 <TextBox
                     HorizontalAlignment="Left" Height="34" Margin="75,246,0,0"  VerticalAlignment="Top" Width="364" materialDesign:HintAssist.Hint="Address" TextWrapping="Wrap" FontSize="16" Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}"/>
                 <materialDesign:PackIcon Kind="MapMarker" Margin="23,249,0,0" Height="31" Width="32" />
@@ -75,24 +70,25 @@
                 <materialDesign:PackIcon Kind="Cross" Margin="23,406,0,0" Height="31" Width="32" RenderTransformOrigin="0.825,-1.055" />
                 <materialDesign:PackIcon Kind="Briefcase" Margin="23,463,0,72" Height="Auto" Width="32" RenderTransformOrigin="0.412,1.303" VerticalAlignment="Stretch" />
                 <TextBox
-                    HorizontalAlignment="Left" Height="34" Margin="75,460,0,0"  VerticalAlignment="Top" Width="220" materialDesign:HintAssist.Hint="Career" TextWrapping="Wrap" FontSize="16" Text="{Binding Carrer, UpdateSourceTrigger=PropertyChanged}"/>
+                    HorizontalAlignment="Left" Height="34" Margin="75,476,0,0"  VerticalAlignment="Top" Width="220" materialDesign:HintAssist.Hint="Career" TextWrapping="Wrap" FontSize="16" Text="{Binding Carrer, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBox
                     HorizontalAlignment="Left" Height="34" Margin="75,338,0,0"  VerticalAlignment="Top" Width="391" 
                     materialDesign:HintAssist.Hint="HouseHold Adress" TextWrapping="Wrap" FontSize="16" 
                     Text="{Binding HouseholdAddress, UpdateSourceTrigger=PropertyChanged}"
                     IsReadOnly="True"/>
-                <Button Command="{Binding AddingCommand}" Content="Add" Margin="117,512,0,0" Height="44" 
+                <Button Command="{Binding AddingCommand}" Content="Add" Margin="117,529,0,0" Height="44" 
                         Background="#FF4D60C0" HorizontalAlignment="Left" Width="123" VerticalAlignment="Top" 
                         Name="AddButton" CommandParameter="{Binding ElementName=AddButton}"/>
-                <Label Content="Household Address" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="75,302,0,0" Height="31" Width="232" FontSize="16" Padding="0,4,4,4"/>
+                <Label Content="Household Address" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                       Margin="75,302,0,0" Height="31" Width="232" FontSize="16" Padding="0,4,4,4"/>
                 <Label Content="Household Id:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="334,187,0,0" Height="21" Width="126" FontSize="16" Padding="0"/>
                 <materialDesign:PackIcon Kind="HomeMapMarker" Margin="23,341,0,0" Height="31" Width="32" />
                 <materialDesign:PackIcon Kind="Present" Margin="23,125,0,0" Height="31" Width="32" />
                 <materialDesign:PackIcon Kind="HospitalMarker" Margin="477,249,0,0" Height="31" Width="32" />
-                <Button Content="Done" HorizontalAlignment="Left" Margin="465,512,0,0" 
+                <Button Content="Done" HorizontalAlignment="Left" Margin="465,529,0,0" 
                         VerticalAlignment="Top" Width="128" Height="44" Background="#FF4D60C0" 
                         Command="{Binding DoneCommand}" CommandParameter="{Binding ElementName=FamilyWindowX}"/>
-                <Button Content="Clear" HorizontalAlignment="Left" Margin="293,512,0,0" 
+                <Button Content="Clear" HorizontalAlignment="Left" Margin="293,529,0,0" 
                         VerticalAlignment="Top" Width="122" Height="44" Background="#FF4D60C0" 
                         Command="{Binding ClearCommand}" CommandParameter="{Binding ElementName=FamilyWindowX}"/>
 

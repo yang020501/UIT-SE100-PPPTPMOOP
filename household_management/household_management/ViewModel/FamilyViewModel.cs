@@ -73,19 +73,7 @@ namespace household_management.ViewModel
                 if (Id == null || Id.Length > 12)
                 {
                     return false;
-                }
-
-                List<Model.Population> list_of_population = Model.DataProvider.Ins.DB.Populations.ToList<Model.Population>();
-                if (list_of_population.Count() != 0)
-                {
-                    foreach (Model.Population x in list_of_population)
-                    {
-                        if (x.Id == Id)
-                        {
-                            return false;
-                        }
-                    }
-                }
+                }                
 
                 return true; 
             }, 
@@ -137,8 +125,32 @@ namespace household_management.ViewModel
                 population.Id_Household = HouseholdId;
 
                 list_of_family_member.Add(population);
+
+                MessageBox.Show("Adding successful");
             });
 
+            DoneCommand = new RelayCommand<Window>((p) => { return true; }, (p) => {
+                FamilyName = null;
+                Name = null;
+                Gender = true;
+                PlaceOfBirth = null;
+                Address = null;
+                Carrer = null;
+                Religion = null;
+                Id = null;
+                
+                if(list_of_family_member.Count() != 0)
+                {
+                    foreach (Model.Population x in list_of_family_member)
+                    {
+                        HouseholdViewModel.Id_Family += "- " + x.Id + "\n";
+                    }
+                    MessageBox.Show("All family members have successfully add to household");
+                }
+
+                
+                p.Close();
+            });
         }
 
     }
