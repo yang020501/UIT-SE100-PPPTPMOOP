@@ -73,7 +73,28 @@ namespace household_management.ViewModel
                 if (Id == null || Id.Length > 12)
                 {
                     return false;
-                }                
+                }
+
+                if (list_of_family_member.Count() != 0)
+                {
+                    foreach(Model.Population x in list_of_family_member)
+                    {
+                        if(Id == x.Id)
+                        {
+                            return false;
+                        }
+                    }
+                }
+
+                if(Id == HouseholdViewModel.current_IdOwner)
+                {
+                    return false;
+                }
+
+                if (!Check_Id(Id))
+                {
+                    return false;
+                }
 
                 return true; 
             }, 
@@ -151,6 +172,18 @@ namespace household_management.ViewModel
                 
                 p.Close();
             });
+
+
+        }
+
+        private bool Check_Id(string Id)
+        {
+            if (long.TryParse(Id, out long a))
+            {
+                return true;
+            }
+
+            return false;
         }
 
     }

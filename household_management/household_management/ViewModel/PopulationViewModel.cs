@@ -110,6 +110,11 @@ namespace household_management.ViewModel
                     }
                 }
 
+                if (!Check_Id(Id))
+                {
+                    return false;
+                }
+
                 return true; 
             }, (p) => 
             {              
@@ -165,7 +170,15 @@ namespace household_management.ViewModel
             });
         }
 
-        
+        private bool Check_Id(string Id)
+        {
+            if (long.TryParse(Id, out long a))
+            {
+                return true;
+            }
+
+            return false;
+        }
 
     }
 }
