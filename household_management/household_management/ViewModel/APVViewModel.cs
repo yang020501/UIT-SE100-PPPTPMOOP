@@ -12,6 +12,7 @@ namespace household_management.ViewModel
 {
     class APVViewModel : BaseViewModel
     {
+        
         DataTable dt;
 
         private DataView dvAbsence;

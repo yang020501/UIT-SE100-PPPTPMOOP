@@ -29,30 +29,32 @@
                 <TextBox x:Name="txtId" Text="{Binding Id,UpdateSourceTrigger=PropertyChanged}"
             HorizontalAlignment="Left" Height="34" Margin="90,69,0,0"  VerticalAlignment="Top" Width="220" materialDesign:HintAssist.Hint="Id" TextWrapping="Wrap" FontSize="16"  materialDesign:HintAssist.HelperText="12 digits numbers" />
                 <materialDesign:PackIcon Kind="CardAccountDetails" Margin="30,75,0,0" Height="31" Width="32" RenderTransformOrigin="0.438,1.342" />
-                <TextBox x:Name="txtAddress"
+                <TextBox x:Name="txtAddress" Text="{Binding Address,UpdateSourceTrigger=PropertyChanged}"
             HorizontalAlignment="Left" Height="34" Margin="90,135,0,0"  VerticalAlignment="Top" Width="391" materialDesign:HintAssist.Hint="Address" TextWrapping="Wrap" FontSize="16" />
                 <materialDesign:PackIcon Kind="MapMarker" Margin="30,138,0,0" Height="31" Width="32" RenderTransformOrigin="-1.562,-2.452" />
-                <TextBox x:Name="txtPBirth"
+                <TextBox x:Name="txtPBirth" Text="{Binding PlaceOfBirth}"
             HorizontalAlignment="Left" Height="34" Margin="625,135,0,0"  VerticalAlignment="Top" Width="195" materialDesign:HintAssist.Hint="Place of birth" TextWrapping="Wrap" FontSize="16" />
-                <TextBox x:Name="txtRelegion"
+                <TextBox x:Name="txtRelegion" Text="{Binding Relegion}"
             HorizontalAlignment="Left" Height="34" Margin="90,266,0,0"  VerticalAlignment="Top" Width="128" materialDesign:HintAssist.Hint="Religon" TextWrapping="Wrap" FontSize="16" />
                 <materialDesign:PackIcon Kind="Cross" Margin="30,269,0,0" Height="31" Width="32" RenderTransformOrigin="0.825,-1.055" />
-                <TextBox x:Name="txtCareer"
+                <TextBox x:Name="txtCareer" Text="{Binding Career}"
             HorizontalAlignment="Left" Height="34" Margin="90,326,0,0"  VerticalAlignment="Top" Width="220" materialDesign:HintAssist.Hint="Career" TextWrapping="Wrap" FontSize="16" />
-                <TextBox x:Name="txtHAddress"
+                <TextBox x:Name="txtHAddress" Text="{Binding HAddress,UpdateSourceTrigger=PropertyChanged}"
             HorizontalAlignment="Left" Height="34" Margin="90,210,0,0"  VerticalAlignment="Top" Width="391" materialDesign:HintAssist.Hint="HouseHold Adress" TextWrapping="Wrap" FontSize="16" />
                 <Label Content="Household Address" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="90,174,0,0" Height="31" Width="232" FontSize="16" Padding="0,4,4,4"/>
                 <materialDesign:PackIcon Kind="HomeMapMarker" Margin="30,213,0,0" Height="31" Width="32" />
 
-                <RadioButton x:Name="FemaleChoise" VerticalAlignment="Top" RenderTransformOrigin="0.615,0.157" Margin="666,36,0,0"  Height="28" HorizontalAlignment="Left" GroupName="Gender" Content="Female" Width="66"/>
-                <RadioButton x:Name="MaleChoise" VerticalAlignment="Top" RenderTransformOrigin="0.615,0.157" Margin="599,37,0,0"  Height="28" HorizontalAlignment="Left" GroupName="Gender"  Content="Male"/>
+                <RadioButton x:Name="FemaleChoise" VerticalAlignment="Top" RenderTransformOrigin="0.615,0.157" Margin="666,36,0,0"  Height="28" HorizontalAlignment="Left" GroupName="Gender" Content="Female" Width="66" IsChecked="{Binding FemaleChoice}"/>
+                <RadioButton x:Name="MaleChoise" VerticalAlignment="Top" RenderTransformOrigin="0.615,0.157" Margin="599,37,0,0"  Height="28" HorizontalAlignment="Left" GroupName="Gender"  Content="Male" IsChecked="{Binding MaleChoice}"/>
                 <Label Width="73" VerticalAlignment="Top" Margin="511,36,0,0" Height="26" HorizontalAlignment="Left" FontSize="16" Content="Gender:"/>
                 <TextBox x:Name="txtHId"
+                         Text="{Binding Id_Household,UpdateSourceTrigger=PropertyChanged}"
                     HorizontalAlignment="Left" Height="34" Margin="656,72,0,0"  VerticalAlignment="Top" Width="236" materialDesign:HintAssist.Hint="HouseholdId" TextWrapping="Wrap" FontSize="16" >
                 </TextBox>
 
                 <Label Content="Household Id:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="511,85,0,0" Height="21" Width="126" FontSize="16" Padding="0"/>
                 <DatePicker x:Name="dpBirth"
+                    Text="{Binding DateOfBirth,UpdateSourceTrigger=PropertyChanged}"
                     materialDesign:HintAssist.Hint="Date of birth"
                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="869,13,27.8,328.6" Height="44" FontSize="16" />
                 <materialDesign:PackIcon Kind="Present" Margin="812,26,0,0" Height="31" Width="32" />
