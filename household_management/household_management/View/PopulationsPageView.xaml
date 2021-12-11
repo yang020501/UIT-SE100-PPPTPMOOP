@@ -73,7 +73,7 @@
                 IsReadOnly="True"
                 AutoGenerateColumns="False" 
                 ItemsSource="{Binding DvPopulations,UpdateSourceTrigger=PropertyChanged}"
-                SelectionChanged="dtg_SelectionChanged" Grid.ColumnSpan="2" Margin="0,0,220.6,26"  
+                SelectedValue="{Binding Selected}" Grid.ColumnSpan="2" Margin="0,0,220.6,26"  
                 >
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Number" Binding="{Binding OrdinalNumber}"/>
