@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 namespace household_management.ViewModel
 {
-    class BaseViewModel
+    class BaseViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

@@ -15,11 +15,11 @@ namespace household_management.ViewModel
     {
         DataTable dt ;
 
-        //private  string _Name;
-        //public string Name { get => _Name; set { _Name = value; OnPropertyChanged(); } }
+        private string _Name;
+        public string Name { get => _Name; set { _Name = value; OnPropertyChanged(); } }
 
-        //private String _Id;
-        //public String Id { get => _Id; set { _Id = value; OnPropertyChanged(); } }
+        private String _Id;
+        public String Id { get => _Id; set { _Id = value; OnPropertyChanged(); } }
 
         DataView dvPopulations;
         public DataView DvPopulations { get => dvPopulations; set { dvPopulations = value; OnPropertyChanged(); } }
@@ -33,25 +33,24 @@ namespace household_management.ViewModel
             NewTablePopulations();
         }
 
-        //private DataRowView _Selected;
-        //public DataRowView Selected
-        //{
-        //    get => _Selected;
-        //    set
-        //    {
-        //        _Selected = value;
-        //        OnPropertyChanged();
-        //        if (Selected != null)
-        //        {
-        //            Name = (string)Selected.Row["Name"];
-        //            Id = (string)Selected.Row["Id"];
-        //            this.OnPropertyChanged();
-        //            MessageBox.Show(Name);
+        private DataRowView _Selected;
+        public DataRowView Selected
+        {
+            get => _Selected;
+            set
+            {
+                _Selected = value;
+                OnPropertyChanged();
+                if (Selected != null)
+                {
+                    Name = (string)Selected.Row["Name"];
+                    Id = (string)Selected.Row["Id"];
+                    MessageBox.Show(Name);
 
 
-        //        }
-        //    }
-        //}
+                }
+            }
+        }
         public void NewTablePopulations()
         {
             PopulationsList = new ObservableCollection<Population>(DataProvider.Ins.DB.Populations);
