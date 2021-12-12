@@ -43,15 +43,16 @@
                     <materialDesign:PackIcon Kind="HomeAccount" Margin="24,274,0,0" Height="31" Width="32" RenderTransformOrigin="0.763,-0.752" />
                     <TextBox Height="34" Margin="77,305,43.4,0"  VerticalAlignment="Top" materialDesign:HintAssist.Hint="Full Name Household Owner" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
                     <TextBox
-                    HorizontalAlignment="Left" Height="34" Margin="77,447,0,0"  VerticalAlignment="Top" Width="391" materialDesign:HintAssist.Hint="Address" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
-                    <materialDesign:PackIcon Kind="HomeMapMarker" Margin="24,450,0,0" Height="31" Width="32" />
-                    <materialDesign:PackIcon Kind="CalendarRange" Margin="24,501,0,0" Height="31" Width="32" RenderTransformOrigin="0.444,1.213" />
-                    <Label Content="From" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="77,501,0,0" Height="31" Width="49" FontSize="16"/>
-                    <Label Content="(Today)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="131,501,0,0" Height="31" Width="107" FontSize="16" FontWeight="Bold" FontStyle="Italic"/>
-                    <Label Content="To" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="260,501,0,0" Height="31" Width="49" FontSize="16"/>
+                    HorizontalAlignment="Left" Height="34" Margin="77,484,0,0"  VerticalAlignment="Top" Width="391" materialDesign:HintAssist.Hint="Address" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+                    <materialDesign:PackIcon Kind="HomeMapMarker" Margin="24,448,0,0" Height="31" Width="32" RenderTransformOrigin="0.509,-0.494" />
+                    <materialDesign:PackIcon Kind="CalendarRange" Margin="24,537,0,0" Height="31" Width="32" RenderTransformOrigin="0.444,1.213" />
+                    <Label Content="From" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="77,537,0,0" Height="31" Width="49" FontSize="16"/>
+                    <Label Content="(Today)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="131,537,0,0" Height="31" Width="107" FontSize="16" FontWeight="Bold" FontStyle="Italic"/>
+                    <Label Content="To" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="260,537,0,0" Height="31" Width="49" FontSize="16"/>
                     <DatePicker
                     materialDesign:HintAssist.Hint="Day back"
-                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="329,481,21.4,69" Height="54" FontSize="16" FontWeight="Bold" FontStyle="Italic" Padding="0" />
+                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="329,523,21.4,39.8" Height="54" FontSize="16" FontWeight="Bold" FontStyle="Italic" Padding="0" />
+                    <Label Content="Household Address" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="77,448,0,0" Height="31" Width="232" FontSize="16" Padding="0,4,4,4"/>
                 </Grid>
             </Border>
             <Button Content="Add"  Height="34" Background="#FF4D60C0" Margin="239,651,243.6,0" VerticalAlignment="Top"/>

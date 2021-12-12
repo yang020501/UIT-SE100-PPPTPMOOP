@@ -132,6 +132,11 @@
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\PopulationViewModel.cs" />
     <Compile Include="ViewModel\PPVViewModel.cs" />
+<<<<<<< Updated upstream
+=======
+    <Compile Include="ViewModel\ResidenceViewModel.cs" />
+    <Compile Include="ViewModel\RPVViewModel.cs" />
+>>>>>>> Stashed changes
     <Compile Include="ViewModel\SearchViewModel.cs" />
     <Compile Include="View\Absence.xaml.cs">
       <DependentUpon>Absence.xaml</DependentUpon>
