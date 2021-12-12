@@ -52,6 +52,9 @@
     <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Expression.Blend.Sdk.WPF.1.0.1\lib\net45\Microsoft.Expression.Interactions.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -127,22 +130,26 @@
     </Compile>
     <Compile Include="ViewModel\APVViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\FamilyViewModel.cs" />
     <Compile Include="ViewModel\HouseholdViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\PopulationViewModel.cs" />
     <Compile Include="ViewModel\PPVViewModel.cs" />
-<<<<<<< Updated upstream
-=======
+
     <Compile Include="ViewModel\ResidenceViewModel.cs" />
     <Compile Include="ViewModel\RPVViewModel.cs" />
->>>>>>> Stashed changes
+
     <Compile Include="ViewModel\SearchViewModel.cs" />
+    <Compile Include="ViewModel\TransferViewModel.cs" />
     <Compile Include="View\Absence.xaml.cs">
       <DependentUpon>Absence.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\AbsencePageView.xaml.cs">
       <DependentUpon>AbsencePageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\FamilyMem.xaml.cs">
+      <DependentUpon>FamilyMem.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Household.xaml.cs">
       <DependentUpon>Household.xaml</DependentUpon>
@@ -191,6 +198,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\AbsencePageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\FamilyMem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

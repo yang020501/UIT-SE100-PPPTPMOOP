@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,9 +9,8 @@ using System.Windows.Input;
 
 namespace household_management.ViewModel
 {
-    class PopulationViewModel : BaseViewModel
+    class FamilyViewModel : BaseViewModel
     {
-        private bool check_IdHousehold = false;
         private string _FamilyName;
         public string FamilyName { get => _FamilyName; set { _FamilyName = value; OnPropertyChanged(); } }
         private string _Name;
@@ -35,84 +32,61 @@ namespace household_management.ViewModel
         private string _Religion;
         public string Religion { get => _Religion; set { _Religion = value; OnPropertyChanged(); } }
         private string _Carrer;
-        public string Carrer { get => _Carrer; set { _Carrer = value; OnPropertyChanged(); } } 
+        public string Carrer { get => _Carrer; set { _Carrer = value; OnPropertyChanged(); } }
         public ICommand AddingCommand { get; set; }
-        //public ICommand ResetCommand { get; set; }
-        public ICommand HouseholdIDChangeCommand { get; set; }
+        public ICommand DoneCommand { get; set; }
         public ICommand ClearCommand { get; set; }
+
         private bool _isFemale;
         public bool isFemale { get => _isFemale; set { _isFemale = value; OnPropertyChanged(); } }
         private bool _isMale;
         public bool isMale { get => _isMale; set { _isMale = value; OnPropertyChanged(); } }
-        
-        public PopulationViewModel()
-        {   
-            List<Model.Household_Registration> list_of_household = Model.DataProvider.Ins.DB.Household_Registration.ToList<Model.Household_Registration>();         
+
+        public static List<Model.Population> list_of_family_member = new List<Model.Population>();
+        public FamilyViewModel()
+        {
+            List<Model.Household_Registration> list_of_household = Model.DataProvider.Ins.DB.Household_Registration.ToList<Model.Household_Registration>();
+            HouseholdId = HouseholdViewModel.current_IdHousehold;
+            HouseholdAddress = HouseholdViewModel.current_Address_Household;
 
             ClearCommand = new RelayCommand<Window>((p) => { return true; }, (p) => {
                 FamilyName = null;
                 Name = null;
                 Gender = true;
-                PlaceOfBirth = null;
-                HouseholdId = null;
+                PlaceOfBirth = null;               
                 Address = null;
                 Carrer = null;
                 Religion = null;
                 Id = null;
-                View.Populations wd = new View.Populations();
+                View.FamilyMem wd = new View.FamilyMem();
                 wd.Show();
                 p.Close();
             });
 
-            //ResetCommand = new RelayCommand<Window>((p) => { return true; }, (p) => {
-            //    View.Populations wd = new View.Populations();
-            //    wd.Show();
-            //    p.Close();
-            //});
-
-            HouseholdIDChangeCommand = new RelayCommand<TextBox>((p) => { return true; }, (p) => {              
-                if (list_of_household.Count() != 0)
-                {
-                    foreach (Model.Household_Registration x in list_of_household)
-                    {
-                        if (x.Id.Trim() == p.Text.Trim())
-                        {
-                            HouseholdAddress = x.Address;
-                            check_IdHousehold = true;
-                            MessageBox.Show("Household have been registed, you are now able to regist a population");
-                            break;
-                        }
-                    }
-                }
-                
-
-            });
-
             AddingCommand = new RelayCommand<object>((p) => 
-            { 
-                if(FamilyName == null || Name == null)
-                {
-                    return false;
-                }
-                
-                if(Id == null || Id.Length > 12)
+            {
+                if (FamilyName == null || Name == null)
                 {
                     return false;
                 }
 
-                List<Model.Population> list_of_population = Model.DataProvider.Ins.DB.Populations.ToList<Model.Population>();
-                if(list_of_population.Count() != 0)
+                if (Id == null || Id.Length > 12)
                 {
-                    foreach(Model.Population x in list_of_population)
+                    return false;
+                }
+
+                if (list_of_family_member.Count() != 0)
+                {
+                    foreach(Model.Population x in list_of_family_member)
                     {
-                        if(x.Id == Id)
+                        if(Id == x.Id)
                         {
                             return false;
                         }
                     }
                 }
 
-                if(HouseholdId != null && check_IdHousehold == false)
+                if(Id == HouseholdViewModel.current_IdOwner)
                 {
                     return false;
                 }
@@ -123,28 +97,29 @@ namespace household_management.ViewModel
                 }
 
                 return true; 
-            }, (p) => 
-            {              
+            }, 
+            (p) =>
+            {
                 Model.Population population = new Model.Population();
-                if(isFemale == true)
+                if (isFemale == true)
                 {
                     Gender = false;
                 }
-                
-                if(isMale == true)
+
+                if (isMale == true)
                 {
                     Gender = true;
                 }
                 population.Name = FamilyName.Trim() + " " + Name.Trim();
                 population.DateOfBirth = DateOfBirth;
 
-                if(PlaceOfBirth == null)
+                if (PlaceOfBirth == null)
                 {
                     PlaceOfBirth = " ";
-                }              
+                }
                 population.PlaceOfBirth = PlaceOfBirth;
 
-                if(isFemale == false && isMale == false)
+                if (isFemale == false && isMale == false)
                 {
                     Gender = true;
                 }
@@ -167,14 +142,38 @@ namespace household_management.ViewModel
                     Address = " ";
                 }
                 population.Address = Address;
-                population.Id = Id;              
+                population.Id = Id;
                 population.Id_Household = HouseholdId;
 
-                Model.DataProvider.Ins.DB.Populations.Add(population);
-                Model.DataProvider.Ins.DB.SaveChanges();
-                isMale = false;
-                isFemale = false;
+                list_of_family_member.Add(population);
+
+                MessageBox.Show("Adding successful");
             });
+
+            DoneCommand = new RelayCommand<Window>((p) => { return true; }, (p) => {
+                FamilyName = null;
+                Name = null;
+                Gender = true;
+                PlaceOfBirth = null;
+                Address = null;
+                Carrer = null;
+                Religion = null;
+                Id = null;
+                
+                if(list_of_family_member.Count() != 0)
+                {
+                    foreach (Model.Population x in list_of_family_member)
+                    {
+                        HouseholdViewModel.Id_Family += "- " + x.Id + "\n";
+                    }
+                    MessageBox.Show("All family members have successfully add to household");
+                }
+
+                
+                p.Close();
+            });
+
+
         }
 
         private bool Check_Id(string Id)

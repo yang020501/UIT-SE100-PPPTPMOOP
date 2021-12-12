@@ -1,3 +1,4 @@
+
 ﻿using household_management.Model;
 using System;
 using System.Collections.Generic;
@@ -180,5 +181,4 @@ namespace household_management.ViewModel
             OnPropertyChanged();
 
         }
-    }
-}
+        }

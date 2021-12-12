@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:household_management.View"
-        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
         DataContext="{StaticResource LoginVM}"
         Name="LoginWindowX"
@@ -42,13 +42,13 @@
                 </Grid>
 
                 <Grid Grid.Row="1" Margin="15">
-                    <PasswordBox
+                    <PasswordBox 
                     x:Name="FloatingPasswordBox"
                     materialDesign:HintAssist.Hint="Password"
                     materialDesign:HintAssist.Foreground="Black"
                     materialDesign:TextFieldAssist.UnderlineBrush="Black"
                     Style="{StaticResource MaterialDesignFloatingHintPasswordBox}">
-                        <i:Interaction.Triggers> 
+                        <i:Interaction.Triggers>
                             <i:EventTrigger EventName="PasswordChanged">
                                 <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}" 
                                                        CommandParameter="{Binding ElementName=FloatingPasswordBox}"/>

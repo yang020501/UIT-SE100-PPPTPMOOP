@@ -8,11 +8,7 @@
     <viewmodel:SearchViewModel x:Key="SearchVM"></viewmodel:SearchViewModel>
     <viewmodel:PPVViewModel x:Key="PPV_VM"></viewmodel:PPVViewModel>
     <viewmodel:APVViewModel x:Key="APV_VM"></viewmodel:APVViewModel>
-<<<<<<< Updated upstream
-
-=======
     <viewmodel:RPVViewModel x:Key="RPV_VM"></viewmodel:RPVViewModel>
     <viewmodel:FamilyViewModel x:Key="FamilyVM"></viewmodel:FamilyViewModel>
->>>>>>> Stashed changes
 
 </ResourceDictionary>

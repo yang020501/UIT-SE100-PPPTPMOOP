@@ -18,10 +18,6 @@ namespace household_management.ViewModel
         private DataView dvAbsence;
         public DataView DvAbsence { get => dvAbsence; set { dvAbsence = value; OnPropertyChanged(); } }
 
-<<<<<<< Updated upstream
-        private ObservableCollection<Temporary_Absence> AbsenceList;
-
-=======
         private string _Name;
         public string Name { get => _Name; set { _Name = value; OnPropertyChanged(); } }
 
@@ -74,16 +70,18 @@ namespace household_management.ViewModel
                     ExpireDate = (string)Selected.Row["ExpireDate"];
                     HName = (string)Selected.Row["Name_HouseholdOwner"];
                     Id_Household = (string)Selected.Row["Id_Household"];
+
                     if ((string)Selected.Row["Gender"] == "Male")
                         MaleChoice = true;
                     else
                         FemaleChoice = true;
                     DateOfBirth = (string)Selected.Row["DateOfBirth"];
+
                 }
             }
         }
 
->>>>>>> Stashed changes
+
         public APVViewModel()
         {
             NewTableAbsence();
@@ -176,7 +174,7 @@ namespace household_management.ViewModel
                 return;
             DvAbsence.RowFilter = string.Format(form, find);
             dtg.ItemsSource = DvAbsence;
-            OnPropertyChanged("DvPopulations");
+            OnPropertyChanged();
 
         }
     }
