@@ -12,12 +12,62 @@ namespace household_management.ViewModel
 {
     class APVViewModel : BaseViewModel
     {
+        
         DataTable dt;
 
         private DataView dvAbsence;
         public DataView DvAbsence { get => dvAbsence; set { dvAbsence = value; OnPropertyChanged(); } }
 
+        private string _Name;
+        public string Name { get => _Name; set { _Name = value; OnPropertyChanged(); } }
+
+        private string _Id;
+        public string Id { get => _Id; set { _Id = value; OnPropertyChanged(); } }
+
+        private string _IdOwner;
+        public string IdOwner { get => _IdOwner; set { _IdOwner = value; OnPropertyChanged(); } }
+
+        private string _DateOfBirth;
+        public string DateOfBirth { get => _DateOfBirth; set { _DateOfBirth = value; OnPropertyChanged(); } }
+
+        private string _AbAddress;
+        public string AbAddress { get => _AbAddress; set { _AbAddress = value; OnPropertyChanged(); } }
+
+        private string _HName;
+        public string HName { get => _HName; set { _HName = value; OnPropertyChanged(); } }
+
+        private string _Id_Household;
+        public string Id_Household { get => _Id_Household; set { _Id_Household = value; OnPropertyChanged(); } }
+
+        private string _CreateDate;
+        public string CreateDate { get => _CreateDate;set { _CreateDate = value; OnPropertyChanged(); } }
+
+        private string _ExpireDate;
+        public string ExpireDate { get => _ExpireDate; set { _ExpireDate = value; OnPropertyChanged(); } }
+
         private ObservableCollection<Temporary_Absence> AbsenceList;
+
+        private DataRowView _Selected;
+        public DataRowView Selected
+        {
+            get => _Selected;
+            set
+            {
+                _Selected = value;
+                OnPropertyChanged();
+                if(_Selected != null)
+                {
+                    Name = (string)Selected.Row["Name"];
+                    IdOwner = (string)Selected.Row["Id_Owner"];
+                    Id = (string)Selected.Row["Id"];
+                    AbAddress = (string)Selected.Row["AbsenceAddress"];
+                    CreateDate = (string)Selected.Row["CreateDate"];
+                    ExpireDate = (string)Selected.Row["ExpireDate"];
+                    HName = (string)Selected.Row["Name_HouseholdOwner"];
+                    Id_Household = (string)Selected.Row["Id_Household"];
+                }
+            }
+        }
 
         public APVViewModel()
         {
@@ -108,7 +158,7 @@ namespace household_management.ViewModel
                 return;
             DvAbsence.RowFilter = string.Format(form, find);
             dtg.ItemsSource = DvAbsence;
-            OnPropertyChanged("DvPopulations");
+            OnPropertyChanged();
 
         }
     }
