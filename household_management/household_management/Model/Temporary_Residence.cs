@@ -36,7 +36,7 @@ namespace household_management.Model
         public string HouseOwnerName { get => houseOwnerName; set { houseOwnerName = value; OnPropertyChanged(); } }
         private Nullable<System.DateTime> createDate;
         public Nullable<System.DateTime> CreateDate { get => createDate; set { createDate = value; OnPropertyChanged(); } }
-        private Nullable<System.DateTime> expireDate { get; set; }
+        private Nullable<System.DateTime> expireDate;
         public Nullable<System.DateTime> ExpireDate { get => expireDate; set { expireDate = value; OnPropertyChanged(); } }
         private string pAddress;
         public string PAddress { get => pAddress; set { pAddress = value; OnPropertyChanged(); } }

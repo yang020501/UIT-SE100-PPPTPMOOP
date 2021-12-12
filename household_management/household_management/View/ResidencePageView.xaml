@@ -41,10 +41,7 @@
                 Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="804,19,313.6,268.2" Height="44" FontSize="16"  />
             <materialDesign:PackIcon Kind="Present" Margin="747,32,0,0" Height="31" Width="32" />
             <materialDesign:PackIcon Kind="CalendarRange" Margin="747,84,0,0" Height="31" Width="32" RenderTransformOrigin="0.444,1.213" />
-            <DatePicker
-                Text="{Binding ExpireDate,UpdateSourceTrigger=PropertyChanged}"
-                materialDesign:HintAssist.Hint="Day leave"
-                Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="880,154,251.6,134.2" Height="43" FontSize="16" FontWeight="Bold" FontStyle="Italic" Padding="0" />
+
             <Label Content="Expire Date:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="749,176,0,0" Height="21" Width="126" FontSize="16" Padding="0"/>
             <Label Content="Create Date:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="748,125,0,0" Height="21" Width="126" FontSize="16" Padding="0"/>
             <TextBox IsReadOnly="True"
@@ -61,7 +58,7 @@
                 HorizontalAlignment="Left" Height="34" Margin="804,275,0,0"  VerticalAlignment="Top" Width="426" materialDesign:HintAssist.Hint="Temporary Residence Address" TextWrapping="Wrap" FontSize="16" Text="{Binding TAddress, UpdateSourceTrigger=PropertyChanged}"/>
             <materialDesign:PackIcon Kind="HomeExportOutline" Margin="749,278,0,0" Height="31" Width="32" RenderTransformOrigin="0.137,0.422" />
             <TextBox IsReadOnly="True"
-                HorizontalAlignment="Left" Height="34" Margin="591,207,0,0"  VerticalAlignment="Top" Width="136" materialDesign:HintAssist.Hint="Day back" TextWrapping="Wrap" FontSize="16"  Text="{Binding ExpireDate, UpdateSourceTrigger=PropertyChanged}" />
+                HorizontalAlignment="Left" Height="34" Margin="880,163,0,0"  VerticalAlignment="Top" Width="194" materialDesign:HintAssist.Hint="Day leave" TextWrapping="Wrap" FontSize="16"  Text="{Binding ExpireDate, UpdateSourceTrigger=PropertyChanged}" />
 
         </Grid>
         <Grid Grid.Row="1">
@@ -70,7 +67,8 @@
                 <ColumnDefinition Width="0.2*"/>
             </Grid.ColumnDefinitions>
             <DataGrid Grid.Column="0"
-                SelectedValue="{Binding Selected}"
+                
+                SelectedValue="{Binding Selected}"  
                 x:Name="dtg" 
                 IsReadOnly="True"
                 AutoGenerateColumns="False" 

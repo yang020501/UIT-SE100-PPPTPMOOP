@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,13 @@ namespace household_management.View
         public ResidencePageView()
         {
             InitializeComponent();
+        }
+
+        private void dtg_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataRowView selected = (DataRowView)dtg.SelectedValue;
+            //Expire.Text = (string)selected.Row["ExpireDate"];
+            MessageBox.Show((string)selected.Row["ExpireDate"]);
         }
     }
 }
