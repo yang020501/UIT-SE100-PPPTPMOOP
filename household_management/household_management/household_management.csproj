@@ -136,7 +136,10 @@
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\PopulationViewModel.cs" />
     <Compile Include="ViewModel\PPVViewModel.cs" />
+
     <Compile Include="ViewModel\ResidenceViewModel.cs" />
+    <Compile Include="ViewModel\RPVViewModel.cs" />
+
     <Compile Include="ViewModel\SearchViewModel.cs" />
     <Compile Include="ViewModel\TransferViewModel.cs" />
     <Compile Include="View\Absence.xaml.cs">

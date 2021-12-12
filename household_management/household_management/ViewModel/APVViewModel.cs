@@ -45,6 +45,11 @@ namespace household_management.ViewModel
         private string _ExpireDate;
         public string ExpireDate { get => _ExpireDate; set { _ExpireDate = value; OnPropertyChanged(); } }
 
+        private bool _MaleChoice;
+        public bool MaleChoice { get => _MaleChoice; set { _MaleChoice = value; OnPropertyChanged(); } }
+        private bool _FemaleChoice;
+        public bool FemaleChoice { get => _FemaleChoice; set { _FemaleChoice = value; OnPropertyChanged(); } }
+
         private ObservableCollection<Temporary_Absence> AbsenceList;
 
         private DataRowView _Selected;
@@ -65,9 +70,17 @@ namespace household_management.ViewModel
                     ExpireDate = (string)Selected.Row["ExpireDate"];
                     HName = (string)Selected.Row["Name_HouseholdOwner"];
                     Id_Household = (string)Selected.Row["Id_Household"];
+
+                    if ((string)Selected.Row["Gender"] == "Male")
+                        MaleChoice = true;
+                    else
+                        FemaleChoice = true;
+                    DateOfBirth = (string)Selected.Row["DateOfBirth"];
+
                 }
             }
         }
+
 
         public APVViewModel()
         {
@@ -89,7 +102,8 @@ namespace household_management.ViewModel
             dt.Columns.Add("CreateDate");
             dt.Columns.Add("ExpireDate");
             dt.Columns.Add("Photo");
-
+            dt.Columns.Add("Gender");
+            dt.Columns.Add("DateOfBirth");
             //fill datatable
             for (int i = 0; i < AbsenceList.Count; i++)
             {
@@ -115,7 +129,7 @@ namespace household_management.ViewModel
         // Check if any fields is null
         private string[] CheckData(Temporary_Absence item)
         {
-            string[] list = new string[10];
+            string[] list = new string[12];
             list[0] = check(item.Stt);
             list[1] = check(item.Id);
             list[2] = check(item.Id_Owner);
@@ -126,6 +140,8 @@ namespace household_management.ViewModel
             list[7] = check(item.CreateDate);
             list[8] = check(item.ExpireDate);
             list[9] = check(item.Household_Registration.Population.Photo);
+            list[10] = check(item.Population.Sex);
+            list[11] = check(item.Population.DateOfBirth);
             return list;
         }
         // Convert null, string or any type to Valid view data
