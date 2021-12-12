@@ -131,25 +131,30 @@ namespace household_management.ViewModel
 
         private void openResidencePageView()
         {
+            rView = new ResidencePageView();
             main.Content = rView;
         }
             private void openTransferPageView()
         {
+            tView = new TransferPageView();
             main.Content = tView;
         }
 
         private void openAbsencePageView()
         {
+            aView = new AbsencePageView();
+            aPVVM = new APVViewModel();
             main.Content = aView;
         }
 
         private void openHouseholdPageView()
         {
-          
+            hView = new HouseholdPageView();
             main.Content = hView;
         }
         private void openPopulationsPage()
-        {                       
+        {
+            pView = new PopulationsPageView();
             main.Content = pView;
         }
 
@@ -162,76 +167,7 @@ namespace household_management.ViewModel
         }
        
 
-        private void NewTableResidence()
-        {
-            ResidencesList = new ObservableCollection<Temporary_Residence>(DataProvider.Ins.DB.Temporary_Residence);
-            dt = new DataTable();
-
-            dt.Columns.Add("Ordinal Number");
-            dt.Columns.Add("Id");
-            dt.Columns.Add("Id_Owner");
-            dt.Columns.Add("Name");
-            dt.Columns.Add("Id_Household");
-            dt.Columns.Add("Name_HouseholdOwner");
-            dt.Columns.Add("Absence Address");
-            dt.Columns.Add("Residence Address");
-            dt.Columns.Add("Create Date");
-            dt.Columns.Add("Expire Date");
-
-            for (int i = 0; i < ResidencesList.Count; i++)
-            {
-                dt.Rows.Add
-                    (
-                       ResidencesList[i].Stt.ToString(),
-                       ResidencesList[i].Id.ToString(),
-                       ResidencesList[i].Id_Owner.ToString(),
-                       ResidencesList[i].NameOfOwner.ToString(),
-                       ResidencesList[i].Id_Household.ToString(),
-                       ResidencesList[i].HouseOwnerName.ToString(),
-                       ResidencesList[i].PAddress.ToString(),
-                       ResidencesList[i].TAddress.ToString(),
-                       ResidencesList[i].CreateDate.ToString(),
-                       ResidencesList[i].ExpireDate.ToString()
-                    );
-
-            }
-            dvResidence = new DataView(dt);
-        }
-
-        private void NewTableAbsence()
-        {
-            AbsencesList = new ObservableCollection<Temporary_Absence>(DataProvider.Ins.DB.Temporary_Absence);
-            dt = new DataTable();
-
-            dt.Columns.Add("OrdinalNumber");
-            dt.Columns.Add("Id");
-            dt.Columns.Add("Id_Owner");
-            dt.Columns.Add("Name");
-            dt.Columns.Add("Id_Household");
-            dt.Columns.Add("Name_HouseholdOwner");
-            dt.Columns.Add("Absence Address");
-            dt.Columns.Add("Create Date");
-            dt.Columns.Add("Expire Date");
-
-            //fill datatable
-            for (int i = 0; i <AbsencesList.Count; i++)
-            {
-                dt.Rows.Add
-                    (
-                       AbsencesList[i].Stt.ToString(),
-                       AbsencesList[i].Id.ToString(),
-                       AbsencesList[i].Id_Owner.ToString(),
-                       AbsencesList[i].NameOfOwner.ToString(),
-                       AbsencesList[i].Id_Household.ToString(),
-                       AbsencesList[i].HouseOwnerName.ToString(),
-                       AbsencesList[i].Household_Registration.Address.ToString(),
-                       AbsencesList[i].CreateDate.ToString(),
-                       AbsencesList[i].ExpireDate.ToString()
-                    );
-                
-            }
-            dvAbsence = new DataView(dt);
-        }
+       
 
         private void NewTableTransfer()
         {

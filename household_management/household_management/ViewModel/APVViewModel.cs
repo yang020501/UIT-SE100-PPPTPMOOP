@@ -85,6 +85,7 @@ namespace household_management.ViewModel
         public APVViewModel()
         {
             NewTableAbsence();
+          
         }
 
         private void NewTableAbsence()
