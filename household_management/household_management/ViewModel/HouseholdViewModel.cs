@@ -12,6 +12,7 @@ namespace household_management.ViewModel
 {
     class HouseholdViewModel : BaseViewModel
     {
+        private bool isUnregisted = false;
         private string _Name;
         public string Name { get => _Name; set { _Name = value; OnPropertyChanged(); } }
         private string _Id;
@@ -39,7 +40,7 @@ namespace household_management.ViewModel
 
             HouseholdIdChangeCommand = new RelayCommand<TextBox>((p) => { return true; }, (p) =>
             {
-                current_IdOwner = Id;
+                current_IdOwner = Id;              
             });
 
             ReloadCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
@@ -91,6 +92,11 @@ namespace household_management.ViewModel
                 }
 
                 if (!Check_Id(Id))
+                {
+                    return false;
+                }
+
+                if (!isUnregisted)
                 {
                     return false;
                 }
@@ -162,52 +168,59 @@ namespace household_management.ViewModel
                     //Sửa nhân khẩu vừa làm
                     var change = Model.DataProvider.Ins.DB.Populations.Where(x => x.Id == Id).SingleOrDefault();
                     change.Id_Household = IdHousehold;
-                    Model.DataProvider.Ins.DB.SaveChanges();
+                    Model.DataProvider.Ins.DB.SaveChanges();                                       
+                }
 
-                    //Tạo và thêm thành viên vào hộ khẩu
-                    if(FamilyViewModel.list_of_family_member.Count() != 0)
-                    {                     
-                        foreach(Model.Population member in FamilyViewModel.list_of_family_member)
+                //Tạo chủ hộ trong gia đình
+                Model.Family_Household owner = new Model.Family_Household();
+                owner.Id_Person = Id;
+                owner.Id_Owner = Id;
+                owner.Id_Household = IdHousehold;
+                owner.Name_Person = Name;
+                Model.DataProvider.Ins.DB.Family_Household.Add(owner);
+                Model.DataProvider.Ins.DB.SaveChanges();
+
+                //Tạo và thêm thành viên vào hộ khẩu
+                if (FamilyViewModel.list_of_family_member.Count() != 0)
+                {
+                    foreach (Model.Population member in FamilyViewModel.list_of_family_member)
+                    {
+                        var temp = Model.DataProvider.Ins.DB.Populations.Where(x => x.Id == member.Id).SingleOrDefault();
+                        if (temp == null)
                         {
-                            var temp = Model.DataProvider.Ins.DB.Populations.Where(x => x.Id == member.Id).SingleOrDefault();
-                            if(temp == null)
-                            {
-                                Model.DataProvider.Ins.DB.Populations.Add(member);
-                                Model.DataProvider.Ins.DB.SaveChanges();
-                                Model.Family_Household new_member = new Model.Family_Household();
-                                new_member.Id_Person = member.Id;
-                                new_member.Id_Owner = Id;
-                                new_member.Id_Household = IdHousehold;
-                                new_member.Name_Person = member.Name;
-                                Model.DataProvider.Ins.DB.Family_Household.Add(new_member);
-                                Model.DataProvider.Ins.DB.SaveChanges();
-                            }
-                            else
-                            {
-                                temp.Id_Household = IdHousehold;
-                                Model.DataProvider.Ins.DB.SaveChanges();
-                                Model.Family_Household new_member = new Model.Family_Household();
-                                new_member.Id_Person = member.Id;
-                                new_member.Id_Owner = Id;
-                                new_member.Id_Household = IdHousehold;
-                                new_member.Name_Person = member.Name;
-                                Model.DataProvider.Ins.DB.Family_Household.Add(new_member);
-                                Model.DataProvider.Ins.DB.SaveChanges();
-                            }
+                            Model.DataProvider.Ins.DB.Populations.Add(member);
+                            Model.DataProvider.Ins.DB.SaveChanges();
+                            Model.Family_Household new_member = new Model.Family_Household();
+                            new_member.Id_Person = member.Id;
+                            new_member.Id_Owner = Id;
+                            new_member.Id_Household = IdHousehold;
+                            new_member.Name_Person = member.Name;
+                            Model.DataProvider.Ins.DB.Family_Household.Add(new_member);
+                            Model.DataProvider.Ins.DB.SaveChanges();
                         }
-                    }
-
-                    MessageBox.Show("Create Household Registration Successful");
-                    FamilyViewModel.list_of_family_member.Clear();
-                    IdHousehold = GenarateId();
+                        else
+                        {
+                            temp.Id_Household = IdHousehold;
+                            Model.DataProvider.Ins.DB.SaveChanges();
+                            Model.Family_Household new_member = new Model.Family_Household();
+                            new_member.Id_Person = member.Id;
+                            new_member.Id_Owner = Id;
+                            new_member.Id_Household = IdHousehold;
+                            new_member.Name_Person = member.Name;
+                            Model.DataProvider.Ins.DB.Family_Household.Add(new_member);
+                            Model.DataProvider.Ins.DB.SaveChanges();
+                        }
+                    }                    
                     
                 }
+
+                MessageBox.Show("Create Household Registration Successful");
+                FamilyViewModel.list_of_family_member.Clear();
+                IdHousehold = GenarateId();
             });
         }
         private void Clear(Window p)
-        {
-            
-          
+        {                  
 
         }
         private void GetAllControls(Control container)
@@ -243,7 +256,7 @@ namespace household_management.ViewModel
 
             return false;
         }
-
+     
     }
   
 }

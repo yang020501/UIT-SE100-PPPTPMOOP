@@ -13,7 +13,7 @@ namespace household_management.ViewModel
 {
     class PopulationViewModel : BaseViewModel
     {
-
+        private bool check_IdHousehold = false;
         private string _FamilyName;
         public string FamilyName { get => _FamilyName; set { _FamilyName = value; OnPropertyChanged(); } }
         private string _Name;
@@ -37,7 +37,7 @@ namespace household_management.ViewModel
         private string _Carrer;
         public string Carrer { get => _Carrer; set { _Carrer = value; OnPropertyChanged(); } } 
         public ICommand AddingCommand { get; set; }
-        public ICommand ResetCommand { get; set; }
+        //public ICommand ResetCommand { get; set; }
         public ICommand HouseholdIDChangeCommand { get; set; }
         public ICommand ClearCommand { get; set; }
         private bool _isFemale;
@@ -64,11 +64,11 @@ namespace household_management.ViewModel
                 p.Close();
             });
 
-            ResetCommand = new RelayCommand<Window>((p) => { return true; }, (p) => {
-                View.Populations wd = new View.Populations();
-                wd.Show();
-                p.Close();
-            });
+            //ResetCommand = new RelayCommand<Window>((p) => { return true; }, (p) => {
+            //    View.Populations wd = new View.Populations();
+            //    wd.Show();
+            //    p.Close();
+            //});
 
             HouseholdIDChangeCommand = new RelayCommand<TextBox>((p) => { return true; }, (p) => {              
                 if (list_of_household.Count() != 0)
@@ -77,7 +77,9 @@ namespace household_management.ViewModel
                     {
                         if (x.Id.Trim() == p.Text.Trim())
                         {
-                            HouseholdAddress = x.Address;                           
+                            HouseholdAddress = x.Address;
+                            check_IdHousehold = true;
+                            MessageBox.Show("Household have been registed, you are now able to regist a population");
                             break;
                         }
                     }
@@ -108,6 +110,11 @@ namespace household_management.ViewModel
                             return false;
                         }
                     }
+                }
+
+                if(HouseholdId != null && check_IdHousehold == false)
+                {
+                    return false;
                 }
 
                 if (!Check_Id(Id))
