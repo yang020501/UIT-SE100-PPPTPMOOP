@@ -9,6 +9,7 @@
     <viewmodel:PPVViewModel x:Key="PPV_VM"></viewmodel:PPVViewModel>
     <viewmodel:APVViewModel x:Key="APV_VM"></viewmodel:APVViewModel>
     <viewmodel:RPVViewModel x:Key="RPV_VM"></viewmodel:RPVViewModel>
+    <viewmodel:TPVViewModel x:Key="TPV_VM"></viewmodel:TPVViewModel>
     <viewmodel:FamilyViewModel x:Key="FamilyVM"></viewmodel:FamilyViewModel>
 
 </ResourceDictionary>
