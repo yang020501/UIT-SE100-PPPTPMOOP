@@ -54,7 +54,7 @@
             </TextBox>
             <materialDesign:PackIcon Kind="HomeMapMarker" Margin="794,273,0,0" Height="31" Width="32" />
             <TextBox IsReadOnly="True"
-                HorizontalAlignment="Left" Height="34" Margin="925,219,0,0"  VerticalAlignment="Top" Width="180" materialDesign:HintAssist.Hint="Day leave" TextWrapping="Wrap" FontSize="16"  Text="{Binding CreateDate, UpdateSourceTrigger=PropertyChanged}" />
+                HorizontalAlignment="Left" Height="34" Margin="925,219,0,0"  VerticalAlignment="Top" Width="180" materialDesign:HintAssist.Hint="Day back" TextWrapping="Wrap" FontSize="16"  Text="{Binding CreateDate, UpdateSourceTrigger=PropertyChanged}" />
 
         </Grid>
         <Grid Grid.Row="1">
