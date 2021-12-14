@@ -80,7 +80,7 @@
             </Grid>
             <Grid Grid.Row="1">
                 <Frame
-                    x:Name="Main" NavigationUIVisibility="Visible" Content="{Binding Main,UpdateSourceTrigger=PropertyChanged}"   Grid.Column="0" >
+                    x:Name="Main" Content="{Binding Main,UpdateSourceTrigger=PropertyChanged}"   Grid.Column="0" NavigationUIVisibility="Hidden" >
                 </Frame>
                
             </Grid>
