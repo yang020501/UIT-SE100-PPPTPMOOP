@@ -87,7 +87,9 @@
                     <DataGridTextColumn Header="Expire Date" Binding="{Binding ExpireDate}"/>
                 </DataGrid.Columns>
             </DataGrid>
-
+            <Grid Grid.Column="1">
+                <Button Command="{Binding AddingCommand}" Content="Update"  Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="123" VerticalAlignment="Top" Name="AddButton" Margin="51,69,0,0" />
+            </Grid>
         </Grid>
     </Grid>
 </Page>

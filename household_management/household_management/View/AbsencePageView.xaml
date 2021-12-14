@@ -82,7 +82,7 @@
                 </DataGrid.Columns>
             </DataGrid>
             <Grid Grid.Column="1">
-                <Button Command="{Binding AddingCommand}" Content="Edit"  Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="123" VerticalAlignment="Top" Name="AddButton" Margin="49,62,0,0" />
+                <Button Command="{Binding AddingCommand}" Content="Update"  Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="123" VerticalAlignment="Top" Name="AddButton" Margin="51,69,0,0" />
             </Grid>
 
         </Grid>
