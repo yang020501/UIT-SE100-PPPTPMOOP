@@ -36,7 +36,7 @@
             </Grid.ColumnDefinitions>
             <Border BorderBrush="LightGray" BorderThickness="1">
                 <Grid Grid.Column="0">
-                    <Image Margin="20,0,16.2,223.8" Source="/household_management;component/Resources/account.jpg" Stretch="Fill" Height="164" VerticalAlignment="Bottom" RenderTransformOrigin="0.592,0.512"/>
+                    <Image Margin="16,0,20.2,223.8" Source="/household_management;component/Resources/account.jpg" Stretch="Fill" Height="142" VerticalAlignment="Bottom" RenderTransformOrigin="0.592,0.512"/>
                 </Grid>
             </Border>
             <Grid Grid.Column="1">
@@ -83,21 +83,22 @@
                 <TextBox
                     HorizontalAlignment="Left" Height="34" Margin="75,460,0,0"  VerticalAlignment="Top" Width="220" materialDesign:HintAssist.Hint="Career" TextWrapping="Wrap" FontSize="16" Text="{Binding Carrer, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBox
-                    HorizontalAlignment="Left" Height="34" Margin="75,338,0,0"  VerticalAlignment="Top" Width="391" 
-                    materialDesign:HintAssist.Hint="HouseHold Adress" TextWrapping="Wrap" FontSize="16" 
+                    HorizontalAlignment="Left" Height="34" Margin="75,338,0,0"  VerticalAlignment="Top" Width="364" 
+                    materialDesign:HintAssist.Hint="HouseHold Address" TextWrapping="Wrap" FontSize="16" 
                     Text="{Binding HouseholdAddress, UpdateSourceTrigger=PropertyChanged}"
                     IsReadOnly="True"/>
-                <Button Command="{Binding AddingCommand}" Content="Add" Margin="221,512,0,0" Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="123" VerticalAlignment="Top" Name="AddButton" CommandParameter="{Binding ElementName=AddButton}"/>
+                <Button Command="{Binding AddingCommand}" Content="Add" Margin="184,512,0,0" Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="123" VerticalAlignment="Top" Name="AddButton" CommandParameter="{Binding ElementName=AddButton}"/>
                 <Label Content="Household Address" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="75,302,0,0" Height="31" Width="232" FontSize="16" Padding="0,4,4,4"/>
-                <Label Content="Household Id:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="334,187,0,0" Height="21" Width="126" FontSize="16" Padding="0"/>
+                <Label Content="Household Id:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="344,187,0,0" Height="21" Width="126" FontSize="16" Padding="0"/>
                 <materialDesign:PackIcon Kind="HomeMapMarker" Margin="23,341,0,0" Height="31" Width="32" />
                 <materialDesign:PackIcon Kind="Present" Margin="23,125,0,0" Height="31" Width="32" />
                 <materialDesign:PackIcon Kind="HospitalMarker" Margin="477,249,0,0" Height="31" Width="32" />
-                
-                <Button Content="Clear" HorizontalAlignment="Left" Margin="445,512,0,0" 
+
+                <Button Content="Clear" HorizontalAlignment="Left" Margin="391,512,0,0" 
                         VerticalAlignment="Top" Width="122" Height="44" Background="#FF4D60C0" 
                         Command="{Binding ClearCommand}" CommandParameter="{Binding ElementName=PopulationWindowX}"/>
-                        
+                <Button Command="{Binding AddingCommand}" Content="Choose" Margin="-154,360,0,0" Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="123" VerticalAlignment="Top"  />
+
 
             </Grid>
         </Grid>

@@ -28,5 +28,10 @@ namespace household_management.View
         {
             this.Close();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

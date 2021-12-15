@@ -60,7 +60,7 @@ namespace household_management.ViewModel
         public ICommand Updatebtn { get; set; }
         public ICommand Deletebtn { get; set; }
 
-       
+
         public PPVViewModel()
         {
             NewTablePopulations();
@@ -107,34 +107,41 @@ namespace household_management.ViewModel
 
             }, (p) =>
             {
-                var residence = DataProvider.Ins.DB.Temporary_Residence.Where(x => x.Id_Owner == Id).SingleOrDefault();
-                if (residence != null)
+                try
                 {
-                    DataProvider.Ins.DB.Temporary_Residence.Remove(residence);
-        
-                }
-                var absence = DataProvider.Ins.DB.Temporary_Absence.Where(x => x.Id_Owner == Id).SingleOrDefault();
-                if (absence != null)
-                    DataProvider.Ins.DB.Temporary_Absence.Remove(absence);
+                    Temporary_Residence residence = DataProvider.Ins.DB.Temporary_Residence.Where(x => x.Id_Owner == Id).SingleOrDefault();
+                    if (residence != null)
+                        DataProvider.Ins.DB.Temporary_Residence.Remove(residence);
 
-                DataProvider.Ins.DB.Populations.Remove(DataProvider.Ins.DB.Populations.Where(x => x.Id == Id).SingleOrDefault());
-                
-                //DataProvider.Ins.DB.Transfer_Household.Remove(DataProvider.Ins.DB.Transfer_Household.Where(x => x.Id_Owner == Id).SingleOrDefault());
-                DataProvider.Ins.DB.SaveChanges();
-                p.DataContext = null;
-                PPVViewModel vm = new PPVViewModel();
-                vm.Load();
-                p.DataContext = vm;
-                NewTablePopulations();
-                   
-                //}
-                //catch (Exception e)
-                //{
-                //    MessageBox.Show("Người này là chủ hộ hãy xóa trong hộ khẩu trước");
-                //}             
-                               
+                    Temporary_Absence absence = DataProvider.Ins.DB.Temporary_Absence.Where(x => x.Id_Owner == Id).SingleOrDefault();
+                    if (absence != null)
+                        DataProvider.Ins.DB.Temporary_Absence.Remove(absence);
+
+                    Transfer_Household transfer = DataProvider.Ins.DB.Transfer_Household.Where(x => x.Id_Owner == Id).SingleOrDefault();
+                    if (transfer != null)
+                        DataProvider.Ins.DB.Transfer_Household.Remove(transfer);
+
+                    DataProvider.Ins.DB.Populations.Remove(DataProvider.Ins.DB.Populations.Where(x => x.Id == Id).SingleOrDefault());
+
+                    DataProvider.Ins.DB.SaveChanges();
+
+                    // reload view table
+                    p.DataContext = null;
+                    PPVViewModel vm = new PPVViewModel();
+                    vm.Load();
+                    p.DataContext = vm;
+                    NewTablePopulations();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message, "Notification!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+
+
+
             });
         }
+        
 
         private DataRowView _Selected;
         public DataRowView Selected
