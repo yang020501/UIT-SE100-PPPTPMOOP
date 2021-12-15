@@ -64,16 +64,10 @@ namespace household_management.ViewModel
         private bool _rdOrdinalNumber;
         public bool rdOrdinalNumber { get => _rdOrdinalNumber; set { _rdOrdinalNumber = value; OnPropertyChanged(); } }
 
-
-<<<<<<< Updated upstream
         PPVViewModel pPVVM = new PPVViewModel();
         APVViewModel aPVVM = new APVViewModel();
-=======
         RPVViewModel rPVVM = new RPVViewModel();
->>>>>>> Stashed changes
-
-
-
+        TPVViewModel tPVVM = new TPVViewModel();    
 
         PopulationsPageView pView = new PopulationsPageView() ;
         HouseholdPageView hView  = new HouseholdPageView() ;
@@ -83,7 +77,6 @@ namespace household_management.ViewModel
 
         private Frame main = new Frame();
         public Frame Main { get => main; set { main = value; OnPropertyChanged(); } }
-
 
         // biding txtSearch changed
         private string _txtSearch;
@@ -96,16 +89,12 @@ namespace household_management.ViewModel
                 OnPropertyChanged();
                 switch (SelectedIndex)
                 {
-<<<<<<< Updated upstream
                     case 0: pPVVM.doSearch(pView.dtg, _txtSearch, getrd()); break;
-                    case 3: aPVVM.doSearch(aView.dtg, _txtSearch, getrd()); break;
-=======
-                    case 0: PPVViewModel pPVVM = new PPVViewModel(); pPVVM.doSearch(pView.dtg, _txtSearch, getrd()); break;
                     case 1:
-                    case 2: TPVViewModel tPVVM = new TPVViewModel();  tPVVM.doSearch(tView.dtg, _txtSearch, getrd()); break;
-                    case 3: APVViewModel aPVVM = new APVViewModel();  aPVVM.doSearch(aView.dtg, _txtSearch, getrd()); break;
-                    case 4:  rPVVM.doSearch(rView.dtg, _txtSearch, getrd()); break;
->>>>>>> Stashed changes
+                    case 2: tPVVM.doSearch(tView.dtg, _txtSearch, getrd()); break;
+                    case 3: aPVVM.doSearch(aView.dtg, _txtSearch, getrd()); break;
+                    case 4: rPVVM.doSearch(rView.dtg, _txtSearch, getrd()); break;
+
                 }
             } 
         }
@@ -187,38 +176,6 @@ namespace household_management.ViewModel
             rdName = true;    
         }
        
-
-       
-
-        private void NewTableTransfer()
-        {
-            TransferList = new ObservableCollection<Transfer_Household>(DataProvider.Ins.DB.Transfer_Household);
-            dt = new DataTable();
-
-            dt.Columns.Add("OrdinalNumber");
-            dt.Columns.Add("Id");
-            dt.Columns.Add("Id_Owner");
-            dt.Columns.Add("Name");
-            dt.Columns.Add("Id_Household");
-            dt.Columns.Add("Old Address");
-            dt.Columns.Add("New Address");
-            //fill datatable
-            for (int i = 0; i < TransferList.Count; i++)
-            {
-                dt.Rows.Add
-                    (
-                        TransferList[i].Stt.ToString(),
-                        TransferList[i].Id.ToString(),
-                        TransferList[i].Id_Owner.ToString(),
-                        TransferList[i].Population.Name.ToString(),
-                        TransferList[i].Old_Address.ToString(),
-                        TransferList[i].New_Address.ToString()
-                    ); 
-                ;
-            }
-            dvTransfer = new DataView(dt);
-        }
-
         private void NewTableHousehold()
         {
             HouseholdList = new ObservableCollection<Household_Registration>(DataProvider.Ins.DB.Household_Registration);

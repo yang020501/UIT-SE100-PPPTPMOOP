@@ -75,7 +75,7 @@ namespace household_management.ViewModel
                     PAddress = (string)Selected.Row["PAddress"];
                     TAddress = (string)Selected.Row["TAddress"];
                     CreateDate = (string)Selected.Row["CreateDate"];
-                    _ExpireDate = (string)Selected.Row["ExpireDate"];
+                    ExpireDate = (string)Selected.Row["ExpireDate"];
                     HName = (string)Selected.Row["Name_HouseholdOwner"];
                     Id_Household = (string)Selected.Row["Id_Household"];
                     if ((string)Selected.Row["Gender"] == "Male")
@@ -127,23 +127,8 @@ namespace household_management.ViewModel
             {
 
                 dt.Rows.Add
-                    (
-<<<<<<< Updated upstream
-                       //ResidenceList[i].Stt.ToString(),
-                       //ResidenceList[i].Id.ToString(),
-                       //ResidenceList[i].Id_Owner.ToString(),
-                       //ResidenceList[i].NameOfOwner.ToString(),
-                       //ResidenceList[i].Id_Household.ToString(),
-                       //ResidenceList[i].HouseOwnerName.ToString(),
-                       //ResidenceList[i].Household_Registration.Address.ToString(),
-                       //ResidenceList[i].CreateDate.ToString(),
-                       //ResidenceList[i].ExpireDate.ToString()
-
-                       CheckData(ResidenceList[i])
-=======
-                     
+                    (                     
                        CheckData(ResidenceList[i],i)
->>>>>>> Stashed changes
                     );
 
             }

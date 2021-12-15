@@ -75,13 +75,10 @@
                 x:Name="dtg" 
                 IsReadOnly="True"
                 AutoGenerateColumns="False" 
-<<<<<<< Updated upstream
-                ItemsSource="{Binding DvPopulations,UpdateSourceTrigger=PropertyChanged}"
-                SelectedValue="{Binding Selected}" Grid.ColumnSpan="2" Margin="0,0,220.6,26"  
-=======
+
                 ItemsSource="{Binding DvPopulations,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"
                 SelectedValue="{Binding Selected}" Grid.ColumnSpan="2" Margin="0,0,220.6,1"  
->>>>>>> Stashed changes
+
                 >
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Number" Binding="{Binding OrdinalNumber}"/>
@@ -97,13 +94,12 @@
                 </DataGrid.Columns>
             </DataGrid>
             <Grid Grid.Column="1">
-<<<<<<< Updated upstream
-                
-=======
+
                 <Button Command="{Binding Updatebtn}" CommandParameter="{Binding ElementName=ppv}" Content="Update"  Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="123" VerticalAlignment="Top" Margin="50,50,0,0" />
                 <Button Command="{Binding Deletebtn}" CommandParameter="{Binding ElementName=ppv}" Content="Remove"  Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="123" VerticalAlignment="Top" Margin="50,130,0,0"  />
-                <Button  Content="Reload"  Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="123" VerticalAlignment="Top" Margin="50,204,0,0" Click="Button_Click" />
->>>>>>> Stashed changes
+              
+
+
             </Grid>
         </Grid>
     </Grid>
