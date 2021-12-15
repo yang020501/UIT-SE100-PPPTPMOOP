@@ -13,7 +13,7 @@ namespace household_management.Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class HoKhauEntities : DbContext
+    public partial class HoKhauEntities : DbContext 
     {
         public HoKhauEntities()
             : base("name=HoKhauEntities")

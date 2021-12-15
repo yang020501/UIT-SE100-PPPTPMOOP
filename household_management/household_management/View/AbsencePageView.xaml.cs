@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Ubiety.Dns.Core;
 
 namespace household_management.View
 {
@@ -23,6 +24,7 @@ namespace household_management.View
         public AbsencePageView()
         {
             InitializeComponent();
+           
         }
     }
 }

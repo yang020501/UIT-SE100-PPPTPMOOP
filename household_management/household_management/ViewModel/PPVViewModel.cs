@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace household_management.ViewModel
 {
@@ -18,8 +19,8 @@ namespace household_management.ViewModel
         private string _Name;
         public string Name { get => _Name; set { _Name = value; OnPropertyChanged(); } }
 
-        private String _Id;
-        public String Id { get => _Id; set { _Id = value; OnPropertyChanged(); } }
+        private string _Id;
+        public string Id { get => _Id; set { _Id = value; OnPropertyChanged(); } }
 
         private string _DateOfBirth;
         public string DateOfBirth { get => _DateOfBirth; set { _DateOfBirth = value; OnPropertyChanged(); } }
@@ -50,17 +51,89 @@ namespace household_management.ViewModel
         private string _Photo;
         public string Photo { get => _Photo; set { _Photo = value; OnPropertyChanged(); } }
 
-        DataView dvPopulations;
+        private DataView dvPopulations;
         public DataView DvPopulations { get => dvPopulations; set { dvPopulations = value; OnPropertyChanged(); } }
 
 
         private ObservableCollection<Population> PopulationsList;
-        //public ObservableCollection<Population> PopulationsList { get => _PopulationsList; set { _PopulationsList = value; OnPropertyChanged(); } }
+
+        public ICommand Updatebtn { get; set; }
+        public ICommand Deletebtn { get; set; }
 
        
         public PPVViewModel()
         {
             NewTablePopulations();
+            //Update
+            Updatebtn = new RelayCommand<Page>((p) =>
+            {
+                if (string.IsNullOrEmpty(Id))
+                {
+                    return false;
+                }
+                var displayList = DataProvider.Ins.DB.Populations.Where(x => x.Id == Id);
+
+                if (displayList == null)
+                    return false;
+                return true;
+
+            }, (p) =>
+            {
+                var tmp = DataProvider.Ins.DB.Populations.Where(x => x.Id == Id).SingleOrDefault();
+                tmp.Name = Name;
+                tmp.Address = Address;
+                tmp.Career = Career;
+                tmp.Relegion = Relegion;
+                if (MaleChoice == true)
+                    tmp.Sex = MaleChoice;
+                else
+                    tmp.Sex = FemaleChoice;
+                tmp.PlaceOfBirth = PlaceOfBirth;
+
+                DataProvider.Ins.DB.SaveChanges();
+                p.DataContext = null;
+                PPVViewModel vm = new PPVViewModel();
+                vm.Load();
+                p.DataContext = vm;
+                NewTablePopulations();
+            });
+            //Delete
+            Deletebtn = new RelayCommand<Page>((p) =>
+            {
+                if (Selected != null)
+                    return true;
+                else
+                    return false;
+
+            }, (p) =>
+            {
+                var residence = DataProvider.Ins.DB.Temporary_Residence.Where(x => x.Id_Owner == Id).SingleOrDefault();
+                if (residence != null)
+                {
+                    DataProvider.Ins.DB.Temporary_Residence.Remove(residence);
+        
+                }
+                var absence = DataProvider.Ins.DB.Temporary_Absence.Where(x => x.Id_Owner == Id).SingleOrDefault();
+                if (absence != null)
+                    DataProvider.Ins.DB.Temporary_Absence.Remove(absence);
+
+                DataProvider.Ins.DB.Populations.Remove(DataProvider.Ins.DB.Populations.Where(x => x.Id == Id).SingleOrDefault());
+                
+                //DataProvider.Ins.DB.Transfer_Household.Remove(DataProvider.Ins.DB.Transfer_Household.Where(x => x.Id_Owner == Id).SingleOrDefault());
+                DataProvider.Ins.DB.SaveChanges();
+                p.DataContext = null;
+                PPVViewModel vm = new PPVViewModel();
+                vm.Load();
+                p.DataContext = vm;
+                NewTablePopulations();
+                   
+                //}
+                //catch (Exception e)
+                //{
+                //    MessageBox.Show("Người này là chủ hộ hãy xóa trong hộ khẩu trước");
+                //}             
+                               
+            });
         }
 
         private DataRowView _Selected;
@@ -85,17 +158,20 @@ namespace household_management.ViewModel
                     Address = (string)Selected.Row["Address"];
                     Relegion = (string)Selected.Row["Relegion"];
                     Career = (string)Selected.Row["Career"];
-                    HAddress = (string)Selected.Row["HAddress"]; 
-                    MessageBox.Show(Name);
-
-
+                    HAddress = (string)Selected.Row["HAddress"];
+                   
                 }
             }
+        }
+        public void Load()
+        {
+            NewTablePopulations();
         }
         public void NewTablePopulations()
         {
             PopulationsList = new ObservableCollection<Population>(DataProvider.Ins.DB.Populations);
             dt = new DataTable();
+
             dt.Columns.Add("OrdinalNumber");
             dt.Columns.Add("Id");
             dt.Columns.Add("Name");
@@ -113,26 +189,16 @@ namespace household_management.ViewModel
             {
                 dt.Rows.Add
                     (
-                         //PopulationsList[i].Stt.ToString(),
-                         //PopulationsList[i].Id.ToString(),
-                         //PopulationsList[i].Name.ToString(),
-                         //PopulationsList[i].Sex.ToString(),
-                         //PopulationsList[i].DateOfBirth.ToString(),
-                         //PopulationsList[i].PlaceOfBirth.ToString(),                         
-                         //PopulationsList[i].Id_Household.ToString(),
-                         //PopulationsList[i].Address.ToString(),
-                         //PopulationsList[i].Relegion.ToString(),
-                         //PopulationsList[i].Career.ToString()
-                         CheckData(PopulationsList[i])
+                         CheckData(PopulationsList[i],i)
                     );
             }
             dvPopulations = new DataView(dt);
         }
         // Check if any fields is null
-        private string[] CheckData(Population item)
+        private string[] CheckData(Population item,int stt)
         {
             string[] list = new string[12];
-            list[0] = check(item.Stt);
+            list[0] = (stt + 1).ToString();
             list[1] = check(item.Id);
             list[2] = check(item.Name);
             list[3] = check(item.Sex);
@@ -178,7 +244,6 @@ namespace household_management.ViewModel
                 return;
             DvPopulations.RowFilter = string.Format(form, find);
             dtg.ItemsSource = DvPopulations;
-            OnPropertyChanged("DvPopulations");
 
         }
     }

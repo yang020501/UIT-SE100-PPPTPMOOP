@@ -65,16 +65,23 @@ namespace household_management.ViewModel
         public bool rdOrdinalNumber { get => _rdOrdinalNumber; set { _rdOrdinalNumber = value; OnPropertyChanged(); } }
 
 
+<<<<<<< Updated upstream
         PPVViewModel pPVVM = new PPVViewModel();
         APVViewModel aPVVM = new APVViewModel();
+=======
+        RPVViewModel rPVVM = new RPVViewModel();
+>>>>>>> Stashed changes
 
-        PopulationsPageView pView = new PopulationsPageView();
-        HouseholdPageView hView = new HouseholdPageView();
+
+
+
+        PopulationsPageView pView = new PopulationsPageView() ;
+        HouseholdPageView hView  = new HouseholdPageView() ;
         TransferPageView tView = new TransferPageView();
-        AbsencePageView aView = new AbsencePageView();
-        ResidencePageView rView = new ResidencePageView();
+        AbsencePageView aView = new AbsencePageView() ;
+        ResidencePageView rView = new ResidencePageView() ;
 
-        Frame main = new Frame();
+        private Frame main = new Frame();
         public Frame Main { get => main; set { main = value; OnPropertyChanged(); } }
 
 
@@ -89,8 +96,16 @@ namespace household_management.ViewModel
                 OnPropertyChanged();
                 switch (SelectedIndex)
                 {
+<<<<<<< Updated upstream
                     case 0: pPVVM.doSearch(pView.dtg, _txtSearch, getrd()); break;
                     case 3: aPVVM.doSearch(aView.dtg, _txtSearch, getrd()); break;
+=======
+                    case 0: PPVViewModel pPVVM = new PPVViewModel(); pPVVM.doSearch(pView.dtg, _txtSearch, getrd()); break;
+                    case 1:
+                    case 2: TPVViewModel tPVVM = new TPVViewModel();  tPVVM.doSearch(tView.dtg, _txtSearch, getrd()); break;
+                    case 3: APVViewModel aPVVM = new APVViewModel();  aPVVM.doSearch(aView.dtg, _txtSearch, getrd()); break;
+                    case 4:  rPVVM.doSearch(rView.dtg, _txtSearch, getrd()); break;
+>>>>>>> Stashed changes
                 }
             } 
         }
@@ -128,40 +143,46 @@ namespace household_management.ViewModel
                 }
             } 
         }
-
+        // reload + view
         private void openResidencePageView()
         {
-            rView = new ResidencePageView();
+            main.Refresh();
+            rView.DataContext = null;
+            RPVViewModel vm = new RPVViewModel();
+            vm.Load();
+            rView.DataContext = vm;
             main.Content = rView;
         }
             private void openTransferPageView()
         {
+            main.Refresh();
             tView = new TransferPageView();
             main.Content = tView;
         }
 
         private void openAbsencePageView()
         {
+            main.Refresh();
             aView = new AbsencePageView();
-            aPVVM = new APVViewModel();
             main.Content = aView;
         }
 
         private void openHouseholdPageView()
         {
+            main.Refresh();
             hView = new HouseholdPageView();
             main.Content = hView;
         }
         private void openPopulationsPage()
         {
+            main.Refresh();
             pView = new PopulationsPageView();
             main.Content = pView;
         }
 
         public SearchViewModel()
         {
-            //set default combox box = Populations
-            SelectedIndex = 0;
+            
             // set mode search  through Name
             rdName = true;    
         }
