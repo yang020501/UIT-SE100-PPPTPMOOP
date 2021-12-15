@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace household_management.ViewModel
 {
@@ -35,11 +38,14 @@ namespace household_management.ViewModel
         private string _Religion;
         public string Religion { get => _Religion; set { _Religion = value; OnPropertyChanged(); } }
         private string _Carrer;
-        public string Carrer { get => _Carrer; set { _Carrer = value; OnPropertyChanged(); } } 
+        public string Carrer { get => _Carrer; set { _Carrer = value; OnPropertyChanged(); } }
+        private string _Photo;
+        public string Photo { get => _Photo; set { _Photo = value; OnPropertyChanged(); } }
         public ICommand AddingCommand { get; set; }
         //public ICommand ResetCommand { get; set; }
         public ICommand HouseholdIDChangeCommand { get; set; }
         public ICommand ClearCommand { get; set; }
+        public ICommand Choosebtn { get; set; }
         private bool _isFemale;
         public bool isFemale { get => _isFemale; set { _isFemale = value; OnPropertyChanged(); } }
         private bool _isMale;
@@ -86,6 +92,20 @@ namespace household_management.ViewModel
                 }
                 
 
+            });
+            // Choos picture btn
+            Choosebtn = new RelayCommand<System.Windows.Controls.Image>((p) => { return true; },(p) =>
+            {
+                System.Windows.Forms.OpenFileDialog open = new System.Windows.Forms.OpenFileDialog();
+
+                open.Filter = "(*.jpg)|*.jpg|(*.*)|*.*";
+
+                if(open.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    Photo = open.FileName; // để lưu hình thẻ 
+                    Uri fileUri = new Uri(open.FileName);
+                    p.Source = new BitmapImage(fileUri);
+                }
             });
 
             AddingCommand = new RelayCommand<object>((p) => 
@@ -166,6 +186,16 @@ namespace household_management.ViewModel
                 {
                     Address = " ";
                 }
+                if(Photo != "")
+                {
+                    string namePhoto = System.IO.Path.GetFileName(Photo);
+                    namePhoto = Id.ToString()+".jpg";
+                    population.Photo = namePhoto;
+                    //check if not have photo
+                    if (!System.IO.File.Exists("../../hinhthe/" + namePhoto))
+                        //copy image into file hinhthe
+                        System.IO.File.Copy(Photo, "../../hinhthe/" + namePhoto);
+                }
                 population.Address = Address;
                 population.Id = Id;              
                 population.Id_Household = HouseholdId;
@@ -174,6 +204,7 @@ namespace household_management.ViewModel
                 Model.DataProvider.Ins.DB.SaveChanges();
                 isMale = false;
                 isFemale = false;
+                MessageBox.Show("Add Successful!", "Notification!", MessageBoxButton.OK, MessageBoxImage.Information);
             });
         }
 

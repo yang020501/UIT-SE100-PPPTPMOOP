@@ -26,10 +26,7 @@ namespace household_management.View
         public Search()
         {
             InitializeComponent();
-            if (selected.SelectedIndex != 0)
-            {
-               
-            }
+           
         }
 
 
@@ -37,24 +34,12 @@ namespace household_management.View
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
+
+            this.DataContext = null;
             Close();
 
         }
 
-        private void selected_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            Search view = new Search();
-            view.ShowDialog();
-            Close();
-            MessageBox.Show("Nug");
-        }
-
-        private void selected_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            Search view = new Search();
-            view.ShowDialog();
-            Close();
-            MessageBox.Show("Nug");
-        }
+   
     }
 }

@@ -34,16 +34,18 @@
                 <ColumnDefinition Width="0.25*"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Border BorderBrush="LightGray" BorderThickness="1">
+            <Border BorderBrush="LightGray" BorderThickness="2">
                 <Grid Grid.Column="0">
-                    <Image Margin="16,0,20.2,223.8" Source="/household_management;component/Resources/account.jpg" Stretch="Fill" Height="142" VerticalAlignment="Bottom" RenderTransformOrigin="0.592,0.512"/>
+                    <Border BorderBrush="#FF4D60C0" BorderThickness="2" Margin="18,165,21.2,224.8">
+                        <Grid>
+                        <Image x:Name="imPic"  Source="/household_management;component/Resources/account.jpg" Stretch="Fill" Height="177" VerticalAlignment="Bottom" RenderTransformOrigin="0.592,0.512"/>
+                        </Grid>
+                    </Border>
                 </Grid>
             </Border>
             <Grid Grid.Column="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="234*"/>
-                    <ColumnDefinition Width="7*"/>
-                </Grid.ColumnDefinitions>
+                <Border BorderBrush="LightGray" BorderThickness="2">
+                <Grid>
                 <TextBox
                     HorizontalAlignment="Left" Height="34" Margin="75,66,0,0"  VerticalAlignment="Top" Width="193" materialDesign:HintAssist.Hint="FamilyName" TextWrapping="Wrap" FontSize="16" Text="{Binding FamilyName, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBox
@@ -97,9 +99,9 @@
                 <Button Content="Clear" HorizontalAlignment="Left" Margin="391,512,0,0" 
                         VerticalAlignment="Top" Width="122" Height="44" Background="#FF4D60C0" 
                         Command="{Binding ClearCommand}" CommandParameter="{Binding ElementName=PopulationWindowX}"/>
-                <Button Command="{Binding AddingCommand}" Content="Choose" Margin="-154,360,0,0" Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="123" VerticalAlignment="Top"  />
-
-
+                <Button CommandParameter="{Binding ElementName=imPic}" Command="{Binding Choosebtn}" Content="Choose" Margin="-144,361,0,0" Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="103" VerticalAlignment="Top"  />
+                </Grid>
+                </Border>
             </Grid>
         </Grid>
     </Grid>

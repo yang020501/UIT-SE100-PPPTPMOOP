@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
 
 namespace household_management.ViewModel
 {
@@ -51,6 +52,9 @@ namespace household_management.ViewModel
         private string _Photo;
         public string Photo { get => _Photo; set { _Photo = value; OnPropertyChanged(); } }
 
+        private System.Drawing.Image _PhotoSource;
+        public System.Drawing.Image PhotoSource { get => _PhotoSource; set { _PhotoSource = value; OnPropertyChanged(); } }
+
         private DataView dvPopulations;
         public DataView DvPopulations { get => dvPopulations; set { dvPopulations = value; OnPropertyChanged(); } }
 
@@ -59,10 +63,11 @@ namespace household_management.ViewModel
 
         public ICommand Updatebtn { get; set; }
         public ICommand Deletebtn { get; set; }
-
+        public ICommand Choosebtn { get; set; }
 
         public PPVViewModel()
         {
+            PhotoSource = null;
             NewTablePopulations();
             //Update
             Updatebtn = new RelayCommand<Page>((p) =>
@@ -89,8 +94,18 @@ namespace household_management.ViewModel
                 else
                     tmp.Sex = FemaleChoice;
                 tmp.PlaceOfBirth = PlaceOfBirth;
-
+                if (Photo != "")
+                {
+                    string namePhoto = System.IO.Path.GetFileName(Photo);
+                    namePhoto = Id.ToString() + ".jpg";
+                    tmp.Photo = namePhoto;
+                    //check if not have photo
+                    if (!System.IO.File.Exists("../../hinhthe/" + namePhoto))
+                        //copy image into file hinhthe
+                        System.IO.File.Copy(Photo, "../../hinhthe/" + namePhoto);
+                }
                 DataProvider.Ins.DB.SaveChanges();
+                //reload 
                 p.DataContext = null;
                 PPVViewModel vm = new PPVViewModel();
                 vm.Load();
@@ -107,9 +122,9 @@ namespace household_management.ViewModel
 
             }, (p) =>
             {
-                try
-                {
-                    Temporary_Residence residence = DataProvider.Ins.DB.Temporary_Residence.Where(x => x.Id_Owner == Id).SingleOrDefault();
+            try
+            {
+                Temporary_Residence residence = DataProvider.Ins.DB.Temporary_Residence.Where(x => x.Id_Owner == Id).SingleOrDefault();
                     if (residence != null)
                         DataProvider.Ins.DB.Temporary_Residence.Remove(residence);
 
@@ -137,8 +152,22 @@ namespace household_management.ViewModel
                     MessageBox.Show(e.Message, "Notification!", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
 
+               
 
+            });
+            //ChoosePicture btn
+            Choosebtn = new RelayCommand<System.Windows.Controls.Image>((p) => { return true; }, (p) =>
+            {
+                System.Windows.Forms.OpenFileDialog open = new System.Windows.Forms.OpenFileDialog();
 
+                open.Filter = "(*.jpg)|*.jpg|(*.*)|*.*";
+
+                if (open.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    Photo = open.FileName; // để lưu hình thẻ 
+                    Uri fileUri = new Uri(open.FileName);
+                    p.Source = new BitmapImage(fileUri);
+                }
             });
         }
         
@@ -166,7 +195,8 @@ namespace household_management.ViewModel
                     Relegion = (string)Selected.Row["Relegion"];
                     Career = (string)Selected.Row["Career"];
                     HAddress = (string)Selected.Row["HAddress"];
-                   
+                    Photo = System.IO.Path.GetFullPath("../../hinhthe/" + (string)Selected.Row["Photo"]);      
+
                 }
             }
         }
