@@ -64,21 +64,19 @@ namespace household_management.ViewModel
         private bool _rdOrdinalNumber;
         public bool rdOrdinalNumber { get => _rdOrdinalNumber; set { _rdOrdinalNumber = value; OnPropertyChanged(); } }
 
-
         PPVViewModel pPVVM = new PPVViewModel();
         APVViewModel aPVVM = new APVViewModel();
-        TPVViewModel tPVVM = new TPVViewModel();
         RPVViewModel rPVVM = new RPVViewModel();
+        TPVViewModel tPVVM = new TPVViewModel();    
 
-        PopulationsPageView pView = new PopulationsPageView();
-        HouseholdPageView hView = new HouseholdPageView();
+        PopulationsPageView pView = new PopulationsPageView() ;
+        HouseholdPageView hView  = new HouseholdPageView() ;
         TransferPageView tView = new TransferPageView();
-        AbsencePageView aView = new AbsencePageView();
-        ResidencePageView rView = new ResidencePageView();
+        AbsencePageView aView = new AbsencePageView() ;
+        ResidencePageView rView = new ResidencePageView() ;
 
-        Frame main = new Frame();
+        private Frame main = new Frame();
         public Frame Main { get => main; set { main = value; OnPropertyChanged(); } }
-
 
         // biding txtSearch changed
         private string _txtSearch;
@@ -96,6 +94,7 @@ namespace household_management.ViewModel
                     case 2: tPVVM.doSearch(tView.dtg, _txtSearch, getrd()); break;
                     case 3: aPVVM.doSearch(aView.dtg, _txtSearch, getrd()); break;
                     case 4: rPVVM.doSearch(rView.dtg, _txtSearch, getrd()); break;
+
                 }
             } 
         }
@@ -133,40 +132,46 @@ namespace household_management.ViewModel
                 }
             } 
         }
-
+        // reload + view
         private void openResidencePageView()
         {
-            rView = new ResidencePageView();
+            main.Refresh();
+            rView.DataContext = null;
+            RPVViewModel vm = new RPVViewModel();
+            vm.Load();
+            rView.DataContext = vm;
             main.Content = rView;
         }
             private void openTransferPageView()
         {
+            main.Refresh();
             tView = new TransferPageView();
             main.Content = tView;
         }
 
         private void openAbsencePageView()
         {
+            main.Refresh();
             aView = new AbsencePageView();
-            aPVVM = new APVViewModel();
             main.Content = aView;
         }
 
         private void openHouseholdPageView()
         {
+            main.Refresh();
             hView = new HouseholdPageView();
             main.Content = hView;
         }
         private void openPopulationsPage()
         {
+            main.Refresh();
             pView = new PopulationsPageView();
             main.Content = pView;
         }
 
         public SearchViewModel()
         {
-            //set default combox box = Populations
-            SelectedIndex = 0;
+            
             // set mode search  through Name
             rdName = true;    
         }

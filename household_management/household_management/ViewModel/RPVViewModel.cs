@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace household_management.ViewModel
 {
@@ -54,7 +55,9 @@ namespace household_management.ViewModel
         private bool _FemaleChoice;
         public bool FemaleChoice { get => _FemaleChoice; set { _FemaleChoice = value; OnPropertyChanged(); } }
 
-        private ObservableCollection<Temporary_Residence> ResidenceList;
+        private  static ObservableCollection<Temporary_Residence> _ResidenceList;
+        public ObservableCollection<Temporary_Residence> ResidenceList { get => _ResidenceList; set { _ResidenceList = value; OnPropertyChanged(); } }
+        public ICommand Deletebtn { get; set; }
 
         private DataRowView _Selected;
         public DataRowView Selected
@@ -79,7 +82,6 @@ namespace household_management.ViewModel
                         MaleChoice = true;
                     else
                         FemaleChoice = true;
-                    DateOfBirth = (string)Selected.Row["DateOfBirth"];
                 }
             }
         }
@@ -87,6 +89,21 @@ namespace household_management.ViewModel
         public RPVViewModel()
         {
             NewTableResidence();
+            Deletebtn = new RelayCommand<object>((p) =>
+            {
+                if (Selected != null)
+                    return true;
+                else
+                    return false;
+
+            }, (p) =>
+            {
+
+                DataProvider.Ins.DB.Temporary_Residence.Remove(DataProvider.Ins.DB.Temporary_Residence.Where(x => x.Id == Id).SingleOrDefault());
+                DataProvider.Ins.DB.SaveChanges();
+                NewTableResidence();
+
+            });
         }
 
         private void NewTableResidence()
@@ -103,28 +120,25 @@ namespace household_management.ViewModel
             dt.Columns.Add("PAddress");
             dt.Columns.Add("CreateDate");
             dt.Columns.Add("ExpireDate");
-            dt.Columns.Add("Photo");
             dt.Columns.Add("Gender");
-            dt.Columns.Add("DateOfBirth");
             dt.Columns.Add("TAddress");
             //fill datatable
             for (int i = 0; i < ResidenceList.Count; i++)
             {
 
                 dt.Rows.Add
-                    (
-                     
-                       CheckData(ResidenceList[i])
+                    (                     
+                       CheckData(ResidenceList[i],i)
                     );
 
             }
             DvResidence = new DataView(dt);
         }
         // Check if any fields is null
-        private string[] CheckData(Temporary_Residence item)
+        private string[] CheckData(Temporary_Residence item,int stt)
         {
-            string[] list = new string[13];
-            list[0] = check(item.Stt);
+            string[] list = new string[11];
+            list[0] = (stt+1).ToString();
             list[1] = check(item.Id);
             list[2] = check(item.Id_Owner);
             list[3] = check(item.NameOfOwner);
@@ -133,12 +147,20 @@ namespace household_management.ViewModel
             list[6] = check(item.PAddress);
             list[7] = check(item.CreateDate);
             list[8] = check(item.ExpireDate);
-            list[9] = check(item.Household_Registration.Population.Photo);
-            list[10] = check(item.Population.Sex);
-            list[11] = check(item.Population.DateOfBirth);
-            list[12] = check(item.TAddress);
+            var link = DataProvider.Ins.DB.Populations.Where(x => x.Id == item.Id_Owner).SingleOrDefault();
+            if (link != null)
+                list[9] = check(link.Sex);
+            else list[9] = "";
+            list[10] = check(item.TAddress);
             return list;
         }
+        public void Load()
+        {
+            NewTableResidence();
+        }
+
+
+
         // Convert null, string or any type to Valid view data
         private string check(object txt)
         {

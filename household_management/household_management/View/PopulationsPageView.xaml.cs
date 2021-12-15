@@ -1,4 +1,5 @@
 ﻿using household_management.Model;
+using household_management.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -27,24 +28,15 @@ namespace household_management.View
             InitializeComponent();
         }
 
-        private void dtg_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            DataRowView selected = (DataRowView)dtg.SelectedValue;
-            txtName.Text = (string)selected.Row["Name"];
-            txtId.Text = (string)selected.Row["Id"];
-            txtHId.Text = (string)selected.Row["Id_Household"];
-            txtAddress.Text = (string)selected.Row["Address"];
-            txtPBirth.Text = (string)selected.Row["PlaceOfBirth"];
-            dpBirth.Text = (string)selected.Row["DateOfBirth"];
-            txtCareer.Text = (string)selected.Row["Career"];
-            txtRelegion.Text = (string)selected.Row["Relegion"];
-            if ((string)selected.Row["Gender"] == "Male")
-                MaleChoise.IsChecked = true;
-            else
-                FemaleChoise.IsChecked = true;
-            MessageBox.Show((string)selected.Row["Name"]);
-            
+            //this.DataContext = null;
+            //PPVViewModel vm = new PPVViewModel();
+            //DataContext = vm;
         }
 
+  
+
+        
     }
 }
