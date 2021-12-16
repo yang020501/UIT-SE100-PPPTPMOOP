@@ -40,7 +40,7 @@
                 </Grid.ColumnDefinitions>
                 <ComboBox x:Name="selected"
                          SelectedIndex="{Binding SelectedIndex}"
-                         
+
                          BorderThickness="0"
                          materialDesign:ColorZoneAssist.Mode="Dark"
                          materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource MaterialDesignPaper}"

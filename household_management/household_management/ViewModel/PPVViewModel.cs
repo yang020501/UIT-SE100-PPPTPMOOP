@@ -307,6 +307,7 @@ namespace household_management.ViewModel
         // Check if any fields is null
         private string[] CheckData(Population item,int stt)
         {
+            var link = DataProvider.Ins.DB.Household_Registration.Where(x => x.IdOfOwner == item.Id).SingleOrDefault();
             string[] list = new string[12];
             list[0] = (stt + 1).ToString();
             list[1] = check(item.Id);
@@ -314,12 +315,14 @@ namespace household_management.ViewModel
             list[3] = check(item.Sex);
             list[4] = check(item.DateOfBirth);
             list[5] = check(item.PlaceOfBirth);
-            list[6] = check(item.Id_Household);
+            if (link != null)
+                list[6] = check(link.Id);
+            else list[6] = "";
             list[7] = check(item.Address);
             list[8] = check(item.Relegion);
             list[9] = check(item.Career);
             list[10] = check(item.Photo);
-            var link = DataProvider.Ins.DB.Household_Registration.Where(x => x.Id == item.Id_Household).SingleOrDefault();
+          
             if (link != null)
                 list[11] = check(link.Address);
             else list[11] = "";
