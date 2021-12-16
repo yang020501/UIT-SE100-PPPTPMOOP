@@ -1,22 +1,29 @@
-﻿using System;
+﻿using household_management.Model;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace household_management.ViewModel
 {
-    class HPVViewModel
+    class HPVViewModel : BaseViewModel
     {
-<<<<<<< Updated upstream
-=======
+
         DataTable dt;
 
         private DataView dvHousehold;
         public DataView DvHousehold { get => dvHousehold; set { dvHousehold = value; OnPropertyChanged(); } }
 
+
         private DataView dvFamily;
         public DataView DvFamily { get => dvFamily; set { dvFamily= value; OnPropertyChanged(); } }
+
 
         private string _Name;
         public string Name { get => _Name; set { _Name = value; OnPropertyChanged(); } }
@@ -41,7 +48,9 @@ namespace household_management.ViewModel
 
         
         private ObservableCollection<Household_Registration> HouseholdList;
+
         private ObservableCollection<Family_Household> FamilyList;
+
 
         public ICommand Updatebtn { get; set; }
         public ICommand Deletebtn { get; set; }
@@ -54,7 +63,7 @@ namespace household_management.ViewModel
             {
                 _Selected = value;
                 OnPropertyChanged();
-                
+
                 if (Selected != null)
                 {
                     if ((string)Selected.Row["Gender"] == "Male")
@@ -73,6 +82,7 @@ namespace household_management.ViewModel
                     Id_Owner = (string)Selected.Row["Id_Owner"];
                     Address = (string)Selected.Row["Address"];
                     HAddress = (string)Selected.Row["HAddress"];
+
                     NewTableFamily();
                     MessageBox.Show(FamilyList.Count.ToString());
 
@@ -133,10 +143,12 @@ namespace household_management.ViewModel
                 {                   
                     try
                     {
+
                         foreach(Family_Household item in FamilyList)
                         {
                             DataProvider.Ins.DB.Family_Household.Remove(item);
                         }
+
                         DataProvider.Ins.DB.Household_Registration.Remove(DataProvider.Ins.DB.Household_Registration.Where(x => x.Id == Id).SingleOrDefault());
 
                         DataProvider.Ins.DB.SaveChanges();
@@ -170,6 +182,7 @@ namespace household_management.ViewModel
             Selected = null;
 
         }
+
         private void NewTableFamily()
         {
             FamilyList = new ObservableCollection<Family_Household>(DataProvider.Ins.DB.Family_Household.Where(x => x.Id_Household == Id));
@@ -199,6 +212,7 @@ namespace household_management.ViewModel
 
             return list;
         }
+
         private void NewTableHousehold()
         {
             HouseholdList = new ObservableCollection<Household_Registration>(DataProvider.Ins.DB.Household_Registration);
@@ -283,6 +297,6 @@ namespace household_management.ViewModel
             OnPropertyChanged();
 
         }
->>>>>>> Stashed changes
+
     }
 }

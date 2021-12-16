@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:household_management.View"
       mc:Ignorable="d" 
+      DataContext="{StaticResource HPV_VM}"
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:b="http://schemas.microsoft.com/xaml/behaviors" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="HouseholdPageView" Background="White" Height="661.6" Width="1325.6" MouseLeftButtonDown="Page_MouseLeftButtonDown">
@@ -23,17 +24,17 @@
             <Border Grid.Column="0" BorderBrush="LightGray" BorderThickness="0,2,2,0">
                 <Grid  >
                     <TextBox 
-                    x:Name="txtName"
+                    x:Name="txtName" IsReadOnly="True"
                     Text="{Binding Name,UpdateSourceTrigger=PropertyChanged}"
                     HorizontalAlignment="Left" Height="34" Margin="153,42,0,0"  VerticalAlignment="Top" Width="369" materialDesign:HintAssist.Hint="Name"  FontSize="16" />
                     <materialDesign:PackIcon Kind="Account" Margin="93,45,0,0" Height="31" Width="32" />
-                    <TextBox x:Name="txtId" Text="{Binding Id,UpdateSourceTrigger=PropertyChanged}"
+                    <TextBox IsReadOnly="True" x:Name="txtId" Text="{Binding Id_Owner,UpdateSourceTrigger=PropertyChanged}"
             HorizontalAlignment="Left" Height="34" Margin="153,88,0,0"  VerticalAlignment="Top" Width="220" materialDesign:HintAssist.Hint="Id" TextWrapping="Wrap" FontSize="16"  materialDesign:HintAssist.HelperText="12 digits numbers" />
                     <materialDesign:PackIcon Kind="CardAccountDetails" Margin="93,94,0,0" Height="31" Width="32" RenderTransformOrigin="0.438,1.342" />
-                    <TextBox x:Name="txtAddress" Text="{Binding Address,UpdateSourceTrigger=PropertyChanged}"
+                    <TextBox IsReadOnly="True" x:Name="txtAddress" Text="{Binding Address,UpdateSourceTrigger=PropertyChanged}"
             HorizontalAlignment="Left" Height="34" Margin="153,154,0,0"  VerticalAlignment="Top" Width="391" materialDesign:HintAssist.Hint="Address" TextWrapping="Wrap" FontSize="16" />
                     <materialDesign:PackIcon Kind="MapMarker" Margin="93,157,0,0" Height="31" Width="32" RenderTransformOrigin="-1.562,-2.452" />
-                    <TextBox IsReadOnly="True" Text="{Binding HAddress,UpdateSourceTrigger=PropertyChanged}"
+                    <TextBox  Text="{Binding HAddress,UpdateSourceTrigger=PropertyChanged}"
             HorizontalAlignment="Left" Height="34" Margin="153,319,0,0"  VerticalAlignment="Top" Width="391" materialDesign:HintAssist.Hint="HouseHold Adress" TextWrapping="Wrap" FontSize="16" />
                     <Label Content="Household Address" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="153,283,0,0" Height="31" Width="232" FontSize="16" Padding="0,4,4,4"/>
                     <materialDesign:PackIcon Kind="HomeMapMarker" Margin="93,322,0,0" Height="31" Width="32" />
@@ -41,8 +42,8 @@
                     <RadioButton x:Name="FemaleChoise" VerticalAlignment="Top" RenderTransformOrigin="0.615,0.157" Margin="579,97,0,0"  Height="28" HorizontalAlignment="Left" GroupName="Gender" Content="Female" Width="66" IsChecked="{Binding FemaleChoice}"/>
                     <RadioButton x:Name="MaleChoise" VerticalAlignment="Top" RenderTransformOrigin="0.615,0.157" Margin="512,98,0,0"  Height="28" HorizontalAlignment="Left" GroupName="Gender"  Content="Male" IsChecked="{Binding MaleChoice}"/>
                     <Label Width="73" VerticalAlignment="Top" Margin="424,97,0,0" Height="26" HorizontalAlignment="Left" FontSize="16" Content="Gender:"/>
-                    <TextBox 
-                         Text="{Binding Id_Household,UpdateSourceTrigger=PropertyChanged}"
+                    <TextBox IsReadOnly="True"
+                         Text="{Binding Id,UpdateSourceTrigger=PropertyChanged}"
                     HorizontalAlignment="Left" Height="34" Margin="234,228,0,0"  VerticalAlignment="Top" Width="236" materialDesign:HintAssist.Hint="HouseholdId" TextWrapping="Wrap" FontSize="16" >
                     </TextBox>
 
@@ -54,17 +55,12 @@
             </Border>
             <Border Grid.Column="1" BorderBrush="LightGray" BorderThickness="0,2,2,0">
                 <Grid>
-<<<<<<< Updated upstream
-                    <Frame
-                        x:Name="Main" Content="{Binding Main,UpdateSourceTrigger=PropertyChanged}"   NavigationUIVisibility="Hidden"
-                    
-                        >
-                    </Frame>
-=======
+
                     <Button Command="{Binding Updatebtn}" CommandParameter="{Binding ElementName=dtg}" Content="Update"  Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="123" VerticalAlignment="Top" Margin="352,99,0,0"  />
                     <Button Command="{Binding Deletebtn}" CommandParameter="{Binding ElementName=dtg}" Content="Remove"  Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="123" VerticalAlignment="Top" Margin="352,204,0,0"   />
 
->>>>>>> Stashed changes
+
+
                 </Grid>
             </Border>
         </Grid>
@@ -80,21 +76,18 @@
                 x:Name="dtg" 
                 IsReadOnly="True"
                 AutoGenerateColumns="False" 
-
-                ItemsSource="{Binding DvPopulations,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"
+                
+                ItemsSource="{Binding DvHousehold ,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"
                 SelectedValue="{Binding Selected}" Margin="0,0,0.2,0.8"  
 
                 >
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Number" Binding="{Binding OrdinalNumber}"/>
-                            <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
-                            <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Id" Binding="{Binding Id_Household}"/>
+                            <DataGridTextColumn Header="Name Household Owner" Binding="{Binding Name_HouseholdOwner}"/>
+                            <DataGridTextColumn Header="Id_Owner" Binding="{Binding Id_Owner}"/>
                             <DataGridTextColumn Header="Gender" Binding="{Binding Gender}"/>
-                            <DataGridTextColumn Header="Id_Household" Binding="{Binding Id_Household}"/>
-                            <DataGridTextColumn Header="Household Address" Binding="{Binding HAddress}"/>
-                            <DataGridTextColumn Header="Address" Binding="{Binding Address}"/>
-                            <DataGridTextColumn Header="Relegion" Binding="{Binding Relegion}"/>
-                            <DataGridTextColumn Header="Career" Binding="{Binding Career}"/>
+                            <DataGridTextColumn Header="Household Address" Binding="{Binding HAddress}"/>                          
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>

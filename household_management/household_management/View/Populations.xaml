@@ -57,7 +57,9 @@
                 <RadioButton Content="Female" HorizontalAlignment="Left" Margin="537,128,0,0" VerticalAlignment="Top"  Height="28" RenderTransformOrigin="0.615,0.157" GroupName="Gender" Name="FemaleChoise" IsChecked="{Binding isFemale, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" CommandParameter="{Binding ElementName=FemaleChoise}"/>
                 <RadioButton Content="Male" HorizontalAlignment="Left" Margin="465,128,0,0" VerticalAlignment="Top"  Height="28" RenderTransformOrigin="0.615,0.157" GroupName="Gender" Name="MaleChoise" IsChecked="{Binding isMale, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" CommandParameter="{Binding ElementName=MaleChoise}"/>
                 <DatePicker
-                    materialDesign:HintAssist.Hint="Date of birth" Text="{Binding DateOfBirth,UpdateSourceTrigger=PropertyChanged}"
+
+                    materialDesign:HintAssist.Hint="Date of birth" Text="{Binding DateOfBirth}" SelectedDate="{Binding DateOfBirth, UpdateSourceTrigger=PropertyChanged}"
+                    
                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="75,112,419,410" Height="44" FontSize="16" />
                 <TextBox
                     HorizontalAlignment="Left" Height="34" Margin="75,246,0,0"  VerticalAlignment="Top" Width="364" materialDesign:HintAssist.Hint="Address" TextWrapping="Wrap" FontSize="16" Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}"/>

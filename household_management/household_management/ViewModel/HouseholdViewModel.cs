@@ -11,8 +11,7 @@ using System.Windows.Input;
 namespace household_management.ViewModel
 {
     class HouseholdViewModel : BaseViewModel
-    {
-        private bool isUnregisted = false;
+    {        
         private string _Name;
         public string Name { get => _Name; set { _Name = value; OnPropertyChanged(); } }
         private string _Id;
@@ -33,10 +32,36 @@ namespace household_management.ViewModel
 
         public static string current_IdHousehold;
         public static string current_Address_Household;
-        public static string current_IdOwner;
+        public static string current_IdOwner;       
         public HouseholdViewModel()
         {
             IdHousehold = GenarateId();
+            List<Model.Household_Registration> list_of_h = Model.DataProvider.Ins.DB.Household_Registration.ToList<Model.Household_Registration>();
+            while (true)
+            {
+                bool isbreakable = true;
+                if(list_of_h.Count() != 0)
+                {
+                    break;
+                }
+                else
+                {
+                    foreach(Model.Household_Registration d in list_of_h)
+                    {
+                        if(d.Id == IdHousehold)
+                        {
+                            IdHousehold = GenarateId();
+                            isbreakable = false;
+                            break;
+                        }
+                    }
+                }
+
+                if (isbreakable)
+                {
+                    break;
+                }
+            }
 
             HouseholdIdChangeCommand = new RelayCommand<TextBox>((p) => { return true; }, (p) =>
             {
@@ -94,12 +119,7 @@ namespace household_management.ViewModel
                 if (!Check_Id(Id))
                 {
                     return false;
-                }
-
-                if (!isUnregisted)
-                {
-                    return false;
-                }
+                }               
 
                 return true;
             },
@@ -218,7 +238,8 @@ namespace household_management.ViewModel
                 FamilyViewModel.list_of_family_member.Clear();
                 IdHousehold = GenarateId();
             });
-        }
+        }       
+
         private void Clear(Window p)
         {                  
 

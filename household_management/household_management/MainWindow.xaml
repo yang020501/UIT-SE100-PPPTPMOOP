@@ -68,7 +68,10 @@
             <TextBlock x:Name="tblockRole" Margin="65,0,0,378" TextWrapping="Wrap" Text="Manager" VerticalAlignment="Bottom" Height="24" Foreground="#DDFAFAFA" Padding="10,2,0,0" FontWeight="Bold" FontSize="14"/>
             <TextBlock x:Name="tblockId" Margin="65,34,0,0" TextWrapping="Wrap" Text="19521409" VerticalAlignment="Top" Height="24" Foreground="#DDFAFAFA" Padding="10,2,0,0" FontSize="10"/>
             <Grid HorizontalAlignment="Left" Height="347" Margin="0,65,0,0" VerticalAlignment="Top" Width="160"/>
-            <Button Content="" HorizontalAlignment="Left" Margin="5,357,0,0" VerticalAlignment="Top" Width="40" Height="41" Foreground="#FF3A404C" IsHitTestVisible="False">
+            <Button Content="" HorizontalAlignment="Left" Margin="5,357,0,0" 
+                    VerticalAlignment="Top" Width="40" Height="41" Foreground="#FF3A404C" 
+                    Command="{Binding LogoutCommand}" 
+                    CommandParameter="{Binding ElementName=MainWindowX}">
                 <Button.BorderBrush>
                     <ImageBrush/>
                 </Button.BorderBrush>

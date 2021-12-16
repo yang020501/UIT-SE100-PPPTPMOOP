@@ -6,6 +6,8 @@
         xmlns:local="clr-namespace:household_management.View"
                 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        DataContext="{StaticResource TransferVM}"
         Title="Transfer" Height="465.274" Width="745.404" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None">
     <Grid>
         <Grid.RowDefinitions>
@@ -29,22 +31,47 @@
                     <Label Content="Độc lập - Tự do - Hạnh phúc" Margin="229,28,229,302" FontSize="16"/>
                     <Label Content="Household Transfer Form" Margin="188,49,192,274" FontWeight="Bold" FontFamily="Trebuchet MS" FontSize="24" Padding="8,4,4,4" Foreground="#DDED1D1D"/>
                     <materialDesign:PackIcon Kind="HomeAccount" Margin="48,108,0,0" Height="31" Width="32" RenderTransformOrigin="0.597,-2.323" />
-                    <TextBox Height="34" Margin="97,105,108,0"  VerticalAlignment="Top" materialDesign:HintAssist.Hint="Full Name Household Owner" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox Height="34" Margin="97,105,108,0"  VerticalAlignment="Top" 
+                             materialDesign:HintAssist.Hint="Full Name Of User" TextWrapping="Wrap" 
+                             FontSize="16" Text="{Binding Name_User, UpdateSourceTrigger=PropertyChanged}"/>
                     <TextBox
-                        HorizontalAlignment="Left" Height="34" Margin="97,149,0,0"  VerticalAlignment="Top" Width="208" materialDesign:HintAssist.Hint="Id" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"  materialDesign:HintAssist.HelperText="12 digits numbers" />
+                        HorizontalAlignment="Left" Height="34" Margin="97,149,0,0"  
+                        VerticalAlignment="Top" Width="208" materialDesign:HintAssist.Hint="Id"
+                        TextWrapping="Wrap" FontSize="16" Text="{Binding Id_User, UpdateSourceTrigger=PropertyChanged}"  
+                        materialDesign:HintAssist.HelperText="12 digits numbers" />
                     <materialDesign:PackIcon Kind="CardAccountDetails" Margin="48,152,0,0" Height="31" Width="32" />
                     <materialDesign:PackIcon Kind="HomeMapMarker" Margin="48,254,0,0" Height="31" Width="32" />
                     <TextBox
-                        HorizontalAlignment="Left" Height="34" Margin="97,251,0,0"  VerticalAlignment="Top" Width="391" materialDesign:HintAssist.Hint="HouseHold Adress" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+                        HorizontalAlignment="Left" Height="34" Margin="97,251,0,0" IsReadOnly="True"
+                        VerticalAlignment="Top" Width="391" materialDesign:HintAssist.Hint="HouseHold Adress" 
+                        TextWrapping="Wrap" FontSize="16" Text="{Binding Old_Address, UpdateSourceTrigger=PropertyChanged}"/>
                     <materialDesign:PackIcon Kind="HomeEdit" Margin="48,303,0,0" Height="31" Width="32" />
                     <TextBox
-                     HorizontalAlignment="Left" Height="34" Margin="215,203,0,0"  VerticalAlignment="Top" Width="236" materialDesign:HintAssist.Hint="Household Id" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+                     HorizontalAlignment="Left" Height="34" Margin="215,203,0,0"  
+                        VerticalAlignment="Top" Width="236" materialDesign:HintAssist.Hint="Household Id" 
+                        TextWrapping="Wrap" FontSize="16" Text="{Binding Id_Household, UpdateSourceTrigger=PropertyChanged}"
+                        Name="HouseholdIdBox">
+
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="TextChanged">
+                                <i:InvokeCommandAction Command="{Binding HouseholdIdChangeCommand}" 
+                                                   CommandParameter="{Binding ElementName=HouseholdIdBox}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBox>
                     <Label Content="Household Id:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="97,207,0,0" Height="30" Width="126" FontSize="16" Padding="0,6.5,0,0"/>
                     <TextBox
-                        HorizontalAlignment="Left" Height="34" Margin="97,300,0,0"  VerticalAlignment="Top" Width="391" materialDesign:HintAssist.Hint="HouseHold New Adress" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+                        HorizontalAlignment="Left" Height="34" Margin="97,300,0,0"  
+                        VerticalAlignment="Top" Width="391" materialDesign:HintAssist.Hint="HouseHold New Adress" 
+                        TextWrapping="Wrap" FontSize="16" Text="{Binding New_Address, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Button Content="Check" HorizontalAlignment="Left" Background="#FF4D60C0" 
+                            Margin="471,203,0,0" VerticalAlignment="Top" Width="100"
+                            Command="{Binding CheckIdHouseholdCommand}" CommandParameter="{Binding ElementName=HouseholdIdBox}"/>
                 </Grid>
             </Border>
-            <Button Content="Add"  Height="34" Background="#FF4D60C0" Margin="325,398,325,0" VerticalAlignment="Top"/>
+            <Button Content="Add"  Height="34" Background="#FF4D60C0" 
+                    Margin="325,398,325,0" VerticalAlignment="Top" Name="AddButton"
+                    Command="{Binding AddCommand}" CommandParameter="{Binding ElementName=AddButton}"/>
         </Grid>
 
     </Grid>

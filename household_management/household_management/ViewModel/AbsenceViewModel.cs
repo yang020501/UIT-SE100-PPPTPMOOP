@@ -9,8 +9,7 @@ using System.Windows.Input;
 
 namespace household_management.ViewModel
 {
-    
-    class ResidenceViewModel : BaseViewModel
+    class AbsenceViewModel : BaseViewModel
     {
         private string _Id;
         public string Id { get => _Id; set { _Id = value; OnPropertyChanged(); } }
@@ -19,7 +18,7 @@ namespace household_management.ViewModel
         private string _Id_User;
         public string Id_User { get => _Id_User; set { _Id_User = value; OnPropertyChanged(); } }
         private string _Id_Household;
-        public string Id_Household { get => _Id_Household; set { _Id_Household = value; OnPropertyChanged(); } }
+        public string Id_Household { get => _Id_Household; set { _Id_Household = value; OnPropertyChanged(); } }       
         private string _Name_Owner;
         public string Name_Owner { get => _Name_Owner; set { _Name_Owner = value; OnPropertyChanged(); } }
         private string _Address;
@@ -28,12 +27,10 @@ namespace household_management.ViewModel
         public DateTime CreateDate { get => _CreateDate; set { _CreateDate = value; OnPropertyChanged(); } }
         private DateTime _ExpireDate;
         public DateTime ExpireDate { get => _ExpireDate; set { _ExpireDate = value; OnPropertyChanged(); } }
-        private string _TAddress;
-        public string TAddress { get => _TAddress; set { _TAddress = value; OnPropertyChanged(); } }
-        private bool checkIdHousehold = false;
         public ICommand AddCommand { get; set; }
         public ICommand CheckIdHouseholdCommand { get; set; }
-        public ResidenceViewModel()
+        private bool checkIdHousehold = false;
+        public AbsenceViewModel()
         {
             CreateDate = DateTime.Now;
             ExpireDate = DateTime.Now;
@@ -43,7 +40,7 @@ namespace household_management.ViewModel
                 return true;
             }
             , (p) =>
-            {
+            {               
                 if (p.Text != null)
                 {
                     List<Model.Household_Registration> list_of_household = Model.DataProvider.Ins.DB.Household_Registration.ToList<Model.Household_Registration>();
@@ -77,25 +74,25 @@ namespace household_management.ViewModel
                 }
             });
 
-            AddCommand = new RelayCommand<Button>((p) =>
+            AddCommand = new RelayCommand<Button>((p) => 
             {
                 if (!checkIdHousehold)
                 {
                     return false;
                 }
 
-                return true;
+                return true; 
             }
             , (p) =>
             {
-                if (Name_User == null || Id_User == null || TAddress == null)
+                if (Name_User == null || Id_User == null)
                 {
                     MessageBox.Show("There is an unfilled blank");
                 }
-                else if (!CheckIs_Population_Absence(Id_User))
+                else if (!CheckIsDoingPopulation(Id_User))
                 {
-                    MessageBox.Show("The person dont have a population or abscene certificate, please do it before doing temporary residence");
-                }               
+                    MessageBox.Show("The person dont have a population, please do it before doing absence certificate");
+                }
                 else if (ExpireDate <= CreateDate)
                 {
                     MessageBox.Show("The expire date is smaller than the create date");
@@ -103,30 +100,27 @@ namespace household_management.ViewModel
                 }
                 else
                 {
-                    Model.Temporary_Residence license = new Model.Temporary_Residence();
+                    Model.Temporary_Absence license = new Model.Temporary_Absence();
                     license.Id = GenarateId();
                     license.Id_Owner = Id_User;
                     license.NameOfOwner = Name_User;
                     license.Id_Household = Id_Household;
                     license.HouseOwnerName = Name_Owner;
-                    license.PAddress = Address;
-                    license.TAddress = TAddress;
                     license.CreateDate = DateTime.Now;
                     license.ExpireDate = ExpireDate;
 
-                    Model.DataProvider.Ins.DB.Temporary_Residence.Add(license);
+                    Model.DataProvider.Ins.DB.Temporary_Absence.Add(license);
                     Model.DataProvider.Ins.DB.SaveChanges();
 
                     var person = Model.DataProvider.Ins.DB.Populations.Where(x => x.Id == Id_User).FirstOrDefault();
-                    person.isTResidence = true;
+                    person.isAbsence = true;
                     Model.DataProvider.Ins.DB.SaveChanges();
                     checkIdHousehold = false;
 
                     MessageBox.Show("Success");
                 }
-
+                
             });
-
         }
 
         private string GenarateId()
@@ -148,23 +142,21 @@ namespace household_management.ViewModel
             return code;
         }
 
-        private bool CheckIs_Population_Absence(string Id)
+        private bool CheckIsDoingPopulation(string Id)
         {
             List<Model.Population> list = Model.DataProvider.Ins.DB.Populations.ToList<Model.Population>();
-            if (list.Count() != 0)
+            if(list.Count() != 0)
             {
-                foreach (Model.Population tmp in list)
+                foreach(Model.Population tmp in list)
                 {
-                    if (tmp.Id == Id && tmp.isAbsence == true)
+                    if(tmp.Id == Id)
                     {
                         return true;
                     }
-                }
+                }              
             }
 
             return false;
         }
-
-        
     }
 }

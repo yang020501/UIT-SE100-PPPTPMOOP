@@ -9,30 +9,34 @@ using System.Windows.Input;
 namespace household_management.ViewModel
 {
     class MainViewModel : BaseViewModel
-    {
+    {       
         public ICommand LoadWindowCommand{ get; set; }
         public ICommand LoadPopuationWindowCommand { get; set; }
+        public ICommand LogoutCommand { get; set; }
         public bool isLoad = false;
         public MainViewModel()
         {
             LoadWindowCommand = new RelayCommand<Window>((p) => { return true; }, (p) => {
                 isLoad = true;
-                p.Hide();
-                View.Login wd = new View.Login();
-                wd.ShowDialog();
-
-                if (wd.DataContext == null)
-                    return;
-
-                var loginVM = wd.DataContext as LoginViewModel;
-                if (loginVM.isLogin)
+                if (!LoginViewModel.isReLogin)
                 {
-                    p.Show();
+                    p.Hide();
+                    View.Login wd = new View.Login();
+                    wd.ShowDialog();
+
+                    if (wd.DataContext == null)
+                        return;
+
+                    if (LoginViewModel.isLogin)
+                    {
+                        p.Show();
+                    }
+                    else
+                    {
+                        p.Close();
+                    }
                 }
-                else
-                {
-                    p.Close();
-                }
+
             });
 
             LoadPopuationWindowCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
@@ -40,6 +44,15 @@ namespace household_management.ViewModel
                 View.Populations wd = new View.Populations();
                 wd.DataContext = new PopulationViewModel();
                 wd.ShowDialog();              
+            });
+
+            LogoutCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {               
+                View.Login wd = new View.Login();
+                wd.Show();                             
+                LoginViewModel.isLogin = false;
+                LoginViewModel.isReLogin = true;
+                p.Close();
             });
         }
     }
