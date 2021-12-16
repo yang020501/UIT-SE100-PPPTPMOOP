@@ -55,8 +55,9 @@
                     </TextBox>
 
                     <Label Content="Household Id:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="511,85,0,0" Height="21" Width="126" FontSize="16" Padding="0"/>
-                    <DatePicker x:Name="dpBirth"
+                    <DatePicker x:Name="dpBirth" SelectedDate ="{Binding DB,UpdateSourceTrigger=PropertyChanged}"
                     Text="{Binding DateOfBirth,UpdateSourceTrigger=PropertyChanged}"
+                         
                     materialDesign:HintAssist.Hint="Date of birth"
                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="869,13,27.8,328.6" Height="44" FontSize="16" />
                     <materialDesign:PackIcon Kind="Present" Margin="812,26,0,0" Height="31" Width="32" />

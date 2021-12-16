@@ -80,12 +80,12 @@ namespace household_management.ViewModel
                     Id_Owner = (string)Selected.Row["Id_Owner"];
                     Address = (string)Selected.Row["Address"];
                     HAddress = (string)Selected.Row["HAddress"];
-
-                   
-                    
+                    FamilyList = new ObservableCollection<Family_Household>(DataProvider.Ins.DB.Family_Household.Where(x => x.Id_Household == Id));
 
 
-                }
+
+
+    }
             }
         }
         public HPVViewModel()
@@ -139,12 +139,14 @@ namespace household_management.ViewModel
 
                 if (MessageBox.Show("Do you want to REMOVE?"+"\nAll relevant FamilyMember in Household will be REMOVE", "Warning!", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {                   
-                    try
-                    {
-
-                        foreach(Family_Household item in FamilyList)
+                    //try
+                    //{
+                        if (FamilyList != null)
                         {
-                            DataProvider.Ins.DB.Family_Household.Remove(item);
+                            foreach (Family_Household item in FamilyList)
+                            {
+                                DataProvider.Ins.DB.Family_Household.Remove(item);
+                            }
                         }
 
                         DataProvider.Ins.DB.Household_Registration.Remove(DataProvider.Ins.DB.Household_Registration.Where(x => x.Id == Id).SingleOrDefault());
@@ -156,11 +158,11 @@ namespace household_management.ViewModel
                         NullProperty();
                         NewTableHousehold();
                         p.ItemsSource = DvHousehold; ;
-                    }                                             
-                    catch (Exception e)
-                    {
-                        MessageBox.Show(e.Message, "Notification!", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    }
+                    //}                                             
+                    //catch (Exception e)
+                    //{
+                        //MessageBox.Show(e.Message, "Notification!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    //}
                    
                 }
             });

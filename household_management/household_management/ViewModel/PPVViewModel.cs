@@ -27,6 +27,9 @@ namespace household_management.ViewModel
         private string _DateOfBirth;
         public string DateOfBirth { get => _DateOfBirth; set { _DateOfBirth = value; OnPropertyChanged(); } }
 
+        private DateTime _DB;
+        public DateTime DB { get => _DB; set { _DB = value; OnPropertyChanged(); } }
+
         private string _PlaceOfBirth;
         public string PlaceOfBirth { get => _PlaceOfBirth; set { _PlaceOfBirth = value; OnPropertyChanged(); } }
 
@@ -69,7 +72,7 @@ namespace household_management.ViewModel
 
         public PPVViewModel()
         {
-
+            DB = DateTime.Now;
             NewTablePopulations();
             //Update
             Updatebtn = new RelayCommand<DataGrid>((p) =>
@@ -92,6 +95,8 @@ namespace household_management.ViewModel
                 tmp.Career = Career;
                 tmp.Relegion = Relegion;
                 tmp.Id_Household = Id_Household;
+
+                tmp.DateOfBirth = new DateTime(DB.Year,DB.Month,DB.Day);
                 if (MaleChoice == true)
                     tmp.Sex = true;
                 else
