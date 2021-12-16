@@ -12,7 +12,8 @@ namespace household_management.ViewModel
 {
     class LoginViewModel : BaseViewModel
     {
-        public bool isLogin = false;
+        public static bool isReLogin = false;
+        public static bool isLogin = false;
         private string _UserName;
         public string UserName { get => _UserName; set { _UserName = value; OnPropertyChanged(); } }
         private string _Password;
@@ -39,15 +40,20 @@ namespace household_management.ViewModel
             string passEncode = Base64Encode(Password);
             var accCount = DataProvider.Ins.DB.Users.Where(x => x.Username == UserName && x.Password == passEncode).Count();
 
-            if (accCount > 0)
+            if (accCount > 0 && !isReLogin)
             {
                 isLogin = true;
+                p.Close();
+            }
+            else if (accCount > 0 && isReLogin)
+            {
+                MainWindow wd = new MainWindow();
+                wd.Show();
                 p.Close();
             }
             else
             {
                 isLogin = false;
-
                 MessageBox.Show("Wrong password or user name","Warning!",MessageBoxButton.OK,MessageBoxImage.Error);
 
             }

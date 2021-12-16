@@ -35,7 +35,6 @@ namespace household_management.ViewModel
         public static string current_IdOwner;       
         public HouseholdViewModel()
         {
-
             IdHousehold = GenarateId();
             List<Model.Household_Registration> list_of_h = Model.DataProvider.Ins.DB.Household_Registration.ToList<Model.Household_Registration>();
             while (true)
