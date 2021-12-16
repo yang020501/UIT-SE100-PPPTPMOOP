@@ -38,7 +38,7 @@
                 <Grid Grid.Column="0">
                     <Border BorderBrush="#FF4D60C0" BorderThickness="2" Margin="18,165,21.2,224.8">
                         <Grid>
-                        <Image x:Name="imPic"  Source="/household_management;component/Resources/account.jpg" Stretch="Fill" Height="177" VerticalAlignment="Bottom" RenderTransformOrigin="0.592,0.512"/>
+                        <Image x:Name="imPic"  Source="{Binding Photo}" Stretch="Fill" Height="177" VerticalAlignment="Bottom" RenderTransformOrigin="0.592,0.512"/>
                         </Grid>
                     </Border>
                 </Grid>

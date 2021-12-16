@@ -65,8 +65,7 @@ namespace household_management
         {
             Search wd = new Search();
             wd.DataContext = null;
-            SearchViewModel vm = new SearchViewModel();
-            wd.DataContext = vm;
+            wd.DataContext = new SearchViewModel();
             wd.ShowDialog();
      
         }

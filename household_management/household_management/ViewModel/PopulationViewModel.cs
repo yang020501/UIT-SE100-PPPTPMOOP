@@ -52,7 +52,8 @@ namespace household_management.ViewModel
         public bool isMale { get => _isMale; set { _isMale = value; OnPropertyChanged(); } }
         
         public PopulationViewModel()
-        {   
+        {
+            Photo = "/household_management;component/Resources/account.jpg";
             List<Model.Household_Registration> list_of_household = Model.DataProvider.Ins.DB.Household_Registration.ToList<Model.Household_Registration>();         
 
             ClearCommand = new RelayCommand<Window>((p) => { return true; }, (p) => {
@@ -186,7 +187,7 @@ namespace household_management.ViewModel
                 {
                     Address = " ";
                 }
-                if(Photo != "")
+                if(Photo != "" && Photo != null)
                 {
                     string namePhoto = System.IO.Path.GetFileName(Photo);
                     namePhoto = Id.ToString()+".jpg";
@@ -195,6 +196,7 @@ namespace household_management.ViewModel
                     if (!System.IO.File.Exists("../../hinhthe/" + namePhoto))
                         //copy image into file hinhthe
                         System.IO.File.Copy(Photo, "../../hinhthe/" + namePhoto);
+                    
                 }
                 population.Address = Address;
                 population.Id = Id;              

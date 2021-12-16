@@ -83,7 +83,10 @@ namespace household_management.ViewModel
                 }
             }
         }
-        
+        public void Load()
+        {
+            NewTableAbsence();
+        }
 
         public APVViewModel()
         {
