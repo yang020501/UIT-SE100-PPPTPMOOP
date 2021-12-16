@@ -187,7 +187,7 @@ namespace household_management.ViewModel
 
         public SearchViewModel()
         {
-            
+            SelectedIndex = 0;
             // set mode search  through Name
             rdName = true;    
         }
