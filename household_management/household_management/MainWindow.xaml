@@ -77,8 +77,8 @@
                 </Button.Background>
             </Button>
             <StackPanel HorizontalAlignment="Left" Height="80" Margin="0,70,0,0" VerticalAlignment="Top" Width="160">
-                <Button Content="Report" Height="40" Background="{x:Null}" BorderBrush="#FF3A404C" Foreground="#FFF3F2F6" BorderThickness="0" Padding="0,4,16,4"/>
-                <Button Content="Manage" Height="40" Background="{x:Null}" BorderBrush="#FF3A404C" Foreground="#FFF3F2F6" BorderThickness="0" Padding="0,4,16,4"/>
+                <Button Visibility="Hidden" Content="Report" Height="40" Background="{x:Null}" BorderBrush="#FF3A404C" Foreground="#FFF3F2F6" BorderThickness="0" Padding="0,4,16,4"/>
+                <Button Visibility="Hidden" Content="Manage" Height="40" Background="{x:Null}" BorderBrush="#FF3A404C" Foreground="#FFF3F2F6" BorderThickness="0" Padding="0,4,16,4"/>
             </StackPanel>
             <Label Content="Log out" HorizontalAlignment="Left" Margin="5,390,0,0" VerticalAlignment="Top" Width="45" FontSize="10" Foreground="#FFF7F4F4"/>
         </Grid>
