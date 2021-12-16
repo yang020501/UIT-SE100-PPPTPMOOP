@@ -99,8 +99,9 @@ namespace household_management.ViewModel
                     tmp.Sex = true;
                 else
                     tmp.Sex = false;
-                tmp.PlaceOfBirth = PlaceOfBirth;
-            if ( Photo != "" && Photo != null)
+                tmp.PlaceOfBirth = PlaceOfBirth;             
+
+                if ( Photo != "" && Photo != null)
                 {
                     
                     string namePhoto = System.IO.Path.GetFileName(Photo);
@@ -111,7 +112,15 @@ namespace household_management.ViewModel
                         System.IO.File.Copy(Photo, "../../hinhthe/" + namePhoto, true);
                     tmp.Photo = namePhoto;
                 }
-                DataProvider.Ins.DB.SaveChanges();
+                try
+                {
+                    DataProvider.Ins.DB.SaveChanges();
+                }
+                catch
+                {
+                    MessageBox.Show("Id_Household is invalid or null!\nYour other changes will be SAVED", "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+
                 //reload 
                 Selected = null;
                 Photo = null;
@@ -131,39 +140,53 @@ namespace household_management.ViewModel
 
             }, (p) =>
             {
-                 try
+
+                if(MessageBox.Show("Do you want to REMOVE?\nIt will REMOVE relavant Page like Absence,Transfer,Residence","Warning!",MessageBoxButton.YesNo,MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
-                Temporary_Residence residence = DataProvider.Ins.DB.Temporary_Residence.Where(x => x.Id_Owner == Id).SingleOrDefault();
-                if (residence != null)
-                    DataProvider.Ins.DB.Temporary_Residence.Remove(residence);
+                    Household_Registration household = DataProvider.Ins.DB.Household_Registration.Where(x => x.IdOfOwner == Id).SingleOrDefault();
+                    if (household == null)
+                    {
+                        try
+                        {
+                            Temporary_Residence residence = DataProvider.Ins.DB.Temporary_Residence.Where(x => x.Id_Owner == Id).SingleOrDefault();
+                            if (residence != null)
+                            DataProvider.Ins.DB.Temporary_Residence.Remove(residence);
 
-                Temporary_Absence absence = DataProvider.Ins.DB.Temporary_Absence.Where(x => x.Id_Owner == Id).SingleOrDefault();
-                if (absence != null)
-                    DataProvider.Ins.DB.Temporary_Absence.Remove(absence);
+                            Temporary_Absence absence = DataProvider.Ins.DB.Temporary_Absence.Where(x => x.Id_Owner == Id).SingleOrDefault();
+                             if (absence != null)
+                            DataProvider.Ins.DB.Temporary_Absence.Remove(absence);
 
-                Transfer_Household transfer = DataProvider.Ins.DB.Transfer_Household.Where(x => x.Id_Owner == Id).SingleOrDefault();
-                if (transfer != null)
-                    DataProvider.Ins.DB.Transfer_Household.Remove(transfer);
+                            Transfer_Household transfer = DataProvider.Ins.DB.Transfer_Household.Where(x => x.Id_Owner == Id).SingleOrDefault();
+                            if (transfer != null)
+                            DataProvider.Ins.DB.Transfer_Household.Remove(transfer);
 
-                DataProvider.Ins.DB.Populations.Remove(DataProvider.Ins.DB.Populations.Where(x => x.Id == Id).SingleOrDefault());
+                            DataProvider.Ins.DB.Populations.Remove(DataProvider.Ins.DB.Populations.Where(x => x.Id == Id).SingleOrDefault());
 
-                DataProvider.Ins.DB.SaveChanges();
+                            DataProvider.Ins.DB.SaveChanges();
 
 
-                    // reload view table
-                            Photo = null;
-                            Selected = null;
-                            SPhoto = null;
-                            NullProperty();
-                            NewTablePopulations();
-                            p.ItemsSource = dvPopulations;
+                        // reload view table
+                        Photo = null;
+                        Selected = null;
+                        SPhoto = null;
+                        NullProperty();
+                        NewTablePopulations();
+                        p.ItemsSource = dvPopulations;
 
-                }
-                catch (Exception e)
-                {
+                        }
+                        catch (Exception e)
+                        {
 
-                    MessageBox.Show(e.Message, "Notification!", MessageBoxButton.OK, MessageBoxImage.Warning);
-                }
+                            MessageBox.Show(e.Message, "Notification!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("This person is a Owner of Household: " + household.Id + "\nPlease REMOVE in Household first!", "Notification!", MessageBoxButton.OK, MessageBoxImage.Stop);
+                    }
+                }                
+               
+
 
             })
             {
