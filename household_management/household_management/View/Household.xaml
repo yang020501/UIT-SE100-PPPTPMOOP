@@ -90,16 +90,16 @@
                     materialDesign:HintAssist.Hint="IdFMember" TextWrapping="Wrap" FontSize="16" 
                     Text="{Binding IdMembers, UpdateSourceTrigger=PropertyChanged}"  
                     materialDesign:HintAssist.HelperText="12 digits numbers" IsReadOnly="True"/>
-                <Button Content="Add Member" HorizontalAlignment="Left" Margin="384,318,0,0" 
-                        VerticalAlignment="Top" Width="118" Background="#FF4D60C0"
-                        Command="{Binding btnFamily}"/>
+                <Button Content="Add Member" HorizontalAlignment="Left" Margin="377,345,0,0" 
+                        VerticalAlignment="Top" Width="134" Background="#FF4D60C0"
+                        Command="{Binding btnFamily}" Height="37"/>
             </Grid>
             <Grid Grid.Row="2">
-                <Button   Content="Add"  Height="34" Background="#FF4D60C0" Margin="178,5,291,0" VerticalAlignment="Top" Command="{Binding btnAdd}"/>
-                <Button   Content="Clear"  Height="34" Background="#FF4D60C0" Margin="438,5,31,0" VerticalAlignment="Top" Command="{Binding btnClear}" CommandParameter="{Binding ElementName=HouseholdWindowX}"/>
-                <Button   Content="Reload" HorizontalAlignment="Left" Margin="312,5,0,0" 
-                          VerticalAlignment="Top" Width="89" Height="34" Background="#FF4D60C0"
-                          Command="{Binding ReloadCommand}" CommandParameter="{Binding ElementName=HouseholdWindowX}"/>
+                <Button   Content="Add"  Width="95" Height="34" Background="#FF4D60C0" Margin="85,5,384,0" VerticalAlignment="Top" Command="{Binding btnAdd}" RenderTransformOrigin="0.263,0.471"/>
+                <Button   Content="Clear"  Width="95" Height="34" Background="#FF4D60C0" Margin="385,5,84,0" VerticalAlignment="Top" Command="{Binding btnClear}" CommandParameter="{Binding ElementName=HouseholdWindowX}"/>
+                <Button   Content="Reload" HorizontalAlignment="Left" Margin="235,5,0,0" 
+                          VerticalAlignment="Top" Width="95" Height="34" Background="#FF4D60C0"
+                          Command="{Binding ReloadCommand}" CommandParameter="{Binding ElementName=HouseholdWindowX}" RenderTransformOrigin="0.218,0.618"/>
 
             </Grid>
 

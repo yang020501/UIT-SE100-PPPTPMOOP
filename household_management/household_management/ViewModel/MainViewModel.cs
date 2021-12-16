@@ -38,7 +38,8 @@ namespace household_management.ViewModel
             LoadPopuationWindowCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 View.Populations wd = new View.Populations();
-                wd.Show();              
+                wd.DataContext = new PopulationViewModel();
+                wd.ShowDialog();              
             });
         }
     }

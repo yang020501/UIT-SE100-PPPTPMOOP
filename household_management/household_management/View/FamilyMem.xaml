@@ -89,7 +89,7 @@
                 <materialDesign:PackIcon Kind="HospitalMarker" Margin="477,249,0,0" Height="31" Width="32" />
                 <Button Content="Done" HorizontalAlignment="Left" Margin="465,529,0,0" 
                         VerticalAlignment="Top" Width="128" Height="44" Background="#FF4D60C0" 
-                        Command="{Binding DoneCommand}" CommandParameter="{Binding ElementName=FamilyWindowX}"/>
+                        Command="{Binding DoneCommand}" CommandParameter="{Binding ElementName=FamilyWindowX}" />
                 <Button Content="Clear" HorizontalAlignment="Left" Margin="293,529,0,0" 
                         VerticalAlignment="Top" Width="122" Height="44" Background="#FF4D60C0" 
                         Command="{Binding ClearCommand}" CommandParameter="{Binding ElementName=FamilyWindowX}"/>

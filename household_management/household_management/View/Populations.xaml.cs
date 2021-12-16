@@ -27,6 +27,7 @@ namespace household_management.View
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
+            DataContext = null;
             this.Close();
         }
     }

@@ -132,6 +132,13 @@ namespace household_management.ViewModel
                 }
             } 
         }
+        private void nullview()
+        {
+          
+            
+           
+           
+        }
         // reload + view
         private void openResidencePageView()
         {
@@ -145,6 +152,9 @@ namespace household_management.ViewModel
             private void openTransferPageView()
         {
             main.Refresh();
+            tView.DataContext = null;
+            TPVViewModel vm = new TPVViewModel();
+            vm.Load();
             tView = new TransferPageView();
             main.Content = tView;
         }
@@ -152,6 +162,9 @@ namespace household_management.ViewModel
         private void openAbsencePageView()
         {
             main.Refresh();
+            aView.DataContext = null;
+            APVViewModel vm = new APVViewModel();
+            vm.Load();
             aView = new AbsencePageView();
             main.Content = aView;
         }
@@ -165,7 +178,10 @@ namespace household_management.ViewModel
         private void openPopulationsPage()
         {
             main.Refresh();
-            pView = new PopulationsPageView();
+            pView.DataContext = null;
+            PPVViewModel vm = new PPVViewModel();
+            vm.Load();
+            pView.DataContext = vm;
             main.Content = pView;
         }
 

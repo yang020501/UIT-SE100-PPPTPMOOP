@@ -30,9 +30,8 @@ namespace household_management.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //this.DataContext = null;
-            //PPVViewModel vm = new PPVViewModel();
-            //DataContext = vm;
+            this.DataContext = null;
+           
         }
 
   

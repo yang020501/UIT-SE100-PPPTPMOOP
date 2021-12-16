@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace household_management.ViewModel
 {
@@ -48,8 +50,15 @@ namespace household_management.ViewModel
         private bool _FemaleChoice;
         public bool FemaleChoice { get => _FemaleChoice; set { _FemaleChoice = value; OnPropertyChanged(); } }
 
+        private ImageSource _SPhoto;
+        public ImageSource SPhoto { get => _SPhoto; set { _SPhoto = value; OnPropertyChanged(); } }
+
         private string _Photo;
         public string Photo { get => _Photo; set { _Photo = value; OnPropertyChanged(); } }
+
+
+        private System.Drawing.Image _PhotoSource;
+        public System.Drawing.Image PhotoSource { get => _PhotoSource; set { _PhotoSource = value; OnPropertyChanged(); } }
 
         private DataView dvPopulations;
         public DataView DvPopulations { get => dvPopulations; set { dvPopulations = value; OnPropertyChanged(); } }
@@ -59,13 +68,14 @@ namespace household_management.ViewModel
 
         public ICommand Updatebtn { get; set; }
         public ICommand Deletebtn { get; set; }
+        public ICommand Choosebtn { get; set; }
 
-       
         public PPVViewModel()
         {
+            PhotoSource = null;
             NewTablePopulations();
             //Update
-            Updatebtn = new RelayCommand<Page>((p) =>
+            Updatebtn = new RelayCommand<DataGrid>((p) =>
             {
                 if (string.IsNullOrEmpty(Id))
                 {
@@ -84,19 +94,13 @@ namespace household_management.ViewModel
                 tmp.Address = Address;
                 tmp.Career = Career;
                 tmp.Relegion = Relegion;
+                tmp.Id_Household = Id_Household;
                 if (MaleChoice == true)
-                    tmp.Sex = MaleChoice;
+                    tmp.Sex = true;
                 else
-                    tmp.Sex = FemaleChoice;
-                tmp.PlaceOfBirth = PlaceOfBirth;
-<<<<<<< Updated upstream
+                    tmp.Sex = false;
+                tmp.PlaceOfBirth = PlaceOfBirth;             
 
-                DataProvider.Ins.DB.SaveChanges();
-                p.DataContext = null;
-                PPVViewModel vm = new PPVViewModel();
-                vm.Load();
-                p.DataContext = vm;
-=======
                 if ( Photo != "" && Photo != null)
                 {
                     
@@ -116,16 +120,18 @@ namespace household_management.ViewModel
                 {
                     MessageBox.Show("Id_Household is invalid or null!\nYour other changes will be SAVED", "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 }
+
                 //reload 
                 Selected = null;
                 Photo = null;
                 SPhoto = null;
                 NullProperty();
->>>>>>> Stashed changes
                 NewTablePopulations();
+                p.ItemsSource = dvPopulations;
+                MessageBox.Show("Update Successful!", "Notifications!", MessageBoxButton.OKCancel, MessageBoxImage.Information);
             });
             //Delete
-            Deletebtn = new RelayCommand<Page>((p) =>
+            Deletebtn = new RelayCommand<DataGrid>((p) =>
             {
                 if (Selected != null)
                     return true;
@@ -134,34 +140,7 @@ namespace household_management.ViewModel
 
             }, (p) =>
             {
-<<<<<<< Updated upstream
-                var residence = DataProvider.Ins.DB.Temporary_Residence.Where(x => x.Id_Owner == Id).SingleOrDefault();
-                if (residence != null)
-                {
-                    DataProvider.Ins.DB.Temporary_Residence.Remove(residence);
-        
-                }
-                var absence = DataProvider.Ins.DB.Temporary_Absence.Where(x => x.Id_Owner == Id).SingleOrDefault();
-                if (absence != null)
-                    DataProvider.Ins.DB.Temporary_Absence.Remove(absence);
 
-                DataProvider.Ins.DB.Populations.Remove(DataProvider.Ins.DB.Populations.Where(x => x.Id == Id).SingleOrDefault());
-                
-                //DataProvider.Ins.DB.Transfer_Household.Remove(DataProvider.Ins.DB.Transfer_Household.Where(x => x.Id_Owner == Id).SingleOrDefault());
-                DataProvider.Ins.DB.SaveChanges();
-                p.DataContext = null;
-                PPVViewModel vm = new PPVViewModel();
-                vm.Load();
-                p.DataContext = vm;
-                NewTablePopulations();
-                   
-                //}
-                //catch (Exception e)
-                //{
-                //    MessageBox.Show("Người này là chủ hộ hãy xóa trong hộ khẩu trước");
-                //}             
-                               
-=======
                 if(MessageBox.Show("Do you want to REMOVE?\nIt will REMOVE relavant Page like Absence,Transfer,Residence","Warning!",MessageBoxButton.YesNo,MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
                     Household_Registration household = DataProvider.Ins.DB.Household_Registration.Where(x => x.IdOfOwner == Id).SingleOrDefault();
@@ -208,6 +187,7 @@ namespace household_management.ViewModel
                 }                
                
 
+
             })
             {
 
@@ -227,9 +207,9 @@ namespace household_management.ViewModel
                     //Uri fileUri = new Uri(open.FileName);
                     //p.Source = new BitmapImage(fileUri);
                 }
->>>>>>> Stashed changes
             });
         }
+        
 
         private DataRowView _Selected;
         public DataRowView Selected
@@ -242,11 +222,17 @@ namespace household_management.ViewModel
                 if (Selected != null)
                 {
                     Name = (string)Selected.Row["Name"];
-                    Id = (string)Selected.Row["Id"];                    
+                    Id = (string)Selected.Row["Id"];
                     if ((string)Selected.Row["Gender"] == "Male")
+                    {
                         MaleChoice = true;
+                        FemaleChoice = false;
+                    }
                     else
+                    {
                         FemaleChoice = true;
+                        MaleChoice = false;
+                    }
                     DateOfBirth = (string)Selected.Row["DateOfBirth"];
                     PlaceOfBirth = (string)Selected.Row["PlaceOfBirth"];
                     Id_Household = (string)Selected.Row["Id_Household"];
@@ -254,15 +240,44 @@ namespace household_management.ViewModel
                     Relegion = (string)Selected.Row["Relegion"];
                     Career = (string)Selected.Row["Career"];
                     HAddress = (string)Selected.Row["HAddress"];
+                    if ((string)Selected.Row["Photo"] != null && (string)Selected.Row["Photo"] != "")
+
+                    {
+                        Photo = (string)Selected.Row["Photo"];
+                        SPhoto = BitmapFromUri(new Uri(System.IO.Path.GetFullPath("../../hinhthe/" + Photo)))   ; // get picture
+                    }
+                    else
+                    {
+                        Photo = "";
+                        SPhoto = null;
+                    }
                    
+
                 }
             }
         }
+        private void NullProperty()
+        {
+            Photo = null;
+            FemaleChoice = false;
+            MaleChoice = false;
+            Name = null;
+            DateOfBirth = null;
+            Id = null;
+            Relegion = null;
+            Career = null;
+            Id_Household = null;
+            Address = null;
+            HAddress = null;
+          
+            
+        }
         public void Load()
         {
+            
             NewTablePopulations();
         }
-        public void NewTablePopulations()
+        private void NewTablePopulations()
         {
             PopulationsList = new ObservableCollection<Population>(DataProvider.Ins.DB.Populations);
             dt = new DataTable();
@@ -340,6 +355,17 @@ namespace household_management.ViewModel
             DvPopulations.RowFilter = string.Format(form, find);
             dtg.ItemsSource = DvPopulations;
 
+        }
+        private  ImageSource BitmapFromUri(Uri source)
+        {
+            var bitmap = new BitmapImage();
+            bitmap.BeginInit();
+            bitmap.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+            bitmap.UriSource = source;
+            bitmap.CacheOption = BitmapCacheOption.OnLoad;
+            bitmap.EndInit();           
+
+            return bitmap;
         }
     }
 }
