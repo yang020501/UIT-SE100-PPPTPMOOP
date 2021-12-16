@@ -55,11 +55,10 @@
             </Border>
             <Border Grid.Column="1" BorderBrush="LightGray" BorderThickness="0,2,2,0">
                 <Grid>
-                    <Frame
-                        x:Name="Main" Content="{Binding Main,UpdateSourceTrigger=PropertyChanged}"   NavigationUIVisibility="Hidden"
-                    
-                        >
-                    </Frame>
+                    <ListView x:Name="listMem"  >
+                        
+
+                    </ListView>
                 </Grid>
             </Border>
         </Grid>

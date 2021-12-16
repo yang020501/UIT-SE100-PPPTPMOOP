@@ -40,6 +40,7 @@ namespace household_management.ViewModel
         private bool _FemaleChoice;
         public bool FemaleChoice { get => _FemaleChoice; set { _FemaleChoice = value; OnPropertyChanged(); } }
 
+        
         private ObservableCollection<Household_Registration> HouseholdList;
 
         public ICommand Updatebtn { get; set; }
