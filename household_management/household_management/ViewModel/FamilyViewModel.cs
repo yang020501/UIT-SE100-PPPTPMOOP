@@ -147,7 +147,7 @@ namespace household_management.ViewModel
 
                 list_of_family_member.Add(population);
 
-                MessageBox.Show("Adding successful");
+                MessageBox.Show("Successful","Notification1",MessageBoxButton.OK,MessageBoxImage.Information);
             });
 
             DoneCommand = new RelayCommand<Window>((p) => { return true; }, (p) => {
@@ -166,7 +166,7 @@ namespace household_management.ViewModel
                     {
                         HouseholdViewModel.Id_Family += "- " + x.Id + "\n";
                     }
-                    MessageBox.Show("All family members have successfully add to household");
+                   
                 }
 
                 

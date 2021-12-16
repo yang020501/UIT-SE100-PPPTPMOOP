@@ -51,7 +51,7 @@ namespace household_management.ViewModel
                         {
                             if(Id_Household == h.Id)
                             {
-                                MessageBox.Show("Id is valid");
+                                MessageBox.Show("Id is valid","Notifications",MessageBoxButton.OK,MessageBoxImage.Information);
                                 checkIdHousehold = true;
                                 Old_Address = h.Address;
                                 Id_Owner = h.IdOfOwner;
@@ -60,18 +60,19 @@ namespace household_management.ViewModel
 
                         if(checkIdHousehold == false)
                         {
-                            MessageBox.Show("Invalid id household");
+                            MessageBox.Show("Invalid id household", "Notifications", MessageBoxButton.OK, MessageBoxImage.Warning);
                         }
                     }
                     else
                     {
-                        MessageBox.Show("There is not any household registration");
+                        MessageBox.Show("There is not any household registration","Notification!",MessageBoxButton.OK,MessageBoxImage.Warning);
                         
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Invalid id household");
+                    MessageBox.Show("Invalid id household", "Notifications", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    
                 }
                 
 
