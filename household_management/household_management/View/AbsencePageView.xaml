@@ -16,71 +16,76 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
+        <Border BorderBrush="LightGray" BorderThickness="2" Grid.Row="0">
+            <Grid >
 
-            <materialDesign:PackIcon Kind="Account" Margin="124,56,0,0" Height="31" Width="32" />
-            <TextBox x:Name="tbFullName" HorizontalAlignment="Left" Height="34" Margin="177,53,0,0"  VerticalAlignment="Top" Width="415" materialDesign:HintAssist.Hint="Full Name" TextWrapping="Wrap" FontSize="16"  Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/> 
-            <materialDesign:PackIcon Kind="CardAccountDetails" Margin="124,123,0,0" Height="31" Width="32" />
-            <TextBox 
+                <materialDesign:PackIcon Kind="Account" Margin="124,56,0,0" Height="31" Width="32" />
+                <TextBox x:Name="tbFullName" HorizontalAlignment="Left" Height="34" Margin="177,53,0,0"  VerticalAlignment="Top" Width="415" materialDesign:HintAssist.Hint="Full Name" TextWrapping="Wrap" FontSize="16"  Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                <materialDesign:PackIcon Kind="CardAccountDetails" Margin="124,123,0,0" Height="31" Width="32" />
+                <TextBox 
                 HorizontalAlignment="Left" Height="34" Margin="177,120,0,0"  VerticalAlignment="Top" Width="220" materialDesign:HintAssist.Hint="Id" TextWrapping="Wrap" FontSize="16" Text="{Binding IdOwner, UpdateSourceTrigger=PropertyChanged}"  materialDesign:HintAssist.HelperText="12 digits numbers" />
-            <RadioButton Content="Female" HorizontalAlignment="Left" Margin="944,51,0,0" VerticalAlignment="Top"  Height="28" RenderTransformOrigin="0.615,0.157" IsChecked="{Binding FemaleChoice}" />
-            <RadioButton Content="Male" HorizontalAlignment="Left" Margin="872,51,0,0" VerticalAlignment="Top"  Height="28" RenderTransformOrigin="0.615,0.157" IsChecked="{Binding MaleChoice}"/>
-            <Label Content="Gender:" HorizontalAlignment="Left" Margin="794,53,0,0" VerticalAlignment="Top" Height="26" Width="73" FontSize="16"/>
-            <TextBox x:Name="txtHId"  IsReadOnly="True"
+                <RadioButton Content="Female" HorizontalAlignment="Left" Margin="944,51,0,0" VerticalAlignment="Top"  Height="28" RenderTransformOrigin="0.615,0.157" IsChecked="{Binding FemaleChoice}" />
+                <RadioButton Content="Male" HorizontalAlignment="Left" Margin="872,51,0,0" VerticalAlignment="Top"  Height="28" RenderTransformOrigin="0.615,0.157" IsChecked="{Binding MaleChoice}"/>
+                <Label Content="Gender:" HorizontalAlignment="Left" Margin="794,53,0,0" VerticalAlignment="Top" Height="26" Width="73" FontSize="16"/>
+                <TextBox x:Name="txtHId"  IsReadOnly="True"
                 Text="{Binding Id_Household, UpdateSourceTrigger=PropertyChanged}"
                 HorizontalAlignment="Left" Height="34" Margin="269,206,0,0"  VerticalAlignment="Top" Width="236" materialDesign:HintAssist.Hint="HouseholdId" TextWrapping="Wrap" FontSize="16" />
-            <Label Content="Household Id:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="124,214,0,0" Height="26" Width="126" FontSize="16" Padding="0" FontWeight="Bold" FontStyle="Italic"/>
-            <TextBox
+                <Label Content="Household Id:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="124,214,0,0" Height="26" Width="126" FontSize="16" Padding="0" FontWeight="Bold" FontStyle="Italic"/>
+                <TextBox
                 IsReadOnly="True"
                 x:Name="tbFullName_Copy" HorizontalAlignment="Left" Height="34" Margin="178,270,0,0"  VerticalAlignment="Top" Width="415" materialDesign:HintAssist.Hint="Full Name" TextWrapping="Wrap" FontSize="16"  Text="{Binding HName, UpdateSourceTrigger=PropertyChanged}" />
-            <materialDesign:PackIcon Kind="HomeAccount" Margin="124,273,0,0" Height="31" Width="32" />
-            <materialDesign:PackIcon Kind="CalendarRange" Margin="794,115,0,0" Height="31" Width="32" RenderTransformOrigin="0.444,1.213" />
-            <Label Content="Expire Date:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="794,228,0,0" Height="21" Width="126" FontSize="16" Padding="0"/>
-            <Label Content="Create Date:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="794,174,0,0" Height="21" Width="126" FontSize="16" Padding="0"/>
-            <TextBox IsReadOnly="True"
+                <materialDesign:PackIcon Kind="HomeAccount" Margin="124,273,0,0" Height="31" Width="32" />
+                <materialDesign:PackIcon Kind="CalendarRange" Margin="794,115,0,0" Height="31" Width="32" RenderTransformOrigin="0.444,1.213" />
+                <Label Content="Expire Date:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="794,228,0,0" Height="21" Width="126" FontSize="16" Padding="0"/>
+                <Label Content="Create Date:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="794,174,0,0" Height="21" Width="126" FontSize="16" Padding="0"/>
+                <TextBox IsReadOnly="True"
                  HorizontalAlignment="Left" Height="34" Margin="925,161,0,0"  VerticalAlignment="Top" Width="180" materialDesign:HintAssist.Hint="Day leave" TextWrapping="Wrap" FontSize="16"  Text="{Binding CreateDate, UpdateSourceTrigger=PropertyChanged}" />
 
-            <TextBox
+                <TextBox
         HorizontalAlignment="Left" Height="34" Margin="848,270,0,0"  IsReadOnly="True"
         VerticalAlignment="Top" Width="426" materialDesign:HintAssist.Hint="Absence Address" 
         TextWrapping="Wrap" FontSize="16" 
         Text="{Binding AbAddress,UpdateSourceTrigger=PropertyChanged}">
-            </TextBox>
-            <materialDesign:PackIcon Kind="HomeMapMarker" Margin="794,273,0,0" Height="31" Width="32" />
-            <TextBox IsReadOnly="True"
+                </TextBox>
+                <materialDesign:PackIcon Kind="HomeMapMarker" Margin="794,273,0,0" Height="31" Width="32" />
+                <TextBox IsReadOnly="True"
                 HorizontalAlignment="Left" Height="34" Margin="925,219,0,0"  VerticalAlignment="Top" Width="180" materialDesign:HintAssist.Hint="Day back" TextWrapping="Wrap" FontSize="16"  Text="{Binding CreateDate, UpdateSourceTrigger=PropertyChanged}" />
-            <Label Content="ID:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontStyle="Italic"/>
-            <Label Content="{Binding Id,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="32,14,0,0" VerticalAlignment="Top" Width="59" Height="20" Padding="0"/>
+                <Label Content="ID:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontStyle="Italic"/>
+                <Label Content="{Binding Id,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="32,14,0,0" VerticalAlignment="Top" Width="59" Height="20" Padding="0"/>
 
-        </Grid>
+            </Grid>
+        </Border>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition Width="0.2*"/>
             </Grid.ColumnDefinitions>
-            <DataGrid Grid.Column="0"
+            <Border Grid.Column="0" BorderBrush="LightGray" BorderThickness="2,0,2,2">
+                <Grid>
+                    <DataGrid Grid.Column="0"
                 SelectedValue="{Binding Selected}"
                 x:Name="dtg" 
                 IsReadOnly="True"
                 AutoGenerateColumns="False" 
-                ItemsSource="{Binding DvAbsence, UpdateSourceTrigger=PropertyChanged}"
-                Grid.ColumnSpan="2" Margin="0,0,220.6,10.4"                    
+                ItemsSource="{Binding DvAbsence, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,-0.4,0.8"                    
                 >
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Number" Binding="{Binding OrdinalNumber}" />
-                    <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
-                    <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
-                    <DataGridTextColumn Header="Identity" Binding="{Binding Id_Owner}" />
-                    <DataGridTextColumn Header="Absence Address" Binding="{Binding AbsenceAddress}" />
-                    <DataGridTextColumn Header="Create Date" Binding="{Binding CreateDate}"/>
-                    <DataGridTextColumn Header="Expire Date" Binding="{Binding ExpireDate}"/>
-                </DataGrid.Columns>
-            </DataGrid>
-
-            <Grid Grid.Column="1">
-                <Button Command="{Binding Deletebtn}" Content="Remove"  Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="123" VerticalAlignment="Top" Margin="50,50,0,0" />
-            </Grid>
-
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Number" Binding="{Binding OrdinalNumber}" />
+                            <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+                            <DataGridTextColumn Header="Identity" Binding="{Binding Id_Owner}" />
+                            <DataGridTextColumn Header="Absence Address" Binding="{Binding AbsenceAddress}" />
+                            <DataGridTextColumn Header="Create Date" Binding="{Binding CreateDate}"/>
+                            <DataGridTextColumn Header="Expire Date" Binding="{Binding ExpireDate}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </Border>
+            <Border Grid.Column="1" BorderBrush="LightGray" BorderThickness="0,0,2,2">
+                <Grid >
+                    <Button Command="{Binding Deletebtn}" Content="Remove"  Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="123" VerticalAlignment="Top" Margin="50,50,0,0" />
+                </Grid>
+            </Border>
         </Grid>
     </Grid>
 </Page>

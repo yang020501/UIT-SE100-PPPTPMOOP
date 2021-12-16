@@ -46,7 +46,13 @@ namespace household_management.ViewModel
         public bool isMale { get => _isMale; set { _isMale = value; OnPropertyChanged(); } }
         
         public PopulationViewModel()
+<<<<<<< Updated upstream
         {   
+=======
+        {
+            
+            Photo = "/household_management;component/Resources/account.jpg";
+>>>>>>> Stashed changes
             List<Model.Household_Registration> list_of_household = Model.DataProvider.Ins.DB.Household_Registration.ToList<Model.Household_Registration>();         
 
             ClearCommand = new RelayCommand<Window>((p) => { return true; }, (p) => {
@@ -79,7 +85,7 @@ namespace household_management.ViewModel
                         {
                             HouseholdAddress = x.Address;
                             check_IdHousehold = true;
-                            MessageBox.Show("Household have been registed, you are now able to regist a population");
+                            MessageBox.Show("Household have been registed, you are now able to regist a population","Notification1",MessageBoxButton.OK,MessageBoxImage.Information);
                             break;
                         }
                     }
@@ -166,6 +172,20 @@ namespace household_management.ViewModel
                 {
                     Address = " ";
                 }
+<<<<<<< Updated upstream
+=======
+                if(Photo != "" && Photo != null && Photo != "/household_management;component/Resources/account.jpg" )
+                {
+                    string namePhoto = System.IO.Path.GetFileName(Photo);
+                    namePhoto = Id.ToString()+".jpg";
+                    population.Photo = namePhoto;
+                    //check if not have photo
+                    if (!System.IO.File.Exists("../../hinhthe/" + namePhoto))
+                        //copy image into file hinhthe
+                        System.IO.File.Copy(Photo, "../../hinhthe/" + namePhoto);
+                    
+                }
+>>>>>>> Stashed changes
                 population.Address = Address;
                 population.Id = Id;              
                 population.Id_Household = HouseholdId;

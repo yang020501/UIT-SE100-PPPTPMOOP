@@ -89,12 +89,39 @@ namespace household_management.ViewModel
                 else
                     tmp.Sex = FemaleChoice;
                 tmp.PlaceOfBirth = PlaceOfBirth;
+<<<<<<< Updated upstream
 
                 DataProvider.Ins.DB.SaveChanges();
                 p.DataContext = null;
                 PPVViewModel vm = new PPVViewModel();
                 vm.Load();
                 p.DataContext = vm;
+=======
+                if ( Photo != "" && Photo != null)
+                {
+                    
+                    string namePhoto = System.IO.Path.GetFileName(Photo);
+                    namePhoto = Id.ToString() + ".jpg";
+                    //check if not have photo
+                    if (!System.IO.File.Exists("../../hinhthe/" + Photo))
+                        //copy image into file hinhthe
+                        System.IO.File.Copy(Photo, "../../hinhthe/" + namePhoto, true);
+                    tmp.Photo = namePhoto;
+                }
+                try
+                {
+                    DataProvider.Ins.DB.SaveChanges();
+                }
+                catch
+                {
+                    MessageBox.Show("Id_Household is invalid or null!\nYour other changes will be SAVED", "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+                //reload 
+                Selected = null;
+                Photo = null;
+                SPhoto = null;
+                NullProperty();
+>>>>>>> Stashed changes
                 NewTablePopulations();
             });
             //Delete
@@ -107,6 +134,7 @@ namespace household_management.ViewModel
 
             }, (p) =>
             {
+<<<<<<< Updated upstream
                 var residence = DataProvider.Ins.DB.Temporary_Residence.Where(x => x.Id_Owner == Id).SingleOrDefault();
                 if (residence != null)
                 {
@@ -133,6 +161,73 @@ namespace household_management.ViewModel
                 //    MessageBox.Show("Người này là chủ hộ hãy xóa trong hộ khẩu trước");
                 //}             
                                
+=======
+                if(MessageBox.Show("Do you want to REMOVE?\nIt will REMOVE relavant Page like Absence,Transfer,Residence","Warning!",MessageBoxButton.YesNo,MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    Household_Registration household = DataProvider.Ins.DB.Household_Registration.Where(x => x.IdOfOwner == Id).SingleOrDefault();
+                    if (household == null)
+                    {
+                        try
+                        {
+                            Temporary_Residence residence = DataProvider.Ins.DB.Temporary_Residence.Where(x => x.Id_Owner == Id).SingleOrDefault();
+                            if (residence != null)
+                            DataProvider.Ins.DB.Temporary_Residence.Remove(residence);
+
+                            Temporary_Absence absence = DataProvider.Ins.DB.Temporary_Absence.Where(x => x.Id_Owner == Id).SingleOrDefault();
+                             if (absence != null)
+                            DataProvider.Ins.DB.Temporary_Absence.Remove(absence);
+
+                            Transfer_Household transfer = DataProvider.Ins.DB.Transfer_Household.Where(x => x.Id_Owner == Id).SingleOrDefault();
+                            if (transfer != null)
+                            DataProvider.Ins.DB.Transfer_Household.Remove(transfer);
+
+                            DataProvider.Ins.DB.Populations.Remove(DataProvider.Ins.DB.Populations.Where(x => x.Id == Id).SingleOrDefault());
+
+                            DataProvider.Ins.DB.SaveChanges();
+
+
+                        // reload view table
+                        Photo = null;
+                        Selected = null;
+                        SPhoto = null;
+                        NullProperty();
+                        NewTablePopulations();
+                        p.ItemsSource = dvPopulations;
+
+                        }
+                        catch (Exception e)
+                        {
+
+                            MessageBox.Show(e.Message, "Notification!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("This person is a Owner of Household: " + household.Id + "\nPlease REMOVE in Household first!", "Notification!", MessageBoxButton.OK, MessageBoxImage.Stop);
+                    }
+                }                
+               
+
+            })
+            {
+
+            };
+            //ChoosePicture btn
+            Choosebtn = new RelayCommand<System.Windows.Controls.Image>((p) => { return true; }, (p) =>
+            {
+                System.Windows.Forms.OpenFileDialog open = new System.Windows.Forms.OpenFileDialog();
+
+                open.Filter = "(*.jpg)|*.jpg|(*.*)|*.*";
+
+                if (open.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    Photo = open.FileName; // để lưu hình thẻ 
+                    SPhoto = BitmapFromUri(new Uri(System.IO.Path.GetFullPath(Photo)));
+                    open.Dispose();
+                    //Uri fileUri = new Uri(open.FileName);
+                    //p.Source = new BitmapImage(fileUri);
+                }
+>>>>>>> Stashed changes
             });
         }
 

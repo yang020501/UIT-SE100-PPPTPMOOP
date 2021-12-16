@@ -334,7 +334,7 @@ insert into Household_Registration (Id, IdOfOwner, NameOfOwner, Address) values 
 
 insert into Transfer_Household (Id, Id_Owner, CreateDate, Id_Household, Old_Address, New_Address) values ('F7621', '445577249830', '2020-10-18', 'K4785' ,'1548 Fragen' ,'0937 Bayside Center')
 insert into Transfer_Household (Id, Id_Owner, CreateDate, Id_Household, Old_Address, New_Address) values ('K5124', '398807346472', '2021-12-10', 'T6789' ,'10 Animal Crossing' ,'40 Kipling Crossing')
-insert into Transfer_Household (Id, Id_Owner, CreateDate, Id_Household, Old_Address, New_Address) values ('K5224', '398807346472', '2021-12-12', 'T6789' ,'40 Kipling Crossing' ,'41 Kipling Crossing')
+
 
 insert into Temporary_Residence (Id, Id_Owner, NameOfOwner, Id_Household, HouseOwnerName, PAddress, TAddress, CreateDate, ExpireDate) values ('V4555', '858767781011', 'Enrique O Moylan' ,'D1332', 'Cyndie Costell', '0311 Reinke Pass', '4 Meadow Vale Way', '2020-4-19', '2023-4-19')
 insert into Temporary_Residence (Id, Id_Owner, NameOfOwner, Id_Household, HouseOwnerName, PAddress, TAddress, CreateDate, ExpireDate) values ('V4556', '684398172813', 'Betti Tuvey' ,'D1332', 'Cyndie Costell', '990 Browning Terrace', '4 Meadow Vale Way', '2020-4-19', '2023-4-19')
