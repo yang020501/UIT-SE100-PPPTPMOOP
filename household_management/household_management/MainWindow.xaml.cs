@@ -1,4 +1,5 @@
 ﻿using household_management.View;
+using household_management.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,7 +64,10 @@ namespace household_management
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
             Search wd = new Search();
+            wd.DataContext = null;
+            wd.DataContext = new SearchViewModel();
             wd.ShowDialog();
+     
         }
     }
 }

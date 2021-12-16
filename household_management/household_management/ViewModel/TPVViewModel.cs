@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace household_management.ViewModel
 {
@@ -53,6 +54,7 @@ namespace household_management.ViewModel
         public bool FemaleChoice { get => _FemaleChoice; set { _FemaleChoice = value; OnPropertyChanged(); } }
 
         private ObservableCollection<Transfer_Household> TransferList;
+        public ICommand Deletebtn { get; set; }
 
         private DataRowView _Selected;
         public DataRowView Selected
@@ -83,6 +85,21 @@ namespace household_management.ViewModel
         public TPVViewModel()
         {
             NewTableTransfer();
+            Deletebtn = new RelayCommand<object>((p) =>
+            {
+                if (Selected != null)
+                    return true;
+                else
+                    return false;
+
+            }, (p) =>
+            {
+
+                DataProvider.Ins.DB.Transfer_Household.Remove(DataProvider.Ins.DB.Transfer_Household.Where(x => x.Id == Id).SingleOrDefault());
+                DataProvider.Ins.DB.SaveChanges();
+                NewTableTransfer();
+
+            });
         }
 
         private void NewTableTransfer()
@@ -107,17 +124,17 @@ namespace household_management.ViewModel
                 dt.Rows.Add
                     (
                        
-                       CheckData(TransferList[i])
+                       CheckData(TransferList[i],i)
                     );
 
             }
             DvTransfer = new DataView(dt);
         }
         // Check if any fields is null
-        private string[] CheckData(Transfer_Household item)
+        private string[] CheckData(Transfer_Household item,int stt)
         {
             string[] list = new string[10];
-            list[0] = check(item.Stt);
+            list[0] = (stt + 1).ToString();
             list[1] = check(item.Id);
             list[2] = check(item.Id_Owner);
             list[3] = check(item.Population.Name);
@@ -128,6 +145,10 @@ namespace household_management.ViewModel
             list[8] = check(item.Population.Sex);
             list[9] = check(item.New_Address);
             return list;
+        }
+        public void Load()
+        {
+            NewTableTransfer();
         }
         // Convert null, string or any type to Valid view data
         private string check(object txt)

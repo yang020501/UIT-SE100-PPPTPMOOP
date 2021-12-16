@@ -43,7 +43,7 @@
                 <ImageBrush ImageSource="Resources/transfer.jpg"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btnPopualtion"  HorizontalAlignment="Left" Height="90" Margin="419.8,126.6,0,0" VerticalAlignment="Top" Width="109" BorderBrush="#FFF4F5F7" RenderTransformOrigin="0.795,0.681" Click="btnPopualtion_Click" Command="{Binding LoadPopuationWindowCommand}" >
+        <Button x:Name="btnPopualtion"  HorizontalAlignment="Left" Height="90" Margin="419.8,126.6,0,0" VerticalAlignment="Top" Width="109" BorderBrush="#FFF4F5F7" RenderTransformOrigin="0.795,0.681" Click="btnPopualtion_Click" CommandParameter="{Binding ElementName=MainWindowX}" Command="{Binding LoadPopuationWindowCommand}" >
             <Button.Background>
                 <ImageBrush ImageSource="Resources/population.jpg"/>
             </Button.Background>
@@ -68,7 +68,7 @@
             <TextBlock x:Name="tblockRole" Margin="65,0,0,378" TextWrapping="Wrap" Text="Manager" VerticalAlignment="Bottom" Height="24" Foreground="#DDFAFAFA" Padding="10,2,0,0" FontWeight="Bold" FontSize="14"/>
             <TextBlock x:Name="tblockId" Margin="65,34,0,0" TextWrapping="Wrap" Text="19521409" VerticalAlignment="Top" Height="24" Foreground="#DDFAFAFA" Padding="10,2,0,0" FontSize="10"/>
             <Grid HorizontalAlignment="Left" Height="347" Margin="0,65,0,0" VerticalAlignment="Top" Width="160"/>
-            <Button Content="" HorizontalAlignment="Left" Margin="0,371,0,0" VerticalAlignment="Top" Width="40" Height="41" Foreground="#FF3A404C">
+            <Button Content="" HorizontalAlignment="Left" Margin="5,357,0,0" VerticalAlignment="Top" Width="40" Height="41" Foreground="#FF3A404C" IsHitTestVisible="False">
                 <Button.BorderBrush>
                     <ImageBrush/>
                 </Button.BorderBrush>
@@ -77,13 +77,16 @@
                 </Button.Background>
             </Button>
             <StackPanel HorizontalAlignment="Left" Height="80" Margin="0,70,0,0" VerticalAlignment="Top" Width="160">
-                <Button Content="Report" Height="40" Background="{x:Null}" BorderBrush="#FF3A404C" Foreground="#FFF3F2F6" BorderThickness="0" Padding="0,4,16,4"/>
-                <Button Content="Manage" Height="40" Background="{x:Null}" BorderBrush="#FF3A404C" Foreground="#FFF3F2F6" BorderThickness="0" Padding="0,4,16,4"/>
+                <Button Visibility="Hidden" Content="Report" Height="40" Background="{x:Null}" BorderBrush="#FF3A404C" Foreground="#FFF3F2F6" BorderThickness="0" Padding="0,4,16,4"/>
+                <Button Visibility="Hidden" Content="Manage" Height="40" Background="{x:Null}" BorderBrush="#FF3A404C" Foreground="#FFF3F2F6" BorderThickness="0" Padding="0,4,16,4"/>
             </StackPanel>
+            <Label Content="Log out" HorizontalAlignment="Left" Margin="5,390,0,0" VerticalAlignment="Top" Width="45" FontSize="10" Foreground="#FFF7F4F4"/>
         </Grid>
         <Grid HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="160" Background="#FF3C3E71">
             <TextBlock x:Name="tblockName" HorizontalAlignment="Left" Text="Nguyễn Hoàng Thái Dương" VerticalAlignment="Top" Height="38" Width="160" Foreground="#DDFAFAFA" Padding="4,12,0,4" FontSize="10"/>
         </Grid>
+        <Label Content="Version 1.0.0" HorizontalAlignment="Left" Margin="715,425,0,-0.4" VerticalAlignment="Top" Width="85" FontStyle="Italic" FontWeight="Bold" Height="25"/>
+        <Label Content="Household Registration" HorizontalAlignment="Left" Margin="215,222,0,0" VerticalAlignment="Top" Width="125" FontSize="11" FontStyle="Italic"/>
 
     </Grid>
 </Window>

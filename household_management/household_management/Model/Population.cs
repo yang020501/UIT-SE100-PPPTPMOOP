@@ -36,31 +36,31 @@ namespace household_management.Model
         }
 
         private int stt;
-        public int Stt { get => stt; set { stt = value; } }
+        public int Stt { get => stt; set { stt = value; OnPropertyChanged(); } }
         private string id;
-        public  string Id { get => id; set { id = value; } }
+        public  string Id { get => id; set { id = value; OnPropertyChanged(); } }
         private string name;
-        public  string Name { get => name; set { name = value; } }
+        public  string Name { get => name; set { name = value; OnPropertyChanged(); } }
         private string photo;
-        public  string Photo { get => photo; set { photo = value; } }
+        public  string Photo { get => photo; set { photo = value; OnPropertyChanged(); } }
         private string id_Household;
-        public  string Id_Household { get => id_Household; set { id_Household = value; } }
+        public  string Id_Household { get => id_Household; set { id_Household = value; OnPropertyChanged(); } }
         private string placeOfBirth;
-        public  string PlaceOfBirth { get => placeOfBirth; set { placeOfBirth = value; } }
+        public  string PlaceOfBirth { get => placeOfBirth; set { placeOfBirth = value; OnPropertyChanged(); } }
         private string address;
-        public  string Address { get => address; set { address = value; } }
+        public  string Address { get => address; set { address = value; OnPropertyChanged(); } }
         private Nullable<System.DateTime> dateOfBirth;
-        public  Nullable<System.DateTime> DateOfBirth { get => dateOfBirth; set { dateOfBirth = value; } }
+        public  Nullable<System.DateTime> DateOfBirth { get => dateOfBirth; set { dateOfBirth = value; OnPropertyChanged(); } }
         private Nullable<bool> sex;
-        public  Nullable<bool> Sex { get => sex; set { sex = value; } }
+        public  Nullable<bool> Sex { get => sex; set { sex = value; OnPropertyChanged(); } }
         private string relegion;
-        public  string Relegion { get => relegion; set { relegion = value; } }
+        public  string Relegion { get => relegion; set { relegion = value; OnPropertyChanged(); } }
         private string career;
-        public  string Career { get => career; set { career = value; } }
+        public  string Career { get => career; set { career = value; OnPropertyChanged(); } }
         private Nullable<bool> _isAbsence;
-        public  Nullable<bool> isAbsence { get => _isAbsence; set { _isAbsence = value; } }
+        public  Nullable<bool> isAbsence { get => _isAbsence; set { _isAbsence = value; OnPropertyChanged(); } }
         private Nullable<bool> _isTResidence;
-        public  Nullable<bool> isTResidence { get => _isTResidence; set { _isTResidence = value; } }
+        public  Nullable<bool> isTResidence { get => _isTResidence; set { _isTResidence = value; OnPropertyChanged(); } }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Family_Household> Family_Household { get; set; }

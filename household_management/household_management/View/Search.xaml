@@ -6,6 +6,8 @@
         xmlns:local="clr-namespace:household_management.View"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
+        Name="search"
+        
         DataContext="{StaticResource SearchVM}"
         Title="Search" Height="761.2" Width="1325.6" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None">
     <Grid>
@@ -36,8 +38,9 @@
                     <ColumnDefinition   Width="Auto" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <ComboBox
-                         SelectedIndex="{Binding SelectedIndex}"   
+                <ComboBox x:Name="selected"
+                         SelectedIndex="{Binding SelectedIndex}"
+
                          BorderThickness="0"
                          materialDesign:ColorZoneAssist.Mode="Dark"
                          materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource MaterialDesignPaper}"

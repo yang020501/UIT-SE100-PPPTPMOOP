@@ -26,16 +26,20 @@ namespace household_management.View
         public Search()
         {
             InitializeComponent();
-
-
+           
         }
+
+
 
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
+
+            this.DataContext = null;
             Close();
 
         }
 
+   
     }
 }

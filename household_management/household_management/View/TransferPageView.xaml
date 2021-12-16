@@ -18,14 +18,14 @@
         <Grid Grid.Row="0">
 
             <materialDesign:PackIcon Kind="Account" Margin="120,35,0,0" Height="31" Width="32" />
-            <TextBox x:Name="tbFullName" HorizontalAlignment="Left" Height="34" Margin="173,32,0,0"  VerticalAlignment="Top" Width="415" materialDesign:HintAssist.Hint="Full Name" TextWrapping="Wrap" FontSize="16"  Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox IsReadOnly="True" HorizontalAlignment="Left" Height="34" Margin="173,32,0,0"  VerticalAlignment="Top" Width="415" materialDesign:HintAssist.Hint="Full Name" TextWrapping="Wrap" FontSize="16"  Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
             <materialDesign:PackIcon Kind="CardAccountDetails" Margin="120,102,0,0" Height="31" Width="32" />
-            <TextBox 
+            <TextBox IsReadOnly="True"
                 HorizontalAlignment="Left" Height="34" Margin="173,99,0,0"  VerticalAlignment="Top" Width="220" materialDesign:HintAssist.Hint="Id" TextWrapping="Wrap" FontSize="16" Text="{Binding IdOwner, UpdateSourceTrigger=PropertyChanged}"  materialDesign:HintAssist.HelperText="12 digits numbers" />
             <RadioButton Content="Female" HorizontalAlignment="Left" Margin="594,105,0,0" VerticalAlignment="Top"  Height="28" RenderTransformOrigin="0.615,0.157" IsChecked="{Binding FemaleChoice}" Padding="4,0,0,0"/>
             <RadioButton Content="Male" HorizontalAlignment="Left" Margin="519,105,0,0" VerticalAlignment="Top"  Height="28" RenderTransformOrigin="0.615,0.157" IsChecked="{Binding MaleChoice}"/>
             <Label Content="Gender:" HorizontalAlignment="Left" Margin="441,107,0,0" VerticalAlignment="Top" Height="26" Width="73" FontSize="16"/>
-            <TextBox x:Name="txtHId" 
+            <TextBox IsReadOnly="True"
                 Text="{Binding Id_Household, UpdateSourceTrigger=PropertyChanged}"
                 HorizontalAlignment="Left" Height="34" Margin="256,172,0,0"  VerticalAlignment="Top" Width="156" materialDesign:HintAssist.Hint="HouseholdId" TextWrapping="Wrap" FontSize="16" />
             <Label Content="Household Id:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="120,185,0,0" Height="26" Width="115" FontSize="16" Padding="0" FontWeight="Bold" FontStyle="Italic"/>
@@ -39,6 +39,7 @@
                  HorizontalAlignment="Left" Height="34" Margin="780,71,0,0"  VerticalAlignment="Top" Width="212"  TextWrapping="Wrap" FontSize="16"  Text="{Binding CreateDate, UpdateSourceTrigger=PropertyChanged}" />
 
             <TextBox
+                IsReadOnly="True"
         HorizontalAlignment="Left" Height="34" Margin="780,146,0,0"  
         VerticalAlignment="Top" Width="348" materialDesign:HintAssist.Hint="Present Address/Household Address" 
         TextWrapping="Wrap" FontSize="16" 
@@ -46,8 +47,11 @@
             </TextBox>
             <materialDesign:PackIcon Kind="HomeMapMarker" Margin="733,146,0,0" Height="35" Width="42" />
             <TextBox
+                IsReadOnly="True"
                 HorizontalAlignment="Left" Height="34" Margin="780,213,0,0"  VerticalAlignment="Top" Width="348" materialDesign:HintAssist.Hint="Old Address" TextWrapping="Wrap" FontSize="16" Text="{Binding OAddress, UpdateSourceTrigger=PropertyChanged}"/>
             <materialDesign:PackIcon Kind="HomeEdit" Margin="736,216,0,0" Height="36" Width="32" RenderTransformOrigin="0.137,0.422" />
+            <Label Content="ID:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontStyle="Italic"/>
+            <Label Content="{Binding Id, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="32,14,0,0" VerticalAlignment="Top" Width="59" Height="20" Padding="0"/>
 
         </Grid>
         <Grid Grid.Row="1">
@@ -62,7 +66,7 @@
                 IsReadOnly="True"
                 AutoGenerateColumns="False" 
                 ItemsSource="{Binding DvTransfer , UpdateSourceTrigger=PropertyChanged}"
-                Grid.ColumnSpan="2" Margin="0,0,220.6,26.4"                    
+                Grid.ColumnSpan="2" Margin="0,0,220.6,0.8"                    
                 >
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Number" Binding="{Binding OrdinalNumber}"/>
@@ -76,9 +80,11 @@
 
                 </DataGrid.Columns>
             </DataGrid>
+
             <Grid Grid.Column="1">
-                <Button Command="{Binding AddingCommand}" Content="Update"  Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="123" VerticalAlignment="Top" Name="AddButton" Margin="51,69,0,0" />
+                <Button Command="{Binding Deletebtn}" Content="Remove"  Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="123" VerticalAlignment="Top" Margin="50,50,0,0"/>
             </Grid>
+
         </Grid>
     </Grid>
 
