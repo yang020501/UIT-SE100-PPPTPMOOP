@@ -59,7 +59,7 @@
                 <DatePicker
 
                     materialDesign:HintAssist.Hint="Date of birth" Text="{Binding DateOfBirth}" SelectedDate="{Binding DateOfBirth, UpdateSourceTrigger=PropertyChanged}"
-
+                    
                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="75,112,419,410" Height="44" FontSize="16" />
                 <TextBox
                     HorizontalAlignment="Left" Height="34" Margin="75,246,0,0"  VerticalAlignment="Top" Width="364" materialDesign:HintAssist.Hint="Address" TextWrapping="Wrap" FontSize="16" Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}"/>
