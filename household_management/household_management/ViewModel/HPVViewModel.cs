@@ -14,10 +14,16 @@ namespace household_management.ViewModel
 {
     class HPVViewModel : BaseViewModel
     {
+
         DataTable dt;
 
         private DataView dvHousehold;
         public DataView DvHousehold { get => dvHousehold; set { dvHousehold = value; OnPropertyChanged(); } }
+
+
+        private DataView dvFamily;
+        public DataView DvFamily { get => dvFamily; set { dvFamily= value; OnPropertyChanged(); } }
+
 
         private string _Name;
         public string Name { get => _Name; set { _Name = value; OnPropertyChanged(); } }
@@ -43,6 +49,9 @@ namespace household_management.ViewModel
         
         private ObservableCollection<Household_Registration> HouseholdList;
 
+        private ObservableCollection<Family_Household> FamilyList;
+
+
         public ICommand Updatebtn { get; set; }
         public ICommand Deletebtn { get; set; }
 
@@ -54,6 +63,7 @@ namespace household_management.ViewModel
             {
                 _Selected = value;
                 OnPropertyChanged();
+
                 if (Selected != null)
                 {
                     if ((string)Selected.Row["Gender"] == "Male")
@@ -72,7 +82,11 @@ namespace household_management.ViewModel
                     Id_Owner = (string)Selected.Row["Id_Owner"];
                     Address = (string)Selected.Row["Address"];
                     HAddress = (string)Selected.Row["HAddress"];
-                    
+
+                    NewTableFamily();
+                    MessageBox.Show(FamilyList.Count.ToString());
+
+
                 }
             }
         }
@@ -129,6 +143,12 @@ namespace household_management.ViewModel
                 {                   
                     try
                     {
+
+                        foreach(Family_Household item in FamilyList)
+                        {
+                            DataProvider.Ins.DB.Family_Household.Remove(item);
+                        }
+
                         DataProvider.Ins.DB.Household_Registration.Remove(DataProvider.Ins.DB.Household_Registration.Where(x => x.Id == Id).SingleOrDefault());
 
                         DataProvider.Ins.DB.SaveChanges();
@@ -162,6 +182,37 @@ namespace household_management.ViewModel
             Selected = null;
 
         }
+
+        private void NewTableFamily()
+        {
+            FamilyList = new ObservableCollection<Family_Household>(DataProvider.Ins.DB.Family_Household.Where(x => x.Id_Household == Id));
+            dt = new DataTable();
+
+            dt.Columns.Add("Id_Person");
+            dt.Columns.Add("Name_Person");
+
+            //fill datatable
+            for (int i = 0; i < FamilyList.Count; i++)
+            {
+
+                dt.Rows.Add
+                    (
+                       CheckData2(FamilyList[i], i)
+                    );
+
+            }
+            dvFamily = new DataView(dt);
+        }
+        private string[] CheckData2(Family_Household item, int stt)
+        {
+            
+            string[] list = new string[2];
+            list[0] = check(item.Id_Person);
+            list[1] = check(item.Name_Person);      
+
+            return list;
+        }
+
         private void NewTableHousehold()
         {
             HouseholdList = new ObservableCollection<Household_Registration>(DataProvider.Ins.DB.Household_Registration);
@@ -246,5 +297,6 @@ namespace household_management.ViewModel
             OnPropertyChanged();
 
         }
+
     }
 }

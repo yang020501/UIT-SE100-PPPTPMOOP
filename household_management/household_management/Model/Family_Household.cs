@@ -11,13 +11,26 @@ namespace household_management.Model
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Family_Household
+    using System.ComponentModel;
+    using System.Runtime.CompilerServices;
+
+    public partial class Family_Household : INotifyPropertyChanged
     {
-        public string Id_Household { get; set; }
-        public string Id_Owner { get; set; }
-        public string Id_Person { get; set; }
-        public string Name_Person { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private string id_Household;
+        public string Id_Household { get => id_Household; set { id_Household = value; OnPropertyChanged();  } }
+        private string id_Owner;
+        public string Id_Owner { get => id_Owner; set { id_Household = value;OnPropertyChanged(); } }
+        private string id_Person;
+        public string Id_Person { get => id_Person; set { id_Person = value;OnPropertyChanged(); } }
+        private string name_Person;
+        public string Name_Person { get => name_Person; set { name_Person = value;OnPropertyChanged(); } }
     
         public virtual Household_Registration Household_Registration { get; set; }
         public virtual Population Population { get; set; }
