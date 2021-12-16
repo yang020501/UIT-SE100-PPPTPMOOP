@@ -25,8 +25,8 @@ namespace household_management.Model
 
         private string id_Household;
         public string Id_Household { get => id_Household; set { id_Household = value; OnPropertyChanged();  } }
-        private string id_Owner;
-        public string Id_Owner { get => id_Owner; set { id_Household = value;OnPropertyChanged(); } }
+        private string _id_Owner;
+        public string Id_Owner { get => _id_Owner; set { _id_Owner = value; OnPropertyChanged(); } }
         private string id_Person;
         public string Id_Person { get => id_Person; set { id_Person = value;OnPropertyChanged(); } }
         private string name_Person;

@@ -189,24 +189,25 @@ namespace household_management.ViewModel
                     var change = Model.DataProvider.Ins.DB.Populations.Where(x => x.Id == Id).SingleOrDefault();
                     change.Id_Household = IdHousehold;
                     Model.DataProvider.Ins.DB.SaveChanges();                                       
-                }
-
-                //Tạo chủ hộ trong gia đình
-                Model.Family_Household owner = new Model.Family_Household();
-                owner.Id_Person = Id;
-                owner.Id_Owner = Id;
-                owner.Id_Household = IdHousehold;
-                owner.Name_Person = Name;
-                Model.DataProvider.Ins.DB.Family_Household.Add(owner);
-                Model.DataProvider.Ins.DB.SaveChanges();
+                }             
 
                 //Tạo và thêm thành viên vào hộ khẩu
                 if (FamilyViewModel.list_of_family_member.Count() != 0)
                 {
                     foreach (Model.Population member in FamilyViewModel.list_of_family_member)
                     {
-                        var temp = Model.DataProvider.Ins.DB.Populations.Where(x => x.Id == member.Id).SingleOrDefault();
-                        if (temp == null)
+                        
+                        bool checkIdPop = true;
+                        List<Model.Population> l = Model.DataProvider.Ins.DB.Populations.ToList<Model.Population>();
+                        foreach(Model.Population k in l)
+                        {
+                            if(k.Id == member.Id)
+                            {
+                                checkIdPop = false;
+                                break;
+                            }
+                        }
+                        if (checkIdPop)
                         {
                             Model.DataProvider.Ins.DB.Populations.Add(member);
                             Model.DataProvider.Ins.DB.SaveChanges();
@@ -220,8 +221,10 @@ namespace household_management.ViewModel
                         }
                         else
                         {
+                            var temp = Model.DataProvider.Ins.DB.Populations.Where(x => x.Id == member.Id).SingleOrDefault();
                             temp.Id_Household = IdHousehold;
                             Model.DataProvider.Ins.DB.SaveChanges();
+
                             Model.Family_Household new_member = new Model.Family_Household();
                             new_member.Id_Person = member.Id;
                             new_member.Id_Owner = Id;
@@ -233,6 +236,15 @@ namespace household_management.ViewModel
                     }                    
                     
                 }
+
+                //Tạo chủ hộ trong gia đình
+                Model.Family_Household owner = new Model.Family_Household();
+                owner.Id_Person = Id;
+                owner.Id_Owner = Id;
+                owner.Id_Household = IdHousehold;
+                owner.Name_Person = Name;
+                Model.DataProvider.Ins.DB.Family_Household.Add(owner);
+                Model.DataProvider.Ins.DB.SaveChanges();
 
                 MessageBox.Show("Create Household Registration Successful");
                 FamilyViewModel.list_of_family_member.Clear();
