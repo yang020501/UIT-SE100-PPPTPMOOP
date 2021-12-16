@@ -49,7 +49,7 @@
                     <RadioButton x:Name="FemaleChoise" VerticalAlignment="Top" RenderTransformOrigin="0.615,0.157" Margin="666,36,0,0"  Height="28" HorizontalAlignment="Left" GroupName="Gender" Content="Female" Width="66" IsChecked="{Binding FemaleChoice}"/>
                     <RadioButton x:Name="MaleChoise" VerticalAlignment="Top" RenderTransformOrigin="0.615,0.157" Margin="599,37,0,0"  Height="28" HorizontalAlignment="Left" GroupName="Gender"  Content="Male" IsChecked="{Binding MaleChoice}"/>
                     <Label Width="73" VerticalAlignment="Top" Margin="511,36,0,0" Height="26" HorizontalAlignment="Left" FontSize="16" Content="Gender:"/>
-                    <TextBox 
+                    <TextBox  IsReadOnly="True"
                          Text="{Binding Id_Household,UpdateSourceTrigger=PropertyChanged}"
                     HorizontalAlignment="Left" Height="34" Margin="656,72,0,0"  VerticalAlignment="Top" Width="236" materialDesign:HintAssist.Hint="HouseholdId" TextWrapping="Wrap" FontSize="16" >
                     </TextBox>
@@ -67,7 +67,7 @@
             </Border>
             <Border Grid.Column="0" BorderBrush="LightGray" BorderThickness="2,2,2,0">
                 <Grid>
-                    <Button CommandParameter="{Binding ElementName=imPic}" Command="{Binding Choosebtn}" Content="Choose" Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="103" VerticalAlignment="Top" Margin="55,299,0,0"  />
+                    <Button CommandParameter="{Binding ElementName=imPic}" Command="{Binding Choosebtn}" Content="Choose" Height="39" Background="#FF4D60C0" HorizontalAlignment="Left" Width="88" VerticalAlignment="Top" Margin="65,288,0,0"  />
                     <Border BorderBrush="#FF4D60C0" BorderThickness="2" Margin="40,88,39.6,116" >
                         <Grid  >
                             <Image  x:Name="imPic"  Height="177"  Source="{Binding SPhoto,UpdateSourceTrigger=PropertyChanged}" Stretch="Fill" Width="135.2"  />
@@ -89,7 +89,6 @@
                 x:Name="dtg" 
                 IsReadOnly="True"
                 AutoGenerateColumns="False" 
-
                 ItemsSource="{Binding DvPopulations,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"
                 SelectedValue="{Binding Selected}" Margin="0,0,0.2,0.8"  
 

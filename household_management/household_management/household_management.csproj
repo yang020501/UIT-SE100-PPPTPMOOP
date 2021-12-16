@@ -175,6 +175,7 @@
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\FamilyViewModel.cs" />
     <Compile Include="ViewModel\HouseholdViewModel.cs" />
+    <Compile Include="ViewModel\HPVViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\PopulationViewModel.cs" />
