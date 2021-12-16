@@ -204,11 +204,32 @@ namespace household_management.ViewModel
                 }
 
                 population.Address = Address;
-                population.Id = Id;              
+                population.Id = Id;
+                
                 population.Id_Household = HouseholdId;
 
-                Model.DataProvider.Ins.DB.Populations.Add(population);
-                Model.DataProvider.Ins.DB.SaveChanges();
+                if (!Check_is_Id_exist(population.Id))
+                {
+                    if(population.Id_Household != null)
+                    {
+                        Model.Family_Household newmember = new Model.Family_Household();
+                        newmember.Id_Household = population.Id_Household;
+                        Model.Household_Registration h = (Model.Household_Registration)Model.DataProvider.Ins.DB.Household_Registration.Select(x => x.Id == population.Id);
+                        newmember.Id_Owner = h.IdOfOwner;
+                        newmember.Id_Person = population.Id;
+                        newmember.Name_Person = population.Name;
+                        Model.DataProvider.Ins.DB.Family_Household.Add(newmember);
+                        Model.DataProvider.Ins.DB.SaveChanges();
+                    }
+
+                    Model.DataProvider.Ins.DB.Populations.Add(population);
+                    Model.DataProvider.Ins.DB.SaveChanges();
+                    MessageBox.Show("Add success");
+                }
+                else
+                {
+                    MessageBox.Show("Id is exist please try again!");
+                }
                 isMale = false;
                 isFemale = false;
                 MessageBox.Show("Add Successful!", "Notification!", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -225,5 +246,21 @@ namespace household_management.ViewModel
             return false;
         }
 
+        private bool Check_is_Id_exist(string Id)
+        {
+            List<Model.Population> populations = Model.DataProvider.Ins.DB.Populations.ToList<Model.Population>();
+            if(populations.Count() != 0)
+            {
+                foreach (Model.Population person in populations)
+                {
+                    if(person.Id == Id)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
     }
 }
