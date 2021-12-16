@@ -57,9 +57,6 @@ namespace household_management.ViewModel
         public string Photo { get => _Photo; set { _Photo = value; OnPropertyChanged(); } }
 
 
-        private System.Drawing.Image _PhotoSource;
-        public System.Drawing.Image PhotoSource { get => _PhotoSource; set { _PhotoSource = value; OnPropertyChanged(); } }
-
         private DataView dvPopulations;
         public DataView DvPopulations { get => dvPopulations; set { dvPopulations = value; OnPropertyChanged(); } }
 
@@ -72,7 +69,7 @@ namespace household_management.ViewModel
 
         public PPVViewModel()
         {
-            PhotoSource = null;
+           
             NewTablePopulations();
             //Update
             Updatebtn = new RelayCommand<DataGrid>((p) =>
@@ -321,8 +318,7 @@ namespace household_management.ViewModel
             list[7] = check(item.Address);
             list[8] = check(item.Relegion);
             list[9] = check(item.Career);
-            list[10] = check(item.Photo);
-          
+            list[10] = check(item.Photo);          
             if (link != null)
                 list[11] = check(link.Address);
             else list[11] = "";

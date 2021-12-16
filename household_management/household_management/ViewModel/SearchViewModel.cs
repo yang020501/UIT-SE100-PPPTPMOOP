@@ -67,7 +67,8 @@ namespace household_management.ViewModel
         PPVViewModel pPVVM = new PPVViewModel();
         APVViewModel aPVVM = new APVViewModel();
         RPVViewModel rPVVM = new RPVViewModel();
-        TPVViewModel tPVVM = new TPVViewModel();    
+        TPVViewModel tPVVM = new TPVViewModel();
+        HPVViewModel hPVVM = new HPVViewModel();
 
         PopulationsPageView pView = new PopulationsPageView() ;
         HouseholdPageView hView  = new HouseholdPageView() ;
@@ -90,7 +91,7 @@ namespace household_management.ViewModel
                 switch (SelectedIndex)
                 {
                     case 0: pPVVM.doSearch(pView.dtg, _txtSearch, getrd()); break;
-                    case 1:
+                    case 1: hPVVM.doSearch(hView.dtg, _txtSearch, getrd()); break;
                     case 2: tPVVM.doSearch(tView.dtg, _txtSearch, getrd()); break;
                     case 3: aPVVM.doSearch(aView.dtg, _txtSearch, getrd()); break;
                     case 4: rPVVM.doSearch(rView.dtg, _txtSearch, getrd()); break;
@@ -155,7 +156,7 @@ namespace household_management.ViewModel
             tView.DataContext = null;
             TPVViewModel vm = new TPVViewModel();
             vm.Load();
-            tView = new TransferPageView();
+            tView.DataContext = vm;
             main.Content = tView;
         }
 
@@ -165,14 +166,17 @@ namespace household_management.ViewModel
             aView.DataContext = null;
             APVViewModel vm = new APVViewModel();
             vm.Load();
-            aView = new AbsencePageView();
+            aView.DataContext = vm;
             main.Content = aView;
         }
 
         private void openHouseholdPageView()
         {
             main.Refresh();
-            hView = new HouseholdPageView();
+            hView.DataContext = null;
+            HPVViewModel vm = new HPVViewModel();
+            vm.Load();
+            hView.DataContext = vm;
             main.Content = hView;
         }
         private void openPopulationsPage()
@@ -192,33 +196,7 @@ namespace household_management.ViewModel
             rdName = true;    
         }
        
-        private void NewTableHousehold()
-        {
-            HouseholdList = new ObservableCollection<Household_Registration>(DataProvider.Ins.DB.Household_Registration);
-            dt = new DataTable();
-            dt.Columns.Add("OrdinalNumber");
-            dt.Columns.Add("Id_Household");
-            dt.Columns.Add("Id");
-            dt.Columns.Add("Name");
-            dt.Columns.Add("Address");
-            //fill datatable
-            for (int i = 0; i < HouseholdList.Count; i++)
-            {
-                dt.Rows.Add
-                    (
-                        HouseholdList[i].Stt.ToString(),
-                        HouseholdList[i].Id.ToString(),
-                        HouseholdList[i].IdOfOwner.ToString(),
-                        HouseholdList[i].NameOfOwner.ToString(),
-                        HouseholdList[i].Address.ToString()
-
-                    );
-                ;
-            }
-            //add View
-            dvHousehold = new DataView(dt);
-
-        }
+       
         
     }
 }
