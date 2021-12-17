@@ -109,7 +109,6 @@ namespace household_management.ViewModel
                 var tmp = DataProvider.Ins.DB.Household_Registration.Where(x => x.Id == Id).SingleOrDefault();
                 try
                 {
-                    tmp.IdOfOwner = Id_Owner;
                     tmp.Address = HAddress;
 
                     DataProvider.Ins.DB.SaveChanges();

@@ -11,38 +11,20 @@ namespace household_management.Model
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Runtime.CompilerServices;
-
-    public partial class Temporary_Residence : INotifyPropertyChanged
+    
+    public partial class Temporary_Residence
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-        private int stt;
-        public int Stt { get => stt; set { stt = value; OnPropertyChanged(); } }
-        private string id;
-        public string Id { get => id; set { id = value; OnPropertyChanged(); } }
-        private string id_Owner;
-        public string Id_Owner { get => id_Owner; set { id_Owner = value; OnPropertyChanged(); } }
-        private string nameOfOwner;
-        public string NameOfOwner { get => nameOfOwner; set { nameOfOwner = value; OnPropertyChanged(); } }
-        private string id_Household;
-        public string Id_Household { get => id_Household; set { id_Household = value; OnPropertyChanged(); } }
-        private string houseOwnerName;
-        public string HouseOwnerName { get => houseOwnerName; set { houseOwnerName = value; OnPropertyChanged(); } }
-        private Nullable<System.DateTime> createDate;
-        public Nullable<System.DateTime> CreateDate { get => createDate; set { createDate = value; OnPropertyChanged(); } }
-        private Nullable<System.DateTime> expireDate;
-        public Nullable<System.DateTime> ExpireDate { get => expireDate; set { expireDate = value; OnPropertyChanged(); } }
-        private string pAddress;
-        public string PAddress { get => pAddress; set { pAddress = value; OnPropertyChanged(); } }
-        private string tAddress;
-        public string TAddress { get => tAddress; set { tAddress = value; OnPropertyChanged(); } }
-
+        public int Stt { get; set; }
+        public string Id { get; set; }
+        public string Id_Owner { get; set; }
+        public string NameOfOwner { get; set; }
+        public string Id_Household { get; set; }
+        public string HouseOwnerName { get; set; }
+        public string PAddress { get; set; }
+        public string TAddress { get; set; }
+        public Nullable<System.DateTime> CreateDate { get; set; }
+        public Nullable<System.DateTime> ExpireDate { get; set; }
+    
         public virtual Household_Registration Household_Registration { get; set; }
         public virtual Population Population { get; set; }
     }

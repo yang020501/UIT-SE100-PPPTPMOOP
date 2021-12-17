@@ -1,0 +1,19 @@
+﻿<Window x:Class="household_management.View.About"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:household_management.View"
+        mc:Ignorable="d"
+        Title="About" Height="290" Width="480" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen">
+    <Border BorderBrush="LightGray" BorderThickness="3">
+        <Grid>
+            <Button Content="OK"  Height="44" Background="#FF4D60C0" Margin="172,229,195.6,10.2" Click="Button_Click"   />
+            <Label Content=" UI design, SearchView code, Project report ppt,word" HorizontalAlignment="Left" Margin="10,77,0,0" VerticalAlignment="Top" Height="52" Width="407" AllowDrop="True" FontSize="16"/>
+            <Label Content="Nguyễn Hoàng Thái Dương:" HorizontalAlignment="Left" Margin="10,42,0,0" VerticalAlignment="Top" Height="30" FontWeight="Bold" FontStyle="Italic" FontSize="18"/>
+            <Label Content=" Database, Add-check code, Login code" HorizontalAlignment="Left" Margin="10,152,0,0" VerticalAlignment="Top" Height="52" Width="407" AllowDrop="True" FontSize="16"/>
+            <Label Content="Nguyễn Âu Duy:" HorizontalAlignment="Left" Margin="10,117,0,0" VerticalAlignment="Top" Height="30" FontWeight="Bold" FontStyle="Italic" FontSize="18"/>
+
+        </Grid>
+    </Border>
+</Window>

@@ -70,7 +70,7 @@
                             CommandParameter="{Binding ElementName=IdHouseholdBox}"/>
                 </Grid>
             </Border>
-            <Button Content="Add"  Height="34" Background="#FF4D60C0" Margin="240,720,242.4,0" 
+            <Button Content="Add"  Height="34" Background="#FF4D60C0" Margin="240,727,242.4,0" 
                     VerticalAlignment="Top" Command="{Binding AddCommand}" Name="AddButton"
                     CommandParameter="{Binding ElementName=AddButton}"/>
         </Grid>
