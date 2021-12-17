@@ -326,7 +326,10 @@ namespace household_management.ViewModel
             list[5] = check(item.PlaceOfBirth);
             if (link != null)
                 list[6] = check(link.Id);
-            else list[6] = item.Id_Household;
+            else if (item.Id_Household != null)
+                list[6] = item.Id_Household;
+            else
+                list[6] = "";
             list[7] = check(item.Address);
             list[8] = check(item.Relegion);
             list[9] = check(item.Career);

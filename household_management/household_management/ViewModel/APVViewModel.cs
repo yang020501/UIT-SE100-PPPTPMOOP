@@ -169,6 +169,8 @@ namespace household_management.ViewModel
         // Check if any fields is null
         private string[] CheckData(Temporary_Absence item,int stt)
         {
+            var link = DataProvider.Ins.DB.Household_Registration.Where(x => x.Id == item.Id_Household).SingleOrDefault();
+            var link2 = DataProvider.Ins.DB.Populations.Where(x => x.Id == item.Id_Owner).SingleOrDefault();
             string[] list = new string[10];
             list[0] = (stt + 1).ToString();
             list[1] = check(item.Id);
@@ -176,10 +178,16 @@ namespace household_management.ViewModel
             list[3] = check(item.NameOfOwner);
             list[4] = check(item.Id_Household);
             list[5] = check(item.HouseOwnerName);
-            list[6] = check(item.Household_Registration.Address);
+            if (link != null)
+                list[6] = check(link.Address);
+            else
+                list[6] = "";
             list[7] = check(item.CreateDate);
             list[8] = check(item.ExpireDate);
-            list[9] = check(item.Population.Sex);
+            if (link != null)
+                list[9] = check(link2.Sex);
+            else 
+                list[9] = "";
             return list;
         }
         // Convert null, string or any type to Valid view data
