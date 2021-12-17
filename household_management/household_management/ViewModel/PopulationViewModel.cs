@@ -209,12 +209,15 @@ namespace household_management.ViewModel
                 population.Id_Household = HouseholdId;
 
                 if (!Check_is_Id_exist(population.Id))
-                {
-                    if(population.Id_Household != null)
+                {         
+                    Model.DataProvider.Ins.DB.Populations.Add(population);
+                    Model.DataProvider.Ins.DB.SaveChanges();
+
+                    if (population.Id_Household != null)
                     {
                         Model.Family_Household newmember = new Model.Family_Household();
                         newmember.Id_Household = population.Id_Household;
-                        Model.Household_Registration h = (Model.Household_Registration)Model.DataProvider.Ins.DB.Household_Registration.Select(x => x.Id == population.Id);
+                        var h = Model.DataProvider.Ins.DB.Household_Registration.Where(x => x.Id == population.Id_Household).SingleOrDefault();
                         newmember.Id_Owner = h.IdOfOwner;
                         newmember.Id_Person = population.Id;
                         newmember.Name_Person = population.Name;
@@ -222,8 +225,6 @@ namespace household_management.ViewModel
                         Model.DataProvider.Ins.DB.SaveChanges();
                     }
 
-                    Model.DataProvider.Ins.DB.Populations.Add(population);
-                    Model.DataProvider.Ins.DB.SaveChanges();
                     MessageBox.Show("Add success");
                 }
                 else
