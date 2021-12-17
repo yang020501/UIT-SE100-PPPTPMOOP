@@ -75,7 +75,7 @@ namespace household_management.ViewModel
                         MaleChoice = false;
                     }
 
-                    Name = (string)Selected.Row["Name_HouseholdOwner"];
+                    Name = (string)Selected.Row["Name"];
                     Id = (string)Selected.Row["Id_Household"];
                     Id_Owner = (string)Selected.Row["Id_Owner"];
                     Address = (string)Selected.Row["Address"];
@@ -109,6 +109,7 @@ namespace household_management.ViewModel
                 var tmp = DataProvider.Ins.DB.Household_Registration.Where(x => x.Id == Id).SingleOrDefault();
                 try
                 {
+
                     tmp.Address = HAddress;
 
                     DataProvider.Ins.DB.SaveChanges();
@@ -207,7 +208,7 @@ namespace household_management.ViewModel
             dt.Columns.Add("OrdinalNumber");
             dt.Columns.Add("Id_Household");
             dt.Columns.Add("Id_Owner");
-            dt.Columns.Add("Name_HouseholdOwner");
+            dt.Columns.Add("Name");
             dt.Columns.Add("Address");
             dt.Columns.Add("HAddress");
             dt.Columns.Add("Gender");
