@@ -73,6 +73,7 @@ namespace household_management.ViewModel
         public PPVViewModel()
         {
             DB = DateTime.Now;
+            DateOfBirth = DateTime.Now.ToString("MM/dd/yyyy");
             NewTablePopulations();
             //Update
             Updatebtn = new RelayCommand<DataGrid>((p) =>
@@ -124,6 +125,7 @@ namespace household_management.ViewModel
                 }
 
                 //reload 
+                
                 Selected = null;
                 Photo = null;
                 SPhoto = null;
@@ -271,7 +273,7 @@ namespace household_management.ViewModel
             FemaleChoice = false;
             MaleChoice = false;
             Name = null;
-            DateOfBirth = null;
+            DateOfBirth = DateTime.Now.ToString("MM/dd/yyyy");
             Id = null;
             Relegion = null;
             Career = null;
