@@ -16,6 +16,7 @@ namespace household_management.ViewModel
 {
     class PopulationViewModel : BaseViewModel
     {
+        public DateTime DateTimeNow;
         private bool check_IdHousehold = false;
         private string _FamilyName;
         public string FamilyName { get => _FamilyName; set { _FamilyName = value; OnPropertyChanged(); } }
@@ -54,6 +55,7 @@ namespace household_management.ViewModel
         public PopulationViewModel()
 
         {
+            DateOfBirth = DateTime.Today;
             Photo = "/household_management;component/Resources/account.jpg";
 
             List<Model.Household_Registration> list_of_household = Model.DataProvider.Ins.DB.Household_Registration.ToList<Model.Household_Registration>();         
