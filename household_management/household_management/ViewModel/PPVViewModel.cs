@@ -318,7 +318,9 @@ namespace household_management.ViewModel
         // Check if any fields is null
         private string[] CheckData(Population item, int stt)
         {
-            var link = DataProvider.Ins.DB.Household_Registration.Where(x => x.IdOfOwner == item.Id).SingleOrDefault();
+         
+             var link = DataProvider.Ins.DB.Household_Registration.Where(x => x.IdOfOwner == item.Id).SingleOrDefault(); 
+          
             string[] list = new string[12];
             list[0] = (stt + 1).ToString();
             list[1] = check(item.Id);

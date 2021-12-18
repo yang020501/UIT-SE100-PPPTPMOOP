@@ -58,7 +58,7 @@
                 <RadioButton Content="Male" HorizontalAlignment="Left" Margin="465,128,0,0" VerticalAlignment="Top"  Height="28" RenderTransformOrigin="0.615,0.157" GroupName="Gender" Name="MaleChoise" IsChecked="{Binding isMale, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" CommandParameter="{Binding ElementName=MaleChoise}"/>
                 <DatePicker
 
-                    materialDesign:HintAssist.Hint="Date of birth" Text="{Binding DateOfBirth}" SelectedDate="{Binding DateOfBirth, UpdateSourceTrigger=PropertyChanged}"
+                    materialDesign:HintAssist.Hint="Date of birth" Text="{Binding Date,UpdateSourceTrigger=PropertyChanged}" SelectedDate="{Binding DateOfBirth, UpdateSourceTrigger=PropertyChanged}"
                     
                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="75,112,419,410" Height="44" FontSize="16" />
                 <TextBox

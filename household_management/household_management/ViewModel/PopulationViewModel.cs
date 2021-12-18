@@ -29,6 +29,8 @@ namespace household_management.ViewModel
         public bool Gender { get => _Gender; set { _Gender = value; OnPropertyChanged(); } }
         private string _Id;
         public string Id { get => _Id; set { _Id = value; OnPropertyChanged(); } }
+        private string _Date;
+        public string Date { get => _Date; set { _Date = value; OnPropertyChanged(); } }
         private string __HouseholdId;
         public string HouseholdId { get => __HouseholdId; set { __HouseholdId = value; OnPropertyChanged(); } }
         private string _Address;
@@ -55,6 +57,8 @@ namespace household_management.ViewModel
 
         {
             Photo = "/household_management;component/Resources/account.jpg";
+            Date = DateTime.Now.ToString("MM/dd/yyyy");
+            DateOfBirth = DateTime.Now;
 
             List<Model.Household_Registration> list_of_household = Model.DataProvider.Ins.DB.Household_Registration.ToList<Model.Household_Registration>();         
 

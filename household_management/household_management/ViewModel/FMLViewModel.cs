@@ -29,7 +29,7 @@ namespace household_management.ViewModel
         {
             NewTableFamily(Id);
         }
-        private void NewTableFamily(string Id="")
+        private void NewTableFamily(string Id = "")
         {
             FamilyList = new ObservableCollection<Family_Household>(DataProvider.Ins.DB.Family_Household.Where(x => x.Id_Household == Id));
             dt = new DataTable();
