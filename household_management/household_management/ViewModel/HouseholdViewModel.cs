@@ -148,7 +148,7 @@ namespace household_management.ViewModel
                             change.Id_Household = IdHousehold;
 
                             Model.DataProvider.Ins.DB.SaveChanges();
-                            IdHousehold = null;
+                            
                             break;
                         }
                     }
@@ -161,7 +161,7 @@ namespace household_management.ViewModel
 
                     population.Name = Name.Trim();
                     DateTime tmp = new DateTime();
-                    tmp = DateTime.ParseExact("01/01/1900", "dd/MM/yyyy", null);
+                    tmp = DateTime.ParseExact("01/01/2000", "dd/MM/yyyy", null);
                     population.DateOfBirth = tmp;
                     population.PlaceOfBirth = " ";
                     population.Sex = true;
