@@ -14,6 +14,9 @@ namespace household_management.ViewModel
     {
         public static bool isReLogin = false;
         public static bool isLogin = false;
+        public static string Name;
+        public static string Id;
+        public static string Role;
         private string _UserName;
         public string UserName { get => _UserName; set { _UserName = value; OnPropertyChanged(); } }
         private string _Password;
@@ -42,12 +45,24 @@ namespace household_management.ViewModel
 
             if (accCount > 0 && !isReLogin)
             {
+                var accCountInfo = DataProvider.Ins.DB.Users.Where(x => x.Username == UserName && x.Password == passEncode).SingleOrDefault();
+                Name = accCountInfo.Name;
+                Id = accCountInfo.Id.ToString();
+                int type = (int)accCountInfo.Tier;
+                var userRole = DataProvider.Ins.DB.UserRoles.Where(x => x.Id == type).SingleOrDefault();
+                Role = userRole.NameRole;
                 isLogin = true;
                 p.Close();
             }
             else if (accCount > 0 && isReLogin)
             {
-                MainWindow wd = new MainWindow();
+                var accCountInfo = DataProvider.Ins.DB.Users.Where(x => x.Username == UserName && x.Password == passEncode).SingleOrDefault();
+                Name = accCountInfo.Name;
+                Id = accCountInfo.Id.ToString();
+                int type = (int)accCountInfo.Tier;
+                var userRole = DataProvider.Ins.DB.UserRoles.Where(x => x.Id == type).SingleOrDefault();
+                Role = userRole.NameRole;
+                MainWindow wd = new MainWindow();              
                 wd.Show();
                 p.Close();
             }

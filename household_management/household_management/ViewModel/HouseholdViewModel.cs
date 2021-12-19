@@ -151,6 +151,10 @@ namespace household_management.ViewModel
                             
                             break;
                         }
+                        else if(x.Id == Id && x.Id_Household != null)
+                        {
+
+                        }
                     }
                 }
 
