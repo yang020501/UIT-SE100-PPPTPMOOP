@@ -24,7 +24,8 @@
         </DataGrid>
             <Border Grid.Column="1" BorderBrush="LightGray" BorderThickness="2,0,0,0">
                 <Grid>
-                <Button Command="{Binding Exitbtn}" CommandParameter="{Binding ElementName=window}" Content="Done"  Height="44" Background="#FF4D60C0" Margin="16,94,-122,94"   />
+                    <Button Command="{Binding Addbtn}" CommandParameter="{Binding ElementName=window}" Content="Done"  Height="44" Background="#FF4D60C0" Margin="16,138,-122,50"   />
+                    <Button Command="{Binding Exitbtn}" CommandParameter="{Binding ElementName=window}" Content="Done"  Height="44" Background="#FF4D60C0" Margin="16,53,-122,135"   />
                 </Grid>
             </Border>
         </Grid>

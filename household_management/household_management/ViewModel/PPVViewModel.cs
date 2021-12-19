@@ -145,7 +145,7 @@ namespace household_management.ViewModel
             }, (p) =>
             {
 
-                if (MessageBox.Show("Do you want to REMOVE?\nIt will REMOVE relavant Page like Absence,Transfer,Residence", "Warning!", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                if (MessageBox.Show("It will REMOVE relavant Page like Absence,Transfer,Residence,FamilyHoushold\nDo you want to REMOVE?", "Warning!", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
                     Household_Registration household = DataProvider.Ins.DB.Household_Registration.Where(x => x.IdOfOwner == Id).SingleOrDefault();
                     if (household == null)
@@ -163,6 +163,10 @@ namespace household_management.ViewModel
                             Transfer_Household transfer = DataProvider.Ins.DB.Transfer_Household.Where(x => x.Id_Owner == Id).SingleOrDefault();
                             if (transfer != null)
                                 DataProvider.Ins.DB.Transfer_Household.Remove(transfer);
+
+                            Family_Household familymem = DataProvider.Ins.DB.Family_Household.Where(x => x.Id_Person == Id).SingleOrDefault();
+                            if (familymem != null)
+                                DataProvider.Ins.DB.Family_Household.Remove(familymem);
 
                             DataProvider.Ins.DB.Populations.Remove(DataProvider.Ins.DB.Populations.Where(x => x.Id == Id).SingleOrDefault());
 
@@ -374,6 +378,7 @@ namespace household_management.ViewModel
             dtg.ItemsSource = DvPopulations;
 
         }
+        // load picture
         private ImageSource BitmapFromUri(Uri source)
         {
             try

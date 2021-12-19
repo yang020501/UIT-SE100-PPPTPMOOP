@@ -75,7 +75,7 @@
                 <Label Content="Household Id:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="471,171,0,0" Height="21" Width="126" FontSize="16" Padding="0"/>
                 <materialDesign:PackIcon Kind="HomeMapMarker" Margin="160,325,0,0" Height="31" Width="32" />
                 <materialDesign:PackIcon Kind="Present" Margin="160,109,0,0" Height="31" Width="32" />
-                <materialDesign:PackIcon Kind="HospitalMarker" Margin="614,233,0,0" Height="31" Width="32" />
+                <materialDesign:PackIcon Kind="HospitalMarker" Margin="605,230,0,0" Height="31" Width="32" />
                 <Button Content="Done" HorizontalAlignment="Left" Margin="605,533,0,0" 
                         VerticalAlignment="Top" Width="128" Height="44" Background="#FF4D60C0" 
                         Command="{Binding DoneCommand}" CommandParameter="{Binding ElementName=FamilyWindowX}" />
