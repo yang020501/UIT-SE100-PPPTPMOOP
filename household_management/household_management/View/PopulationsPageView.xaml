@@ -96,12 +96,12 @@
                 >
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Number" Binding="{Binding OrdinalNumber}"/>
+                            <DataGridTextColumn Header="Id_Household" Binding="{Binding Id_Household}"/>
                             <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
                             <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
                             <DataGridTextColumn Header="Gender" Binding="{Binding Gender}"/>
                             <DataGridTextColumn Header="DateOfBirth" Binding="{Binding DateOfBirth}"/>
                             <DataGridTextColumn Header="PlaceOfBirth" Binding="{Binding PlaceOfBirth}"/>
-                            <DataGridTextColumn Header="Id_Household" Binding="{Binding Id_Household}"/>
                             <DataGridTextColumn Header="Address" Binding="{Binding Address}"/>
                             <DataGridTextColumn Header="Relegion" Binding="{Binding Relegion}"/>
                             <DataGridTextColumn Header="Career" Binding="{Binding Career}"/>
