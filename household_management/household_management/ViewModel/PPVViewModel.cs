@@ -196,10 +196,8 @@ namespace household_management.ViewModel
 
 
 
-            })
-            {
-
-            };
+            });
+    
             //ChoosePicture btn
             Choosebtn = new RelayCommand<System.Windows.Controls.Image>((p) => { return true; }, (p) =>
             {
@@ -332,9 +330,9 @@ namespace household_management.ViewModel
             list[3] = check(item.Sex);
             list[4] = check(item.DateOfBirth);
             list[5] = check(item.PlaceOfBirth);
-            if (link != null)
-                list[6] = check(link.Id);
-            else if (item.Id_Household != null)
+            //if (link != null)
+            //    list[6] = check(link.Id);
+            /*else*/ if (item.Id_Household != null)
                 list[6] = item.Id_Household;
             else
                 list[6] = "";

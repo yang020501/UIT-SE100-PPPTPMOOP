@@ -147,7 +147,7 @@ namespace household_management.ViewModel
 
                 list_of_family_member.Add(population);
 
-                MessageBox.Show("Successful","Notification1",MessageBoxButton.OK,MessageBoxImage.Information);
+                MessageBox.Show("Successful","Notification!",MessageBoxButton.OK,MessageBoxImage.Information);
             });
 
             DoneCommand = new RelayCommand<Window>((p) => { return true; }, (p) => {

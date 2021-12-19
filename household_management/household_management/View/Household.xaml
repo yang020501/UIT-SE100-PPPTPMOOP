@@ -104,5 +104,12 @@
             </Grid>
 
         </Grid>
+        <RichTextBox HorizontalAlignment="Left" Height="100" Margin="735,183.4,-271,0" Grid.Row="1" VerticalAlignment="Top" Width="100">
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="RichTextBox"/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
     </Grid>
 </Window>
