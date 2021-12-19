@@ -320,9 +320,10 @@ namespace household_management.ViewModel
         // Check if any fields is null
         private string[] CheckData(Population item, int stt)
         {
-         
-             var link = DataProvider.Ins.DB.Household_Registration.Where(x => x.IdOfOwner == item.Id).SingleOrDefault(); 
-          
+
+            var link = DataProvider.Ins.DB.Household_Registration.Where(x => x.IdOfOwner == item.Id).ToArray();
+            var change = DataProvider.Ins.DB.Populations.Where(x => x.Id == item.Id).SingleOrDefault();
+
             string[] list = new string[12];
             list[0] = (stt + 1).ToString();
             list[1] = check(item.Id);
@@ -330,19 +331,28 @@ namespace household_management.ViewModel
             list[3] = check(item.Sex);
             list[4] = check(item.DateOfBirth);
             list[5] = check(item.PlaceOfBirth);
-            //if (link != null)
-            //    list[6] = check(link.Id);
-            /*else*/ if (item.Id_Household != null)
+            if (item.Id_Household != null)
                 list[6] = item.Id_Household;
-            else
+            else if(link != null && item.Id_Household == null)
+            {
+                // update Id household if this popualtion Id_Household null but have Id household in HouseholdRegis in database
+                change.Id_Household = link[0].Id;
+                list[6] = check(link[0].Id);
+                DataProvider.Ins.DB.SaveChanges();
+            }
+            else  
                 list[6] = "";
             list[7] = check(item.Address);
             list[8] = check(item.Relegion);
             list[9] = check(item.Career);
             list[10] = check(item.Photo);
-            if (link != null)
-                list[11] = check(link.Address);
-            else list[11] = "";
+            // get address from this population Id_household 
+            if (list[6] != "")
+            {
+                var get = list[6];
+                list[11] = check(DataProvider.Ins.DB.Household_Registration.Where(x => x.Id == get).SingleOrDefault().Address);
+            }
+            else list[11] = "";            
             return list;
         }
         // Convert null, string or any type to Valid view data

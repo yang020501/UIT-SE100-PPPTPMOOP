@@ -151,6 +151,7 @@ namespace household_management.ViewModel
                 pPerson.Id_Household = Id_Household;
                 try
                 {
+                    Selected = null;
                     NewTableFamily(Id_Household);
                     p.ItemsSource = dvFamily;
                     DataProvider.Ins.DB.Family_Household.Add(person);
