@@ -49,9 +49,9 @@
                     <RadioButton x:Name="FemaleChoise" VerticalAlignment="Top" RenderTransformOrigin="0.615,0.157" Margin="666,36,0,0"  Height="28" HorizontalAlignment="Left" GroupName="Gender" Content="Female" Width="66" IsChecked="{Binding FemaleChoice}"/>
                     <RadioButton x:Name="MaleChoise" VerticalAlignment="Top" RenderTransformOrigin="0.615,0.157" Margin="599,37,0,0"  Height="28" HorizontalAlignment="Left" GroupName="Gender"  Content="Male" IsChecked="{Binding MaleChoice}"/>
                     <Label Width="73" VerticalAlignment="Top" Margin="511,36,0,0" Height="26" HorizontalAlignment="Left" FontSize="16" Content="Gender:"/>
-                    <TextBox  IsReadOnly="True"
+                    <TextBox  IsReadOnly="True" Visibility="Hidden" IsEnabled="False"
                          Text="{Binding Id_Household,UpdateSourceTrigger=PropertyChanged}"
-                    HorizontalAlignment="Left" Height="34" Margin="656,72,0,0"  VerticalAlignment="Top" Width="236" materialDesign:HintAssist.Hint="HouseholdId" TextWrapping="Wrap" FontSize="16" >
+                    HorizontalAlignment="Left" Height="34" Margin="869,81,0,0"  VerticalAlignment="Top" Width="154" materialDesign:HintAssist.Hint="HouseholdId" TextWrapping="Wrap" FontSize="16" >
                     </TextBox>
 
                     <Label Content="Household Id:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="511,85,0,0" Height="21" Width="126" FontSize="16" Padding="0"/>
@@ -63,7 +63,7 @@
                     <materialDesign:PackIcon Kind="Present" Margin="812,26,0,0" Height="31" Width="32" />
                     <materialDesign:PackIcon Kind="HospitalMarker" Margin="571,138,0,0" Height="31" Width="32" RenderTransformOrigin="-1.562,-2.452" />
                     <materialDesign:PackIcon Kind="Briefcase" Margin="30,329,0,0" Height="31" Width="32" RenderTransformOrigin="0.825,-1.055" />
-                    <ComboBox ItemsSource="{Binding listId,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="914,85,0,0" VerticalAlignment="Top" Width="125"/>
+                    <ComboBox  SelectedValue="{Binding SelectedCb,UpdateSourceTrigger=PropertyChanged}"  SelectedIndex="{Binding SelectedIndex,UpdateSourceTrigger=PropertyChanged}"  ItemsSource="{Binding DicList,UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Left" Margin="625,75,0,0" VerticalAlignment="Top" Width="195" Height="34" FontSize="16"/>
 
                 </Grid>
             </Border>

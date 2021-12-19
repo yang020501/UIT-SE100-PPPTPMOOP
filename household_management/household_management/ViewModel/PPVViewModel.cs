@@ -2,8 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -62,6 +64,10 @@ namespace household_management.ViewModel
 
         private DataView dvPopulations;
         public DataView DvPopulations { get => dvPopulations; set { dvPopulations = value; OnPropertyChanged(); } }
+
+        private ObservableCollection<string> _DicList;
+        public ObservableCollection<string> DicList { get => _DicList; set { _DicList = value;OnPropertyChanged(); } }
+
 
 
         private ObservableCollection<Population> PopulationsList;
@@ -216,7 +222,24 @@ namespace household_management.ViewModel
             });
         }
 
-
+        private int _SelectedIndex;
+        public int SelectedIndex { get => _SelectedIndex; set { _SelectedIndex = value; OnPropertyChanged(); } }
+        private string _SelectedCb;
+        public  string SelectedCb
+        {
+            get => _SelectedCb;
+            set
+            {
+                _SelectedCb = value;
+                OnPropertyChanged();
+                if(SelectedCb != null)
+                {
+                    HAddress = check(DataProvider.Ins.DB.Household_Registration.Where(x => x.Id == _SelectedCb).SingleOrDefault().Address);
+                }
+                
+               
+            }
+        }
         private DataRowView _Selected;
         public DataRowView Selected
         {
@@ -227,6 +250,7 @@ namespace household_management.ViewModel
                 OnPropertyChanged();
                 if (Selected != null)
                 {
+                    
                     Name = (string)Selected.Row["Name"];
                     Id = (string)Selected.Row["Id"];
                     if ((string)Selected.Row["Gender"] == "Male")
@@ -239,6 +263,7 @@ namespace household_management.ViewModel
                         FemaleChoice = true;
                         MaleChoice = false;
                     }
+          
                     DateOfBirth = (string)Selected.Row["DateOfBirth"];
                     PlaceOfBirth = (string)Selected.Row["PlaceOfBirth"];
                     Id_Household = (string)Selected.Row["Id_Household"];
@@ -246,6 +271,25 @@ namespace household_management.ViewModel
                     Relegion = (string)Selected.Row["Relegion"];
                     Career = (string)Selected.Row["Career"];
                     HAddress = (string)Selected.Row["HAddress"];
+                   
+                    // get all idHousehold
+                    DicList = new ObservableCollection<string>();
+                    var tmp = DataProvider.Ins.DB.Household_Registration.Where(x => x.IdOfOwner == Id);
+                    if (tmp != null)
+                    {
+                        foreach (Household_Registration item in tmp)
+                        {
+                            string id;
+                            
+                            id = (string)check(item.Id);
+                       
+                            DicList.Add(id);
+                        }
+                    }
+                    else
+                        DicList.Add(Id_Household);
+                    SelectedIndex = 0;
+
                     if ((string)Selected.Row["Photo"] != null && (string)Selected.Row["Photo"] != "")
 
                     {
@@ -265,8 +309,9 @@ namespace household_management.ViewModel
                         SPhoto = null;
                     }
 
-
+                    
                 }
+               
             }
         }
         private void NullProperty()
@@ -414,4 +459,6 @@ namespace household_management.ViewModel
             }
         }
     }
+    
+   
 }
