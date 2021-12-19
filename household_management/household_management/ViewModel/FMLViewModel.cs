@@ -20,8 +20,10 @@ namespace household_management.ViewModel
 
         private ObservableCollection<Family_Household> FamilyList;
         public ICommand Exitbtn { get; set; }
+        public ICommand Addbtn { get; set; }
 
-       public  FMLViewModel()
+
+        public FMLViewModel()
         {
             NewTableFamily();
         }
