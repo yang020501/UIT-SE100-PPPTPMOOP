@@ -75,5 +75,11 @@ namespace household_management
             About wd = new About();
             wd.ShowDialog();
         }
+
+        private void ManageButton_Click(object sender, RoutedEventArgs e)
+        {
+            AccountManager wd = new AccountManager();
+            wd.ShowDialog();
+        }
     }
 }
