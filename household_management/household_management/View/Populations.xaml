@@ -59,9 +59,15 @@
                 <DatePicker
 
 
-                    materialDesign:HintAssist.Hint="Date of birth" Text="{Binding Date,UpdateSourceTrigger=PropertyChanged}" SelectedDate="{Binding DateOfBirth, UpdateSourceTrigger=PropertyChanged}"
+
+                  
                           
                     
+
+                  
+
+                    materialDesign:HintAssist.Hint="Date of birth" Text="{Binding DateTimeNow, Mode=OneTime}" SelectedDate="{Binding DateOfBirth, UpdateSourceTrigger=PropertyChanged}"
+
 
                     
                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="75,112,419,410" Height="44" FontSize="16" />

@@ -231,15 +231,15 @@ namespace household_management.ViewModel
                         Model.DataProvider.Ins.DB.SaveChanges();
                     }
 
-                    MessageBox.Show("Add success");
+                MessageBox.Show("Add Successful!", "Notification!", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
                 {
-                    MessageBox.Show("Id is exist please try again!");
+                    MessageBox.Show("Id is exist please try again!","Error",MessageBoxButton.OK,MessageBoxImage.Error);
                 }
                 isMale = false;
                 isFemale = false;
-                MessageBox.Show("Add Successful!", "Notification!", MessageBoxButton.OK, MessageBoxImage.Information);
+                
             });
         }
 

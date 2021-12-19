@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Name="MainWindowX"
         DataContext="{StaticResource MainVM}"
-        Title="MainWindow" Height="450" Width="800" Background="#FFFDFAFA" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" ShowInTaskbar="True" AllowsTransparency="True" WindowStyle="None">
+        Title="MainWindow" Height="450" Width="800" Background="{x:Null}" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" ShowInTaskbar="True" AllowsTransparency="True" WindowStyle="None">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadWindowCommand}" 
@@ -16,99 +16,105 @@
             </i:InvokeCommandAction>
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    
 
-    <Grid>
-        <Button x:Name="btnHousehold"  HorizontalAlignment="Left" Height="90" Margin="225,89,0,0" VerticalAlignment="Top" Width="109" BorderBrush="#FFF4F5F7" RenderTransformOrigin="0.795,0.681" Click="btnHousehold_Click" >
-            <Button.Background>
-                <ImageBrush ImageSource="Resources/household.jpg"/>
-            </Button.Background>
-        </Button>
-        <Grid HorizontalAlignment="Left" Height="39" Margin="160,0,-1,0" VerticalAlignment="Top" Width="641" RenderTransformOrigin="0.5,0.5" Background="#FF4D60C0">
-            <Grid.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleY="-1" ScaleX="-1"/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Grid.RenderTransform>
-            <Button x:Name="btnExit" Content="Exit" HorizontalAlignment="Left" Width="30" Height="Auto" Margin="10,5,0,5" Click="btnExit_Click" Cursor="Hand">
-                <Button.Background>
-                    <ImageBrush ImageSource="Resources/exite.jpg"/>
-                </Button.Background>
-            </Button>
-        </Grid>
-        <Button x:Name="btnTransfer"  HorizontalAlignment="Left" Height="90" Margin="625,89,0,0" VerticalAlignment="Top" Width="109" BorderBrush="#FFF4F5F7" RenderTransformOrigin="0.795,0.681" Click="btnTransfer_Click" >
-            <Button.Background>
-                <ImageBrush ImageSource="Resources/transfer.jpg"/>
-            </Button.Background>
-        </Button>
-        <Button x:Name="btnPopualtion"  HorizontalAlignment="Left" Height="90" Margin="425,89,0,0" VerticalAlignment="Top" Width="109" BorderBrush="#FFF4F5F7" RenderTransformOrigin="0.795,0.681" Click="btnPopualtion_Click" CommandParameter="{Binding ElementName=MainWindowX}" Command="{Binding LoadPopuationWindowCommand}" >
-            <Button.Background>
-                <ImageBrush ImageSource="Resources/population.jpg"/>
-            </Button.Background>
-        </Button>
-        <Button x:Name="btnAbsence"  HorizontalAlignment="Left" Height="90" Margin="225,235,0,0" VerticalAlignment="Top" Width="109" BorderBrush="#FFF4F5F7" RenderTransformOrigin="0.795,0.681" Click="btnAbsence_Click" >
-            <Button.Background>
-                <ImageBrush ImageSource="Resources/absence.jpg"/>
-            </Button.Background>
-        </Button>
-        <Button x:Name="btnResidence"  HorizontalAlignment="Left" Height="90" Margin="425,235,0,0" VerticalAlignment="Top" Width="109" BorderBrush="#FFF4F5F7" RenderTransformOrigin="0.5,0.5" Click="btnResidence_Click" >
-            <Button.Background>
-                <ImageBrush ImageSource="Resources/tempresidence.jpg"/>
-            </Button.Background>
-        </Button>
-        <Button x:Name="btnSearch"  HorizontalAlignment="Left" Height="90" Margin="625,235,0,0" VerticalAlignment="Top" Width="109" BorderBrush="#FFF4F5F7" RenderTransformOrigin="0.795,0.681" Click="btnSearch_Click" >
-            <Button.Background>
-                <ImageBrush ImageSource="Resources/search.jpg"/>
-            </Button.Background>
-        </Button>
-        <Grid HorizontalAlignment="Right" Height="412" VerticalAlignment="Top" Width="160" Margin="0,38,640,-0.4" Background="#FF3A404C">
-            <Image HorizontalAlignment="Left" Height="65" VerticalAlignment="Top" Width="65" Source="Resources/account.jpg" Stretch="Fill" Cursor="Hand"/>
-            <TextBlock x:Name="tblockRole" Margin="65,0,0,378" TextWrapping="Wrap" Text="{Binding Role , UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom" Height="24" Foreground="#DDFAFAFA" Padding="10,2,0,0" FontWeight="Bold" FontSize="14"/>
-            <TextBlock x:Name="tblockId" Margin="65,34,0,0" TextWrapping="Wrap" Text="{Binding Id, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Height="24" Foreground="#DDFAFAFA" Padding="10,2,0,0" FontSize="10"/>
-            <Grid HorizontalAlignment="Left" Height="347" Margin="0,65,0,0" VerticalAlignment="Top" Width="160"/>
-            <Button Content="" HorizontalAlignment="Left" Margin="5,357,0,0" 
+
+    <Border Background="White" CornerRadius="5.3">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.09*"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Border  Grid.Row="0" CornerRadius="0,4,0,0" Background="#FF4D60C0" Margin="165,0,-0.2,409.4" Grid.RowSpan="2">
+                <Grid >
+
+                    <Button x:Name="btnExit" Content="Exit" Height="Auto" Margin="599,5,5,4.8" Click="btnExit_Click" Cursor="Hand" RenderTransformOrigin="9.02,0.319">
+                        <Button.Background>
+                            <ImageBrush ImageSource="Resources/exite.jpg"/>
+                        </Button.Background>
+                    </Button>
+                </Grid>
+            </Border>
+            <Border Grid.Row="0" CornerRadius="4,0,0,0" Background="#FF3C3E71" Margin="0,0,630.8,409.4" Grid.RowSpan="2" >
+                <Grid  >
+                    <TextBlock x:Name="tblockName"  Height="38"  Foreground="#DDFAFAFA" Padding="4,12,0,4" FontSize="10"/>
+                </Grid>
+            </Border>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.269*"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1">
+                    <Button x:Name="btnHousehold"  HorizontalAlignment="Left" Height="90" Margin="73,66,0,0" VerticalAlignment="Top" Width="109" BorderBrush="#FFF4F5F7" RenderTransformOrigin="0.795,0.681" Click="btnHousehold_Click" >
+                        <Button.Background>
+                            <ImageBrush ImageSource="Resources/household.jpg"/>
+                        </Button.Background>
+                    </Button>
+
+                    <Button x:Name="btnTransfer"  HorizontalAlignment="Left" Height="90" VerticalAlignment="Top" Width="109" BorderBrush="#FFF4F5F7" RenderTransformOrigin="0.795,0.681" Click="btnTransfer_Click" Margin="473,66,0,0" >
+                        <Button.Background>
+                            <ImageBrush ImageSource="Resources/transfer.jpg"/>
+                        </Button.Background>
+                    </Button>
+                    <Button x:Name="btnPopualtion"  HorizontalAlignment="Left" Height="90" Margin="273,66,0,0" VerticalAlignment="Top" Width="109" BorderBrush="#FFF4F5F7" RenderTransformOrigin="0.795,0.681" Click="btnPopualtion_Click" CommandParameter="{Binding ElementName=MainWindowX}" Command="{Binding LoadPopuationWindowCommand}" >
+                        <Button.Background>
+                            <ImageBrush ImageSource="Resources/population.jpg"/>
+                        </Button.Background>
+                    </Button>
+                    <Button x:Name="btnAbsence"  HorizontalAlignment="Left" Height="90" Margin="73,212,0,0" VerticalAlignment="Top" Width="109" BorderBrush="#FFF4F5F7" RenderTransformOrigin="0.795,0.681" Click="btnAbsence_Click" >
+                        <Button.Background>
+                            <ImageBrush ImageSource="Resources/absence.jpg"/>
+                        </Button.Background>
+                    </Button>
+                    <Button x:Name="btnResidence"  HorizontalAlignment="Left" Height="90" Margin="273,212,0,0" VerticalAlignment="Top" Width="109" BorderBrush="#FFF4F5F7" RenderTransformOrigin="0.5,0.5" Click="btnResidence_Click" >
+                        <Button.Background>
+                            <ImageBrush ImageSource="Resources/tempresidence.jpg"/>
+                        </Button.Background>
+                    </Button>
+                    <Button x:Name="btnSearch"  HorizontalAlignment="Left" Height="90" Margin="473,212,0,0" VerticalAlignment="Top" Width="109" BorderBrush="#FFF4F5F7" RenderTransformOrigin="0.795,0.681" Click="btnSearch_Click" >
+                        <Button.Background>
+                            <ImageBrush ImageSource="Resources/search.jpg"/>
+                        </Button.Background>
+                    </Button>
+
+
+                    <Label Content="Version 1.0.0" HorizontalAlignment="Left" Margin="542,382,0,0" VerticalAlignment="Top" Width="85" FontStyle="Italic" FontWeight="Bold" Height="25"/>
+                    <Label Content="Household Registration" HorizontalAlignment="Left" Margin="53,161,0,0" VerticalAlignment="Top" Width="155" FontSize="14"/>
+                    <Label Content="Populations" HorizontalAlignment="Left" Margin="283,161,0,0" VerticalAlignment="Top" Width="85" FontSize="14"/>
+                    <Label Content="Transfer" HorizontalAlignment="Left" Margin="497,161,0,0" VerticalAlignment="Top" Width="60" FontSize="14"/>
+                    <Label Content="Temporary Absence&#xA;        Certificate  " HorizontalAlignment="Left" Margin="63,314,0,0" VerticalAlignment="Top" Width="135" FontSize="14" AllowDrop="True" Height="50"/>
+                    <Label Content="Temporary Residence&#xA;         Certificate  " HorizontalAlignment="Left" Margin="257,314,0,0" VerticalAlignment="Top" Width="140" FontSize="14" AllowDrop="True" Height="50"/>
+                    <Label Content="Search List" HorizontalAlignment="Left" Margin="488,314,0,0" VerticalAlignment="Top" Width="84" FontSize="14"/>
+
+                </Grid>
+                <Border Grid.Column="0" CornerRadius="0,0,0,4" Background="#FF3A404C" Margin="0,3,0.2,-0.2" >
+
+                    <Grid >
+                        <Image HorizontalAlignment="Left" Height="65" VerticalAlignment="Top" Width="65" Source="Resources/account.jpg" Stretch="Fill" Cursor="Hand"/>
+                        <TextBlock x:Name="tblockRole" Margin="65,0,0,378" TextWrapping="Wrap" Text="Admin" VerticalAlignment="Bottom" Height="24" Foreground="#DDFAFAFA" Padding="10,2,0,0" FontWeight="Bold" FontSize="14"/>
+                        <TextBlock x:Name="tblockId" Margin="65,34,0,0" TextWrapping="Wrap" Text="19521409" VerticalAlignment="Top" Height="24" Foreground="#DDFAFAFA" Padding="10,2,0,0" FontSize="10"/>
+                        <Grid HorizontalAlignment="Left" Height="347" Margin="0,65,0,0" VerticalAlignment="Top" Width="160"/>
+                        <Button Content="" HorizontalAlignment="Left" Margin="5,357,0,0" 
                     VerticalAlignment="Top" Width="40" Height="41" Foreground="#FF3A404C" 
                     Command="{Binding LogoutCommand}" 
                     CommandParameter="{Binding ElementName=MainWindowX}">
-                <Button.BorderBrush>
-                    <ImageBrush/>
-                </Button.BorderBrush>
-                <Button.Background>
-                    <ImageBrush ImageSource="Resources/Logout.png"/>
-                </Button.Background>
-            </Button>
-            <StackPanel HorizontalAlignment="Left" Height="80" Margin="0,70,0,0" VerticalAlignment="Top" Width="160">
-                <Button Content="About us" Height="40" Background="{x:Null}" BorderBrush="#FF3A404C" Foreground="#FFF3F2F6" BorderThickness="0" Padding="0,4,16,4" Click="Button_Click"/>
-                <Button Visibility="Hidden" Content="Manage" Height="40" 
-                        Background="{x:Null}" BorderBrush="#FF3A404C" 
-                        Foreground="#FFF3F2F6" BorderThickness="0" 
-                        Padding="0,4,16,4" Name="ManageButton" Click="ManageButton_Click">
-                    
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="Loaded">
-                            <i:InvokeCommandAction Command="{Binding LoadManageButtonCommand}" 
-                                   CommandParameter="{Binding ElementName=ManageButton}">
-                            </i:InvokeCommandAction>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
+                            <Button.BorderBrush>
+                                <ImageBrush/>
+                            </Button.BorderBrush>
+                            <Button.Background>
+                                <ImageBrush ImageSource="Resources/Logout.png"/>
+                            </Button.Background>
+                        </Button>
+                        <StackPanel HorizontalAlignment="Left" Height="80" Margin="0,70,0,0" VerticalAlignment="Top" Width="160">
+                            <Button  Content="About us" Height="40" Background="{x:Null}" BorderBrush="#FF3A404C" Foreground="#FFF3F2F6" BorderThickness="0" Padding="0,4,16,4" Click="Button_Click"/>
+                            <Button Visibility="Hidden" Content="Manage" Height="40" Background="{x:Null}" BorderBrush="#FF3A404C" Foreground="#FFF3F2F6" BorderThickness="0" Padding="0,4,16,4"/>
+                        </StackPanel>
+                        <Label Content="Log out" HorizontalAlignment="Left" Margin="5,390,0,0" VerticalAlignment="Top" Width="45" FontSize="10" Foreground="#FFF7F4F4"/>
+                    </Grid>
 
-                </Button>
-            </StackPanel>
-            <Label Content="Log out" HorizontalAlignment="Left" Margin="5,390,0,0" VerticalAlignment="Top" Width="45" FontSize="10" Foreground="#FFF7F4F4"/>
-        </Grid>
-        <Grid HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="160" Background="#FF3C3E71">
-            <TextBlock x:Name="tblockName" HorizontalAlignment="Left" VerticalAlignment="Top" Height="38" Width="160" Foreground="#DDFAFAFA" Padding="4,12,0,4" FontSize="10" Text="{Binding Name}"/>
-        </Grid>
-        <Label Content="Version 1.0.0" HorizontalAlignment="Left" Margin="715,425,0,-0.4" VerticalAlignment="Top" Width="85" FontStyle="Italic" FontWeight="Bold" Height="25"/>
-        <Label Content="Household Registration" HorizontalAlignment="Left" Margin="205,184,0,0" VerticalAlignment="Top" Width="155" FontSize="14"/>
-        <Label Content="Populations" HorizontalAlignment="Left" Margin="435,184,0,0" VerticalAlignment="Top" Width="85" FontSize="14"/>
-        <Label Content="Transfer" HorizontalAlignment="Left" Margin="650,184,0,0" VerticalAlignment="Top" Width="60" FontSize="14"/>
-        <Label Content="Temporary Absence&#xD;&#xA;      Certificate  " HorizontalAlignment="Left" Margin="215,337,0,0" VerticalAlignment="Top" Width="135" FontSize="14" AllowDrop="True" Height="50"/>
-        <Label Content="Temporary Residence&#xA;        Certificate  " HorizontalAlignment="Left" Margin="405,337,0,0" VerticalAlignment="Top" Width="140" FontSize="14" AllowDrop="True" Height="50"/>
-        <Label Content="Search List" HorizontalAlignment="Left" Margin="640,337,0,0" VerticalAlignment="Top" Width="84" FontSize="14"/>
 
-    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+    </Border>
 </Window>
