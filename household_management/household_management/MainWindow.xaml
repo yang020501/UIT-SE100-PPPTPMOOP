@@ -106,8 +106,21 @@
                             </Button.Background>
                         </Button>
                         <StackPanel HorizontalAlignment="Left" Height="80" Margin="0,70,0,0" VerticalAlignment="Top" Width="160">
-                            <Button  Content="About us" Height="40" Background="{x:Null}" BorderBrush="#FF3A404C" Foreground="#FFF3F2F6" BorderThickness="0" Padding="0,4,16,4" Click="Button_Click"/>
-                            <Button Visibility="Hidden" Content="Manage" Height="40" Background="{x:Null}" BorderBrush="#FF3A404C" Foreground="#FFF3F2F6" BorderThickness="0" Padding="0,4,16,4"/>
+                            <Button Content="About us" Height="40" Background="{x:Null}" BorderBrush="#FF3A404C" Foreground="#FFF3F2F6" BorderThickness="0" Padding="0,4,16,4" Click="Button_Click"/>
+                            <Button Visibility="Hidden" Content="Manage" Height="40" 
+                        Background="{x:Null}" BorderBrush="#FF3A404C" 
+                        Foreground="#FFF3F2F6" BorderThickness="0" 
+                        Padding="0,4,16,4" Name="ManageButton" Click="ManageButton_Click">
+
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Loaded">
+                                        <i:InvokeCommandAction Command="{Binding LoadManageButtonCommand}" 
+                                   CommandParameter="{Binding ElementName=ManageButton}">
+                                        </i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+
+                            </Button>
                         </StackPanel>
                         <Label Content="Log out" HorizontalAlignment="Left" Margin="5,390,0,0" VerticalAlignment="Top" Width="45" FontSize="10" Foreground="#FFF7F4F4"/>
                     </Grid>
