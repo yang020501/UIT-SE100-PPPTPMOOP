@@ -271,7 +271,7 @@ namespace household_management.ViewModel
                 Model.DataProvider.Ins.DB.Family_Household.Add(owner);
                 Model.DataProvider.Ins.DB.SaveChanges();
 
-                MessageBox.Show("Create Household Registration Successful");
+                MessageBox.Show("Create Household Registration Successfully","Notification!",MessageBoxButton.OK,MessageBoxImage.Information);
                 FamilyViewModel.list_of_family_member.Clear();
                 IdHousehold = GenarateId();
             });

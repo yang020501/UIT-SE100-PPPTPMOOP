@@ -171,12 +171,12 @@ namespace household_management.ViewModel
                     Selected = null;
                     NewTableFamily(Id_Household);
                     p.ItemsSource = dvFamily;
-                    MessageBox.Show("Add Successful!", "Notification!", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Add Successfully!", "Notification!", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show("Failed!", "Notification!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Fail!", "Notification!", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
 
 

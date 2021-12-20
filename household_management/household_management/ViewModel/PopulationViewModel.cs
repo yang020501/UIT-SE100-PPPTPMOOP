@@ -231,7 +231,7 @@ namespace household_management.ViewModel
                         Model.DataProvider.Ins.DB.SaveChanges();
                     }
 
-                MessageBox.Show("Add Successful!", "Notification!", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Add Successfully!", "Notification!", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
                 {

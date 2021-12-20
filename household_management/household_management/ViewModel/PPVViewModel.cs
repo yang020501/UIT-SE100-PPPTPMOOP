@@ -138,7 +138,7 @@ namespace household_management.ViewModel
                 NullProperty();
                 NewTablePopulations();
                 p.ItemsSource = dvPopulations;
-                MessageBox.Show("Update Successful!", "Notifications!", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+                MessageBox.Show("Update Successfully!", "Notifications!", MessageBoxButton.OKCancel, MessageBoxImage.Information);
             });
             //Delete
             Deletebtn = new RelayCommand<DataGrid>((p) =>
