@@ -10,13 +10,15 @@
         Name="PopulationWindowX"
         DataContext="{StaticResource PopulationVM}"
 
-        Title="Populations" Height="606.051" Width="904.034" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" AllowsTransparency="True" WindowStyle="None">
+        Title="Populations" Height="606.051" Width="904.034" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}">
+    <Border Background="White" CornerRadius="5.3">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.07*"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Background="#FF4D60C0" HorizontalAlignment="Right" Width="904" RenderTransformOrigin="0.792,0.56">
+            <Border Grid.Row="0" Background="#FF4D60C0" CornerRadius="4,4,0,0">
+        <Grid  HorizontalAlignment="Right" Width="904" RenderTransformOrigin="0.792,0.56">
             <Image Height="30" Margin="0,5,857,5" HorizontalAlignment="Right" Width="37" Source="/household_management;component/Resources/population.jpg" Stretch="Fill"/>
 
 
@@ -28,13 +30,14 @@
             <Label Content="Populations" HorizontalAlignment="Right" Margin="0,7,703,6" Width="149" FontWeight="Bold" FontSize="14" Foreground="#DDE1E6F3"/>
 
         </Grid>
+            </Border>
 
-        <Grid Grid.Row="1">
+            <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.25*"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Border BorderBrush="LightGray" BorderThickness="2">
+            <Border BorderBrush="LightGray" CornerRadius="0,0,0,4" BorderThickness="2">
                 <Grid Grid.Column="0">
                     <Border BorderBrush="#FF4D60C0" BorderThickness="2" Margin="18,165,21.2,224.8">
                         <Grid>
@@ -44,7 +47,7 @@
                 </Grid>
             </Border>
             <Grid Grid.Column="1">
-                <Border BorderBrush="LightGray" BorderThickness="2">
+                <Border BorderBrush="LightGray" BorderThickness="2" CornerRadius="0,0,4,0">
                 <Grid>
                 <TextBox
                     HorizontalAlignment="Left" Height="34" Margin="75,66,0,0"  VerticalAlignment="Top" Width="193" materialDesign:HintAssist.Hint="FamilyName" TextWrapping="Wrap" FontSize="16" Text="{Binding FamilyName, UpdateSourceTrigger=PropertyChanged}"/>
@@ -117,4 +120,5 @@
             </Grid>
         </Grid>
     </Grid>
+    </Border>
 </Window>
