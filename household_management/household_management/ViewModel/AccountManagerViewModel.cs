@@ -41,7 +41,7 @@ namespace household_management.ViewModel
         private bool _FemaleChoice;
         public bool FemaleChoice { get => _FemaleChoice; set { _FemaleChoice = value; OnPropertyChanged(); } }
      
-        public  MainViewModel Vm { get; set; }
+        public static MainViewModel Vm { get; set; }
         public ICommand Updatebtn { get; set; }
         public ICommand Deletebtn { get; set; }
 
