@@ -57,7 +57,9 @@
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="TextChanged">
                                 <i:InvokeCommandAction Command="{Binding HouseholdIdChangeCommand}" 
+
                                                    CommandParameter="{Binding ElementName=tbFullName}"/>
+
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </TextBox>
@@ -74,8 +76,9 @@
                         </i:Interaction.Triggers>
                     </TextBox>
 
-                    <materialDesign:PackIcon Kind="HomeMapMarker" Margin="42,187,0,0" Height="31" Width="32" />
+
                     <materialDesign:PackIcon  Visibility="Hidden" Kind="Map" Margin="42,253,0,0" Height="31" Width="32" />
+
                     <ComboBox Visibility="Hidden"
                         materialDesign:HintAssist.Hint="Area" Margin="96,253,387,144.8" FontSize="14">
                         <ComboBoxItem
@@ -87,13 +90,15 @@
                         <ComboBoxItem
                          Content="4" />
                     </ComboBox>
-                    <materialDesign:PackIcon Kind="AccountPlus" Margin="42,279,0,0" Height="31" Width="32" />
+
+                    <materialDesign:PackIcon Kind="AccountPlus" Margin="42,284,0,0" Height="31" Width="32" />
                     <TextBox
-                    HorizontalAlignment="Left" Height="90" Margin="96,276,0,0"  VerticalAlignment="Top" Width="220" 
+                    HorizontalAlignment="Left" Height="90" Margin="96,281,0,0"  VerticalAlignment="Top" Width="220" 
                     materialDesign:HintAssist.Hint="IdFMember" TextWrapping="Wrap" FontSize="16" 
                     Text="{Binding IdMembers, UpdateSourceTrigger=PropertyChanged}"  
                     materialDesign:HintAssist.HelperText="12 digits numbers" IsReadOnly="True"/>
-                    <Button Content="Add Member" HorizontalAlignment="Left" Margin="377,305,0,0" 
+                    <Button Content="Add Member" HorizontalAlignment="Left" Margin="377,310,0,0" 
+
                         VerticalAlignment="Top" Width="134" Background="#FF4D60C0"
                         Command="{Binding btnFamily}" Height="37"/>
                 </Grid>
