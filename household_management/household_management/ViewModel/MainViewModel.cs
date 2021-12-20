@@ -95,7 +95,7 @@ namespace household_management.ViewModel
            
            
         }
-        private void loadPic(string Id="0000")
+       public void loadPic(string Id="0000")
         {
             if (Id == null)
                 return;
@@ -104,7 +104,7 @@ namespace household_management.ViewModel
             if (link != null)
             {
                
-                    Photo = checked(link.PhotoUser);
+                    Photo = check(link.PhotoUser);
                     try
                     {
                         SPhoto = BitmapFromUri(new Uri(System.IO.Path.GetFullPath("../../userhinhthe/" + Photo))); // get picture
