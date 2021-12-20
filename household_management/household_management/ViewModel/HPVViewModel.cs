@@ -118,7 +118,7 @@ namespace household_management.ViewModel
                     NullProperty();
                     NewTableHousehold();
                     p.ItemsSource = dvHousehold;
-                    MessageBox.Show("Update Successful!", "Notifications!", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Update Successfully!", "Notifications!", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 catch (Exception e)
                 {

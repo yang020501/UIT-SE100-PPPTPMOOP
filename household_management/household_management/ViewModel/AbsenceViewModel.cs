@@ -119,7 +119,7 @@ namespace household_management.ViewModel
                     Model.DataProvider.Ins.DB.SaveChanges();
                     checkIdHousehold = false;
 
-                    MessageBox.Show("Success");
+                    MessageBox.Show("Add Successfully","Notification!",MessageBoxButton.OK,MessageBoxImage.Information);
                 }
                 
             });
