@@ -57,7 +57,7 @@
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="TextChanged">
                             <i:InvokeCommandAction Command="{Binding HouseholdIdChangeCommand}" 
-                                                   CommandParameter="{Binding ElementName=IdBox}"/>
+                                                   CommandParameter="{Binding ElementName=tbFullName}"/>
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </TextBox>
