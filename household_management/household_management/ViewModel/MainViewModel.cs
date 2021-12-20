@@ -1,4 +1,5 @@
-﻿using System;
+﻿using household_management.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,6 +7,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace household_management.ViewModel
 {
@@ -17,6 +20,13 @@ namespace household_management.ViewModel
         public string Id { get => _Id; set { _Id = value; OnPropertyChanged(); } }
         private string _Role;
         public string Role { get => _Role; set { _Role = value; OnPropertyChanged(); } }
+
+        private ImageSource _SPhoto;
+        public ImageSource SPhoto { get => _SPhoto; set { _SPhoto = value; OnPropertyChanged(); } }
+
+        private string _Photo;
+        public string Photo { get => _Photo; set { _Photo = value; OnPropertyChanged(); } }
+
         public ICommand LoadWindowCommand{ get; set; }
         public ICommand LoadPopuationWindowCommand { get; set; }
         public ICommand LogoutCommand { get; set; }
@@ -49,6 +59,7 @@ namespace household_management.ViewModel
 
                     if (LoginViewModel.isLogin)
                     {
+                        
                         p.Show();
                     }
                     else
@@ -56,12 +67,13 @@ namespace household_management.ViewModel
                         p.Close();
                     }
                 }
-
+                
                 Name = LoginViewModel.Name;
                 Id = LoginViewModel.Id;
                 Role = LoginViewModel.Role;
+                loadPic(Id);
 
-                
+
 
             });
 
@@ -80,6 +92,78 @@ namespace household_management.ViewModel
                 LoginViewModel.isReLogin = true;
                 p.Close();
             });
+           
+           
+        }
+        private void loadPic(string Id="0000")
+        {
+            if (Id == null)
+                return;
+            int tmp = int.Parse(Id);
+            var link = DataProvider.Ins.DB.Users.Where(x => x.Id == tmp).SingleOrDefault();
+            if (link != null)
+            {
+               
+                    Photo = checked(link.PhotoUser);
+                    try
+                    {
+                        SPhoto = BitmapFromUri(new Uri(System.IO.Path.GetFullPath("../../userhinhthe/" + Photo))); // get picture
+                    }
+                    catch (Exception e)
+                    {
+                        SPhoto = BitmapFromUri(new Uri(System.IO.Path.GetFullPath("../../userhinhthe/" + Photo)));
+                    }
+                
+               
+            }
+
+        }
+        private string check(object txt)
+        {
+            DateTime dateTime = new DateTime();
+            bool gender = new bool();
+            if (txt == null)
+                return "";
+            else if (txt.GetType() == dateTime.GetType())
+            {
+                dateTime = (DateTime)txt;
+                return dateTime.ToString("dd/MM/yyyy");
+            }
+            else if (txt.GetType() == gender.GetType())
+            {
+                gender = (bool)txt;
+                if (gender == true)
+                    return "Male";
+                else return "Female";
+            }
+            return txt.ToString();
+        }
+
+        private ImageSource BitmapFromUri(Uri source)
+        {
+            try
+            {
+                var bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+                bitmap.UriSource = source;
+                bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                bitmap.EndInit();
+
+                return bitmap;
+            }
+            catch
+            {
+                source = new Uri(System.IO.Path.GetFullPath("../../Resources/account.jpg"));
+                var bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+                bitmap.UriSource = source;
+                bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                bitmap.EndInit();
+
+                return bitmap;
+            }
         }
     }
 }
