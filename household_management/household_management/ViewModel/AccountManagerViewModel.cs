@@ -10,6 +10,10 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+
+
 namespace household_management.ViewModel
 {
     class AccountManagerViewModel : BaseViewModel
@@ -39,6 +43,16 @@ namespace household_management.ViewModel
         public ICommand Updatebtn { get; set; }
         public ICommand Deletebtn { get; set; }
 
+        public ICommand Choosebtn { get; set; }
+
+
+        private ImageSource _SPhoto;
+        public ImageSource SPhoto { get => _SPhoto; set { _SPhoto = value; OnPropertyChanged(); } }
+
+        private string _Photo;
+        public string Photo { get => _Photo; set { _Photo = value; OnPropertyChanged(); } }
+
+
         private ObservableCollection<Model.User> UserList;
 
         private DataView _DvUser;
@@ -48,6 +62,10 @@ namespace household_management.ViewModel
 
         public AccountManagerViewModel()
         {
+
+            DateOfBirth = DateTime.Now;
+            DB = DateTime.Now.ToString("MM/dd/yyyy");
+
             NewTableUser();
 
             Updatebtn = new RelayCommand<DataGrid>((p) =>
@@ -66,6 +84,22 @@ namespace household_management.ViewModel
                 change.Name = Name;
                 change.Sex = MaleChoice;
                 change.DateOfBirth = DateOfBirth;
+
+                
+
+                var tmp = DataProvider.Ins.DB.Users.Where(x => x.Id == Id).SingleOrDefault();
+                if (Photo != "" && Photo != null)
+                {
+
+                    string namePhoto = System.IO.Path.GetFileName(Photo);
+                    namePhoto = Id.ToString() + ".jpg";
+                    //check if not have photo
+                    if (!System.IO.File.Exists("../../userhinhthe/" + Photo))
+                        //copy image into file hinhthe
+                        System.IO.File.Copy(Photo, "../../userhinhthe/" + namePhoto, true);
+                    tmp.PhotoUser = namePhoto;
+                }
+
                 Model.DataProvider.Ins.DB.SaveChanges();
 
                 NewTableUser();
@@ -103,6 +137,50 @@ namespace household_management.ViewModel
                     }
                 }
             });
+
+            //ChoosePicture btn
+            Choosebtn = new RelayCommand<System.Windows.Controls.Image>((p) => { return true; }, (p) =>
+            {
+                System.Windows.Forms.OpenFileDialog open = new System.Windows.Forms.OpenFileDialog();
+
+                open.Filter = "(*.jpg)|*.jpg|(*.*)|*.*";
+
+                if (open.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    Photo = open.FileName; // để lưu hình thẻ 
+                    SPhoto = BitmapFromUri(new Uri(System.IO.Path.GetFullPath(Photo)));
+                    open.Dispose();
+                    //Uri fileUri = new Uri(open.FileName);
+                    //p.Source = new BitmapImage(fileUri);
+                }
+            });
+        }
+        private ImageSource BitmapFromUri(Uri source)
+        {
+            try
+            {
+                var bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+                bitmap.UriSource = source;
+                bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                bitmap.EndInit();
+
+                return bitmap;
+            }
+            catch
+            {
+                source = new Uri(System.IO.Path.GetFullPath("../../Resources/account.jpg"));
+                var bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+                bitmap.UriSource = source;
+                bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                bitmap.EndInit();
+
+                return bitmap;
+            }
+
         }
 
         private void NewTableUser()
@@ -118,6 +196,9 @@ namespace household_management.ViewModel
             dt.Columns.Add("DateOfBirth");
             dt.Columns.Add("Sex");
             dt.Columns.Add("Password");
+
+            dt.Columns.Add("Photo");
+
             
             //fill datatablejk
             for (int i = 0; i < UserList.Count; i++)
@@ -132,7 +213,8 @@ namespace household_management.ViewModel
 
         private string[] CheckData(Model.User item)
         {
-            string[] list = new string[8];
+            string[] list = new string[9];
+      
             list[0] = item.Id.ToString();
             list[1] = item.Username;
             list[2] = check(item.Tier);
@@ -141,6 +223,8 @@ namespace household_management.ViewModel
             list[5] = check(item.DateOfBirth);
             list[6] = check(item.Sex);
             list[7] = check(item.Password);
+            list[8] = check(item.PhotoUser);
+
 
             return list;
         }
@@ -223,25 +307,26 @@ namespace household_management.ViewModel
                     Username = (string)Selected.Row["UserName"];
                     Password = "************";
                     Id = int.Parse((string)Selected.Row["Stt"]);
-                    
-                    //if ((string)Selected.Row["Photo"] != null && (string)Selected.Row["Photo"] != "")
 
-                    //{
-                    //    Photo = (string)Selected.Row["Photo"];
-                    //    try
-                    //    {
-                    //        SPhoto = BitmapFromUri(new Uri(System.IO.Path.GetFullPath("../../hinhthe/" + Photo))); // get picture
-                    //    }
-                    //    catch (Exception e)
-                    //    {
-                    //        SPhoto = BitmapFromUri(new Uri(System.IO.Path.GetFullPath("../../hinhthe/" + Photo)));
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    Photo = "";
-                    //    SPhoto = null;
-                    //}
+
+                    if ((string)Selected.Row["Photo"] != null && (string)Selected.Row["Photo"] != "")
+
+                    {
+                        Photo = (string)Selected.Row["Photo"];
+                        try
+                        {
+                            SPhoto = BitmapFromUri(new Uri(System.IO.Path.GetFullPath("../../userhinhthe/" + Photo))); // get picture
+                        }
+                        catch (Exception e)
+                        {
+                            SPhoto = BitmapFromUri(new Uri(System.IO.Path.GetFullPath("../../userhinhthe/" + Photo)));
+                        }
+                    }
+                    else
+                    {
+                        Photo = "";
+                        SPhoto = null;
+                    }
 
 
                 }
