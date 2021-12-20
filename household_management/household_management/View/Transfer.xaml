@@ -8,23 +8,26 @@
         mc:Ignorable="d"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         DataContext="{StaticResource TransferVM}"
-        Title="Transfer" Height="465.274" Width="745.404" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None">
+        Title="Transfer" Height="465.274" Width="745.404" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}">
+    <Border Background="White" CornerRadius="5.3">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.07*"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Background="#FF4D60C0" >
-            <Image Source="/household_management;component/Resources/transfer.jpg" Margin="3,3,713.6,3.4" Stretch="Fill"/>
+            <Border Grid.Row="0" Background="#FF4D60C0" CornerRadius="4,4,0,0">
+        <Grid >
+            <Image Source="/household_management;component/Resources/transfer.jpg" Margin="5,3,713.6,3.4" Stretch="Fill"/>
 
-            <Button x:Name="btnExit" Content="Exit" Height="27" Cursor="Hand" Click="btnExit_Click" RenderTransformOrigin="17.79,0.656" Margin="711,0,0,1.4" HorizontalAlignment="Left" Width="30" VerticalAlignment="Bottom">
+            <Button x:Name="btnExit" Content="Exit" Height="26" Cursor="Hand" Click="btnExit_Click" RenderTransformOrigin="17.79,0.656" Margin="711,0,0,3.4" HorizontalAlignment="Left" Width="29" VerticalAlignment="Bottom">
                 <Button.Background>
                     <ImageBrush ImageSource="/household_management;component/Resources/exite.jpg"/>
                 </Button.Background>
             </Button>
-            <Label Content="Household Transfer" HorizontalAlignment="Right" Width="172" FontWeight="Bold" FontSize="14" Foreground="#DDE1E6F3" Margin="0,3,541.6,3.4"/>
+            <Label Content="Household Transfer" HorizontalAlignment="Right" Width="172" FontWeight="Bold" FontSize="14" Foreground="#DDE1E6F3" Margin="0,0,541.6,6.4"/>
         </Grid>
-        <Grid Grid.Row="1">
+            </Border>
+            <Grid Grid.Row="1">
             <Border BorderBrush="Black" BorderThickness="1" Margin="32,32,32,40">
                 <Grid Height="361" Margin="0.2,0,-0.2,0.4" VerticalAlignment="Bottom">
                     <Label Content="CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM" Margin="132,4,133,312" FontSize="20" FontWeight="Bold"/>
@@ -75,4 +78,5 @@
         </Grid>
 
     </Grid>
+    </Border>
 </Window>

@@ -8,13 +8,15 @@
         mc:Ignorable="d"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         DataContext="{StaticResource ResidenceVM}"
-        Title="Residence" Height="803.6" Width="582.4" AllowsTransparency="True" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Residence" Height="803.6" Width="582.4" AllowsTransparency="True" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="{x:Null}">
+    <Border CornerRadius="5.3">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.05*"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Background="#FF4D60C0"  >
+        <Border  Grid.Row="0" Background="#FF4D60C0"  CornerRadius="4,4,0,0" >
+        <Grid >
             <Image Source="/household_management;component/Resources/tempresidence.jpg" Margin="10,6,538.4,7.6" Stretch="Fill"/>
 
 
@@ -26,7 +28,9 @@
             <Label Content="Temporary Residence Certificate" FontWeight="Bold" FontSize="14" Foreground="#DDE1E6F3" Margin="49,9,295.4,7.4" Padding="4,0,4,4"/>
 
         </Grid>
-        <Grid Grid.Row="1" Background="#FF9FF1F9">
+            </Border>
+            <Border Grid.Row="1" Background="#FF9FF1F9" CornerRadius="0,0,4,4">
+        <Grid>
 
             <Border BorderBrush="Black" BorderThickness="2" Margin="26,26,26,43">
                 <Grid >
@@ -74,5 +78,7 @@
                     VerticalAlignment="Top" Command="{Binding AddCommand}" Name="AddButton"
                     CommandParameter="{Binding ElementName=AddButton}"/>
         </Grid>
-    </Grid>
+            </Border>
+        </Grid>
+    </Border>
 </Window>

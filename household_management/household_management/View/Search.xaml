@@ -9,14 +9,16 @@
         Name="search"
         
         DataContext="{StaticResource SearchVM}"
-        Title="Search" Height="761.2" Width="1325.6" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None">
+        Title="Search" Height="761.2" Width="1325.6" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}">
+    <Border CornerRadius="5.3" Background="White">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.06*"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Background="#FF4D60C0" HorizontalAlignment="Right" >
-            <Image  Source="/household_management;component/Resources/search.jpg" Stretch="Fill" Margin="12,3,1263.6,3.8"/>
+        <Border Grid.Row="0" Background="#FF4D60C0" CornerRadius="4,4,0,0">
+        <Grid  HorizontalAlignment="Right" >
+            <Image  Source="/household_management;component/Resources/search.jpg" Stretch="Fill" Margin="19,6,1263.6,4.2"/>
 
 
             <Button x:Name="btnExit"   Cursor="Hand" Click="btnExit_Click" Margin="1285,6,9.6,7.8" Height="Auto" RenderTransformOrigin="0.5,0.515">
@@ -27,6 +29,7 @@
             <Label Content="Search"  FontWeight="Bold" FontSize="14" Foreground="#DDE1E6F3" Margin="67,6,802.6,8"/>
 
         </Grid>
+        </Border>
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.12*"></RowDefinition>
@@ -90,4 +93,5 @@
         </Grid>
 
     </Grid>
+    </Border>
 </Window>
