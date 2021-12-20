@@ -40,6 +40,8 @@ namespace household_management.ViewModel
         public bool MaleChoice { get => _MaleChoice; set { _MaleChoice = value; OnPropertyChanged(); } }
         private bool _FemaleChoice;
         public bool FemaleChoice { get => _FemaleChoice; set { _FemaleChoice = value; OnPropertyChanged(); } }
+     
+        public  MainViewModel Vm { get; set; }
         public ICommand Updatebtn { get; set; }
         public ICommand Deletebtn { get; set; }
 
@@ -101,11 +103,14 @@ namespace household_management.ViewModel
                 }
 
                 Model.DataProvider.Ins.DB.SaveChanges();
+                
+                Vm.loadPic(Id.ToString());
 
                 NewTableUser();
                 p.ItemsSource = DvUser;
                 Selected = null;
                 NullProperty();
+               
                 MessageBox.Show("Update Successful!", "Notifications!", MessageBoxButton.OKCancel, MessageBoxImage.Information);
             });
 
