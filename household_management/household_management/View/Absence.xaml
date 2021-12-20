@@ -8,13 +8,15 @@
         mc:Ignorable="d"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         DataContext="{StaticResource AbsenceVM}"
-        Title="Absence" Height="723.6" Width="577.6" AllowsTransparency="True" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Absence" Height="723.6" Width="577.6" AllowsTransparency="True" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="{x:Null}">
+    <Border CornerRadius="5.3" Background="#FF9FF1F9" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.05*"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Background="#FF4D60C0"  >
+            <Border CornerRadius="4,4,0,0" Grid.Row="0" Background="#FF4D60C0" >
+        <Grid  >
             <Image Source="/household_management;component/Resources/absence.jpg" Margin="10,6,539.6,5.4" Stretch="Fill"/>
 
 
@@ -26,7 +28,9 @@
             <Label Content="Temporary Absence Certificate" FontWeight="Bold" FontSize="14" Foreground="#DDE1E6F3" Margin="43,7,301.6,5.4" Padding="4,0,4,4"/>
 
         </Grid>
-        <Grid Grid.Row="1" Background="#FF9FF1F9">
+            </Border >
+            <Border  CornerRadius="0,0,4,4" Grid.Row="1" Background="#FF9FF1F9" >
+            <Grid >
 
             <Border BorderBrush="Black" BorderThickness="2" Margin="26,26,26,43">
                 <Grid >
@@ -96,6 +100,8 @@
                     Margin="239,651,243.6,0" VerticalAlignment="Top"
                     Command="{Binding AddCommand}" Name="AddButton" 
                     CommandParameter="{Binding ElementName=AddButton}"/>
+            </Grid>
+            </Border>
         </Grid>
-    </Grid>
+    </Border>
 </Window>
