@@ -326,11 +326,14 @@ insert into Population(Id, Name, PlaceOfBirth, Address, DateOfBirth, Sex, Relegi
 insert into Population(Id, Name, PlaceOfBirth, Address, DateOfBirth, Sex, Relegion, Career) values('684398172813', 'Betti Tuvey', 'Veracruz', '990 Browning Terrace' ,'9/30/1989' ,'1' ,'None', 'Administrative Assistant III')
 insert into Population(Id, Name, PlaceOfBirth, Address, DateOfBirth, Sex, Relegion, Career) values('484322022659', 'Kevin Bollon', 'Bakung Utara', '86 Sachtjen Road' ,'12/25/2000' ,'1' ,'None', 'Financial Advisor')
 insert into Population(Id, Name, PlaceOfBirth, Address, DateOfBirth, Sex, Relegion, Career) values('858767781011', 'Enrique O Moylan', 'Hetou', '0311 Reinke Pass' ,'6/10/1968' ,'0' ,'Christianity', 'Quality Engineer')
+insert into Population(Id, Name, PlaceOfBirth, Address, DateOfBirth, Sex, Relegion, Career) values('689754511223', 'Nguyễn Long Ân', 'Long An', '0937 Lê Văn Siễu', '11/15/2001' ,'1' ,'Christianity' ,'Graphic Designer')
+insert into Population(Id, Name, PlaceOfBirth, Address, DateOfBirth, Sex, Relegion, Career) values('387744456113', 'Nguyễn Hoàng Việt', 'Bình Thuận', '10 khu phố Long Khánh' ,'8/26/1993' ,'1' ,'Christianity', 'Software Engineer II')
 
 insert into Household_Registration (Id, IdOfOwner, NameOfOwner, Address) values ('K4785', '445577249830', 'Abra Freezor', '0937 Bayside Center')
 insert into Household_Registration (Id, IdOfOwner, NameOfOwner, Address) values ('T6789', '398807346472', 'Corby Ingraham', '41 Kipling Crossing')
 insert into Household_Registration (Id, IdOfOwner, NameOfOwner, Address) values ('A4231', '288341482322', 'Mommy Benyan', '95674 Corscot Pass')
 insert into Household_Registration (Id, IdOfOwner, NameOfOwner, Address) values ('D1332', '709532487783', 'Cyndie Costell', '4 Meadow Vale Way')
+insert into Household_Registration (Id, IdOfOwner, NameOfOwner, Address) values ('M7846', '689754511223', 'Nguyễn Long Ân', '0937 Lê Văn Siễu')
 
 insert into Transfer_Household (Id, Id_Owner, CreateDate, Id_Household, Old_Address, New_Address) values ('F7621', '445577249830', '2020-10-18', 'K4785' ,'1548 Fragen' ,'0937 Bayside Center')
 insert into Transfer_Household (Id, Id_Owner, CreateDate, Id_Household, Old_Address, New_Address) values ('K5124', '398807346472', '2021-12-10', 'T6789' ,'10 Animal Crossing' ,'40 Kipling Crossing')
@@ -339,9 +342,12 @@ insert into Transfer_Household (Id, Id_Owner, CreateDate, Id_Household, Old_Addr
 insert into Temporary_Residence (Id, Id_Owner, NameOfOwner, Id_Household, HouseOwnerName, PAddress, TAddress, CreateDate, ExpireDate) values ('V4555', '858767781011', 'Enrique O Moylan' ,'D1332', 'Cyndie Costell', '0311 Reinke Pass', '4 Meadow Vale Way', '2020-4-19', '2023-4-19')
 insert into Temporary_Residence (Id, Id_Owner, NameOfOwner, Id_Household, HouseOwnerName, PAddress, TAddress, CreateDate, ExpireDate) values ('V4556', '684398172813', 'Betti Tuvey' ,'D1332', 'Cyndie Costell', '990 Browning Terrace', '4 Meadow Vale Way', '2020-4-19', '2023-4-19')
 insert into Temporary_Residence (Id, Id_Owner, NameOfOwner, Id_Household, HouseOwnerName, PAddress, TAddress, CreateDate, ExpireDate) values ('V4557', '270987964659', 'Drew Falconbridge' ,'D1332', 'Cyndie Costell', '6122 Monument Avenue', '4 Meadow Vale Way', '2020-4-19', '2023-4-19')
+insert into Temporary_Residence (Id, Id_Owner, NameOfOwner, Id_Household, HouseOwnerName, PAddress, TAddress, CreateDate, ExpireDate) values ('F7844', '387744456113', 'Nguyễn Hoàng Việt' ,'M7846', 'Nguyễn Long Ân', '10 khu phố Long Khánh', '0937 Lê Văn Siễu', '2020-4-19', '2023-4-19')
 
 insert into Temporary_Absence (Id, Id_Owner, NameOfOwner, Id_Household, HouseOwnerName, CreateDate, ExpireDate) values ('T4511', '398807346472', 'Corby Ingraham', 'T6789', 'Corby Ingraham', '2021-12-12', '2023-12-12')
-
+insert into Temporary_Absence (Id, Id_Owner, NameOfOwner, Id_Household, HouseOwnerName, CreateDate, ExpireDate) values ('A1234', '484322022659', 'Kevin Bollon', 'T6789', 'Corby Ingraham', '2021-12-12', '2023-12-12')
+insert into Temporary_Absence (Id, Id_Owner, NameOfOwner, Id_Household, HouseOwnerName, CreateDate, ExpireDate) values ('T5888', '684398172813', 'Betti Tuvey', 'T6789', 'Corby Ingraham', '2021-12-12', '2023-12-12')
+insert into Temporary_Absence (Id, Id_Owner, NameOfOwner, Id_Household, HouseOwnerName, CreateDate, ExpireDate) values ('K7895', '840094038854', 'Elyssa Snawdon', 'T6789', 'Corby Ingraham', '2021-12-12', '2023-12-12'
 
 USE [master]
 GO

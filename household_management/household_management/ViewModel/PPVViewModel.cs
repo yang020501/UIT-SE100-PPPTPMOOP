@@ -153,11 +153,11 @@ namespace household_management.ViewModel
 
                 if (MessageBox.Show("It will REMOVE relavant Page like Absence,Transfer,Residence,FamilyHoushold\nDo you want to REMOVE?", "Warning!", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
-                    Household_Registration household = DataProvider.Ins.DB.Household_Registration.Where(x => x.IdOfOwner == Id).SingleOrDefault();
-                    if (household == null)
+                    var household = DataProvider.Ins.DB.Household_Registration.Where(x => x.IdOfOwner == Id).ToList();
+                    if (household.Count  < 1 || household == null)
                     {
-                        try
-                        {
+                        //try
+                        //{
                             Temporary_Residence residence = DataProvider.Ins.DB.Temporary_Residence.Where(x => x.Id_Owner == Id).SingleOrDefault();
                             if (residence != null)
                                 DataProvider.Ins.DB.Temporary_Residence.Remove(residence);
@@ -187,16 +187,16 @@ namespace household_management.ViewModel
                             NewTablePopulations();
                             p.ItemsSource = dvPopulations;
 
-                        }
-                        catch (Exception e)
-                        {
+                        //}
+                        //catch (Exception e)
+                        //{
 
-                            MessageBox.Show(e.Message, "Notification!", MessageBoxButton.OK, MessageBoxImage.Warning);
-                        }
+                        //    MessageBox.Show(e.Message, "Notification!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        //}
                     }
                     else
                     {
-                        MessageBox.Show("This person is a Owner of Household: " + household.Id + "\nPlease REMOVE in Household first!", "Notification!", MessageBoxButton.OK, MessageBoxImage.Stop);
+                        MessageBox.Show("This person is a Owner of Household: " + household[0].Id + "\nPlease REMOVE in Household first!", "Notification!", MessageBoxButton.OK, MessageBoxImage.Stop);
                     }
                 }
 
@@ -381,9 +381,13 @@ namespace household_management.ViewModel
             else if(link != null && item.Id_Household == null)
             {
                 // update Id household if this popualtion Id_Household null but have Id household in HouseholdRegis in database
-                change.Id_Household = link[0].Id;
-                list[6] = check(link[0].Id);
-                DataProvider.Ins.DB.SaveChanges();
+                if (link.Length > 0)
+                {
+                    change.Id_Household = link[0].Id;
+                    list[6] = check(link[0].Id);
+                    DataProvider.Ins.DB.SaveChanges();
+                }
+                else list[6] = "";
             }
             else  
                 list[6] = "";
