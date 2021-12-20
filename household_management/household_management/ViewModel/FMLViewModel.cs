@@ -68,10 +68,23 @@ namespace household_management.ViewModel
                 if (MessageBox.Show("Do you want to REMOVE?", "Warning!", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
                     string tmp = (string)Selected.Row["Id_Person"];
-                    Family_Household familymem = DataProvider.Ins.DB.Family_Household.Where(x => x.Id_Person == tmp ).SingleOrDefault();
-                    if (familymem != null)
-                    { 
-                        if(familymem.Id_Owner == familymem.Id_Person)
+                    var familymemList = DataProvider.Ins.DB.Family_Household.Where(x => x.Id_Person == tmp).ToList();
+                    if (familymemList != null)
+                    {
+                        Family_Household familymem = new Family_Household();
+                        if (familymemList.Count > 1)
+                        {
+                            foreach (Family_Household item in familymemList)
+                            {
+                                if (item.Id_Household == Id_Household)
+                                {
+                                    familymem = item;
+                                    break;
+                                }
+                            }
+                        }
+                        else familymem = DataProvider.Ins.DB.Family_Household.Where(x => x.Id_Person == tmp).SingleOrDefault();
+                        if (familymem.Id_Owner == familymem.Id_Person)
                         {
                             MessageBox.Show("You can't REMOVE Household_Owner", "Notification!", MessageBoxButton.OK, MessageBoxImage.Information);
                             return;
@@ -151,11 +164,13 @@ namespace household_management.ViewModel
                 pPerson.Id_Household = Id_Household;
                 try
                 {
+                    
+                   
+                    DataProvider.Ins.DB.Family_Household.Add(person);
+                    DataProvider.Ins.DB.SaveChanges();
                     Selected = null;
                     NewTableFamily(Id_Household);
                     p.ItemsSource = dvFamily;
-                    DataProvider.Ins.DB.Family_Household.Add(person);
-                    DataProvider.Ins.DB.SaveChanges();
                     MessageBox.Show("Add Successful!", "Notification!", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 }
