@@ -65,7 +65,27 @@ namespace household_management.ViewModel
 
             HouseholdIdChangeCommand = new RelayCommand<TextBox>((p) => { return true; }, (p) =>
             {
-                current_IdOwner = Id;              
+                bool ok = false;
+                List<Model.Population> list_pop_with_no_h = Model.DataProvider.Ins.DB.Populations.ToList<Model.Population>();
+                if(list_pop_with_no_h.Count() != 0)
+                {
+                    foreach(Model.Population x in list_pop_with_no_h)
+                    {
+                        if(x.Id == Id)
+                        {
+                            p.Text = x.Name;
+                            ok = true;
+                            p.IsReadOnly = true;
+                            break;
+                        }
+                    }
+                }
+
+                if(ok == false)
+                {
+                    p.IsReadOnly = false;
+                    p.Text = null;
+                }
             });
 
             ReloadCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
@@ -92,6 +112,7 @@ namespace household_management.ViewModel
             }
             , (p) =>
             {
+                current_IdOwner = Id;
                 current_IdHousehold = IdHousehold;
                 current_Address_Household = Address;
                 View.FamilyMem wd = new FamilyMem();
