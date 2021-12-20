@@ -91,9 +91,9 @@
                 <Border Grid.Column="0" CornerRadius="0,0,0,4" Background="#FF3A404C" Margin="0,3,0.2,-0.2" >
 
                     <Grid >
-                        <Image HorizontalAlignment="Left" Height="65" VerticalAlignment="Top" Width="65" Source="Resources/account.jpg" Stretch="Fill" Cursor="Hand"/>
-                        <TextBlock x:Name="tblockRole" Margin="65,0,0,378" TextWrapping="Wrap" Text="{Binding Role, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom" Height="24" Foreground="#DDFAFAFA" Padding="10,2,0,0" FontWeight="Bold" FontSize="14"/>
-                        <TextBlock x:Name="tblockId" Margin="65,34,0,0" TextWrapping="Wrap" Text="{Binding Id , UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Height="24" Foreground="#DDFAFAFA" Padding="10,2,0,0" FontSize="10"/>
+                        <Image   HorizontalAlignment="Left" Height="110" VerticalAlignment="Top" Width="85" Source="{Binding SPhoto,UpdateSourceTrigger=PropertyChanged}" Stretch="Fill" Cursor="Hand" Margin="5,5,0,0"/>
+                        <TextBlock x:Name="tblockRole" Margin="90,0,-0.4,354.6" TextWrapping="Wrap" Text="{Binding Role, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom" Height="24" Foreground="#DDFAFAFA" Padding="10,2,0,0" FontWeight="Bold" FontSize="14"/>
+                        <TextBlock x:Name="tblockId" Margin="90,60,-0.4,0" TextWrapping="Wrap" Text="{Binding Id , UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Height="24" Foreground="#DDFAFAFA" Padding="10,2,0,0" FontSize="10"/>
                         <Grid HorizontalAlignment="Left" Height="347" Margin="0,65,0,0" VerticalAlignment="Top" Width="160"/>
                         <Button Content="" HorizontalAlignment="Left" Margin="5,357,0,0" 
                     VerticalAlignment="Top" Width="40" Height="41" Foreground="#FF3A404C" 
@@ -106,7 +106,7 @@
                                 <ImageBrush ImageSource="Resources/Logout.png"/>
                             </Button.Background>
                         </Button>
-                        <StackPanel HorizontalAlignment="Left" Height="80" Margin="0,70,0,0" VerticalAlignment="Top" Width="160">
+                        <StackPanel HorizontalAlignment="Left" Height="80" Margin="0,120,-0.4,0" VerticalAlignment="Top" Width="170">
                             <Button Content="About us" Height="40" Background="{x:Null}" BorderBrush="#FF3A404C" Foreground="#FFF3F2F6" BorderThickness="0" Padding="0,4,16,4" Click="Button_Click"/>
                             <Button Visibility="Hidden" Content="Manage" Height="40" 
                         Background="{x:Null}" BorderBrush="#FF3A404C" 

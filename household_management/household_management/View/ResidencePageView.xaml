@@ -9,14 +9,15 @@
       xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
       d:DesignHeight="450" d:DesignWidth="800"
       DataContext="{DynamicResource RPV_VM}"
-      Title="ResidencePageView" Background="White"  Height="661.6" Width="1325.6">
-
+      Title="ResidencePageView"  Height="661.6" Width="1325.6">
+    <Border Background="White" CornerRadius="5.3">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Border Grid.Row="0" BorderBrush="LightGray" BorderThickness="2">
+        <Border  Grid.Row="0" BorderBrush="LightGray" BorderThickness="2">
+                
             <Grid >
 
                 <materialDesign:PackIcon Kind="Account" Margin="120,35,0,0" Height="31" Width="32" />
@@ -66,7 +67,7 @@
                 <ColumnDefinition />
                 <ColumnDefinition Width="0.2*"/>
             </Grid.ColumnDefinitions>
-            <Border Grid.Column="0" BorderBrush="LightGray" BorderThickness="2,0,2,2">
+            <Border CornerRadius="0,0,0,4" Grid.Column="0" BorderBrush="LightGray" BorderThickness="2,0,2,2">
                 <Grid>
                     <DataGrid 
                 
@@ -90,12 +91,13 @@
                     </DataGrid>
                 </Grid>
             </Border>
-            <Border Grid.Column="1" BorderBrush="LightGray" BorderThickness="0,0,2,2">
+            <Border CornerRadius="0,0,4,0" Grid.Column="1" BorderBrush="LightGray" BorderThickness="0,0,2,2">
                 <Grid>
-                <Button Command="{Binding Deletebtn}" Content="Remove"  Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="123" VerticalAlignment="Top" Margin="50,50,0,0" />
+                    <Button Command="{Binding Deletebtn}" Content="Remove" Height="79" Background="#FF4D60C0" HorizontalAlignment="Left" Width="140" VerticalAlignment="Top" Margin="40,110,0,0" />
                 </Grid>
              </Border>
 
     </Grid>
     </Grid>
+    </Border>
 </Page>
