@@ -9,8 +9,8 @@
       mc:Ignorable="d"
       Name="ppv"
       DataContext="{StaticResource PPV_VM}"
-      Title="PopulationsPageView" Background="White" Height="661.6" Width="1325.6">
-
+      Title="PopulationsPageView" Height="661.6" Width="1325.6">
+    <Border Background="White" CornerRadius="5">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1.4*"></RowDefinition>
@@ -84,7 +84,7 @@
                 <ColumnDefinition ></ColumnDefinition>
                 <ColumnDefinition Width="0.2*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Border BorderBrush="LightGray" BorderThickness="2,2,0,2">
+            <Border CornerRadius="0,0,0,4" BorderBrush="LightGray" BorderThickness="2,2,0,2">
                 <Grid Grid.Column="0">
                     <DataGrid 
                 
@@ -111,7 +111,7 @@
                 </Grid>
             </Border>
 
-            <Border Grid.Column="1"  BorderBrush="LightGray" BorderThickness="2">
+            <Border CornerRadius="0,0,4,0" Grid.Column="1"  BorderBrush="LightGray" BorderThickness="2">
                 <Grid Grid.Column="1">
                     <Button Command="{Binding Updatebtn}" CommandParameter="{Binding ElementName=dtg}" Content="Update"  Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="123" VerticalAlignment="Top" Margin="49,68,0,0" />
                     <Button Command="{Binding Deletebtn}" CommandParameter="{Binding ElementName=dtg}" Content="Remove"  Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="123" VerticalAlignment="Top" Margin="49,158,0,0"  />
@@ -120,4 +120,5 @@
             </Border>
         </Grid>
     </Grid>
+    </Border>
 </Page>
