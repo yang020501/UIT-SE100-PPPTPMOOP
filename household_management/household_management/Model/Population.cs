@@ -9,13 +9,10 @@
 
 namespace household_management.Model
 {
-    using household_management.ViewModel;
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Runtime.CompilerServices;
-
-    public partial class Population : INotifyPropertyChanged
+    
+    public partial class Population
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Population()
@@ -26,41 +23,21 @@ namespace household_management.Model
             this.Temporary_Absence = new HashSet<Temporary_Absence>();
             this.Temporary_Residence = new HashSet<Temporary_Residence>();
             this.Transfer_Household = new HashSet<Transfer_Household>();
-
         }
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        private int stt;
-        public int Stt { get => stt; set { stt = value; OnPropertyChanged(); } }
-        private string id;
-        public  string Id { get => id; set { id = value; OnPropertyChanged(); } }
-        private string name;
-        public  string Name { get => name; set { name = value; OnPropertyChanged(); } }
-        private string photo;
-        public  string Photo { get => photo; set { photo = value; OnPropertyChanged(); } }
-        private string id_Household;
-        public  string Id_Household { get => id_Household; set { id_Household = value; OnPropertyChanged(); } }
-        private string placeOfBirth;
-        public  string PlaceOfBirth { get => placeOfBirth; set { placeOfBirth = value; OnPropertyChanged(); } }
-        private string address;
-        public  string Address { get => address; set { address = value; OnPropertyChanged(); } }
-        private Nullable<System.DateTime> dateOfBirth;
-        public  Nullable<System.DateTime> DateOfBirth { get => dateOfBirth; set { dateOfBirth = value; OnPropertyChanged(); } }
-        private Nullable<bool> sex;
-        public  Nullable<bool> Sex { get => sex; set { sex = value; OnPropertyChanged(); } }
-        private string relegion;
-        public  string Relegion { get => relegion; set { relegion = value; OnPropertyChanged(); } }
-        private string career;
-        public  string Career { get => career; set { career = value; OnPropertyChanged(); } }
-        private Nullable<bool> _isAbsence;
-        public  Nullable<bool> isAbsence { get => _isAbsence; set { _isAbsence = value; OnPropertyChanged(); } }
-        private Nullable<bool> _isTResidence;
-        public  Nullable<bool> isTResidence { get => _isTResidence; set { _isTResidence = value; OnPropertyChanged(); } }
+    
+        public int Stt { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Photo { get; set; }
+        public string Id_Household { get; set; }
+        public string PlaceOfBirth { get; set; }
+        public string Address { get; set; }
+        public Nullable<System.DateTime> DateOfBirth { get; set; }
+        public Nullable<bool> Sex { get; set; }
+        public string Relegion { get; set; }
+        public string Career { get; set; }
+        public Nullable<bool> isAbsence { get; set; }
+        public Nullable<bool> isTResidence { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Family_Household> Family_Household { get; set; }
@@ -75,6 +52,5 @@ namespace household_management.Model
         public virtual ICollection<Temporary_Residence> Temporary_Residence { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Transfer_Household> Transfer_Household { get; set; }
-        
     }
 }

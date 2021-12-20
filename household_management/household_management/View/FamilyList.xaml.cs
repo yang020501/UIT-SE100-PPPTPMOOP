@@ -15,20 +15,13 @@ using System.Windows.Shapes;
 namespace household_management.View
 {
     /// <summary>
-    /// Interaction logic for AccountManager.xaml
+    /// Interaction logic for FamilyList.xaml
     /// </summary>
-    public partial class AccountManager : Window
+    public partial class FamilyList : Window
     {
-        public AccountManager()
+        public FamilyList()
         {
             InitializeComponent();
         }
-
-
-        private void btnExit_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
     }
 }

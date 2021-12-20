@@ -16,6 +16,7 @@ namespace household_management.ViewModel
 {
     class PopulationViewModel : BaseViewModel
     {
+        public DateTime DateTimeNow;
         private bool check_IdHousehold = false;
         private string _FamilyName;
         public string FamilyName { get => _FamilyName; set { _FamilyName = value; OnPropertyChanged(); } }
@@ -29,6 +30,8 @@ namespace household_management.ViewModel
         public bool Gender { get => _Gender; set { _Gender = value; OnPropertyChanged(); } }
         private string _Id;
         public string Id { get => _Id; set { _Id = value; OnPropertyChanged(); } }
+        private string _Date;
+        public string Date { get => _Date; set { _Date = value; OnPropertyChanged(); } }
         private string __HouseholdId;
         public string HouseholdId { get => __HouseholdId; set { __HouseholdId = value; OnPropertyChanged(); } }
         private string _Address;
@@ -54,7 +57,10 @@ namespace household_management.ViewModel
         public PopulationViewModel()
 
         {
+            DateOfBirth = DateTime.Today;
             Photo = "/household_management;component/Resources/account.jpg";
+            Date = DateTime.Now.ToString("MM/dd/yyyy");
+            DateOfBirth = DateTime.Now;
 
             List<Model.Household_Registration> list_of_household = Model.DataProvider.Ins.DB.Household_Registration.ToList<Model.Household_Registration>();         
 
@@ -209,12 +215,15 @@ namespace household_management.ViewModel
                 population.Id_Household = HouseholdId;
 
                 if (!Check_is_Id_exist(population.Id))
-                {
-                    if(population.Id_Household != null)
+                {         
+                    Model.DataProvider.Ins.DB.Populations.Add(population);
+                    Model.DataProvider.Ins.DB.SaveChanges();
+
+                    if (population.Id_Household != null)
                     {
                         Model.Family_Household newmember = new Model.Family_Household();
                         newmember.Id_Household = population.Id_Household;
-                        Model.Household_Registration h = (Model.Household_Registration)Model.DataProvider.Ins.DB.Household_Registration.Select(x => x.Id == population.Id);
+                        var h = Model.DataProvider.Ins.DB.Household_Registration.Where(x => x.Id == population.Id_Household).SingleOrDefault();
                         newmember.Id_Owner = h.IdOfOwner;
                         newmember.Id_Person = population.Id;
                         newmember.Name_Person = population.Name;
@@ -222,17 +231,15 @@ namespace household_management.ViewModel
                         Model.DataProvider.Ins.DB.SaveChanges();
                     }
 
-                    Model.DataProvider.Ins.DB.Populations.Add(population);
-                    Model.DataProvider.Ins.DB.SaveChanges();
-                    MessageBox.Show("Add success");
+                MessageBox.Show("Add Successful!", "Notification!", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
                 {
-                    MessageBox.Show("Id is exist please try again!");
+                    MessageBox.Show("Id is exist please try again!","Error",MessageBoxButton.OK,MessageBoxImage.Error);
                 }
                 isMale = false;
                 isFemale = false;
-                MessageBox.Show("Add Successful!", "Notification!", MessageBoxButton.OK, MessageBoxImage.Information);
+                
             });
         }
 

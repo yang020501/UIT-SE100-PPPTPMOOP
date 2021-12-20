@@ -2,8 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -16,7 +18,7 @@ namespace household_management.ViewModel
 {
     class PPVViewModel : BaseViewModel
     {
-        DataTable dt ;
+        DataTable dt;
 
         private string _Name;
         public string Name { get => _Name; set { _Name = value; OnPropertyChanged(); } }
@@ -26,6 +28,9 @@ namespace household_management.ViewModel
 
         private string _DateOfBirth;
         public string DateOfBirth { get => _DateOfBirth; set { _DateOfBirth = value; OnPropertyChanged(); } }
+
+        private DateTime _DB;
+        public DateTime DB { get => _DB; set { _DB = value; OnPropertyChanged(); } }
 
         private string _PlaceOfBirth;
         public string PlaceOfBirth { get => _PlaceOfBirth; set { _PlaceOfBirth = value; OnPropertyChanged(); } }
@@ -37,13 +42,13 @@ namespace household_management.ViewModel
         public string Career { get => _Career; set { _Career = value; OnPropertyChanged(); } }
 
         private string _Id_Household;
-        public string Id_Household { get => _Id_Household; set { _Id_Household = value;OnPropertyChanged(); } }
+        public string Id_Household { get => _Id_Household; set { _Id_Household = value; OnPropertyChanged(); } }
 
         private string _Address;
-        public string Address { get => _Address;set { _Address = value; OnPropertyChanged(); } }
+        public string Address { get => _Address; set { _Address = value; OnPropertyChanged(); } }
 
         private string _HAddress;
-        public string HAddress { get => _HAddress; set { _HAddress = value;OnPropertyChanged(); } }
+        public string HAddress { get => _HAddress; set { _HAddress = value; OnPropertyChanged(); } }
 
         private bool _MaleChoice;
         public bool MaleChoice { get => _MaleChoice; set { _MaleChoice = value; OnPropertyChanged(); } }
@@ -60,6 +65,10 @@ namespace household_management.ViewModel
         private DataView dvPopulations;
         public DataView DvPopulations { get => dvPopulations; set { dvPopulations = value; OnPropertyChanged(); } }
 
+        private ObservableCollection<string> _DicList;
+        public ObservableCollection<string> DicList { get => _DicList; set { _DicList = value;OnPropertyChanged(); } }
+
+
 
         private ObservableCollection<Population> PopulationsList;
 
@@ -69,7 +78,8 @@ namespace household_management.ViewModel
 
         public PPVViewModel()
         {
-           
+            DB = DateTime.Now;
+            DateOfBirth = DateTime.Now.ToString("MM/dd/yyyy");
             NewTablePopulations();
             //Update
             Updatebtn = new RelayCommand<DataGrid>((p) =>
@@ -92,15 +102,17 @@ namespace household_management.ViewModel
                 tmp.Career = Career;
                 tmp.Relegion = Relegion;
                 tmp.Id_Household = Id_Household;
+
+                tmp.DateOfBirth = new DateTime(DB.Year,DB.Month,DB.Day);
                 if (MaleChoice == true)
                     tmp.Sex = true;
                 else
                     tmp.Sex = false;
-                tmp.PlaceOfBirth = PlaceOfBirth;             
+                tmp.PlaceOfBirth = PlaceOfBirth;
 
-                if ( Photo != "" && Photo != null)
+                if (Photo != "" && Photo != null)
                 {
-                    
+
                     string namePhoto = System.IO.Path.GetFileName(Photo);
                     namePhoto = Id.ToString() + ".jpg";
                     //check if not have photo
@@ -119,6 +131,7 @@ namespace household_management.ViewModel
                 }
 
                 //reload 
+                
                 Selected = null;
                 Photo = null;
                 SPhoto = null;
@@ -138,7 +151,7 @@ namespace household_management.ViewModel
             }, (p) =>
             {
 
-                if(MessageBox.Show("Do you want to REMOVE?\nIt will REMOVE relavant Page like Absence,Transfer,Residence","Warning!",MessageBoxButton.YesNo,MessageBoxImage.Question) == MessageBoxResult.Yes)
+                if (MessageBox.Show("It will REMOVE relavant Page like Absence,Transfer,Residence,FamilyHoushold\nDo you want to REMOVE?", "Warning!", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
                     Household_Registration household = DataProvider.Ins.DB.Household_Registration.Where(x => x.IdOfOwner == Id).SingleOrDefault();
                     if (household == null)
@@ -147,28 +160,32 @@ namespace household_management.ViewModel
                         {
                             Temporary_Residence residence = DataProvider.Ins.DB.Temporary_Residence.Where(x => x.Id_Owner == Id).SingleOrDefault();
                             if (residence != null)
-                            DataProvider.Ins.DB.Temporary_Residence.Remove(residence);
+                                DataProvider.Ins.DB.Temporary_Residence.Remove(residence);
 
                             Temporary_Absence absence = DataProvider.Ins.DB.Temporary_Absence.Where(x => x.Id_Owner == Id).SingleOrDefault();
-                             if (absence != null)
-                            DataProvider.Ins.DB.Temporary_Absence.Remove(absence);
+                            if (absence != null)
+                                DataProvider.Ins.DB.Temporary_Absence.Remove(absence);
 
                             Transfer_Household transfer = DataProvider.Ins.DB.Transfer_Household.Where(x => x.Id_Owner == Id).SingleOrDefault();
                             if (transfer != null)
-                            DataProvider.Ins.DB.Transfer_Household.Remove(transfer);
+                                DataProvider.Ins.DB.Transfer_Household.Remove(transfer);
+
+                            Family_Household familymem = DataProvider.Ins.DB.Family_Household.Where(x => x.Id_Person == Id).SingleOrDefault();
+                            if (familymem != null)
+                                DataProvider.Ins.DB.Family_Household.Remove(familymem);
 
                             DataProvider.Ins.DB.Populations.Remove(DataProvider.Ins.DB.Populations.Where(x => x.Id == Id).SingleOrDefault());
 
                             DataProvider.Ins.DB.SaveChanges();
 
 
-                        // reload view table
-                        Photo = null;
-                        Selected = null;
-                        SPhoto = null;
-                        NullProperty();
-                        NewTablePopulations();
-                        p.ItemsSource = dvPopulations;
+                            // reload view table
+                            Photo = null;
+                            Selected = null;
+                            SPhoto = null;
+                            NullProperty();
+                            NewTablePopulations();
+                            p.ItemsSource = dvPopulations;
 
                         }
                         catch (Exception e)
@@ -181,14 +198,12 @@ namespace household_management.ViewModel
                     {
                         MessageBox.Show("This person is a Owner of Household: " + household.Id + "\nPlease REMOVE in Household first!", "Notification!", MessageBoxButton.OK, MessageBoxImage.Stop);
                     }
-                }                
-               
+                }
 
 
-            })
-            {
 
-            };
+            });
+    
             //ChoosePicture btn
             Choosebtn = new RelayCommand<System.Windows.Controls.Image>((p) => { return true; }, (p) =>
             {
@@ -206,8 +221,25 @@ namespace household_management.ViewModel
                 }
             });
         }
-        
 
+        private int _SelectedIndex;
+        public int SelectedIndex { get => _SelectedIndex; set { _SelectedIndex = value; OnPropertyChanged(); } }
+        private string _SelectedCb;
+        public  string SelectedCb
+        {
+            get => _SelectedCb;
+            set
+            {
+                _SelectedCb = value;
+                OnPropertyChanged();
+                if(SelectedCb != null)
+                {
+                    HAddress = check(DataProvider.Ins.DB.Household_Registration.Where(x => x.Id == _SelectedCb).SingleOrDefault().Address);
+                }
+                
+               
+            }
+        }
         private DataRowView _Selected;
         public DataRowView Selected
         {
@@ -218,6 +250,7 @@ namespace household_management.ViewModel
                 OnPropertyChanged();
                 if (Selected != null)
                 {
+                    
                     Name = (string)Selected.Row["Name"];
                     Id = (string)Selected.Row["Id"];
                     if ((string)Selected.Row["Gender"] == "Male")
@@ -230,6 +263,7 @@ namespace household_management.ViewModel
                         FemaleChoice = true;
                         MaleChoice = false;
                     }
+          
                     DateOfBirth = (string)Selected.Row["DateOfBirth"];
                     PlaceOfBirth = (string)Selected.Row["PlaceOfBirth"];
                     Id_Household = (string)Selected.Row["Id_Household"];
@@ -237,20 +271,47 @@ namespace household_management.ViewModel
                     Relegion = (string)Selected.Row["Relegion"];
                     Career = (string)Selected.Row["Career"];
                     HAddress = (string)Selected.Row["HAddress"];
+                   
+                    // get all idHousehold
+                    DicList = new ObservableCollection<string>();
+                    var tmp = DataProvider.Ins.DB.Household_Registration.Where(x => x.IdOfOwner == Id);
+                    if (tmp != null)
+                    {
+                        foreach (Household_Registration item in tmp)
+                        {
+                            string id;
+                            
+                            id = (string)check(item.Id);
+                       
+                            DicList.Add(id);
+                        }
+                    }
+                    else
+                        DicList.Add(Id_Household);
+                    SelectedIndex = 0;
+
                     if ((string)Selected.Row["Photo"] != null && (string)Selected.Row["Photo"] != "")
 
                     {
                         Photo = (string)Selected.Row["Photo"];
-                        SPhoto = BitmapFromUri(new Uri(System.IO.Path.GetFullPath("../../hinhthe/" + Photo)))   ; // get picture
+                        try
+                        {
+                            SPhoto = BitmapFromUri(new Uri(System.IO.Path.GetFullPath("../../hinhthe/" + Photo))); // get picture
+                        }
+                        catch (Exception e)
+                        {
+                            SPhoto = BitmapFromUri(new Uri(System.IO.Path.GetFullPath("../../hinhthe/" + Photo)));
+                        }
                     }
                     else
                     {
                         Photo = "";
                         SPhoto = null;
                     }
-                   
 
+                    
                 }
+               
             }
         }
         private void NullProperty()
@@ -259,19 +320,19 @@ namespace household_management.ViewModel
             FemaleChoice = false;
             MaleChoice = false;
             Name = null;
-            DateOfBirth = null;
+            DateOfBirth = DateTime.Now.ToString("MM/dd/yyyy");
             Id = null;
             Relegion = null;
             Career = null;
             Id_Household = null;
             Address = null;
             HAddress = null;
-          
-            
+
+
         }
         public void Load()
         {
-            
+
             NewTablePopulations();
         }
         private void NewTablePopulations()
@@ -284,7 +345,7 @@ namespace household_management.ViewModel
             dt.Columns.Add("Name");
             dt.Columns.Add("Gender");
             dt.Columns.Add("DateOfBirth");
-            dt.Columns.Add("PlaceOfBirth");             
+            dt.Columns.Add("PlaceOfBirth");
             dt.Columns.Add("Id_Household");
             dt.Columns.Add("Address");
             dt.Columns.Add("Relegion");
@@ -296,15 +357,18 @@ namespace household_management.ViewModel
             {
                 dt.Rows.Add
                     (
-                         CheckData(PopulationsList[i],i)
+                         CheckData(PopulationsList[i], i)
                     );
             }
             dvPopulations = new DataView(dt);
         }
         // Check if any fields is null
-        private string[] CheckData(Population item,int stt)
+        private string[] CheckData(Population item, int stt)
         {
-            var link = DataProvider.Ins.DB.Household_Registration.Where(x => x.IdOfOwner == item.Id).SingleOrDefault();
+
+            var link = DataProvider.Ins.DB.Household_Registration.Where(x => x.IdOfOwner == item.Id).ToArray();
+            var change = DataProvider.Ins.DB.Populations.Where(x => x.Id == item.Id).SingleOrDefault();
+
             string[] list = new string[12];
             list[0] = (stt + 1).ToString();
             list[1] = check(item.Id);
@@ -312,24 +376,36 @@ namespace household_management.ViewModel
             list[3] = check(item.Sex);
             list[4] = check(item.DateOfBirth);
             list[5] = check(item.PlaceOfBirth);
-            if (link != null)
-                list[6] = check(link.Id);
-            else list[6] = "";
+            if (item.Id_Household != null)
+                list[6] = item.Id_Household;
+            else if(link != null && item.Id_Household == null)
+            {
+                // update Id household if this popualtion Id_Household null but have Id household in HouseholdRegis in database
+                change.Id_Household = link[0].Id;
+                list[6] = check(link[0].Id);
+                DataProvider.Ins.DB.SaveChanges();
+            }
+            else  
+                list[6] = "";
             list[7] = check(item.Address);
             list[8] = check(item.Relegion);
             list[9] = check(item.Career);
-            list[10] = check(item.Photo);          
-            if (link != null)
-                list[11] = check(link.Address);
-            else list[11] = "";
+            list[10] = check(item.Photo);
+            // get address from this population Id_household 
+            if (list[6] != "")
+            {
+                var get = list[6];
+                list[11] = check(DataProvider.Ins.DB.Household_Registration.Where(x => x.Id == get).SingleOrDefault().Address);
+            }
+            else list[11] = "";            
             return list;
         }
         // Convert null, string or any type to Valid view data
-        private string check(object  txt)
+        private string check(object txt)
         {
             DateTime dateTime = new DateTime();
             bool gender = new bool();
-            if (txt == null)                
+            if (txt == null)
                 return "";
             else if (txt.GetType() == dateTime.GetType())
             {
@@ -345,8 +421,8 @@ namespace household_management.ViewModel
             }
             return txt.ToString();
         }
-        
-        public void doSearch(DataGrid dtg ,string find,string form)
+
+        public void doSearch(DataGrid dtg, string find, string form)
         {
             form += " Like '%{0}%'";
             if (dvPopulations.Count < 0) // if nothing return to prevent error
@@ -355,16 +431,34 @@ namespace household_management.ViewModel
             dtg.ItemsSource = DvPopulations;
 
         }
-        private  ImageSource BitmapFromUri(Uri source)
+        // load picture
+        private ImageSource BitmapFromUri(Uri source)
         {
-            var bitmap = new BitmapImage();
-            bitmap.BeginInit();
-            bitmap.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
-            bitmap.UriSource = source;
-            bitmap.CacheOption = BitmapCacheOption.OnLoad;
-            bitmap.EndInit();           
+            try
+            {
+                var bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+                bitmap.UriSource = source;
+                bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                bitmap.EndInit();
 
-            return bitmap;
+                return bitmap;
+            }
+            catch
+            {
+                source = new Uri(System.IO.Path.GetFullPath("../../Resources/account.jpg"));
+                var bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+                bitmap.UriSource = source;
+                bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                bitmap.EndInit();
+
+                return bitmap;
+            }
         }
     }
+    
+   
 }

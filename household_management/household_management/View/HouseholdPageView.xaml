@@ -17,57 +17,45 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
+
             <Border Grid.Column="0" BorderBrush="LightGray" BorderThickness="0,2,2,0">
                 <Grid  >
                     <TextBox 
                     x:Name="txtName" IsReadOnly="True"
                     Text="{Binding Name,UpdateSourceTrigger=PropertyChanged}"
-                    HorizontalAlignment="Left" Height="34" Margin="153,42,0,0"  VerticalAlignment="Top" Width="369" materialDesign:HintAssist.Hint="Name"  FontSize="16" />
-                    <materialDesign:PackIcon Kind="Account" Margin="93,45,0,0" Height="31" Width="32" />
+                    HorizontalAlignment="Left" Height="34" Margin="388,34,0,0"  VerticalAlignment="Top" Width="369" materialDesign:HintAssist.Hint="Name"  FontSize="16" />
+                    <materialDesign:PackIcon Kind="Account" Margin="328,37,0,0" Height="31" Width="32" />
                     <TextBox IsReadOnly="True" x:Name="txtId" Text="{Binding Id_Owner,UpdateSourceTrigger=PropertyChanged}"
-            HorizontalAlignment="Left" Height="34" Margin="153,88,0,0"  VerticalAlignment="Top" Width="220" materialDesign:HintAssist.Hint="Id" TextWrapping="Wrap" FontSize="16"  materialDesign:HintAssist.HelperText="12 digits numbers" />
-                    <materialDesign:PackIcon Kind="CardAccountDetails" Margin="93,94,0,0" Height="31" Width="32" RenderTransformOrigin="0.438,1.342" />
+            HorizontalAlignment="Left" Height="34" Margin="388,80,0,0"  VerticalAlignment="Top" Width="220" materialDesign:HintAssist.Hint="Id" TextWrapping="Wrap" FontSize="16"  materialDesign:HintAssist.HelperText="12 digits numbers" />
+                    <materialDesign:PackIcon Kind="CardAccountDetails" Margin="328,86,0,0" Height="31" Width="32" RenderTransformOrigin="0.438,1.342" />
                     <TextBox IsReadOnly="True" x:Name="txtAddress" Text="{Binding Address,UpdateSourceTrigger=PropertyChanged}"
-            HorizontalAlignment="Left" Height="34" Margin="153,154,0,0"  VerticalAlignment="Top" Width="391" materialDesign:HintAssist.Hint="Address" TextWrapping="Wrap" FontSize="16" />
-                    <materialDesign:PackIcon Kind="MapMarker" Margin="93,157,0,0" Height="31" Width="32" RenderTransformOrigin="-1.562,-2.452" />
-                    <TextBox  Text="{Binding HAddress,UpdateSourceTrigger=PropertyChanged}"
-            HorizontalAlignment="Left" Height="34" Margin="153,319,0,0"  VerticalAlignment="Top" Width="391" materialDesign:HintAssist.Hint="HouseHold Adress" TextWrapping="Wrap" FontSize="16" />
-                    <Label Content="Household Address" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="153,283,0,0" Height="31" Width="232" FontSize="16" Padding="0,4,4,4"/>
-                    <materialDesign:PackIcon Kind="HomeMapMarker" Margin="93,322,0,0" Height="31" Width="32" />
+            HorizontalAlignment="Left" Height="34" Margin="388,146,0,0"  VerticalAlignment="Top" Width="391" materialDesign:HintAssist.Hint="Address" TextWrapping="Wrap" FontSize="16" />
+                    <materialDesign:PackIcon Kind="MapMarker" Margin="328,149,0,0" Height="31" Width="32" RenderTransformOrigin="-1.562,-2.452" />
+                    <TextBox IsReadOnly="False" Text="{Binding HAddress,UpdateSourceTrigger=PropertyChanged}"
+            HorizontalAlignment="Left" Height="34" Margin="388,311,0,0"  VerticalAlignment="Top" Width="391" materialDesign:HintAssist.Hint="HouseHold Adress" TextWrapping="Wrap" FontSize="16" />
+                    <Label Content="Household Address" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="388,275,0,0" Height="31" Width="232" FontSize="16" Padding="0,4,4,4"/>
+                    <materialDesign:PackIcon Kind="HomeMapMarker" Margin="328,314,0,0" Height="31" Width="32" />
 
-                    <RadioButton x:Name="FemaleChoise" VerticalAlignment="Top" RenderTransformOrigin="0.615,0.157" Margin="579,97,0,0"  Height="28" HorizontalAlignment="Left" GroupName="Gender" Content="Female" Width="66" IsChecked="{Binding FemaleChoice}"/>
-                    <RadioButton x:Name="MaleChoise" VerticalAlignment="Top" RenderTransformOrigin="0.615,0.157" Margin="512,98,0,0"  Height="28" HorizontalAlignment="Left" GroupName="Gender"  Content="Male" IsChecked="{Binding MaleChoice}"/>
-                    <Label Width="73" VerticalAlignment="Top" Margin="424,97,0,0" Height="26" HorizontalAlignment="Left" FontSize="16" Content="Gender:"/>
+                    <RadioButton x:Name="FemaleChoise" VerticalAlignment="Top" RenderTransformOrigin="0.615,0.157" Margin="814,89,0,0"  Height="28" HorizontalAlignment="Left" GroupName="Gender" Content="Female" Width="66" IsChecked="{Binding FemaleChoice}"/>
+                    <RadioButton x:Name="MaleChoise" VerticalAlignment="Top" RenderTransformOrigin="0.615,0.157" Margin="747,90,0,0"  Height="28" HorizontalAlignment="Left" GroupName="Gender"  Content="Male" IsChecked="{Binding MaleChoice}"/>
+                    <Label Width="73" VerticalAlignment="Top" Margin="659,89,0,0" Height="26" HorizontalAlignment="Left" FontSize="16" Content="Gender:"/>
                     <TextBox IsReadOnly="True"
                          Text="{Binding Id,UpdateSourceTrigger=PropertyChanged}"
-                    HorizontalAlignment="Left" Height="34" Margin="234,228,0,0"  VerticalAlignment="Top" Width="236" materialDesign:HintAssist.Hint="HouseholdId" TextWrapping="Wrap" FontSize="16" >
+                    HorizontalAlignment="Left" Height="34" Margin="469,220,0,0"  VerticalAlignment="Top" Width="236" materialDesign:HintAssist.Hint="HouseholdId" TextWrapping="Wrap" FontSize="16" >
                     </TextBox>
 
-                    <Label Content="Household Id:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="93,237,0,0" Height="25" Width="126" FontSize="16" Padding="0" FontStyle="Italic" FontWeight="Bold"/>
+                    <Label Content="Household Id:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="328,229,0,0" Height="25" Width="126" FontSize="16" Padding="0" FontStyle="Italic" FontWeight="Bold"/>
                     <Label Content="ID:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontStyle="Italic"/>
                     <Label Content="{Binding Id, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="32,14,0,0" VerticalAlignment="Top" Width="59" Height="20" Padding="0"/>
 
                 </Grid>
             </Border>
-            <Border Grid.Column="1" BorderBrush="LightGray" BorderThickness="0,2,2,0">
-                <Grid>
 
-                    <Button Command="{Binding Updatebtn}" CommandParameter="{Binding ElementName=dtg}" Content="Update"  Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="123" VerticalAlignment="Top" Margin="352,99,0,0"  />
-                    <Button Command="{Binding Deletebtn}" CommandParameter="{Binding ElementName=dtg}" Content="Remove"  Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="123" VerticalAlignment="Top" Margin="352,204,0,0"   />
-
-
-
-                </Grid>
-            </Border>
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition ></ColumnDefinition>
-                <ColumnDefinition Width="0.6*"></ColumnDefinition>
+                <ColumnDefinition Width="0.2*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Border BorderBrush="LightGray" BorderThickness="2,2,0,2">
                 <Grid Grid.Column="0">
@@ -84,10 +72,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Number" Binding="{Binding OrdinalNumber}"/>
                             <DataGridTextColumn Header="Id" Binding="{Binding Id_Household}"/>
-                            <DataGridTextColumn Header="Name Household Owner" Binding="{Binding Name_HouseholdOwner}"/>
+                            <DataGridTextColumn Header="Name Household Owner" Binding="{Binding Name}"/>
                             <DataGridTextColumn Header="Id_Owner" Binding="{Binding Id_Owner}"/>
                             <DataGridTextColumn Header="Gender" Binding="{Binding Gender}"/>
-                            <DataGridTextColumn Header="Household Address" Binding="{Binding HAddress}"/>                          
+                            <DataGridTextColumn Header="Household Address" Binding="{Binding HAddress}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
@@ -95,14 +83,11 @@
 
             <Border Grid.Column="1"  BorderBrush="LightGray" BorderThickness="2">
                 <Grid Grid.Column="1">
-                    <DataGrid x:Name="dtgFamily" IsReadOnly="True"
-                              AutoGenerateColumns="False"
-                              ItemsSource="{Binding DvFamily,UpdateSourceTrigger=PropertyChanged,NotifyOnSourceUpdated=True}">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Id" Binding="{Binding Id_Person}"/>
-                            <DataGridTextColumn Header="Name" Binding="{Binding Name_Person}"/>
-                        </DataGrid.Columns>
-                    </DataGrid>
+
+                    <Button Command="{Binding Updatebtn}" CommandParameter="{Binding ElementName=dtg}" Content="Update"  Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="123" VerticalAlignment="Top" RenderTransformOrigin="0.761,1.2" Margin="49,39,0,0"  />
+                    <Button Command="{Binding Deletebtn}" CommandParameter="{Binding ElementName=dtg}" Content="Remove"  Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="123" VerticalAlignment="Top" Margin="49,119,0,0"   />
+                    <Button Command="{Binding Viewbtn}"  Content="ViewMember"  Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="123" VerticalAlignment="Top" Margin="49,199,0,0"   />
+
                 </Grid>
             </Border>
         </Grid>

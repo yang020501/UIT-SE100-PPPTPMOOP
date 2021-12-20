@@ -9,6 +9,7 @@
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         DataContext="{StaticResource AccountVM}"
+
         Title="AccountManager" Height="687.726" Width="839.67" AllowsTransparency="True"  WindowStartupLocation="CenterScreen" WindowStyle="None" Background="{x:Null}">
     <Border Background="White" CornerRadius="5.3">
     <Grid>
@@ -33,12 +34,15 @@
             </Grid>
             </Border>
             <Grid Grid.Row="1">
+
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.35*"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Border Grid.Column="1" BorderBrush="LightGray" BorderThickness="0,2,2,0">
+
                 <Grid  >
+
                     <TextBox 
                     x:Name="txtName"
                     Text="{Binding Name,UpdateSourceTrigger=PropertyChanged}"
@@ -71,8 +75,10 @@
             </Border>
             <Border Grid.Column="0" BorderBrush="LightGray" BorderThickness="2,2,2,0">
                 <Grid>
+
                     <Button CommandParameter="{Binding ElementName=imPic}" Command="{Binding Choosebtn}" Content="Choose" Height="39" Background="#FF4D60C0" HorizontalAlignment="Left" Width="88" VerticalAlignment="Top" Margin="65,299,0,0"  />
                     <Border BorderBrush="#FF4D60C0" BorderThickness="2" Margin="40,93,36.4,116" >
+
                         <Grid  >
                             <Image  x:Name="imPic"  Height="177"  Source="{Binding SPhoto,UpdateSourceTrigger=PropertyChanged}" Stretch="Fill" Width="135.2"  />
                         </Grid>
@@ -81,12 +87,14 @@
             </Border>
 
         </Grid>
+
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition ></ColumnDefinition>
                 <ColumnDefinition Width="0.2*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Border BorderBrush="LightGray" CornerRadius="0,0,0,4" BorderThickness="2,2,0,2">
+
                 <Grid Grid.Column="0">
                     <DataGrid 
                 
@@ -111,15 +119,19 @@
                 </Grid>
             </Border>
 
+
             <Border  CornerRadius="0,0,4,0" Grid.Column="1"  BorderBrush="LightGray" BorderThickness="2">
                 <Grid Grid.Column="1">
                     <Button Command="{Binding Updatebtn}" CommandParameter="{Binding ElementName=dtg}" Content="Update"  Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="104" VerticalAlignment="Top" Margin="19,65,0,0" />
                     <Button Command="{Binding Deletebtn}" CommandParameter="{Binding ElementName=dtg}" Content="Remove"  Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="104" VerticalAlignment="Top" Margin="19,179,0,0"  />
+
 
                 </Grid>
             </Border>
         </Grid>
 
     </Grid>
+
     </Border>
+
 </Window>

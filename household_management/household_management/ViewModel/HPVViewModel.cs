@@ -1,4 +1,5 @@
 ﻿using household_management.Model;
+using household_management.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,11 +20,7 @@ namespace household_management.ViewModel
 
         private DataView dvHousehold;
         public DataView DvHousehold { get => dvHousehold; set { dvHousehold = value; OnPropertyChanged(); } }
-
-
-        private DataView dvFamily;
-        public DataView DvFamily { get => dvFamily; set { dvFamily= value; OnPropertyChanged(); } }
-
+       
 
         private string _Name;
         public string Name { get => _Name; set { _Name = value; OnPropertyChanged(); } }
@@ -54,6 +51,7 @@ namespace household_management.ViewModel
 
         public ICommand Updatebtn { get; set; }
         public ICommand Deletebtn { get; set; }
+        public ICommand Viewbtn { get; set; }
 
         private DataRowView _Selected;
         public DataRowView Selected
@@ -77,17 +75,17 @@ namespace household_management.ViewModel
                         MaleChoice = false;
                     }
 
-                    Name = (string)Selected.Row["Name_HouseholdOwner"];
+                    Name = (string)Selected.Row["Name"];
                     Id = (string)Selected.Row["Id_Household"];
                     Id_Owner = (string)Selected.Row["Id_Owner"];
                     Address = (string)Selected.Row["Address"];
                     HAddress = (string)Selected.Row["HAddress"];
-
-                    NewTableFamily();
-                    MessageBox.Show(FamilyList.Count.ToString());
+                    FamilyList = new ObservableCollection<Family_Household>(DataProvider.Ins.DB.Family_Household.Where(x => x.Id_Household == Id));
 
 
-                }
+
+
+    }
             }
         }
         public HPVViewModel()
@@ -111,7 +109,7 @@ namespace household_management.ViewModel
                 var tmp = DataProvider.Ins.DB.Household_Registration.Where(x => x.Id == Id).SingleOrDefault();
                 try
                 {
-                    tmp.IdOfOwner = Id_Owner;
+
                     tmp.Address = HAddress;
 
                     DataProvider.Ins.DB.SaveChanges();
@@ -139,14 +137,16 @@ namespace household_management.ViewModel
             }, (p) =>
             {
 
-                if (MessageBox.Show("Do you want to REMOVE?", "Warning!", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                if (MessageBox.Show("Do you want to REMOVE?"+"\nAll relevant FamilyMember in Household will be REMOVE", "Warning!", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {                   
-                    try
-                    {
-
-                        foreach(Family_Household item in FamilyList)
+                    //try
+                    //{
+                        if (FamilyList != null)
                         {
-                            DataProvider.Ins.DB.Family_Household.Remove(item);
+                            foreach (Family_Household item in FamilyList)
+                            {
+                                DataProvider.Ins.DB.Family_Household.Remove(item);
+                            }
                         }
 
                         DataProvider.Ins.DB.Household_Registration.Remove(DataProvider.Ins.DB.Household_Registration.Where(x => x.Id == Id).SingleOrDefault());
@@ -158,14 +158,31 @@ namespace household_management.ViewModel
                         NullProperty();
                         NewTableHousehold();
                         p.ItemsSource = DvHousehold; ;
-                    }                                             
-                    catch (Exception e)
-                    {
-                        MessageBox.Show(e.Message, "Notification!", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    }
+                    //}                                             
+                    //catch (Exception e)
+                    //{
+                        //MessageBox.Show(e.Message, "Notification!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    //}
                    
                 }
-            });      
+            });
+            Viewbtn = new RelayCommand<object>(
+                (p) =>
+                {
+                    if (Selected == null)
+                        return false;
+                    return true;
+                }, 
+                (p) =>
+                 {
+                     FamilyList wd = new FamilyList();
+                     wd.DataContext = null;
+                     FMLViewModel vm = new FMLViewModel();
+                     vm.Load(Id);
+                     wd.DataContext = vm;
+                     wd.ShowDialog();
+                 }
+                );
                    
         }
 
@@ -181,37 +198,7 @@ namespace household_management.ViewModel
             HAddress = null;
             Selected = null;
 
-        }
-
-        private void NewTableFamily()
-        {
-            FamilyList = new ObservableCollection<Family_Household>(DataProvider.Ins.DB.Family_Household.Where(x => x.Id_Household == Id));
-            dt = new DataTable();
-
-            dt.Columns.Add("Id_Person");
-            dt.Columns.Add("Name_Person");
-
-            //fill datatable
-            for (int i = 0; i < FamilyList.Count; i++)
-            {
-
-                dt.Rows.Add
-                    (
-                       CheckData2(FamilyList[i], i)
-                    );
-
-            }
-            dvFamily = new DataView(dt);
-        }
-        private string[] CheckData2(Family_Household item, int stt)
-        {
-            
-            string[] list = new string[2];
-            list[0] = check(item.Id_Person);
-            list[1] = check(item.Name_Person);      
-
-            return list;
-        }
+        }              
 
         private void NewTableHousehold()
         {
@@ -221,7 +208,7 @@ namespace household_management.ViewModel
             dt.Columns.Add("OrdinalNumber");
             dt.Columns.Add("Id_Household");
             dt.Columns.Add("Id_Owner");
-            dt.Columns.Add("Name_HouseholdOwner");
+            dt.Columns.Add("Name");
             dt.Columns.Add("Address");
             dt.Columns.Add("HAddress");
             dt.Columns.Add("Gender");

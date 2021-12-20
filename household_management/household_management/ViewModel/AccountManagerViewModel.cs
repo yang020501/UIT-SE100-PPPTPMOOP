@@ -9,8 +9,10 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+
 
 namespace household_management.ViewModel
 {
@@ -40,6 +42,7 @@ namespace household_management.ViewModel
         public bool FemaleChoice { get => _FemaleChoice; set { _FemaleChoice = value; OnPropertyChanged(); } }
         public ICommand Updatebtn { get; set; }
         public ICommand Deletebtn { get; set; }
+
         public ICommand Choosebtn { get; set; }
 
 
@@ -48,6 +51,7 @@ namespace household_management.ViewModel
 
         private string _Photo;
         public string Photo { get => _Photo; set { _Photo = value; OnPropertyChanged(); } }
+
 
         private ObservableCollection<Model.User> UserList;
 
@@ -58,8 +62,10 @@ namespace household_management.ViewModel
 
         public AccountManagerViewModel()
         {
+
             DateOfBirth = DateTime.Now;
             DB = DateTime.Now.ToString("MM/dd/yyyy");
+
             NewTableUser();
 
             Updatebtn = new RelayCommand<DataGrid>((p) =>
@@ -78,6 +84,7 @@ namespace household_management.ViewModel
                 change.Name = Name;
                 change.Sex = MaleChoice;
                 change.DateOfBirth = DateOfBirth;
+
                 
 
                 var tmp = DataProvider.Ins.DB.Users.Where(x => x.Id == Id).SingleOrDefault();
@@ -92,6 +99,7 @@ namespace household_management.ViewModel
                         System.IO.File.Copy(Photo, "../../userhinhthe/" + namePhoto, true);
                     tmp.PhotoUser = namePhoto;
                 }
+
                 Model.DataProvider.Ins.DB.SaveChanges();
 
                 NewTableUser();
@@ -129,6 +137,7 @@ namespace household_management.ViewModel
                     }
                 }
             });
+
             //ChoosePicture btn
             Choosebtn = new RelayCommand<System.Windows.Controls.Image>((p) => { return true; }, (p) =>
             {
@@ -171,6 +180,7 @@ namespace household_management.ViewModel
 
                 return bitmap;
             }
+
         }
 
         private void NewTableUser()
@@ -186,7 +196,9 @@ namespace household_management.ViewModel
             dt.Columns.Add("DateOfBirth");
             dt.Columns.Add("Sex");
             dt.Columns.Add("Password");
+
             dt.Columns.Add("Photo");
+
             
             //fill datatablejk
             for (int i = 0; i < UserList.Count; i++)
@@ -202,6 +214,7 @@ namespace household_management.ViewModel
         private string[] CheckData(Model.User item)
         {
             string[] list = new string[9];
+      
             list[0] = item.Id.ToString();
             list[1] = item.Username;
             list[2] = check(item.Tier);
@@ -211,6 +224,7 @@ namespace household_management.ViewModel
             list[6] = check(item.Sex);
             list[7] = check(item.Password);
             list[8] = check(item.PhotoUser);
+
 
             return list;
         }
@@ -293,6 +307,7 @@ namespace household_management.ViewModel
                     Username = (string)Selected.Row["UserName"];
                     Password = "************";
                     Id = int.Parse((string)Selected.Row["Stt"]);
+
 
                     if ((string)Selected.Row["Photo"] != null && (string)Selected.Row["Photo"] != "")
 

@@ -139,10 +139,17 @@ namespace household_management.ViewModel
             list[2] = check(item.Id_Owner);
             list[3] = check(item.Population.Name);
             list[4] = check(item.Id_Household);
-            list[5] = check(item.Household_Registration.NameOfOwner);
+            var link = DataProvider.Ins.DB.Household_Registration.Where(x => x.Id == item.Id_Household).SingleOrDefault();
+            if (link != null)
+                list[5] = check(link.NameOfOwner);
+            else 
+                list[5] = "";
             list[6] = check(item.Old_Address);
             list[7] = check(item.CreateDate);
-            list[8] = check(item.Population.Sex);
+            var link2 = DataProvider.Ins.DB.Populations.Where(x => x.Id == item.Id_Owner).SingleOrDefault();
+            if (link2 != null)
+                list[8] = check(link2.Sex);
+            else list[8] = "";
             list[9] = check(item.New_Address);
             return list;
         }
