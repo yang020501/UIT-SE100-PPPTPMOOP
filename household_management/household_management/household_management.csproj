@@ -215,6 +215,9 @@
     <Compile Include="View\Household.xaml.cs">
       <DependentUpon>Household.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\HouseholdPage.xaml.cs">
+      <DependentUpon>HouseholdPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\HouseholdPageView.xaml.cs">
       <DependentUpon>HouseholdPageView.xaml</DependentUpon>
     </Compile>
@@ -286,6 +289,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Household.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HouseholdPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
