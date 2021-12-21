@@ -1,0 +1,45 @@
+﻿<Page x:Class="household_management.View.AddPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:household_management.View"
+      mc:Ignorable="d" 
+      DataContext="{StaticResource AddPageVM}"
+      xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddPage" Height="611.2" Width="825.6" Background="White">
+
+    <Grid>
+        <dragablz:TabablzControl SelectedIndex="{Binding Selected,UpdateSourceTrigger=PropertyChanged}" FontSize="16">
+            <TabItem Header="Popualtions" IsSelected="{Binding pSelected,UpdateSourceTrigger=PropertyChanged}">
+
+                <Frame  NavigationUIVisibility="Hidden" Content="{Binding pFrame,UpdateSourceTrigger=PropertyChanged}">
+
+                </Frame>
+
+            </TabItem>
+            <TabItem Header="Household" IsSelected="{Binding hSelected,UpdateSourceTrigger=PropertyChanged}">
+                <Frame NavigationUIVisibility="Hidden" Content="{Binding hFrame,UpdateSourceTrigger=PropertyChanged}">
+
+                </Frame>
+            </TabItem>
+            <TabItem Header="Transfer" IsSelected="{Binding tSelected,UpdateSourceTrigger=PropertyChanged}">
+                <Frame NavigationUIVisibility="Hidden" Content="{Binding tFrame,UpdateSourceTrigger=PropertyChanged}">
+
+                </Frame>
+            </TabItem>
+            <TabItem Header="Temporary Absencce" IsSelected="{Binding aSelected,UpdateSourceTrigger=PropertyChanged}">
+                <Frame NavigationUIVisibility="Hidden" Content="{Binding aFrame,UpdateSourceTrigger=PropertyChanged}">
+
+                </Frame>
+            </TabItem>
+            <TabItem Header="Temporary Residence" IsSelected="{Binding rSelected,UpdateSourceTrigger=PropertyChanged}">
+                <Frame NavigationUIVisibility="Hidden" Content="{Binding rFrame,UpdateSourceTrigger=PropertyChanged}">
+
+                </Frame>
+            </TabItem>
+        </dragablz:TabablzControl>
+
+    </Grid>
+</Page>
