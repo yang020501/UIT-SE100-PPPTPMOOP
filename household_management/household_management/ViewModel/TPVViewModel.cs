@@ -138,8 +138,8 @@ namespace household_management.ViewModel
             list[1] = check(item.Id);
             list[2] = check(item.Id_Owner);
             list[3] = check(item.Population.Name);
-            list[4] = check(item.Id_Household);
-            var link = DataProvider.Ins.DB.Household_Registration.Where(x => x.Id == item.Id_Household).SingleOrDefault();
+            list[4] = check(item.Old_Id_Household);
+            var link = DataProvider.Ins.DB.Household_Registration.Where(x => x.Id == item.Old_Id_Household).SingleOrDefault();
             if (link != null)
                 list[5] = check(link.NameOfOwner);
             else 

@@ -104,7 +104,7 @@ namespace household_management.ViewModel
                     transfer_Household.Id = GenarateId();
                     transfer_Household.Id_Owner = Id_Owner;
                     transfer_Household.CreateDate = DateTime.Now;
-                    transfer_Household.Id_Household = Id_Household;
+                    transfer_Household.Old_Id_Household = Id_Household;
                     transfer_Household.Old_Address = Old_Address;
                     transfer_Household.New_Address = New_Address;
                     Model.DataProvider.Ins.DB.Transfer_Household.Add(transfer_Household);
