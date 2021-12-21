@@ -4,7 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="58af041694304697a9a798c1380eb3ef" Name="Diagram1">
+
+      <Diagram DiagramId="e7bdf60a53ce47588c159957741ef0c4" Name="Diagram1">
+
         <EntityTypeShape EntityType="HoKhauModel.Family_Household" Width="1.5" PointX="5.25" PointY="12.5" IsExpanded="true" />
         <EntityTypeShape EntityType="HoKhauModel.Household_Registration" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
         <EntityTypeShape EntityType="HoKhauModel.Population" Width="1.5" PointX="3" PointY="12.375" IsExpanded="true" />
@@ -13,19 +15,21 @@
         <EntityTypeShape EntityType="HoKhauModel.Transfer_Household" Width="1.5" PointX="5.25" PointY="16.125" IsExpanded="true" />
         <EntityTypeShape EntityType="HoKhauModel.UserRole" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
         <EntityTypeShape EntityType="HoKhauModel.User" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="HoKhauModel.FK__Family_Ho__Id_Ho__30F848ED" ManuallyRouted="false" />
-        <AssociationConnector Association="HoKhauModel.FK__Family_Ho__Id_Ow__31EC6D26" ManuallyRouted="false" />
-        <AssociationConnector Association="HoKhauModel.FK__Family_Ho__Id_Pe__32E0915F" ManuallyRouted="false" />
-        <AssociationConnector Association="HoKhauModel.FK__Household__IdOfO__2D27B809" ManuallyRouted="false" />
-        <AssociationConnector Association="HoKhauModel.FK__Temporary__Id_Ho__36B12243" ManuallyRouted="false" />
-        <AssociationConnector Association="HoKhauModel.FK__Temporary__Id_Ho__3B75D760" ManuallyRouted="false" />
-        <AssociationConnector Association="HoKhauModel.FK__Transfer___New_I__412EB0B6" ManuallyRouted="false" />
-        <AssociationConnector Association="HoKhauModel.FK__Transfer___Old_I__403A8C7D" ManuallyRouted="false" />
+
+        <AssociationConnector Association="HoKhauModel.FK__Family_Ho__Id_Ho__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="HoKhauModel.FK__Family_Ho__Id_Ow__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="HoKhauModel.FK__Family_Ho__Id_Pe__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="HoKhauModel.FK__Household__IdOfO__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="HoKhauModel.FK__Temporary__Id_Ho__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="HoKhauModel.FK__Temporary__Id_Ho__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="HoKhauModel.FK__Transfer___New_I__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="HoKhauModel.FK__Transfer___Old_I__3E52440B" ManuallyRouted="false" />
+
         <AssociationConnector Association="HoKhauModel.Fk_Id_Household_w_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="HoKhauModel.FK__Temporary__Id_Ow__35BCFE0A" ManuallyRouted="false" />
-        <AssociationConnector Association="HoKhauModel.FK__Temporary__Id_Ow__3A81B327" ManuallyRouted="false" />
-        <AssociationConnector Association="HoKhauModel.FK__Transfer___Id_Ow__3F466844" ManuallyRouted="false" />
-        <AssociationConnector Association="HoKhauModel.FK__Users__Tier__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="HoKhauModel.FK__Temporary__Id_Ow__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="HoKhauModel.FK__Temporary__Id_Ow__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="HoKhauModel.FK__Transfer___Id_Ow__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="HoKhauModel.FK__Users__Tier__3F466844" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
