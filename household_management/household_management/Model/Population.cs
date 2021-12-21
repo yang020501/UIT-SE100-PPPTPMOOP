@@ -31,6 +31,7 @@ namespace household_management.Model
         public string Photo { get; set; }
         public string Id_Household { get; set; }
         public string PlaceOfBirth { get; set; }
+        public string OriginalAddress { get; set; }
         public string Address { get; set; }
         public Nullable<System.DateTime> DateOfBirth { get; set; }
         public Nullable<bool> Sex { get; set; }
