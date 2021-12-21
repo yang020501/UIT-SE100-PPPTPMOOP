@@ -144,6 +144,7 @@ namespace household_management.ViewModel
         private void openResidencePageView()
         {
             main.Refresh();
+            main.Content = null;
             rView.DataContext = null;
             RPVViewModel vm = new RPVViewModel();
             vm.Load();

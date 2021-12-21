@@ -32,34 +32,34 @@ namespace household_management
         }
 
 
-        private void btnPopualtion_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
+        //private void btnPopualtion_Click(object sender, RoutedEventArgs e)
+        //{
 
-        private void btnHousehold_Click(object sender, RoutedEventArgs e)
-        {
-            Household wd = new Household();
-            wd.ShowDialog();
-        }
+        //}
 
-        private void btnAbsence_Click(object sender, RoutedEventArgs e)
-        {
-            Absence wd = new Absence();
-            wd.ShowDialog();
-        }
+        //private void btnHousehold_Click(object sender, RoutedEventArgs e)
+        //{
+        //    Household wd = new Household();
+        //    wd.ShowDialog();
+        //}
 
-        private void btnResidence_Click(object sender, RoutedEventArgs e)
-        {
-            Residence wd = new Residence();
-            wd.ShowDialog();
-        }
+        //private void btnAbsence_Click(object sender, RoutedEventArgs e)
+        //{
+        //    Absence wd = new Absence();
+        //    wd.ShowDialog();
+        //}
 
-        private void btnTransfer_Click(object sender, RoutedEventArgs e)
-        {
-            Transfer wd = new Transfer();
-            wd.ShowDialog();
-        }
+        //private void btnResidence_Click(object sender, RoutedEventArgs e)
+        //{
+        //    Residence wd = new Residence();
+        //    wd.ShowDialog();
+        //}
+
+        //private void btnTransfer_Click(object sender, RoutedEventArgs e)
+        //{
+        //    Transfer wd = new Transfer();
+        //    wd.ShowDialog();
+        //}
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
@@ -67,7 +67,7 @@ namespace household_management
             wd.DataContext = null;
             wd.DataContext = new SearchViewModel();
             wd.ShowDialog();
-     
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

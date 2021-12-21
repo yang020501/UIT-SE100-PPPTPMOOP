@@ -1,4 +1,5 @@
 ﻿using household_management.Model;
+using household_management.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,8 +33,38 @@ namespace household_management.ViewModel
         public ICommand LogoutCommand { get; set; }
         public ICommand LoadManageButtonCommand { get; set; }
         public bool isLoad = false;
+
+        private Frame main = new Frame();
+        public Frame Main { get => main; set { main = value; OnPropertyChanged(); } }
+
+        private bool _addSelected;
+        public bool AddSelected { get => _addSelected;set { _addSelected = value;OnPropertyChanged();  openAddPage(); } }
+
+        private bool _searchSelected;
+        public bool searchSelected { get => _searchSelected; set { _searchSelected = value; OnPropertyChanged(); openSearchPage(); } }
+
+        AddPage aView = new AddPage();
+
+      
+        
+        private void openAddPage()
+        {            
+            main.Refresh();
+            AddPageViewModel vm = new AddPageViewModel();
+            AddPage addPage = new AddPage();
+            addPage.DataContext = null;
+            addPage.DataContext = vm;
+            main.Content = addPage;
+          
+        }
+        private void openSearchPage()
+        {
+
+        }
         public MainViewModel()
         {
+           
+                
             LoadManageButtonCommand = new RelayCommand<Button>((p) => { return true; }, (p) => 
             { 
                 if(Role == "Manager")

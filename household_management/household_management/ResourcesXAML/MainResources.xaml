@@ -12,6 +12,7 @@
     <viewmodel:TPVViewModel x:Key="TPV_VM"></viewmodel:TPVViewModel>
     <viewmodel:HPVViewModel x:Key="HPV_VM"></viewmodel:HPVViewModel>
     <viewmodel:FMLViewModel x:Key="FML_VM"></viewmodel:FMLViewModel>
+    <viewmodel:AddPageViewModel x:Key="AddPageVM"></viewmodel:AddPageViewModel>
     <viewmodel:FamilyViewModel x:Key="FamilyVM"></viewmodel:FamilyViewModel>
     <viewmodel:TransferViewModel x:Key="TransferVM"></viewmodel:TransferViewModel>
     <viewmodel:AbsenceViewModel x:Key="AbsenceVM"></viewmodel:AbsenceViewModel>
