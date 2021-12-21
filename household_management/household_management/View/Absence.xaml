@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         DataContext="{StaticResource AbsenceVM}"
-        Title="Absence" Height="723.6" Width="577.6" AllowsTransparency="True" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="{x:Null}">
+        Title="Absence" Height="723.6" Width="577.6" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="{x:Null}" AllowsTransparency="True" WindowStyle="None">
     <Border CornerRadius="5.3" Background="#FF9FF1F9" >
     <Grid>
         <Grid.RowDefinitions>
