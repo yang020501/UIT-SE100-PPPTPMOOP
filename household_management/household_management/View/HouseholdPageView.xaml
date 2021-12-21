@@ -73,7 +73,7 @@
                             <DataGridTextColumn Header="Number" Binding="{Binding OrdinalNumber}"/>
                             <DataGridTextColumn Header="Id" Binding="{Binding Id_Household}"/>
                             <DataGridTextColumn Header="Name Household Owner" Binding="{Binding Name}"/>
-                            <DataGridTextColumn Header="Id_Owner" Binding="{Binding Id_Owner}"/>
+                            <DataGridTextColumn Header="Id_Owner" Binding="{Binding Id}"/>
                             <DataGridTextColumn Header="Gender" Binding="{Binding Gender}"/>
                             <DataGridTextColumn Header="Household Address" Binding="{Binding HAddress}"/>
                         </DataGrid.Columns>

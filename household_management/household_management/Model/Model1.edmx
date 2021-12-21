@@ -203,7 +203,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+
         <Association Name="FK__Transfer___Id_Ow__3C69FB99">
+
           <End Role="Population" Type="Self.Population" Multiplicity="0..1" />
           <End Role="Transfer_Household" Type="Self.Transfer_Household" Multiplicity="*" />
           <ReferentialConstraint>
@@ -215,7 +217,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+
         <Association Name="FK__Transfer___New_I__3D5E1FD2">
+
           <End Role="Household_Registration" Type="Self.Household_Registration" Multiplicity="0..1" />
           <End Role="Transfer_Household" Type="Self.Transfer_Household" Multiplicity="*" />
           <ReferentialConstraint>
@@ -227,7 +231,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+
         <Association Name="FK__Transfer___Old_I__3E52440B">
+
           <End Role="Household_Registration" Type="Self.Household_Registration" Multiplicity="0..1" />
           <End Role="Transfer_Household" Type="Self.Transfer_Household" Multiplicity="*" />
           <ReferentialConstraint>
@@ -304,6 +310,7 @@
             <End Role="Population" EntitySet="Population" />
             <End Role="Temporary_Residence" EntitySet="Temporary_Residence" />
           </AssociationSet>
+
           <AssociationSet Name="FK__Transfer___Id_Ow__3C69FB99" Association="Self.FK__Transfer___Id_Ow__3C69FB99">
             <End Role="Population" EntitySet="Population" />
             <End Role="Transfer_Household" EntitySet="Transfer_Household" />
@@ -313,6 +320,7 @@
             <End Role="Transfer_Household" EntitySet="Transfer_Household" />
           </AssociationSet>
           <AssociationSet Name="FK__Transfer___Old_I__3E52440B" Association="Self.FK__Transfer___Old_I__3E52440B">
+
             <End Role="Household_Registration" EntitySet="Household_Registration" />
             <End Role="Transfer_Household" EntitySet="Transfer_Household" />
           </AssociationSet>
@@ -353,12 +361,14 @@
           <Property Name="IdOfOwner" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
           <Property Name="NameOfOwner" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+
           <NavigationProperty Name="Family_Household" Relationship="Self.FK__Family_Ho__Id_Ho__33D4B598" FromRole="Household_Registration" ToRole="Family_Household" />
           <NavigationProperty Name="Population" Relationship="Self.FK__Household__IdOfO__36B12243" FromRole="Household_Registration" ToRole="Population" />
           <NavigationProperty Name="Temporary_Absence" Relationship="Self.FK__Temporary__Id_Ho__38996AB5" FromRole="Household_Registration" ToRole="Temporary_Absence" />
           <NavigationProperty Name="Temporary_Residence" Relationship="Self.FK__Temporary__Id_Ho__3A81B327" FromRole="Household_Registration" ToRole="Temporary_Residence" />
           <NavigationProperty Name="Transfer_Household" Relationship="Self.FK__Transfer___New_I__3D5E1FD2" FromRole="Household_Registration" ToRole="Transfer_Household" />
           <NavigationProperty Name="Transfer_Household1" Relationship="Self.FK__Transfer___Old_I__3E52440B" FromRole="Household_Registration" ToRole="Transfer_Household" />
+
           <NavigationProperty Name="Populations" Relationship="Self.Fk_Id_Household_w_Id" FromRole="Household_Registration" ToRole="Population" />
         </EntityType>
         <EntityType Name="Population">
@@ -431,9 +441,11 @@
           <Property Name="Old_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="New_Id_Household" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="New_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+
           <NavigationProperty Name="Household_Registration" Relationship="Self.FK__Transfer___New_I__3D5E1FD2" FromRole="Transfer_Household" ToRole="Household_Registration" />
           <NavigationProperty Name="Household_Registration1" Relationship="Self.FK__Transfer___Old_I__3E52440B" FromRole="Transfer_Household" ToRole="Household_Registration" />
           <NavigationProperty Name="Population" Relationship="Self.FK__Transfer___Id_Ow__3C69FB99" FromRole="Transfer_Household" ToRole="Population" />
+
         </EntityType>
         <EntityType Name="UserRole">
           <Key>
@@ -530,7 +542,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+
         <Association Name="FK__Transfer___New_I__3D5E1FD2">
+
           <End Role="Household_Registration" Type="Self.Household_Registration" Multiplicity="0..1" />
           <End Role="Transfer_Household" Type="Self.Transfer_Household" Multiplicity="*" />
           <ReferentialConstraint>
@@ -542,7 +556,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+
         <Association Name="FK__Transfer___Old_I__3E52440B">
+
           <End Role="Household_Registration" Type="Self.Household_Registration" Multiplicity="0..1" />
           <End Role="Transfer_Household" Type="Self.Transfer_Household" Multiplicity="*" />
           <ReferentialConstraint>
@@ -647,11 +663,13 @@
             <End Role="Household_Registration" EntitySet="Household_Registration" />
             <End Role="Temporary_Residence" EntitySet="Temporary_Residence" />
           </AssociationSet>
+
           <AssociationSet Name="FK__Transfer___New_I__3D5E1FD2" Association="Self.FK__Transfer___New_I__3D5E1FD2">
             <End Role="Household_Registration" EntitySet="Household_Registration" />
             <End Role="Transfer_Household" EntitySet="Transfer_Household" />
           </AssociationSet>
           <AssociationSet Name="FK__Transfer___Old_I__3E52440B" Association="Self.FK__Transfer___Old_I__3E52440B">
+
             <End Role="Household_Registration" EntitySet="Household_Registration" />
             <End Role="Transfer_Household" EntitySet="Transfer_Household" />
           </AssociationSet>
