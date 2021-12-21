@@ -77,7 +77,7 @@ namespace household_management.ViewModel
 
                     Name = (string)Selected.Row["Name"];
                     Id = (string)Selected.Row["Id_Household"];
-                    Id_Owner = (string)Selected.Row["Id_Owner"];
+                    Id_Owner = (string)Selected.Row["Id"];
                     Address = (string)Selected.Row["Address"];
                     HAddress = (string)Selected.Row["HAddress"];
                     FamilyList = new ObservableCollection<Family_Household>(DataProvider.Ins.DB.Family_Household.Where(x => x.Id_Household == Id));
@@ -207,7 +207,7 @@ namespace household_management.ViewModel
 
             dt.Columns.Add("OrdinalNumber");
             dt.Columns.Add("Id_Household");
-            dt.Columns.Add("Id_Owner");
+            dt.Columns.Add("Id");
             dt.Columns.Add("Name");
             dt.Columns.Add("Address");
             dt.Columns.Add("HAddress");
