@@ -21,6 +21,7 @@ namespace household_management.Model
             this.Temporary_Absence = new HashSet<Temporary_Absence>();
             this.Temporary_Residence = new HashSet<Temporary_Residence>();
             this.Transfer_Household = new HashSet<Transfer_Household>();
+            this.Transfer_Household1 = new HashSet<Transfer_Household>();
             this.Populations = new HashSet<Population>();
         }
     
@@ -39,6 +40,8 @@ namespace household_management.Model
         public virtual ICollection<Temporary_Residence> Temporary_Residence { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Transfer_Household> Transfer_Household { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Transfer_Household> Transfer_Household1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Population> Populations { get; set; }
     }

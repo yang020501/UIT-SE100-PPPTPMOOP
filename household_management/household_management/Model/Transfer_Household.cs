@@ -18,11 +18,13 @@ namespace household_management.Model
         public string Id { get; set; }
         public string Id_Owner { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
-        public string Id_Household { get; set; }
+        public string Old_Id_Household { get; set; }
         public string Old_Address { get; set; }
+        public string New_Id_Household { get; set; }
         public string New_Address { get; set; }
     
         public virtual Household_Registration Household_Registration { get; set; }
+        public virtual Household_Registration Household_Registration1 { get; set; }
         public virtual Population Population { get; set; }
     }
 }

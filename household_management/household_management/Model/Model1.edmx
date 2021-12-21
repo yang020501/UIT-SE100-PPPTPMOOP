@@ -36,7 +36,8 @@
           <Property Name="Photo" Type="varchar(max)" />
           <Property Name="Id_Household" Type="varchar" MaxLength="5" />
           <Property Name="PlaceOfBirth" Type="nvarchar" MaxLength="500" />
-          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="OriginalAddress" Type="nvarchar(max)" />
+          <Property Name="Address" Type="nvarchar(max)" />
           <Property Name="DateOfBirth" Type="date" />
           <Property Name="Sex" Type="bit" />
           <Property Name="Relegion" Type="nvarchar" MaxLength="100" />
@@ -80,8 +81,9 @@
           <Property Name="Id" Type="varchar" MaxLength="5" Nullable="false" />
           <Property Name="Id_Owner" Type="varchar" MaxLength="12" />
           <Property Name="CreateDate" Type="date" />
-          <Property Name="Id_Household" Type="varchar" MaxLength="5" />
+          <Property Name="Old_Id_Household" Type="varchar" MaxLength="5" />
           <Property Name="Old_Address" Type="nvarchar(max)" />
+          <Property Name="New_Id_Household" Type="varchar" MaxLength="5" />
           <Property Name="New_Address" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="UserRole">
@@ -201,18 +203,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Transfer___Id_Ho__403A8C7D">
-          <End Role="Household_Registration" Type="Self.Household_Registration" Multiplicity="0..1" />
-          <End Role="Transfer_Household" Type="Self.Transfer_Household" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Household_Registration">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Transfer_Household">
-              <PropertyRef Name="Id_Household" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Transfer___Id_Ow__3F466844">
           <End Role="Population" Type="Self.Population" Multiplicity="0..1" />
           <End Role="Transfer_Household" Type="Self.Transfer_Household" Multiplicity="*" />
@@ -222,6 +212,30 @@
             </Principal>
             <Dependent Role="Transfer_Household">
               <PropertyRef Name="Id_Owner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transfer___New_I__412EB0B6">
+          <End Role="Household_Registration" Type="Self.Household_Registration" Multiplicity="0..1" />
+          <End Role="Transfer_Household" Type="Self.Transfer_Household" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Household_Registration">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Transfer_Household">
+              <PropertyRef Name="New_Id_Household" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transfer___Old_I__403A8C7D">
+          <End Role="Household_Registration" Type="Self.Household_Registration" Multiplicity="0..1" />
+          <End Role="Transfer_Household" Type="Self.Transfer_Household" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Household_Registration">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Transfer_Household">
+              <PropertyRef Name="Old_Id_Household" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -290,12 +304,16 @@
             <End Role="Population" EntitySet="Population" />
             <End Role="Temporary_Residence" EntitySet="Temporary_Residence" />
           </AssociationSet>
-          <AssociationSet Name="FK__Transfer___Id_Ho__403A8C7D" Association="Self.FK__Transfer___Id_Ho__403A8C7D">
+          <AssociationSet Name="FK__Transfer___Id_Ow__3F466844" Association="Self.FK__Transfer___Id_Ow__3F466844">
+            <End Role="Population" EntitySet="Population" />
+            <End Role="Transfer_Household" EntitySet="Transfer_Household" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transfer___New_I__412EB0B6" Association="Self.FK__Transfer___New_I__412EB0B6">
             <End Role="Household_Registration" EntitySet="Household_Registration" />
             <End Role="Transfer_Household" EntitySet="Transfer_Household" />
           </AssociationSet>
-          <AssociationSet Name="FK__Transfer___Id_Ow__3F466844" Association="Self.FK__Transfer___Id_Ow__3F466844">
-            <End Role="Population" EntitySet="Population" />
+          <AssociationSet Name="FK__Transfer___Old_I__403A8C7D" Association="Self.FK__Transfer___Old_I__403A8C7D">
+            <End Role="Household_Registration" EntitySet="Household_Registration" />
             <End Role="Transfer_Household" EntitySet="Transfer_Household" />
           </AssociationSet>
           <AssociationSet Name="FK__Users__Tier__267ABA7A" Association="Self.FK__Users__Tier__267ABA7A">
@@ -339,7 +357,8 @@
           <NavigationProperty Name="Population" Relationship="Self.FK__Household__IdOfO__2D27B809" FromRole="Household_Registration" ToRole="Population" />
           <NavigationProperty Name="Temporary_Absence" Relationship="Self.FK__Temporary__Id_Ho__36B12243" FromRole="Household_Registration" ToRole="Temporary_Absence" />
           <NavigationProperty Name="Temporary_Residence" Relationship="Self.FK__Temporary__Id_Ho__3B75D760" FromRole="Household_Registration" ToRole="Temporary_Residence" />
-          <NavigationProperty Name="Transfer_Household" Relationship="Self.FK__Transfer___Id_Ho__403A8C7D" FromRole="Household_Registration" ToRole="Transfer_Household" />
+          <NavigationProperty Name="Transfer_Household" Relationship="Self.FK__Transfer___New_I__412EB0B6" FromRole="Household_Registration" ToRole="Transfer_Household" />
+          <NavigationProperty Name="Transfer_Household1" Relationship="Self.FK__Transfer___Old_I__403A8C7D" FromRole="Household_Registration" ToRole="Transfer_Household" />
           <NavigationProperty Name="Populations" Relationship="Self.Fk_Id_Household_w_Id" FromRole="Household_Registration" ToRole="Population" />
         </EntityType>
         <EntityType Name="Population">
@@ -352,7 +371,8 @@
           <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Id_Household" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="PlaceOfBirth" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="OriginalAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
           <Property Name="Sex" Type="Boolean" />
           <Property Name="Relegion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
@@ -407,10 +427,12 @@
           <Property Name="Id" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Id_Owner" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
           <Property Name="CreateDate" Type="DateTime" Precision="0" />
-          <Property Name="Id_Household" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Old_Id_Household" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="Old_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="New_Id_Household" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="New_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Household_Registration" Relationship="Self.FK__Transfer___Id_Ho__403A8C7D" FromRole="Transfer_Household" ToRole="Household_Registration" />
+          <NavigationProperty Name="Household_Registration" Relationship="Self.FK__Transfer___New_I__412EB0B6" FromRole="Transfer_Household" ToRole="Household_Registration" />
+          <NavigationProperty Name="Household_Registration1" Relationship="Self.FK__Transfer___Old_I__403A8C7D" FromRole="Transfer_Household" ToRole="Household_Registration" />
           <NavigationProperty Name="Population" Relationship="Self.FK__Transfer___Id_Ow__3F466844" FromRole="Transfer_Household" ToRole="Population" />
         </EntityType>
         <EntityType Name="UserRole">
@@ -508,7 +530,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Transfer___Id_Ho__403A8C7D">
+        <Association Name="FK__Transfer___New_I__412EB0B6">
           <End Role="Household_Registration" Type="Self.Household_Registration" Multiplicity="0..1" />
           <End Role="Transfer_Household" Type="Self.Transfer_Household" Multiplicity="*" />
           <ReferentialConstraint>
@@ -516,7 +538,19 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Transfer_Household">
-              <PropertyRef Name="Id_Household" />
+              <PropertyRef Name="New_Id_Household" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transfer___Old_I__403A8C7D">
+          <End Role="Household_Registration" Type="Self.Household_Registration" Multiplicity="0..1" />
+          <End Role="Transfer_Household" Type="Self.Transfer_Household" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Household_Registration">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Transfer_Household">
+              <PropertyRef Name="Old_Id_Household" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -613,7 +647,11 @@
             <End Role="Household_Registration" EntitySet="Household_Registration" />
             <End Role="Temporary_Residence" EntitySet="Temporary_Residence" />
           </AssociationSet>
-          <AssociationSet Name="FK__Transfer___Id_Ho__403A8C7D" Association="Self.FK__Transfer___Id_Ho__403A8C7D">
+          <AssociationSet Name="FK__Transfer___New_I__412EB0B6" Association="Self.FK__Transfer___New_I__412EB0B6">
+            <End Role="Household_Registration" EntitySet="Household_Registration" />
+            <End Role="Transfer_Household" EntitySet="Transfer_Household" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transfer___Old_I__403A8C7D" Association="Self.FK__Transfer___Old_I__403A8C7D">
             <End Role="Household_Registration" EntitySet="Household_Registration" />
             <End Role="Transfer_Household" EntitySet="Transfer_Household" />
           </AssociationSet>
@@ -674,6 +712,7 @@
                 <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="Id_Household" ColumnName="Id_Household" />
                 <ScalarProperty Name="PlaceOfBirth" ColumnName="PlaceOfBirth" />
+                <ScalarProperty Name="OriginalAddress" ColumnName="OriginalAddress" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
                 <ScalarProperty Name="Sex" ColumnName="Sex" />
@@ -721,8 +760,9 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Id_Owner" ColumnName="Id_Owner" />
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-                <ScalarProperty Name="Id_Household" ColumnName="Id_Household" />
+                <ScalarProperty Name="Old_Id_Household" ColumnName="Old_Id_Household" />
                 <ScalarProperty Name="Old_Address" ColumnName="Old_Address" />
+                <ScalarProperty Name="New_Id_Household" ColumnName="New_Id_Household" />
                 <ScalarProperty Name="New_Address" ColumnName="New_Address" />
               </MappingFragment>
             </EntityTypeMapping>
