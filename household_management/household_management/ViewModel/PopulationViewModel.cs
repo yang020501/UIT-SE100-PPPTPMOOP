@@ -66,7 +66,7 @@ namespace household_management.ViewModel
 
             List<Model.Household_Registration> list_of_household = Model.DataProvider.Ins.DB.Household_Registration.ToList<Model.Household_Registration>();         
 
-            ClearCommand = new RelayCommand<Window>((p) => { return true; }, (p) => {
+            ClearCommand = new RelayCommand<Page>((p) => { return true; }, (p) => {
                 FamilyName = null;
                 Name = null;
                 Gender = true;
@@ -76,9 +76,7 @@ namespace household_management.ViewModel
                 Carrer = null;
                 Religion = null;
                 Id = null;
-                View.Populations wd = new View.Populations();
-                wd.Show();
-                p.Close();
+                
             });
 
             //ResetCommand = new RelayCommand<Window>((p) => { return true; }, (p) => {
@@ -215,6 +213,8 @@ namespace household_management.ViewModel
                 population.Id = Id;
                 
                 population.Id_Household = HouseholdId;
+                population.isAbsence = false;
+                population.isTResidence = false;
                 if(HouseholdId != null)
                 {
                     var home = Model.DataProvider.Ins.DB.Household_Registration.Where(x => x.Id == HouseholdId).SingleOrDefault();
