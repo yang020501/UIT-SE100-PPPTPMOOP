@@ -32,39 +32,67 @@ namespace household_management.ViewModel
         public ICommand LoadPopuationWindowCommand { get; set; }
         public ICommand LogoutCommand { get; set; }
         public ICommand LoadManageButtonCommand { get; set; }
+        public ICommand LoadAccount { get; set; }
         public bool isLoad = false;
 
         private Frame main = new Frame();
         public Frame Main { get => main; set { main = value; OnPropertyChanged(); } }
 
         private bool _addSelected;
-        public bool AddSelected { get => _addSelected;set { _addSelected = value;OnPropertyChanged();  openAddPage(); } }
-
+        public bool AddSelected { get => _addSelected;set {  _addSelected = value;OnPropertyChanged();  openAddPage(); ; } }
+        
         private bool _searchSelected;
-        public bool searchSelected { get => _searchSelected; set { _searchSelected = value; OnPropertyChanged(); openSearchPage(); } }
+        public bool SearchSelected { get => _searchSelected; set { _searchSelected = value; OnPropertyChanged(); openSearchPage(); } }
+
+        private bool _manageSelected;
+        public bool ManageSelected { get => _manageSelected;set { _manageSelected = value; OnPropertyChanged(); openManage(); } }
+
+        public static MainViewModel data { get; set; }
 
         AddPage aView = new AddPage();
 
-      
+        private void openManage()
+        {
+            if(ManageSelected == true)
+            {
+                main.Refresh();
+                main.Content = null;
+                AccountPage page = new AccountPage();
+                AccountManagerViewModel.Vm = data;              
+                main.Content = page;
+
+            }
+        }
         
         private void openAddPage()
         {            
-            main.Refresh();
-            AddPageViewModel vm = new AddPageViewModel();
-            AddPage addPage = new AddPage();
-            addPage.DataContext = null;
-            addPage.DataContext = vm;
-            main.Content = addPage;
+            if(AddSelected == true)
+            {
+                main.Refresh();
+                main.Content = null;
+                AddPageViewModel vm = new AddPageViewModel();
+                AddPage addPage = new AddPage();
+                addPage.DataContext = null;
+                addPage.DataContext = vm;
+                main.Content = addPage;
+            }
           
         }
         private void openSearchPage()
         {
-
+            if (SearchSelected == true)
+            {
+                main.Refresh();
+                SearchViewModel vm = new SearchViewModel();
+                Search wd = new Search();
+                wd.DataContext = vm;
+                wd.ShowDialog();
+            }
         }
         public MainViewModel()
         {
-           
-                
+
+          
             LoadManageButtonCommand = new RelayCommand<Button>((p) => { return true; }, (p) => 
             { 
                 if(Role == "Manager")
@@ -98,7 +126,8 @@ namespace household_management.ViewModel
                         p.Close();
                     }
                 }
-                
+
+                data = (MainViewModel)p.DataContext;
                 Name = LoginViewModel.Name;
                 Id = LoginViewModel.Id;
                 Role = LoginViewModel.Role;

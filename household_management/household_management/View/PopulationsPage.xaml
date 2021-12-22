@@ -9,9 +9,9 @@
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       DataContext="{StaticResource PopulationVM}"
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="PopulationsPage" Width="824" Height="570.4" Background="White">
+      Title="PopulationsPage" Width="824" Height="570.4">
 
-    <Border Background="White">
+    <Border Background="White" CornerRadius="0,0,4,0">
         <Grid>
 
 
@@ -20,7 +20,7 @@
                 <ColumnDefinition Width="0.25*"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Border BorderBrush="LightGray"  BorderThickness="0,2,0,2">
+            <Border BorderBrush="LightGray" >
                 <Grid Grid.Column="0">
                     <Border BorderBrush="#FF4D60C0" BorderThickness="2" Margin="18,193,21.6,225.2">
                         <Grid>
@@ -30,7 +30,7 @@
                 </Grid>
             </Border>
             <Grid Grid.Column="1">
-                <Border BorderBrush="LightGray" BorderThickness="2">
+                <Border BorderBrush="LightGray" BorderThickness="2,0,0,0" CornerRadius="0,0,4,0">
                     <Grid>
                         <TextBox  materialDesign:HintAssist.Foreground="Black"
                             materialDesign:TextFieldAssist.UnderlineBrush="Black"
@@ -70,7 +70,7 @@
                              materialDesign:HintAssist.Foreground="Black"
                             materialDesign:TextFieldAssist.UnderlineBrush="Black"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                    HorizontalAlignment="Left" Height="50" Margin="369,54,0,0"  VerticalAlignment="Top" Width="227" materialDesign:HintAssist.Hint="Place of birth" TextWrapping="Wrap" FontSize="16" Text="{Binding PlaceOfBirth, UpdateSourceTrigger=PropertyChanged}" Padding="0,6,0,0"/>
+                    HorizontalAlignment="Left" Height="49" Margin="369,54,0,0"  VerticalAlignment="Top" Width="227" materialDesign:HintAssist.Hint="Place of birth" TextWrapping="Wrap" FontSize="16" Text="{Binding PlaceOfBirth, UpdateSourceTrigger=PropertyChanged}" Padding="0,6,0,0"/>
                         <TextBox Name="IdH" 
                                    materialDesign:HintAssist.Foreground="Black"
                             materialDesign:TextFieldAssist.UnderlineBrush="Black"
