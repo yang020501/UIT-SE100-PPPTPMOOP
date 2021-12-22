@@ -8,6 +8,7 @@
       mc:Ignorable="d" 
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       DataContext="{StaticResource PopulationVM}"
+      Name="PopulationPageX"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PopulationsPage" Width="824" Height="570.4">
 
@@ -116,7 +117,7 @@
 
                         <Button Content="Clear" HorizontalAlignment="Left" Margin="346,518,0,0" 
                         VerticalAlignment="Top" Width="95" Height="38" Background="#FF4D60C0" 
-                        Command="{Binding ClearCommand}" CommandParameter="{Binding ElementName=PopulationWindowX}" Foreground="White"/>
+                        Command="{Binding ClearCommand}" CommandParameter="{Binding ElementName=PopulationPageX}" Foreground="White"/>
                         <Button CommandParameter="{Binding ElementName=imPic}" Command="{Binding Choosebtn}" Content="Choose" Margin="-136,363,0,0" Height="38" Background="#FF4D60C0" HorizontalAlignment="Left" Width="95" VerticalAlignment="Top" Foreground="White"  />
                     </Grid>
                 </Border>
