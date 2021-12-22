@@ -66,8 +66,8 @@
                         HorizontalAlignment="Left" Height="49" Margin="96,408,0,0"  
                         VerticalAlignment="Top" Width="396" materialDesign:HintAssist.Hint="HouseHold New Adress" 
                         TextWrapping="Wrap" FontSize="16" Text="{Binding New_Address, UpdateSourceTrigger=PropertyChanged}"/>
-                    <Button Content="Check" HorizontalAlignment="Left" Background="#FF4D60C0" 
-                            Margin="587,331,0,0" VerticalAlignment="Top" Width="100"
+                    <Button Content="Check" HorizontalAlignment="Left" Background="#FF4D60C0" Height="38"
+                            Margin="587,331,0,0" VerticalAlignment="Top" Width="95"
                             Command="{Binding CheckIdHouseholdCommand}" CommandParameter="{Binding ElementName=HouseholdIdBox}" Foreground="White"/>
                     <Label Content="SOCIALIST REPUBLIC OF VIETNAM" Margin="182,10,0,0" VerticalAlignment="Top" Height="38" HorizontalAlignment="Left" Width="366" FontSize="20" FontWeight="Bold"/>
                     <Label Content="Independent - Freedom - Happpiness" HorizontalAlignment="Left" Margin="219,38,0,0" VerticalAlignment="Top" Width="273" FontSize="16"/>
@@ -88,8 +88,8 @@
                     <Label Content="New Household Id:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="96,367,0,0" Height="30" Width="141" FontSize="16" Padding="0,6.5,0,0"/>
                 </Grid>
             </Border>
-            <Button Content="Add"  Height="34" Background="#FF4D60C0" 
-                    Margin="370,526,354,0" VerticalAlignment="Top" Name="AddButton"
+            <Button Content="Add"  Height="38" Width="95" Background="#FF4D60C0" 
+                    Margin="370,522,359,0" VerticalAlignment="Top" Name="AddButton"
                     Command="{Binding AddCommand}" CommandParameter="{Binding ElementName=AddButton}" Foreground="White"/>
         </Grid>
 

@@ -51,6 +51,12 @@ namespace household_management.ViewModel
 
         private void openAbsencePage()
         {
+            aFrame.Refresh();
+            AbsencePage page = new AbsencePage();
+            AbsenceViewModel vm = new AbsenceViewModel();
+            page.DataContext = null;
+            page.DataContext = vm;
+            aFrame.Content = page;
            
         }
 

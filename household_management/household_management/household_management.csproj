@@ -197,6 +197,9 @@
     <Compile Include="View\Absence.xaml.cs">
       <DependentUpon>Absence.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\AbsencePage.xaml.cs">
+      <DependentUpon>AbsencePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\AbsencePageView.xaml.cs">
       <DependentUpon>AbsencePageView.xaml</DependentUpon>
     </Compile>
@@ -271,6 +274,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Absence.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AbsencePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
