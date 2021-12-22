@@ -54,6 +54,10 @@
                     <Label Content="(Today)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="555,381,0,0" Height="31" Width="107" FontSize="16" FontWeight="Bold" FontStyle="Italic"/>
                     <Label Content="To" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="487,433,0,0" Height="31" Width="38" FontSize="16"/>
                     <DatePicker
+
+                          materialDesign:HintAssist.Foreground="Black"
+                            materialDesign:TextFieldAssist.UnderlineBrush="Black"
+
                     materialDesign:HintAssist.Hint="Day leave" SelectedDate="{Binding ExpireDate, UpdateSourceTrigger=PropertyChanged}"
                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="538,416,52.8,32" Height="48" FontSize="16" FontWeight="Bold" FontStyle="Italic" Padding="0" />
                     <Label Content="Household Owner Name" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="82,233,0,0" Height="31" Width="232" FontSize="16" Padding="0,4,4,4"/>
