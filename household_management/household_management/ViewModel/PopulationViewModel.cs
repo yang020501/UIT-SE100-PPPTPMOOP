@@ -34,6 +34,8 @@ namespace household_management.ViewModel
         public string Date { get => _Date; set { _Date = value; OnPropertyChanged(); } }
         private string __HouseholdId;
         public string HouseholdId { get => __HouseholdId; set { __HouseholdId = value; OnPropertyChanged(); } }
+        private string _OriginalAddress;
+        public string OriginalAddress { get => _OriginalAddress; set { _OriginalAddress = value; OnPropertyChanged(); } }
         private string _Address;
         public string Address { get => _Address; set { _Address = value; OnPropertyChanged(); } }
         private string _HouseholdAddress;
@@ -209,10 +211,15 @@ namespace household_management.ViewModel
                     
                 }
 
-                population.Address = Address;
+                population.Address = Address;                
                 population.Id = Id;
                 
                 population.Id_Household = HouseholdId;
+                if(HouseholdId != null)
+                {
+                    var home = Model.DataProvider.Ins.DB.Household_Registration.Where(x => x.Id == HouseholdId).SingleOrDefault();
+                    population.OriginalAddress = home.Address;
+                }
 
                 if (!Check_is_Id_exist(population.Id))
                 {         
