@@ -56,7 +56,12 @@ namespace household_management.ViewModel
 
         private void openTransferPage()
         {
-            
+            tFrame.Refresh();
+            TransferPage page = new TransferPage();
+            TransferViewModel vm = new TransferViewModel();
+            page.DataContext = null;
+            page.DataContext = vm;
+            tFrame.Content = page;
         }
 
         private void openHouseholdPage()
