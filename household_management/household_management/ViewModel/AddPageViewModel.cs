@@ -46,7 +46,12 @@ namespace household_management.ViewModel
 
         private void openResidencePage()
         {
-           
+            rFrame.Refresh();
+            ResidencePage page = new ResidencePage();
+            ResidenceViewModel vm = new ResidenceViewModel();
+            page.DataContext = null;
+            page.DataContext = vm;
+            rFrame.Content = page;
         }
 
         private void openAbsencePage()
