@@ -213,6 +213,8 @@ namespace household_management.ViewModel
                 population.Id = Id;
                 
                 population.Id_Household = HouseholdId;
+                population.isAbsence = false;
+                population.isTResidence = false;
                 if(HouseholdId != null)
                 {
                     var home = Model.DataProvider.Ins.DB.Household_Registration.Where(x => x.Id == HouseholdId).SingleOrDefault();
