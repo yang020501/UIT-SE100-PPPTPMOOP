@@ -9,11 +9,11 @@
       mc:Ignorable="d" 
       DataContext="{StaticResource HouseholdVM}"
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="HouseholdPage" Width="824" Height="570.4" Background="White" >
+      Title="HouseholdPage" Width="824" Height="570.4" >
 
-    <Border Background="White" CornerRadius="5.3">
+    <Border  CornerRadius="0,0,4,4"  Background="White">
         <Grid>
-
+           
             <Grid >
                 <Grid.RowDefinitions>
                     <RowDefinition Height ="0.3*"></RowDefinition>
@@ -106,6 +106,7 @@
                 </Grid>
 
             </Grid>
+           
         </Grid>
     </Border>
 </Page>

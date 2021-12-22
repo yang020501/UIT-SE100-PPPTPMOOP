@@ -8,10 +8,10 @@
       DataContext="{StaticResource AddPageVM}"
       xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AddPage" Height="611.2" Width="825.6" Background="White">
-
+      Title="AddPage" Height="611.2" Width="825.6" >
+    <Border Background="White" CornerRadius="0,0,4,0">
     <Grid>
-        <dragablz:TabablzControl SelectedIndex="{Binding Selected,UpdateSourceTrigger=PropertyChanged}" FontSize="16">
+        <dragablz:TabablzControl BorderThickness="0" SelectedIndex="{Binding Selected,UpdateSourceTrigger=PropertyChanged}" FontSize="16" >
             <TabItem Header="Popualtions" IsSelected="{Binding pSelected,UpdateSourceTrigger=PropertyChanged}">
 
                 <Frame  NavigationUIVisibility="Hidden" Content="{Binding pFrame,UpdateSourceTrigger=PropertyChanged}">
@@ -42,4 +42,5 @@
         </dragablz:TabablzControl>
 
     </Grid>
+    </Border>
 </Page>
