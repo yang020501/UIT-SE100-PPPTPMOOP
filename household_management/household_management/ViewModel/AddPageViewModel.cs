@@ -51,12 +51,23 @@ namespace household_management.ViewModel
 
         private void openAbsencePage()
         {
+            aFrame.Refresh();
+            AbsencePage page = new AbsencePage();
+            AbsenceViewModel vm = new AbsenceViewModel();
+            page.DataContext = null;
+            page.DataContext = vm;
+            aFrame.Content = page;
            
         }
 
         private void openTransferPage()
         {
-            
+            tFrame.Refresh();
+            TransferPage page = new TransferPage();
+            TransferViewModel vm = new TransferViewModel();
+            page.DataContext = null;
+            page.DataContext = vm;
+            tFrame.Content = page;
         }
 
         private void openHouseholdPage()

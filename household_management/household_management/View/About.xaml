@@ -8,7 +8,7 @@
         Title="About" Height="290" Width="480" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen">
     <Border BorderBrush="LightGray" BorderThickness="3">
         <Grid>
-            <Button Content="OK"  Height="44" Background="#FF4D60C0" Margin="172,229,195.6,10.2" Click="Button_Click"   />
+            <Button Content="OK"  Height="44" Background="#FF4D60C0" Margin="172,229,195.6,10.2" Click="Button_Click" Foreground="#FFF7F8F9"   />
             <Label Content=" UI design, SearchView code, Project report ppt,word" HorizontalAlignment="Left" Margin="10,77,0,0" VerticalAlignment="Top" Height="52" Width="407" AllowDrop="True" FontSize="16"/>
             <Label Content="Nguyễn Hoàng Thái Dương:" HorizontalAlignment="Left" Margin="10,42,0,0" VerticalAlignment="Top" Height="30" FontWeight="Bold" FontStyle="Italic" FontSize="18"/>
             <Label Content=" Database, Add-check code, Login code" HorizontalAlignment="Left" Margin="10,152,0,0" VerticalAlignment="Top" Height="52" Width="407" AllowDrop="True" FontSize="16"/>

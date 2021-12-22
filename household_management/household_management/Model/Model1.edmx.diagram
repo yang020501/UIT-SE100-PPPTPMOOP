@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
 
-      <Diagram DiagramId="e7bdf60a53ce47588c159957741ef0c4" Name="Diagram1">
+      <Diagram DiagramId="e7bdf60a53ce47588c159957741ef0c4" Name="Diagram1" ZoomLevel="74">
 
         <EntityTypeShape EntityType="HoKhauModel.Family_Household" Width="1.5" PointX="5.25" PointY="12.5" IsExpanded="true" />
         <EntityTypeShape EntityType="HoKhauModel.Household_Registration" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
