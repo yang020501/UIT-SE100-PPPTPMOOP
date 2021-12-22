@@ -8,7 +8,7 @@
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
         Name="HouseholdWindowX"
-        DataContext="{StaticResource HouseholdVM}"
+        
         
         Title="Household" Height="641.2" Width="564" WindowStartupLocation="CenterScreen" AllowDrop="True" ResizeMode="NoResize" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}">
     <Border Background="White" CornerRadius="5.3">

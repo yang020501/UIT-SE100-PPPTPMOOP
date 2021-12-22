@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         Name="PopulationWindowX"
-        DataContext="{StaticResource PopulationVM}"
+        
 
         Title="Populations" Height="606.051" Width="904.034" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}">
     <Border Background="White" >

@@ -34,6 +34,8 @@ namespace household_management.ViewModel
         public string Date { get => _Date; set { _Date = value; OnPropertyChanged(); } }
         private string __HouseholdId;
         public string HouseholdId { get => __HouseholdId; set { __HouseholdId = value; OnPropertyChanged(); } }
+        private string _OriginalAddress;
+        public string OriginalAddress { get => _OriginalAddress; set { _OriginalAddress = value; OnPropertyChanged(); } }
         private string _Address;
         public string Address { get => _Address; set { _Address = value; OnPropertyChanged(); } }
         private string _HouseholdAddress;
@@ -64,7 +66,7 @@ namespace household_management.ViewModel
 
             List<Model.Household_Registration> list_of_household = Model.DataProvider.Ins.DB.Household_Registration.ToList<Model.Household_Registration>();         
 
-            ClearCommand = new RelayCommand<Window>((p) => { return true; }, (p) => {
+            ClearCommand = new RelayCommand<Page>((p) => { return true; }, (p) => {
                 FamilyName = null;
                 Name = null;
                 Gender = true;
@@ -74,14 +76,12 @@ namespace household_management.ViewModel
                 Carrer = null;
                 Religion = null;
                 Id = null;
-                View.Populations wd = new View.Populations();
-                wd.Show();
-                p.Close();
+                
             });
 
             //ResetCommand = new RelayCommand<Window>((p) => { return true; }, (p) => {
             //    View.Populations wd = new View.Populations();
-            //    wd.Show();
+            //    wd.Show()ar
             //    p.Close();
             //});
 
@@ -209,10 +209,17 @@ namespace household_management.ViewModel
                     
                 }
 
-                population.Address = Address;
+                population.Address = Address;                
                 population.Id = Id;
                 
                 population.Id_Household = HouseholdId;
+                population.isAbsence = false;
+                population.isTResidence = false;
+                if(HouseholdId != null)
+                {
+                    var home = Model.DataProvider.Ins.DB.Household_Registration.Where(x => x.Id == HouseholdId).SingleOrDefault();
+                    population.OriginalAddress = home.Address;
+                }
 
                 if (!Check_is_Id_exist(population.Id))
                 {         

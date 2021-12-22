@@ -36,6 +36,7 @@ namespace household_management.ViewModel
         public HouseholdViewModel()
         {
             IdHousehold = GenarateId();
+            Console.WriteLine(IdHousehold);
             List<Model.Household_Registration> list_of_h = Model.DataProvider.Ins.DB.Household_Registration.ToList<Model.Household_Registration>();
             while (true)
             {
@@ -88,12 +89,10 @@ namespace household_management.ViewModel
                 }
             });
 
-            ReloadCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            ReloadCommand = new RelayCommand<Page>((p) => { return true; }, (p) =>
             {
                 IdMembers = Id_Family;
-                View.Household wd = new View.Household();
-                wd.Show();
-                p.Close();
+
             });
 
             HouseholdAddressChangeCommand = new RelayCommand<TextBox>((p) => { return true; }, (p) =>
@@ -119,15 +118,12 @@ namespace household_management.ViewModel
                 wd.ShowDialog();
             });
 
-            btnClear = new RelayCommand<Window>((p) => { return true; }, (p) => 
-            {
+            btnClear = new RelayCommand<Page>((p) => { return true; }, (p) => 
+            {                             
                 Name = null;
                 Id = null;
                 Address = null;
                 IdHousehold = null;
-                View.Household wd = new View.Household();
-                wd.Show();              
-                p.Close();
             });
 
             btnAdd = new RelayCommand<object>((p) =>
@@ -146,6 +142,7 @@ namespace household_management.ViewModel
             },
             (p) =>
             {
+                bool check_is_ok = true;
                 bool check_have_population = false;
                 List<Model.Population> list_of_population = Model.DataProvider.Ins.DB.Populations.ToList<Model.Population>();
 
@@ -153,13 +150,13 @@ namespace household_management.ViewModel
                 {
                     foreach (Model.Population x in list_of_population)
                     {
-                        if (x.Id == Id)
+                        if (x.Id == Id && x.Id_Household == null)
                         {
                             check_have_population = true;                          
                             Model.Household_Registration household = new Model.Household_Registration();
                             household.Id = IdHousehold;
                             household.IdOfOwner = Id;
-                            household.Address = Address;
+                            household.Address = Address;                          
                             household.NameOfOwner = Name;
 
                             Model.DataProvider.Ins.DB.Household_Registration.Add(household);
@@ -167,19 +164,24 @@ namespace household_management.ViewModel
 
                             var change = Model.DataProvider.Ins.DB.Populations.Where(y => y.Id == Id).SingleOrDefault();
                             change.Id_Household = IdHousehold;
+                            change.OriginalAddress = Address;
+                            change.Address = Address;
 
                             Model.DataProvider.Ins.DB.SaveChanges();
                             
                             break;
                         }
-                        else if(x.Id == Id && x.Id_Household != null)
-                        {
 
+                        if(x.Id == Id && x.Id_Household != null)
+                        {
+                            check_is_ok = false;
+                            break;
                         }
+                       
                     }
                 }
 
-                if (!check_have_population)
+                if (!check_have_population && check_is_ok)
                 {
                     //Tạo và save nhân khẩu 
                     Model.Population population = new Model.Population();
@@ -192,6 +194,7 @@ namespace household_management.ViewModel
                     population.Sex = true;
                     population.Relegion = " ";
                     population.Address = Address;
+                    population.OriginalAddress = Address;
                     population.Career = " ";
                     population.Id = Id;
 
@@ -214,26 +217,33 @@ namespace household_management.ViewModel
                     var change = Model.DataProvider.Ins.DB.Populations.Where(x => x.Id == Id).SingleOrDefault();
                     change.Id_Household = IdHousehold;
                     Model.DataProvider.Ins.DB.SaveChanges();                                       
-                }             
+                }          
 
                 //Tạo và thêm thành viên vào hộ khẩu
-                if (FamilyViewModel.list_of_family_member.Count() != 0)
+                if (FamilyViewModel.list_of_family_member.Count() != 0 && check_is_ok)
                 {
                     foreach (Model.Population member in FamilyViewModel.list_of_family_member)
                     {
-                        
-                        bool checkIdPop = true;
+                        bool checkHHPop = true;
+                        bool checkIdPop = false;
                         List<Model.Population> l = Model.DataProvider.Ins.DB.Populations.ToList<Model.Population>();
                         foreach(Model.Population k in l)
                         {
-                            if(k.Id == member.Id)
+                            if(k.Id == member.Id && k.Id == null)
                             {
-                                checkIdPop = false;
+                                checkIdPop = true;
                                 break;
                             }
+                            else if(k.Id == member.Id && k.Id != null)
+                            {
+                                checkHHPop = false;
+                            }
                         }
-                        if (checkIdPop)
+
+                        if (!checkIdPop && checkHHPop)
                         {
+                            member.OriginalAddress = Address;
+                            member.Address = Address;
                             Model.DataProvider.Ins.DB.Populations.Add(member);
                             Model.DataProvider.Ins.DB.SaveChanges();
                             Model.Family_Household new_member = new Model.Family_Household();
@@ -244,10 +254,16 @@ namespace household_management.ViewModel
                             Model.DataProvider.Ins.DB.Family_Household.Add(new_member);
                             Model.DataProvider.Ins.DB.SaveChanges();
                         }
-                        else
+                        else if (!checkHHPop)
+                        {
+                            MessageBox.Show(member.Name + " with Id: " + member.Id + " is already has a household registration");
+                        }
+                        else if(checkIdPop && checkHHPop)
                         {
                             var temp = Model.DataProvider.Ins.DB.Populations.Where(x => x.Id == member.Id).SingleOrDefault();
                             temp.Id_Household = IdHousehold;
+                            temp.OriginalAddress = Address;
+                            temp.Address = Address;
                             Model.DataProvider.Ins.DB.SaveChanges();
 
                             Model.Family_Household new_member = new Model.Family_Household();
@@ -263,17 +279,28 @@ namespace household_management.ViewModel
                 }
 
                 //Tạo chủ hộ trong gia đình
-                Model.Family_Household owner = new Model.Family_Household();
-                owner.Id_Person = Id;
-                owner.Id_Owner = Id;
-                owner.Id_Household = IdHousehold;
-                owner.Name_Person = Name;
-                Model.DataProvider.Ins.DB.Family_Household.Add(owner);
-                Model.DataProvider.Ins.DB.SaveChanges();
+                if (check_is_ok)
+                {
+                    Model.Family_Household owner = new Model.Family_Household();
+                    owner.Id_Person = Id;
+                    owner.Id_Owner = Id;
+                    owner.Id_Household = IdHousehold;
+                    owner.Name_Person = Name;
+                    Model.DataProvider.Ins.DB.Family_Household.Add(owner);
+                    Model.DataProvider.Ins.DB.SaveChanges();
 
-                MessageBox.Show("Create Household Registration Successfully","Notification!",MessageBoxButton.OK,MessageBoxImage.Information);
-                FamilyViewModel.list_of_family_member.Clear();
-                IdHousehold = GenarateId();
+                    MessageBox.Show("Create Household Registration Successfully", "Notification!", MessageBoxButton.OK, MessageBoxImage.Information);
+                    FamilyViewModel.list_of_family_member.Clear();
+                    IdHousehold = GenarateId();
+                }
+
+                if (!check_is_ok)
+                {
+                    MessageBox.Show("This person already have in household registration", "Warning!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    FamilyViewModel.list_of_family_member.Clear();
+                }
+
+                
             });
         }       
 
