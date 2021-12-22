@@ -39,6 +39,8 @@
                 <Grid Grid.Row="0" Margin="15">
                     <TextBox 
                         materialDesign:HintAssist.Hint="User name" 
+                         materialDesign:HintAssist.Foreground="Black"
+                            materialDesign:TextFieldAssist.UnderlineBrush="Black"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                         Text="{Binding UserName}">
 
