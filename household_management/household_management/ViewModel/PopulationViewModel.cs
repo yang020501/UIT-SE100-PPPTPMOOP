@@ -83,7 +83,7 @@ namespace household_management.ViewModel
 
             //ResetCommand = new RelayCommand<Window>((p) => { return true; }, (p) => {
             //    View.Populations wd = new View.Populations();
-            //    wd.Show();
+            //    wd.Show()ar
             //    p.Close();
             //});
 
