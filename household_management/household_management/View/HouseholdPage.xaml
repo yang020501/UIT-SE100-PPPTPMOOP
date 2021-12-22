@@ -4,11 +4,98 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:household_management.View"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       mc:Ignorable="d" 
+      DataContext="{StaticResource HouseholdVM}"
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="HouseholdPage">
+      Title="HouseholdPage" Width="824" Height="570.4" Background="White" >
 
-    <Grid>
-        
-    </Grid>
+    <Border Background="White" CornerRadius="5.3">
+        <Grid>
+
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height ="0.3*"></RowDefinition>
+                    <RowDefinition Height="0.03*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0" CornerRadius="4" Background="#FFF35A5A" Margin="135,10,144,0.4">
+                    <Grid >
+                        <Image Height="108" Margin="10,10,423.8,0" VerticalAlignment="Top" Source="/household_management;component/Resources/QuocHuy.png"/>
+                        <Label Content="CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM" Margin="121,9,0,0" VerticalAlignment="Top" Height="38" HorizontalAlignment="Left" Width="410" FontSize="20" FontWeight="Bold"/>
+                        <Label Content="Độc lập - Tự do - Hạnh phúc" HorizontalAlignment="Left" Margin="213,36,0,0" VerticalAlignment="Top" Width="218" FontSize="16"/>
+                        <Label Content="Sổ Hộ Khẩu" Margin="170,66,130.8,0" VerticalAlignment="Top" Height="52" FontWeight="Bold" FontFamily="Trebuchet MS" FontSize="36" Padding="50,4,4,4" RenderTransformOrigin="0.468,-0.115"/>
+
+                        <TextBox
+                   x:Name="tbFullName" HorizontalAlignment="Left" Height="34" Margin="124,169,0,0"  VerticalAlignment="Top" Width="371" materialDesign:HintAssist.Hint="Full Name" TextWrapping="Wrap" FontSize="16"  Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
+                        <materialDesign:PackIcon Kind="HomeAccount" Margin="70,172,0,0" Height="31" Width="32" />
+                        <materialDesign:PackIcon Kind="CardAccountDetails" Margin="71,230,0,0" Height="31" Width="32" RenderTransformOrigin="0.438,1.342" />
+                        <TextBox
+                    HorizontalAlignment="Left" Height="34" Margin="125,227,0,0"  
+                    VerticalAlignment="Top" Width="220" materialDesign:HintAssist.Hint="Id" 
+                    TextWrapping="Wrap" FontSize="16" Text="{Binding Id, UpdateSourceTrigger=PropertyChanged}"  
+                    materialDesign:HintAssist.HelperText="12 digits numbers" Name="IdBox">
+
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="TextChanged">
+                                    <i:InvokeCommandAction Command="{Binding HouseholdIdChangeCommand}" 
+
+                                                   CommandParameter="{Binding ElementName=tbFullName}"/>
+
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
+                        <TextBox
+                    HorizontalAlignment="Left" Height="34" Margin="125,293,0,0"  
+                    VerticalAlignment="Top" Width="370" materialDesign:HintAssist.Hint="Address" 
+                    TextWrapping="Wrap" FontSize="16" Name="AddressBox"
+                    Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}">
+
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="TextChanged">
+                                    <i:InvokeCommandAction Command="{Binding HouseholdAddressChangeCommand}" CommandParameter="{Binding ElementName=AddressBox}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
+
+
+                        <materialDesign:PackIcon  Visibility="Hidden" Kind="Map" Margin="42,253,0,0" Height="31" Width="32" />
+
+                        <ComboBox Visibility="Hidden"
+                        materialDesign:HintAssist.Hint="Area" Margin="96,253,387,144.8" FontSize="14">
+                            <ComboBoxItem
+                        Content="1" />
+                            <ComboBoxItem
+                         Content="2" />
+                            <ComboBoxItem
+                           Content="3" />
+                            <ComboBoxItem
+                         Content="4" />
+                        </ComboBox>
+
+                        <materialDesign:PackIcon  Kind="AccountPlus" Margin="70,373,0,0" Height="31" Width="32" />
+                        <TextBox
+                    HorizontalAlignment="Left" Height="90" Margin="124,369,0,0"  VerticalAlignment="Top" Width="220" 
+                    materialDesign:HintAssist.Hint="IdFMember" TextWrapping="Wrap" FontSize="16" 
+                    Text="{Binding IdMembers, UpdateSourceTrigger=PropertyChanged}"  
+                    materialDesign:HintAssist.HelperText="12 digits numbers" IsReadOnly="True"/>
+                        <Button Content="Add Member" HorizontalAlignment="Left" Margin="361,400,0,0" 
+
+                        VerticalAlignment="Top" Width="134" Background="#FF4D60C0"
+                        Command="{Binding btnFamily}" Height="37" Foreground="White"/>
+                    </Grid>
+                </Border>
+
+                <Grid Grid.Row="2">
+                    <Button   Content="Add"  Width="95" Height="34" Background="#FF4D60C0" Margin="220,10,509,0" VerticalAlignment="Top" Command="{Binding btnAdd}" RenderTransformOrigin="0.263,0.471" Foreground="White"/>
+                    <Button   Content="Clear"  Width="95" Height="34" Background="#FF4D60C0" Margin="510,10,219,0" VerticalAlignment="Top" Command="{Binding btnClear}" CommandParameter="{Binding ElementName=HouseholdWindowX}" Foreground="White"/>
+                    <Button   Content="Reload" HorizontalAlignment="Left" Margin="370,10,0,0" 
+                          VerticalAlignment="Top" Width="95" Height="34" Background="#FF4D60C0"
+                          Command="{Binding ReloadCommand}" CommandParameter="{Binding ElementName=HouseholdWindowX}" RenderTransformOrigin="0.218,0.618" Foreground="White"/>
+
+                </Grid>
+
+            </Grid>
+        </Grid>
+    </Border>
 </Page>

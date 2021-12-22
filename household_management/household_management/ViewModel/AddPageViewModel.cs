@@ -61,7 +61,12 @@ namespace household_management.ViewModel
 
         private void openHouseholdPage()
         {
-            
+            hFrame.Refresh();
+            HouseholdPage page = new HouseholdPage();
+            HouseholdViewModel vm = new HouseholdViewModel();
+            page.DataContext = null;
+            page.DataContext = vm;
+            hFrame.Content = page;
         }
 
         private void openPopulationsPage()

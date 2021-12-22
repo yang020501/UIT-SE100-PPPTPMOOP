@@ -20,7 +20,7 @@
                 <ColumnDefinition Width="0.25*"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Border BorderBrush="LightGray" CornerRadius="0,0,0,4" BorderThickness="0,2,0,2">
+            <Border BorderBrush="LightGray"  BorderThickness="0,2,0,2">
                 <Grid Grid.Column="0">
                     <Border BorderBrush="#FF4D60C0" BorderThickness="2" Margin="18,193,21.6,225.2">
                         <Grid>
@@ -30,12 +30,12 @@
                 </Grid>
             </Border>
             <Grid Grid.Column="1">
-                <Border BorderBrush="LightGray" BorderThickness="2" CornerRadius="0,0,4,0">
+                <Border BorderBrush="LightGray" BorderThickness="2">
                     <Grid>
-                        <TextBox
+                        <TextBox Style="{StaticResource MaterialDesignTextBox}"
                     HorizontalAlignment="Left" Height="34" Margin="75,15,0,0"  VerticalAlignment="Top" Width="193" materialDesign:HintAssist.Hint="FamilyName" TextWrapping="Wrap" FontSize="16" Text="{Binding FamilyName, UpdateSourceTrigger=PropertyChanged}"/>
                         <TextBox
-                    HorizontalAlignment="Left" Height="34" Margin="309,15,0,0"  VerticalAlignment="Top" Width="337" materialDesign:HintAssist.Hint="Name" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+                    HorizontalAlignment="Left" Height="34" Margin="309,15,0,0"  VerticalAlignment="Top" Width="315" materialDesign:HintAssist.Hint="Name" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
                         <materialDesign:PackIcon Kind="Account" Margin="23,15,0,0" Height="31" Width="32" />
                         <TextBox
                     HorizontalAlignment="Left" Height="34" Margin="75,135,0,0"  VerticalAlignment="Top" Width="220" materialDesign:HintAssist.Hint="Id" TextWrapping="Wrap" FontSize="16" Text="{Binding Id, UpdateSourceTrigger=PropertyChanged}"  materialDesign:HintAssist.HelperText="12 digits numbers" />
@@ -51,11 +51,11 @@
                     
                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="75,63,419,460.2" Height="44" FontSize="16" />
                         <TextBox
-                    HorizontalAlignment="Left" Height="34" Margin="75,251,0,0"  VerticalAlignment="Top" Width="329" materialDesign:HintAssist.Hint="Address" TextWrapping="Wrap" FontSize="16" Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}"/>
+                    HorizontalAlignment="Left" Height="34" Margin="75,251,0,0"  VerticalAlignment="Top" Width="364" materialDesign:HintAssist.Hint="Address" TextWrapping="Wrap" FontSize="16" Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}"/>
                         <materialDesign:PackIcon Kind="MapMarker" Margin="23,253,0,0" Height="31" Width="32" />
                         <Label Content="Gender:" HorizontalAlignment="Left" Margin="387,130,0,0" VerticalAlignment="Top" Height="26" Width="73" FontSize="16"/>
                         <TextBox
-                    HorizontalAlignment="Left" Height="34" Margin="369,73,0,0"  VerticalAlignment="Top" Width="195" materialDesign:HintAssist.Hint="Place of birth" TextWrapping="Wrap" FontSize="16" Text="{Binding PlaceOfBirth, UpdateSourceTrigger=PropertyChanged}"/>
+                    HorizontalAlignment="Left" Height="34" Margin="369,73,0,0"  VerticalAlignment="Top" Width="227" materialDesign:HintAssist.Hint="Place of birth" TextWrapping="Wrap" FontSize="16" Text="{Binding PlaceOfBirth, UpdateSourceTrigger=PropertyChanged}"/>
                         <TextBox Name="IdH" 
                     HorizontalAlignment="Left" Height="34" 
                          Margin="195,198,0,0"  VerticalAlignment="Top" Width="209" 
