@@ -62,14 +62,14 @@
                     </TextBox>
                     <Label Content="Old Household Id:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="96,261,0,0" Height="30" Width="126" FontSize="16" Padding="0,6.5,0,0"/>
                     <TextBox
-                         materialDesign:HintAssist.Foreground="Black"
+                         materialDesign:HintAssist.Foreground="Black" IsReadOnly="True"
                             materialDesign:TextFieldAssist.UnderlineBrush="Black"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                         HorizontalAlignment="Left" Height="49" Margin="96,408,0,0"  
                         VerticalAlignment="Top" Width="396" materialDesign:HintAssist.Hint="HouseHold New Adress" 
                         TextWrapping="Wrap" FontSize="16" Text="{Binding New_Address, UpdateSourceTrigger=PropertyChanged}"/>
-                    <Button Content="Check" HorizontalAlignment="Left" Background="#FF4D60C0" Height="38"
-                            Margin="587,331,0,0" VerticalAlignment="Top" Width="95"
+                    <Button Content="Check" HorizontalAlignment="Left" Background="#FF4D60C0" Height="37"
+                            Margin="566,324,0,0" VerticalAlignment="Top" Width="95"
                             Command="{Binding CheckIdHouseholdCommand}" CommandParameter="{Binding ElementName=HouseholdIdBox}" Foreground="White"/>
                     <Label Content="SOCIALIST REPUBLIC OF VIETNAM" Margin="182,10,0,0" VerticalAlignment="Top" Height="38" HorizontalAlignment="Left" Width="366" FontSize="20" FontWeight="Bold"/>
                     <Label Content="Independent - Freedom - Happpiness" HorizontalAlignment="Left" Margin="219,38,0,0" VerticalAlignment="Top" Width="273" FontSize="16"/>
@@ -77,7 +77,7 @@
                         materialDesign:HintAssist.Foreground="Black"
                             materialDesign:TextFieldAssist.UnderlineBrush="Black"
                         HorizontalAlignment="Left" Margin="256,363,0,79" Width="236" materialDesign:HintAssist.Hint="Household Id" 
-                        TextWrapping="Wrap" FontSize="16" Text="{Binding Id_Household, UpdateSourceTrigger=PropertyChanged}"
+                        TextWrapping="Wrap" FontSize="16" Text="{Binding New_Id_Household, UpdateSourceTrigger=PropertyChanged}"
                         x:Name="HouseholdIdBox_Copy">
 
                         <i:Interaction.Triggers>
