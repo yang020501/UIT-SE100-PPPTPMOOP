@@ -7,11 +7,13 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+      xmlns:Wpf="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       DataContext="{StaticResource TransferVM}"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="TransferPage" Width="824" Height="570.4" >
     <Border Background="White" CornerRadius="0,0,4,0">
         <Grid>
+
 
 
             <Grid >
@@ -20,6 +22,7 @@
                         <Label Content="Household Transfer Form" Margin="206,68,256.4,369" FontWeight="Bold" FontFamily="Trebuchet MS" FontSize="24" Padding="8,4,4,4" Foreground="#DDED1D1D"/>
                         <materialDesign:PackIcon Kind="HomeAccount" Margin="47,146,0,0" Height="31" Width="32" RenderTransformOrigin="0.597,-2.323" />
                         <TextBox 
+
                          materialDesign:HintAssist.Foreground="Black"
                             materialDesign:TextFieldAssist.UnderlineBrush="Black"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
@@ -87,6 +90,7 @@
                         TextWrapping="Wrap" FontSize="16" Text="{Binding New_Id_Household, UpdateSourceTrigger=PropertyChanged}"
                         x:Name="HouseholdIdBox_New">
 
+
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="TextChanged">
                                     <i:InvokeCommandAction Command="{Binding HouseholdIdChangeCommand}" 
@@ -100,6 +104,7 @@
                 </Border>
                 <Button Content="Add"  Height="38" Width="95" Background="#FF4D60C0" 
                     Margin="270,522,459,0" VerticalAlignment="Top" Name="AddButton"
+
                     Command="{Binding AddCommand}" CommandParameter="{Binding ElementName=AddButton}" Foreground="White"/>
                 <Button Content="Clear"  Height="38" Width="95" Background="#FF4D60C0" 
                     Margin="459,522,270,0" VerticalAlignment="Top" x:Name="ClearButton"

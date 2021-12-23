@@ -21,7 +21,7 @@
             <Image Height="30" Margin="0,6,953,6" HorizontalAlignment="Right" Width="37" Source="/household_management;component/Resources/population.jpg" Stretch="Fill"/>
 
             <Label Content="Family member" HorizontalAlignment="Right" Margin="0,6,799,6" Width="149" FontWeight="Bold" FontSize="14" Foreground="#DDE1E6F3"/>
-
+            
 
         </Grid>
             </Border>
