@@ -65,7 +65,7 @@ namespace household_management.ViewModel
 
         private void openManage()
         {
-            if(ManageSelected == true)
+            if(ManageSelected == true && LoginViewModel.Role == "Manager")
             {
                 main.Refresh();
                 main.Content = null;
@@ -73,6 +73,10 @@ namespace household_management.ViewModel
                 AccountManagerViewModel.Vm = data;              
                 main.Content = page;
 
+            }
+            else
+            {
+                MessageBox.Show("you do not have the authority to accsess");
             }
         }
         
