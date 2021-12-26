@@ -45,11 +45,23 @@ namespace household_management.ViewModel
         public bool SearchSelected { get => _searchSelected; set { _searchSelected = value; OnPropertyChanged(); openSearchPage(); } }
 
         private bool _manageSelected;
-        public bool ManageSelected { get => _manageSelected;set { _manageSelected = value; OnPropertyChanged(); openManage(); } }
+        public bool ManageSelected { get => _manageSelected; set { _manageSelected = value; OnPropertyChanged(); openManage(); } }
+
+        private bool _changePasswordSelected;
+        public bool ChangePasswordSelected { get => _changePasswordSelected; set { _changePasswordSelected = value; OnPropertyChanged(); openPasswordChange(); } }
 
         public static MainViewModel data { get; set; }
 
         AddPage aView = new AddPage();
+
+        private void openPasswordChange()
+        {
+            if(ChangePasswordSelected == true)
+            {
+                ChangePassword wd = new ChangePassword();
+                wd.ShowDialog();
+            }
+        }
 
         private void openManage()
         {
