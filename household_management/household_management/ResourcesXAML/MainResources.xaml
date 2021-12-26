@@ -18,4 +18,5 @@
     <viewmodel:AbsenceViewModel x:Key="AbsenceVM"></viewmodel:AbsenceViewModel>
     <viewmodel:ResidenceViewModel x:Key="ResidenceVM"></viewmodel:ResidenceViewModel>
     <viewmodel:AccountManagerViewModel x:Key="AccountVM"></viewmodel:AccountManagerViewModel>
+    <viewmodel:ChangePasswordViewModel x:Key="ChangePassVM"></viewmodel:ChangePasswordViewModel>
 </ResourceDictionary>
