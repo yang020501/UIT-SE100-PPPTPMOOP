@@ -61,6 +61,9 @@ namespace household_management.ViewModel
         private bool _residenceForm;
         public bool ResidenceForm { get => _residenceForm; set { _residenceForm = value; OnPropertyChanged(); openResidenceForm(); } }
 
+        private bool _aboutus;
+        public bool AboutUs { get => _aboutus; set { _aboutus = value; OnPropertyChanged(); openAboutUs(); } } 
+
         private bool _addSelected;
         public bool AddSelected { get => _addSelected;set {  _addSelected = value;OnPropertyChanged();  openAddPage(); ; } }
         
@@ -204,6 +207,11 @@ namespace household_management.ViewModel
         private void openResidenceForm()
         {
         }
+        private void openAboutUs()
+        {
+            About wd = new About();
+            wd.ShowDialog();
+        }
 
 
         private void setDataReport()
@@ -219,8 +227,8 @@ namespace household_management.ViewModel
         public MainViewModel()
         {
 
-          
-            
+
+            AddSelected = true;
 
             LoadWindowCommand = new RelayCommand<Window>((p) => { return true; }, (p) => {
                 isLoad = true;
