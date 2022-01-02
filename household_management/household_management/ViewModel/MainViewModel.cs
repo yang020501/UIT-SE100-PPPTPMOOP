@@ -38,6 +38,9 @@ namespace household_management.ViewModel
         private Frame main = new Frame();
         public Frame Main { get => main; set { main = value; OnPropertyChanged(); } }
 
+        private bool _reportSelected;
+        public bool ReportSelected { get => _reportSelected;set { _reportSelected = value; OnPropertyChanged(); openReportForm(); } }
+
         private bool _addSelected;
         public bool AddSelected { get => _addSelected;set {  _addSelected = value;OnPropertyChanged();  openAddPage(); ; } }
         
@@ -87,6 +90,33 @@ namespace household_management.ViewModel
                 Search wd = new Search();
                 wd.DataContext = vm;
                 wd.ShowDialog();
+            }
+        }
+        private void openReportForm()
+        {
+            if(ReportSelected == true)
+            {
+                main.Refresh();
+              
+                // 
+                Report.Report report = new Report.Report();
+                //
+                CrystalDecisions.Shared.TableLogOnInfo info;
+                // dinh dang lai info
+                info = report.Database.Tables[0].LogOnInfo;
+                info.ConnectionInfo.ServerName = ".\\(local)";
+                info.ConnectionInfo.DatabaseName = "HoKhau";
+                info.ConnectionInfo.IntegratedSecurity = true;
+                report.Database.Tables[0].ApplyLogOnInfo(info);
+                // xu ly len form 
+                Reports wd = new Reports();
+                // gan nguon du lieu
+                report.SetParameterValue("slNK", 100);
+                wd.reportViewer.ReportSource = report;
+                
+                // show
+                wd.ShowDialog();
+
             }
         }
         public MainViewModel()

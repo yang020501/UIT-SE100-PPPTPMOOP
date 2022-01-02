@@ -249,6 +249,12 @@
     <Compile Include="View\PopulationsPageView.xaml.cs">
       <DependentUpon>PopulationsPageView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Reports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Reports.Designer.cs">
+      <DependentUpon>Reports.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Residence.xaml.cs">
       <DependentUpon>Residence.xaml</DependentUpon>
     </Compile>
@@ -389,6 +395,36 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+<<<<<<< Updated upstream
+=======
+    <EmbeddedResource Include="Report\formAddAbsence.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>formAddAbsence.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\formAddHousehold.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>formAddHousehold.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\formAddPopulations.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>formAddPopulations.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\formAddResidence.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>formAddResidence.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\formAddTransfer.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>formAddTransfer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\Report.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Report.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Reports.resx">
+      <DependentUpon>Reports.cs</DependentUpon>
+    </EmbeddedResource>
+>>>>>>> Stashed changes
     <EntityDeploy Include="Model\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
