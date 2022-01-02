@@ -48,15 +48,27 @@ namespace household_management.ViewModel
         public bool SearchSelected { get => _searchSelected; set { _searchSelected = value; OnPropertyChanged(); openSearchPage(); } }
 
         private bool _manageSelected;
-        public bool ManageSelected { get => _manageSelected;set { _manageSelected = value; OnPropertyChanged(); openManage(); } }
+        public bool ManageSelected { get => _manageSelected; set { _manageSelected = value; OnPropertyChanged(); openManage(); } }
+
+        private bool _changePasswordSelected;
+        public bool ChangePasswordSelected { get => _changePasswordSelected; set { _changePasswordSelected = value; OnPropertyChanged(); openPasswordChange(); } }
 
         public static MainViewModel data { get; set; }
 
         AddPage aView = new AddPage();
 
+        private void openPasswordChange()
+        {
+            if(ChangePasswordSelected == true)
+            {
+                ChangePassword wd = new ChangePassword();
+                wd.ShowDialog();
+            }
+        }
+
         private void openManage()
         {
-            if(ManageSelected == true)
+            if(ManageSelected == true && LoginViewModel.Role == "Manager")
             {
                 main.Refresh();
                 main.Content = null;
@@ -64,6 +76,10 @@ namespace household_management.ViewModel
                 AccountManagerViewModel.Vm = data;              
                 main.Content = page;
 
+            }
+            else
+            {
+                MessageBox.Show("you do not have the authority to accsess");
             }
         }
         
