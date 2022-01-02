@@ -76,11 +76,6 @@ namespace household_management
             wd.ShowDialog();
         }
 
-        private void ManageButton_Click(object sender, RoutedEventArgs e)
-        {
-            AccountManager wd = new AccountManager();
-            AccountManagerViewModel.Vm = (MainViewModel)this.DataContext;
-            wd.ShowDialog();
-        }
+       
     }
 }

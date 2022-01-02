@@ -138,7 +138,12 @@ namespace household_management.ViewModel
 
                 report.SetParameterValue("userName", Name);
                 report.SetParameterValue("userId", Id);
-                report.SetParameterValue("userRole", Role);
+                if (Role == "Manager")
+                {
+                    report.SetParameterValue("userRole", "Quản lý");
+                }
+                else
+                    report.SetParameterValue("userRole", "Nhân viên");
                 report.SetParameterValue("slNK", PopulationsList.Count);                
                 report.SetParameterValue("slHK", HouseholdList.Count);
                 report.SetParameterValue("slCK", TransferList.Count);

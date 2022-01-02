@@ -90,20 +90,7 @@
 
                             <StackPanel HorizontalAlignment="Left" Height="80" Margin="0,297,-0.2,0" VerticalAlignment="Top" Width="205">
                                 <Button Content="About us" Height="40" Background="{x:Null}" BorderBrush="#FF3A404C" Foreground="#FFF3F2F6" BorderThickness="0" Padding="0,4,16,4" Click="btnSearch_Click" Margin="0,0,-0.2,0"/>
-                                <Button Visibility="Hidden" Content="Manage" Height="40" 
-                        Background="{x:Null}" BorderBrush="#FF3A404C" 
-                        Foreground="#FFF3F2F6" BorderThickness="0" 
-                        Padding="0,4,16,4" Name="ManageButton" Click="ManageButton_Click">
-
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="Loaded">
-                                            <i:InvokeCommandAction Command="{Binding LoadManageButtonCommand}" 
-                                   CommandParameter="{Binding ElementName=ManageButton}">
-                                            </i:InvokeCommandAction>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
-
-                                </Button>
+                                
                              
                             </StackPanel>
                           
