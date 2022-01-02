@@ -44,7 +44,7 @@ namespace household_management.ViewModel
         public static MainViewModel Vm { get; set; }
         public ICommand Updatebtn { get; set; }
         public ICommand Deletebtn { get; set; }
-
+        public ICommand Addbtn { get; set; }
         public ICommand Choosebtn { get; set; }
 
 
@@ -69,6 +69,16 @@ namespace household_management.ViewModel
             DB = DateTime.Now.ToString("MM/dd/yyyy");
 
             NewTableUser();
+
+            Addbtn = new RelayCommand<DataGrid>((p) =>
+            {
+                return true;
+            }, (p) =>
+            {
+                View.AddAccount wd = new View.AddAccount();
+                wd.ShowDialog();
+                NewTableUser();
+            });
 
             Updatebtn = new RelayCommand<DataGrid>((p) =>
             {
