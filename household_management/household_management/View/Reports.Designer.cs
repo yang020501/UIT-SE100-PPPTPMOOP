@@ -29,34 +29,32 @@ namespace household_management.View
         /// </summary>
         private void InitializeComponent()
         {
-            this.reportViewer = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.SuspendLayout();
             // 
-            // reportViewer
+            // crystalReportViewer1
             // 
-            this.reportViewer.ActiveViewIndex = -1;
-            this.reportViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.reportViewer.Cursor = System.Windows.Forms.Cursors.Default;
-            this.reportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.reportViewer.Location = new System.Drawing.Point(0, 0);
-            this.reportViewer.Name = "reportViewer";
-            this.reportViewer.Size = new System.Drawing.Size(800, 450);
-            this.reportViewer.TabIndex = 0;
+            this.crystalReportViewer1.ActiveViewIndex = -1;
+            this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
+            this.crystalReportViewer1.Name = "crystalReportViewer1";
+            this.crystalReportViewer1.Size = new System.Drawing.Size(282, 253);
+            this.crystalReportViewer1.TabIndex = 0;
             // 
             // Reports
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.reportViewer);
+            this.ClientSize = new System.Drawing.Size(282, 253);
+            this.Controls.Add(this.crystalReportViewer1);
             this.Name = "Reports";
-            this.Text = "Reports";
             this.ResumeLayout(false);
 
         }
 
+
         #endregion
 
-        public CrystalDecisions.Windows.Forms.CrystalReportViewer reportViewer;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
     }
 }
