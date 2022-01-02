@@ -95,9 +95,8 @@ namespace household_management.ViewModel
                 AccountPage page = new AccountPage();
                 AccountManagerViewModel.Vm = data;              
                 main.Content = page;
-
             }
-            else
+            else if(LoginViewModel.Role != "Manager")
             {
                 MessageBox.Show("you do not have the authority to accsess");
             }
@@ -262,7 +261,10 @@ namespace household_management.ViewModel
                 wd.Show();                             
                 LoginViewModel.isLogin = false;
                 LoginViewModel.isReLogin = true;
+                main.Refresh();
+                main.Content = null;
                 p.Close();
+                
             });
            
            
