@@ -138,8 +138,8 @@
                     CommandParameter="{Binding ElementName=AddAccountX}"/>
             <Button Content="Cancel" HorizontalAlignment="Left" Margin="252,10,0,0" 
                 VerticalAlignment="Top" Width="118" Background="#FF4D60C0"
-                Command="{Binding ExitCommand}" Foreground="#FFFCFBFA" Height="44"
-                CommandParameter="{Binding ElementName=AddAccountX}"/>
+                Foreground="#FFFCFBFA" Height="44"
+                CommandParameter="{Binding ElementName=AddAccountX}" Click="Button_Click"/>
 
         </Grid>
     </Grid>

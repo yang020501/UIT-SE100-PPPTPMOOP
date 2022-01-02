@@ -33,9 +33,6 @@ namespace household_management.View
             MessageBox.Show((string)selected.Row["ExpireDate"]);
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
+       
     }
 }

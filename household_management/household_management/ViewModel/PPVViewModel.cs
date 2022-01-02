@@ -222,8 +222,7 @@ namespace household_management.ViewModel
             });
         }
 
-        private int _SelectedIndex;
-        public int SelectedIndex { get => _SelectedIndex; set { _SelectedIndex = value; OnPropertyChanged(); } }
+        
         private string _SelectedCb;
         public  string SelectedCb
         {
@@ -273,22 +272,22 @@ namespace household_management.ViewModel
                     HAddress = (string)Selected.Row["HAddress"];
                    
                     // get all idHousehold
-                    DicList = new ObservableCollection<string>();
-                    var tmp = DataProvider.Ins.DB.Household_Registration.Where(x => x.IdOfOwner == Id);
-                    if (tmp != null)
-                    {
-                        foreach (Household_Registration item in tmp)
-                        {
-                            string id;
+                    //DicList = new ObservableCollection<string>();
+                    //var tmp = DataProvider.Ins.DB.Household_Registration.Where(x => x.IdOfOwner == Id);
+                    //if (tmp != null)
+                    //{
+                    //    foreach (Household_Registration item in tmp)
+                    //    {
+                    //        string id;
                             
-                            id = (string)check(item.Id);
+                    //        id = (string)check(item.Id);
                        
-                            DicList.Add(id);
-                        }
-                    }
-                    else
-                        DicList.Add(Id_Household);
-                    SelectedIndex = 0;
+                    //        DicList.Add(id);
+                    //    }
+                    //}
+                    //else
+                    //    DicList.Add(Id_Household);
+              
 
                     if ((string)Selected.Row["Photo"] != null && (string)Selected.Row["Photo"] != "")
 
