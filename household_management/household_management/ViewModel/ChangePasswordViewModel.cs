@@ -24,7 +24,7 @@ namespace household_management.ViewModel
             PasswordChangedCommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) =>
             {
                 if (p.Name == "FloatingPasswordBox")
-                {
+                {                   
                     check1 = false;
                     password = p.Password;
                     if(password != null && password != "")

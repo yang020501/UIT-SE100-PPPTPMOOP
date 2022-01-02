@@ -54,7 +54,7 @@
             HorizontalAlignment="Left" Height="34" Margin="90,69,0,0"  VerticalAlignment="Top" Width="220" 
                              materialDesign:HintAssist.Hint="Id" TextWrapping="Wrap" FontSize="16"  materialDesign:HintAssist.HelperText="12 digits numbers" />
                         <materialDesign:PackIcon Kind="CardAccountDetails" Margin="30,75,0,0" Height="31" Width="32" RenderTransformOrigin="0.438,1.342" />
-                        <TextBox x:Name="txtAddress" Text="{Binding Password,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="true"
+                        <TextBox x:Name="txtAddress" Text="{Binding Password,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"
             HorizontalAlignment="Left" Height="34" Margin="90,309,0,0"  VerticalAlignment="Top" Width="308" materialDesign:HintAssist.Hint="Password" TextWrapping="Wrap" FontSize="16" />
                         <materialDesign:PackIcon Kind="MapMarker" Margin="30,312,0,0" Height="31" Width="32" RenderTransformOrigin="-1.562,-2.452" />
 
@@ -70,7 +70,7 @@
                         <TextBox x:Name="txtUsername" Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
                         HorizontalAlignment="Left" Height="34" Margin="90,255,0,0"  VerticalAlignment="Top" Width="308" 
                              materialDesign:HintAssist.Hint="User name" TextWrapping="Wrap" FontSize="16"
-                             IsReadOnly="true"/>
+                             IsReadOnly="True"/>
                         <materialDesign:PackIcon Kind="MapMarker" Margin="30,258,0,0" Height="31" Width="32" RenderTransformOrigin="-1.562,-2.452" />
 
                     </Grid>
