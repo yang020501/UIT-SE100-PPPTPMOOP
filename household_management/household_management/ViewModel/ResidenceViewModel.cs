@@ -119,6 +119,7 @@ namespace household_management.ViewModel
 
                     var person = Model.DataProvider.Ins.DB.Populations.Where(x => x.Id == Id_User).FirstOrDefault();
                     person.isTResidence = true;
+                    person.Address = TAddress;
                     Model.DataProvider.Ins.DB.SaveChanges();
                     checkIdHousehold = false;
 

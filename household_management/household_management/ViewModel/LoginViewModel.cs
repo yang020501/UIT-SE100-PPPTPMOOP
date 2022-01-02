@@ -12,6 +12,7 @@ namespace household_management.ViewModel
 {
     class LoginViewModel : BaseViewModel
     {
+        public static string passwordX;
         public static bool isReLogin = false;
         public static bool isLogin = false;
         public static string Name;
@@ -52,6 +53,7 @@ namespace household_management.ViewModel
                 var userRole = DataProvider.Ins.DB.UserRoles.Where(x => x.Id == type).SingleOrDefault();
                 Role = userRole.NameRole;
                 isLogin = true;
+                passwordX = Password;
                 p.Close();
             }
             else if (accCount > 0 && isReLogin)

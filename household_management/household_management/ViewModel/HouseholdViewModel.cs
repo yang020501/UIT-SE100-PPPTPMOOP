@@ -41,7 +41,7 @@ namespace household_management.ViewModel
             while (true)
             {
                 bool isbreakable = true;
-                if(list_of_h.Count() != 0)
+                if(list_of_h.Count() == 0)
                 {
                     break;
                 }

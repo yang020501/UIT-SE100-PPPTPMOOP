@@ -123,8 +123,9 @@
 
                 <Border  CornerRadius="0,0,4,0" Grid.Column="1"  BorderBrush="LightGray" BorderThickness="2">
                     <Grid Grid.Column="1">
-                        <Button Command="{Binding Updatebtn}" CommandParameter="{Binding ElementName=dtg}" Content="Update"  Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="104" VerticalAlignment="Top" Margin="19,65,0,0" Foreground="White" />
-                        <Button Command="{Binding Deletebtn}" CommandParameter="{Binding ElementName=dtg}" Content="Remove"  Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="104" VerticalAlignment="Top" Margin="19,162,0,0" Foreground="White"  />
+                        <Button Command="{Binding Updatebtn}" CommandParameter="{Binding ElementName=dtg}" Content="Update"  Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="104" VerticalAlignment="Top" Margin="19,99,0,0" Foreground="White" />
+                        <Button Command="{Binding Deletebtn}" CommandParameter="{Binding ElementName=dtg}" Content="Remove"  Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="104" VerticalAlignment="Top" Margin="19,180,0,0" Foreground="White"  />
+                        <Button Content="Add" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" Width="104" Background="#FF4D60C0" Height="44" Foreground="White" Command="{Binding Addbtn}" CommandParameter="{Binding ElementName=dtg}"/>
 
 
                     </Grid>
