@@ -37,7 +37,7 @@
                             materialDesign:TextFieldAssist.UnderlineBrush="Black"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                 materialDesign:HintAssist.Hint="Name" TextWrapping="Wrap" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
-                     FontSize="16" VerticalAlignment="Center"  Height="48" Margin="68,6,21.6,10" Grid.ColumnSpan="2" Padding="0,6,0,0"
+                     FontSize="16" VerticalAlignment="Center"  Height="49" Margin="68,6,21.6,10" Grid.ColumnSpan="2" Padding="0,6,0,0"
                      />
 
         </Grid>
@@ -132,10 +132,14 @@
         </Grid>
 
         <Grid Grid.Row="4">
-            <Button Content="Confirm" HorizontalAlignment="Left" Margin="162,10,0,-1" 
-                    VerticalAlignment="Top" Width="137" Background="#FF4D60C0"
-                    Command="{Binding ConformCommand}" Foreground="Wheat" Height="44"
+            <Button Content="OK" HorizontalAlignment="Left" Margin="85,10,0,0" 
+                    VerticalAlignment="Top" Width="118" Background="#FF4D60C0"
+                    Command="{Binding ConformCommand}" Foreground="#FFFCFBFA" Height="44"
                     CommandParameter="{Binding ElementName=AddAccountX}"/>
+            <Button Content="Cancel" HorizontalAlignment="Left" Margin="252,10,0,0" 
+                VerticalAlignment="Top" Width="118" Background="#FF4D60C0"
+                Command="{Binding ExitCommand}" Foreground="#FFFCFBFA" Height="44"
+                CommandParameter="{Binding ElementName=AddAccountX}"/>
 
         </Grid>
     </Grid>

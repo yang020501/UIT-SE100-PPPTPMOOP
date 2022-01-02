@@ -68,7 +68,7 @@
                           materialDesign:HintAssist.Foreground="Black"
                             materialDesign:TextFieldAssist.UnderlineBrush="Black"
                           
-                    HorizontalAlignment="Left" Height="34" Margin="569,163,0,0"  VerticalAlignment="Top" Width="236" materialDesign:HintAssist.Hint="HouseholdId" TextWrapping="Wrap" FontSize="16" Text="{Binding HouseholdId, UpdateSourceTrigger=PropertyChanged}">
+                    HorizontalAlignment="Left" Height="34" Margin="663,163,0,0"  VerticalAlignment="Top" Width="236" materialDesign:HintAssist.Hint="HouseholdId" TextWrapping="Wrap" FontSize="16" Text="{Binding HouseholdId, UpdateSourceTrigger=PropertyChanged}">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="TextChanged">
                                 <i:InvokeCommandAction Command="{Binding HouseholdIDChangeCommand}" CommandParameter="{Binding ElementName=IdH}"/>
@@ -80,7 +80,7 @@
                      materialDesign:HintAssist.Foreground="Black"
                             materialDesign:TextFieldAssist.UnderlineBrush="Black"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                    HorizontalAlignment="Left" Height="49" Margin="167,379,0,0"  VerticalAlignment="Top" Width="128" materialDesign:HintAssist.Hint="Religon" TextWrapping="Wrap" FontSize="16" Text="{Binding Religion, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                    HorizontalAlignment="Left" Height="49" Margin="167,379,0,0"  VerticalAlignment="Top" Width="220" materialDesign:HintAssist.Hint="Religon" TextWrapping="Wrap" FontSize="16" Text="{Binding Religion, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
                     <materialDesign:PackIcon Kind="Cross" Margin="115,397,0,0" Height="31" Width="32" RenderTransformOrigin="0.825,-1.055" />
                     <materialDesign:PackIcon Kind="Briefcase" Margin="115,458,0,109.2" Height="Auto" Width="32" RenderTransformOrigin="0.412,1.303" VerticalAlignment="Stretch" />
                     <TextBox
@@ -96,20 +96,20 @@
                     materialDesign:HintAssist.Hint="HouseHold Adress" TextWrapping="Wrap" FontSize="16" 
                     Text="{Binding HouseholdAddress, UpdateSourceTrigger=PropertyChanged}"
                     IsReadOnly="True"/>
-                    <Button Command="{Binding AddingCommand}" Content="Add" Margin="260,524,0,0" Height="44" 
-                        Background="#FF4D60C0" HorizontalAlignment="Left" Width="123" VerticalAlignment="Top" 
+                    <Button Command="{Binding AddingCommand}" Content="Add" Margin="260,539,0,0" Height="39" 
+                        Background="#FF4D60C0" HorizontalAlignment="Left" Width="95" VerticalAlignment="Top" 
                         Name="AddButton" CommandParameter="{Binding ElementName=AddButton}" Foreground="#FFFCFCFD"/>
                     <Label Content="Household Address" HorizontalAlignment="Left" VerticalAlignment="Top" 
                        Margin="167,294,0,0" Height="31" Width="232" FontSize="16" Padding="0,4,4,4"/>
-                    <Label Content="Household Id:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="426,166,0,0" Height="21" Width="126" FontSize="16" Padding="0" FontWeight="Bold" FontStyle="Italic"/>
+                    <Label Content="Household Id:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="520,166,0,0" Height="21" Width="126" FontSize="16" Padding="0" FontWeight="Bold" FontStyle="Italic"/>
                     <materialDesign:PackIcon Kind="HomeMapMarker" Margin="115,330,0,0" Height="31" Width="32" />
                     <materialDesign:PackIcon Kind="Present" Margin="115,104,0,0" Height="31" Width="32" />
                     <materialDesign:PackIcon Kind="HospitalMarker" Margin="608,243,0,0" Height="31" Width="32" />
-                    <Button Content="Done" HorizontalAlignment="Left" Margin="608,524,0,0" 
-                        VerticalAlignment="Top" Width="128" Height="44" Background="#FF4D60C0" 
+                    <Button Content="Done" HorizontalAlignment="Left" Margin="608,539,0,0" 
+                        VerticalAlignment="Top" Width="95" Height="39" Background="#FF4D60C0" 
                         Command="{Binding DoneCommand}" CommandParameter="{Binding ElementName=FamilyWindowX}" Foreground="#FFF4F5FA" />
-                    <Button Content="Clear" HorizontalAlignment="Left" Margin="436,524,0,0" 
-                        VerticalAlignment="Top" Width="122" Height="44" Background="#FF4D60C0" 
+                    <Button Content="Clear" HorizontalAlignment="Left" Margin="436,539,0,0" 
+                        VerticalAlignment="Top" Width="95" Height="38" Background="#FF4D60C0" 
                         Command="{Binding ClearCommand}" CommandParameter="{Binding ElementName=FamilyWindowX}" Foreground="White"/>
 
 
