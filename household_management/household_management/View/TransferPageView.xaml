@@ -31,8 +31,8 @@
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                     IsReadOnly="True"
                 HorizontalAlignment="Left" Height="49" Margin="173,99,0,0"  VerticalAlignment="Top" Width="220" materialDesign:HintAssist.Hint="Id" TextWrapping="Wrap" FontSize="16" Text="{Binding IdOwner, UpdateSourceTrigger=PropertyChanged}"  materialDesign:HintAssist.HelperText="12 digits numbers" />
-                <RadioButton Content="Female" HorizontalAlignment="Left" Margin="594,105,0,0" VerticalAlignment="Top"  Height="28" RenderTransformOrigin="0.615,0.157" IsChecked="{Binding FemaleChoice}" Padding="4,0,0,0"/>
-                <RadioButton Content="Male" HorizontalAlignment="Left" Margin="519,105,0,0" VerticalAlignment="Top"  Height="28" RenderTransformOrigin="0.615,0.157" IsChecked="{Binding MaleChoice}"/>
+                <RadioButton Content="Female" HorizontalAlignment="Left" Margin="594,105,0,0" VerticalAlignment="Top"  Height="28" RenderTransformOrigin="0.615,0.157" IsChecked="{Binding FemaleChoice}" Padding="4,0,0,0" BorderBrush="#FF4D60C0" Background="#FF4D60C0"/>
+                <RadioButton Content="Male" HorizontalAlignment="Left" Margin="519,105,0,0" VerticalAlignment="Top"  Height="28" RenderTransformOrigin="0.615,0.157" IsChecked="{Binding MaleChoice}" Background="#FF4D60C0" BorderBrush="#FF4D60C0"/>
                 <Label Content="Gender:" HorizontalAlignment="Left" Margin="441,107,0,0" VerticalAlignment="Top" Height="26" Width="73" FontSize="16"/>
                 <TextBox IsReadOnly="True"
                           materialDesign:HintAssist.Foreground="Black"

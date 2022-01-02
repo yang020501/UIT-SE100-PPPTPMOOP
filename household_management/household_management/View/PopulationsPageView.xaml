@@ -74,8 +74,8 @@
                         <Label Content="Household Address" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="90,208,0,0" Height="31" Width="232" FontSize="16" Padding="0,4,4,4"/>
                         <materialDesign:PackIcon Kind="HomeMapMarker" Margin="30,254,0,0" Height="34" Width="39" />
 
-                        <RadioButton x:Name="FemaleChoise" VerticalAlignment="Top" RenderTransformOrigin="0.615,0.157" Margin="666,36,0,0"  Height="28" HorizontalAlignment="Left" GroupName="Gender" Content="Female" Width="66" IsChecked="{Binding FemaleChoice}" BorderBrush="#FF4D60C0" Background="{x:Null}"/>
-                        <RadioButton x:Name="MaleChoise" VerticalAlignment="Top" RenderTransformOrigin="0.615,0.157" Margin="599,37,0,0"  Height="28" HorizontalAlignment="Left" GroupName="Gender"  Content="Male" IsChecked="{Binding MaleChoice}" Background="{x:Null}" BorderBrush="#FF4D60C0"/>
+                        <RadioButton x:Name="FemaleChoise" VerticalAlignment="Top" RenderTransformOrigin="0.615,0.157" Margin="666,36,0,0"  Height="28" HorizontalAlignment="Left" GroupName="Gender" Content="Female" Width="66" IsChecked="{Binding FemaleChoice}" BorderBrush="#FF4D60C0" Background="#FF4D60C0"/>
+                        <RadioButton x:Name="MaleChoise" VerticalAlignment="Top" RenderTransformOrigin="0.615,0.157" Margin="599,37,0,0"  Height="28" HorizontalAlignment="Left" GroupName="Gender"  Content="Male" IsChecked="{Binding MaleChoice}" Background="#FF4D60C0" BorderBrush="#FF4D60C0"/>
                         <Label Width="73" VerticalAlignment="Top" Margin="511,36,0,0" Height="26" HorizontalAlignment="Left" FontSize="16" Content="Gender:"/>
                         <TextBox  IsReadOnly="True" Visibility="Hidden" IsEnabled="False"
                          Text="{Binding Id_Household,UpdateSourceTrigger=PropertyChanged}"
