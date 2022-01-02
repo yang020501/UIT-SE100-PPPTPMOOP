@@ -5,7 +5,7 @@
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:household_management" 
-        xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
+        xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz" xmlns:forms="clr-namespace:CrystalDecisions.Windows.Forms;assembly=CrystalDecisions.Windows.Forms"
         mc:Ignorable="d"
         Name="MainWindowX"
         DataContext="{StaticResource MainVM}"
@@ -104,6 +104,7 @@
                                     </i:Interaction.Triggers>
 
                                 </Button>
+                             
                             </StackPanel>
                           
                             <TreeView x:Name="tvMenu" Margin="0,0,-0.2,199.2" Foreground="White" FontSize="18"
@@ -121,7 +122,7 @@
                                     <TreeViewItem x:Name="tvItemManage" Header="Manage" IsSelected="{Binding ManageSelected,UpdateSourceTrigger=PropertyChanged}" FontSize="14"></TreeViewItem>
                                 </TreeViewItem>
                                 <TreeViewItem Header="Print">
-                                    <TreeViewItem Header="Report" ></TreeViewItem>
+                                    <TreeViewItem Header="Report" IsSelected="{Binding ReportSelected,UpdateSourceTrigger=PropertyChanged}" ></TreeViewItem>
                                     <TreeViewItem Header="Form"  >
                                         <TreeViewItem Header="Populations" FontSize="14" ></TreeViewItem>
                                         <TreeViewItem Header="Household" FontSize="14" ></TreeViewItem>
