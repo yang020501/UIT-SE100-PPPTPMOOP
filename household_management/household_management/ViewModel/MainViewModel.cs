@@ -2,6 +2,7 @@
 using household_management.View;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,6 +35,12 @@ namespace household_management.ViewModel
         public ICommand LoadManageButtonCommand { get; set; }
         public ICommand LoadAccount { get; set; }
         public bool isLoad = false;
+
+        private ObservableCollection<Population> PopulationsList;
+        private ObservableCollection<Household_Registration> HouseholdList;
+        private ObservableCollection<Transfer_Household> TransferList;
+        private ObservableCollection<Temporary_Absence> AbsenceList;
+        private ObservableCollection<Temporary_Residence> ResidenceList;
 
         private Frame main = new Frame();
         public Frame Main { get => main; set { main = value; OnPropertyChanged(); } }
@@ -127,7 +134,17 @@ namespace household_management.ViewModel
                 // xu ly len form 
                 Reports wd = new Reports();
                 // gan nguon du lieu
-                report.SetParameterValue("slNK", 100);
+                setDataReport();
+
+                report.SetParameterValue("userName", Name);
+                report.SetParameterValue("userId", Id);
+                report.SetParameterValue("userRole", Role);
+                report.SetParameterValue("slNK", PopulationsList.Count);                
+                report.SetParameterValue("slHK", HouseholdList.Count);
+                report.SetParameterValue("slCK", TransferList.Count);
+                report.SetParameterValue("slTV", AbsenceList.Count);
+                report.SetParameterValue("slTT", ResidenceList.Count);
+
                 wd.reportViewer.ReportSource = report;
                 
                 // show
@@ -135,6 +152,16 @@ namespace household_management.ViewModel
 
             }
         }
+
+        private void setDataReport()
+        {
+            PopulationsList = new ObservableCollection<Population>(DataProvider.Ins.DB.Populations);
+            HouseholdList = new ObservableCollection<Household_Registration>(DataProvider.Ins.DB.Household_Registration);
+            TransferList = new ObservableCollection<Transfer_Household>(DataProvider.Ins.DB.Transfer_Household);
+            AbsenceList = new ObservableCollection<Temporary_Absence>(DataProvider.Ins.DB.Temporary_Absence);
+            ResidenceList = new ObservableCollection<Temporary_Residence>(DataProvider.Ins.DB.Temporary_Residence);
+        }
+
         public MainViewModel()
         {
 
