@@ -179,6 +179,45 @@
     <Compile Include="Model\UserRole.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+
+    <Compile Include="Report\formAddAbsence.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>formAddAbsence.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\formAddHousehold.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>formAddHousehold.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\formAddPopulations.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>formAddPopulations.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\formAddResidence.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>formAddResidence.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+
+    <Compile Include="Report\formAddTransfer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>formAddTransfer.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\Report.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Report.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+
     <Compile Include="ViewModel\AbsenceViewModel.cs" />
     <Compile Include="ViewModel\AccountManagerViewModel.cs" />
     <Compile Include="ViewModel\AddPageViewModel.cs" />
@@ -395,8 +434,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-<<<<<<< Updated upstream
-=======
+
     <EmbeddedResource Include="Report\formAddAbsence.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>formAddAbsence.cs</LastGenOutput>
@@ -424,10 +462,7 @@
     <EmbeddedResource Include="View\Reports.resx">
       <DependentUpon>Reports.cs</DependentUpon>
     </EmbeddedResource>
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+
     <EntityDeploy Include="Model\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
