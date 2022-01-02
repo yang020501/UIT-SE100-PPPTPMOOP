@@ -88,14 +88,9 @@
                                 </Button.Background>
                             </Button>
 
-                            <StackPanel HorizontalAlignment="Left" Height="80" Margin="0,297,-0.2,0" VerticalAlignment="Top" Width="205">
-                                <Button Content="About us" Height="40" Background="{x:Null}" BorderBrush="#FF3A404C" Foreground="#FFF3F2F6" BorderThickness="0" Padding="0,4,16,4" Click="btnSearch_Click" Margin="0,0,-0.2,0"/>
-                                
-                             
-                            </StackPanel>
+                           
                           
-                            <TreeView x:Name="tvMenu" Margin="0,0,-0.2,199.2" Foreground="White" FontSize="18"
-                                      
+                            <TreeView x:Name="tvMenu" Margin="0,0,-0.2,199.2" Foreground="White" FontSize="18"                                      
                                       >
                                
                                 
@@ -111,12 +106,14 @@
                                 <TreeViewItem Header="Print">
                                     <TreeViewItem Header="Report" IsSelected="{Binding ReportSelected,UpdateSourceTrigger=PropertyChanged}" ></TreeViewItem>
                                     <TreeViewItem Header="Form"  >
-                                        <TreeViewItem Header="Populations" FontSize="14" ></TreeViewItem>
-                                        <TreeViewItem Header="Household" FontSize="14" ></TreeViewItem>
-                                        <TreeViewItem Header="Transfer"  FontSize="14"></TreeViewItem>
-                                        <TreeViewItem Header="TAbsence"  FontSize="14"></TreeViewItem>
-                                        <TreeViewItem Header="TResidence"  FontSize="14"></TreeViewItem>
+                                        <TreeViewItem Header="Populations" IsSelected="{Binding PopulationsForm,UpdateSourceTrigger=PropertyChanged}" FontSize="14" ></TreeViewItem>
+                                        <TreeViewItem Header="Household"  IsSelected="{Binding HouseholdForm,UpdateSourceTrigger=PropertyChanged}" FontSize="14" ></TreeViewItem>
+                                        <TreeViewItem Header="Transfer"  IsSelected="{Binding TransferForm,UpdateSourceTrigger=PropertyChanged}" FontSize="14"></TreeViewItem>
+                                        <TreeViewItem Header="TAbsence"  IsSelected="{Binding AbsenceForm,UpdateSourceTrigger=PropertyChanged}" FontSize="14"></TreeViewItem>
+                                        <TreeViewItem Header="TResidence"  IsSelected="{Binding ResidenceForm,UpdateSourceTrigger=PropertyChanged}" FontSize="14"></TreeViewItem>
                                     </TreeViewItem>
+                                </TreeViewItem>
+                                <TreeViewItem Header="About Us" IsSelected="{Binding AboutUs,UpdateSourceTrigger=PropertyChanged}">
                                 </TreeViewItem>
                                 
                             </TreeView>

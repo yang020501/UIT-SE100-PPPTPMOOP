@@ -30,9 +30,7 @@ namespace household_management.ViewModel
         public string Photo { get => _Photo; set { _Photo = value; OnPropertyChanged(); } }
 
         public ICommand LoadWindowCommand{ get; set; }
-        public ICommand LoadPopuationWindowCommand { get; set; }
         public ICommand LogoutCommand { get; set; }
-        public ICommand LoadManageButtonCommand { get; set; }
         public ICommand LoadAccount { get; set; }
         public bool isLoad = false;
 
@@ -47,6 +45,21 @@ namespace household_management.ViewModel
 
         private bool _reportSelected;
         public bool ReportSelected { get => _reportSelected;set { _reportSelected = value; OnPropertyChanged(); openReportForm(); } }
+
+        private bool _populationsForm;
+        public bool PopulationsForm { get => _populationsForm; set { _populationsForm = value; OnPropertyChanged(); openPopulationsForm(); } }
+
+        private bool _householdForm;
+        public bool HouseholdForm { get => _householdForm; set { _householdForm = value; OnPropertyChanged(); openHouseholdForm(); } }
+
+        private bool _transferForm;
+        public bool TransferForm { get => _transferForm; set { _transferForm = value; OnPropertyChanged(); openTransferForm(); } }
+
+        private bool _absenceForm;
+        public bool absenceForm { get => _absenceForm; set { _absenceForm = value; OnPropertyChanged(); openAbsenceForm(); } }
+
+        private bool _residenceForm;
+        public bool ResidenceForm { get => _residenceForm; set { _residenceForm = value; OnPropertyChanged(); openResidenceForm(); } }
 
         private bool _addSelected;
         public bool AddSelected { get => _addSelected;set {  _addSelected = value;OnPropertyChanged();  openAddPage(); ; } }
@@ -157,6 +170,41 @@ namespace household_management.ViewModel
 
             }
         }
+        private void openPopulationsForm()
+        {
+            if (PopulationsForm == true)
+            {
+                Report.formAddPopulations form = new Report.formAddPopulations();
+                //
+                CrystalDecisions.Shared.TableLogOnInfo info;
+                // dinh dang lai info
+                info = form.Database.Tables[0].LogOnInfo;
+                info.ConnectionInfo.ServerName = ".\\(local)";
+                info.ConnectionInfo.DatabaseName = "HoKhau";
+                info.ConnectionInfo.IntegratedSecurity = true;
+                form.Database.Tables[0].ApplyLogOnInfo(info);
+                // xu ly len form 
+                PopulationsForm wd = new PopulationsForm();
+                // gan nguon du lieu
+                wd.pViewer.ReportSource = form;
+
+                //show
+                wd.Show();
+            }
+        }
+        private void openHouseholdForm()
+        {
+        }
+        private void openTransferForm()
+        { 
+        }
+        private void openAbsenceForm()
+        {
+        }
+        private void openResidenceForm()
+        {
+        }
+
 
         private void setDataReport()
         {
@@ -167,21 +215,12 @@ namespace household_management.ViewModel
             ResidenceList = new ObservableCollection<Temporary_Residence>(DataProvider.Ins.DB.Temporary_Residence);
         }
 
+
         public MainViewModel()
         {
 
           
-            LoadManageButtonCommand = new RelayCommand<Button>((p) => { return true; }, (p) => 
-            { 
-                if(Role == "Manager")
-                {
-                    p.Visibility = Visibility.Visible;
-                }
-                else
-                {
-                    p.Visibility = Visibility.Hidden;
-                }
-            });
+            
 
             LoadWindowCommand = new RelayCommand<Window>((p) => { return true; }, (p) => {
                 isLoad = true;
@@ -215,12 +254,7 @@ namespace household_management.ViewModel
 
             });
 
-            LoadPopuationWindowCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
-            {
-                View.Populations wd = new View.Populations();
-                wd.DataContext = new PopulationViewModel();
-                wd.ShowDialog();              
-            });
+         
 
             LogoutCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {               

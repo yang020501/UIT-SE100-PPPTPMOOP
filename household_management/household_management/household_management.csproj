@@ -269,9 +269,6 @@
     <Compile Include="View\FamilyMem.xaml.cs">
       <DependentUpon>FamilyMem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Household.xaml.cs">
-      <DependentUpon>Household.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\HouseholdPage.xaml.cs">
       <DependentUpon>HouseholdPage.xaml</DependentUpon>
     </Compile>
@@ -285,8 +282,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="View\Populations.xaml.cs">
-      <DependentUpon>Populations.xaml</DependentUpon>
+    <Compile Include="View\PopulationsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\PopulationsForm.Designer.cs">
+      <DependentUpon>PopulationsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\PopulationsPage.xaml.cs">
       <DependentUpon>PopulationsPage.xaml</DependentUpon>
@@ -300,9 +300,6 @@
     <Compile Include="View\Reports.Designer.cs">
       <DependentUpon>Reports.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Residence.xaml.cs">
-      <DependentUpon>Residence.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\ResidencePage.xaml.cs">
       <DependentUpon>ResidencePage.xaml</DependentUpon>
     </Compile>
@@ -311,9 +308,6 @@
     </Compile>
     <Compile Include="View\Search.xaml.cs">
       <DependentUpon>Search.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Transfer.xaml.cs">
-      <DependentUpon>Transfer.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\TransferPage.xaml.cs">
       <DependentUpon>TransferPage.xaml</DependentUpon>
@@ -365,10 +359,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Household.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\HouseholdPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -381,19 +371,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Populations.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\PopulationsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\PopulationsPageView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Residence.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -406,10 +388,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Search.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Transfer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -463,6 +441,9 @@
     <EmbeddedResource Include="Report\Report.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Report.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\PopulationsForm.resx">
+      <DependentUpon>PopulationsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Reports.resx">
       <DependentUpon>Reports.cs</DependentUpon>
