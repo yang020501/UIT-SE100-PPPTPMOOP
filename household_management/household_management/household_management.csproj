@@ -224,9 +224,11 @@
     </Compile>
     <Compile Include="ViewModel\AbsenceViewModel.cs" />
     <Compile Include="ViewModel\AccountManagerViewModel.cs" />
+    <Compile Include="ViewModel\AddAccountViewModel.cs" />
     <Compile Include="ViewModel\AddPageViewModel.cs" />
     <Compile Include="ViewModel\APVViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModel\FamilyViewModel.cs" />
     <Compile Include="ViewModel\FMLViewModel.cs" />
     <Compile Include="ViewModel\HouseholdViewModel.cs" />
@@ -258,8 +260,14 @@
     <Compile Include="View\AccountPage.xaml.cs">
       <DependentUpon>AccountPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\AddAccount.xaml.cs">
+      <DependentUpon>AddAccount.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\AddPage.xaml.cs">
       <DependentUpon>AddPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ChangePassword.xaml.cs">
+      <DependentUpon>ChangePassword.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\FamilyList.xaml.cs">
       <DependentUpon>FamilyList.xaml</DependentUpon>
@@ -351,9 +359,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\AddAccount.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\AddPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ChangePassword.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\FamilyList.xaml">
       <SubType>Designer</SubType>
