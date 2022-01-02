@@ -11,83 +11,110 @@
         DataContext="{StaticResource FamilyVM}"
         Title="FamilyMem" Height="650" Width="1000" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}">
     <Border Background="White" CornerRadius="5.3" >
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="0.07*"></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.07*"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
             <Border  Grid.Row="0" Background="#FF4D60C0" CornerRadius="4,4,0,0">
-        <Grid HorizontalAlignment="Right" Width="1000" RenderTransformOrigin="0.792,0.56" Margin="0,0,0,0.4">
-            <Image Height="30" Margin="0,6,953,6" HorizontalAlignment="Right" Width="37" Source="/household_management;component/Resources/population.jpg" Stretch="Fill"/>
+                <Grid HorizontalAlignment="Right" Width="1000" RenderTransformOrigin="0.792,0.56" Margin="0,0,0,0.4">
+                    <Image Height="30" Margin="0,6,953,6" HorizontalAlignment="Right" Width="37" Source="/household_management;component/Resources/population.jpg" Stretch="Fill"/>
 
-            <Label Content="Family member" HorizontalAlignment="Right" Margin="0,6,799,6" Width="149" FontWeight="Bold" FontSize="14" Foreground="#DDE1E6F3"/>
-            
+                    <Label Content="Family member" HorizontalAlignment="Right" Margin="0,6,799,6" Width="149" FontWeight="Bold" FontSize="14" Foreground="#DDE1E6F3"/>
 
-        </Grid>
+
+                </Grid>
             </Border>
 
             <Grid Grid.Row="1">
 
-            <Grid Grid.Column="1">
+                <Grid Grid.Column="1">
 
-                <TextBox
-                    HorizontalAlignment="Left" Height="34" Margin="212,49,0,0"  VerticalAlignment="Top" Width="193" materialDesign:HintAssist.Hint="FamilyName" TextWrapping="Wrap" FontSize="16" Text="{Binding FamilyName, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBox
-                    HorizontalAlignment="Left" Height="34" Margin="481,49,0,0"  VerticalAlignment="Top" Width="369" materialDesign:HintAssist.Hint="Name" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
-                <materialDesign:PackIcon Kind="Account" Margin="160,50,0,0" Height="31" Width="32" />
-                <TextBox
-                    HorizontalAlignment="Left" Height="34" Margin="212,158,0,0"  VerticalAlignment="Top" Width="220" materialDesign:HintAssist.Hint="Id" TextWrapping="Wrap" FontSize="16" Text="{Binding Id, UpdateSourceTrigger=PropertyChanged}"  materialDesign:HintAssist.HelperText="12 digits numbers" />
-                <materialDesign:PackIcon Kind="CardAccountDetails" Margin="160,161,0,0" Height="31" Width="32" RenderTransformOrigin="0.438,1.342" />
-                <RadioButton Content="Female" HorizontalAlignment="Left" Margin="674,112,0,0" VerticalAlignment="Top"  Height="28" RenderTransformOrigin="0.615,0.157" GroupName="Gender" Name="FemaleChoise" IsChecked="{Binding isFemale, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" CommandParameter="{Binding ElementName=FemaleChoise}"/>
-                <RadioButton Content="Male" HorizontalAlignment="Left" Margin="602,112,0,0" VerticalAlignment="Top"  Height="28" RenderTransformOrigin="0.615,0.157" GroupName="Gender" Name="MaleChoise" IsChecked="{Binding isMale, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" CommandParameter="{Binding ElementName=MaleChoise}"/>
-                <DatePicker
+                    <TextBox
+                     materialDesign:HintAssist.Foreground="Black"
+                            materialDesign:TextFieldAssist.UnderlineBrush="Black"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                    HorizontalAlignment="Left" Height="49" Margin="167,29,0,0"  VerticalAlignment="Top" Width="220" materialDesign:HintAssist.Hint="FamilyName" TextWrapping="Wrap" FontSize="16" Text="{Binding FamilyName, UpdateSourceTrigger=PropertyChanged}" Padding="0,6,0,0"/>
+                    <TextBox
+                     materialDesign:HintAssist.Foreground="Black"
+                            materialDesign:TextFieldAssist.UnderlineBrush="Black"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                    HorizontalAlignment="Left" Height="49" Margin="436,29,0,0"  VerticalAlignment="Top" Width="463" materialDesign:HintAssist.Hint="Name" TextWrapping="Wrap" FontSize="16" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+                    <materialDesign:PackIcon Kind="Account" Margin="115,45,0,0" Height="31" Width="32" />
+                    <TextBox
+                     materialDesign:HintAssist.Foreground="Black"
+                            materialDesign:TextFieldAssist.UnderlineBrush="Black"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                    HorizontalAlignment="Left" Height="49" Margin="167,148,0,0"  VerticalAlignment="Top" Width="220" materialDesign:HintAssist.Hint="Id" TextWrapping="Wrap" FontSize="16" Text="{Binding Id, UpdateSourceTrigger=PropertyChanged}"  materialDesign:HintAssist.HelperText="12 digits numbers" />
+                    <materialDesign:PackIcon Kind="CardAccountDetails" Margin="115,166,0,0" Height="31" Width="32" RenderTransformOrigin="0.438,1.342" />
+                    <RadioButton Content="Female" HorizontalAlignment="Left" Margin="629,107,0,0" VerticalAlignment="Top"  Height="28" RenderTransformOrigin="0.615,0.157" GroupName="Gender" Name="FemaleChoise" IsChecked="{Binding isFemale, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" CommandParameter="{Binding ElementName=FemaleChoise}" BorderBrush="#FF4D60C0" Background="{x:Null}"/>
+                    <RadioButton Content="Male" HorizontalAlignment="Left" Margin="557,107,0,0" VerticalAlignment="Top"  Height="28" RenderTransformOrigin="0.615,0.157" GroupName="Gender" Name="MaleChoise" IsChecked="{Binding isMale, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" CommandParameter="{Binding ElementName=MaleChoise}" Background="{x:Null}" BorderBrush="#FF4D60C0"/>
+                    <DatePicker
                     materialDesign:HintAssist.Hint="Date of birth" Text="{Binding DateOfBirth}"
-                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="212,96,566,467.2" Height="44" FontSize="16" />
-                <TextBox
-                    HorizontalAlignment="Left" Height="34" Margin="212,230,0,0"  VerticalAlignment="Top" Width="364" materialDesign:HintAssist.Hint="Address" TextWrapping="Wrap" FontSize="16" Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}"/>
-                <materialDesign:PackIcon Kind="MapMarker" Margin="160,233,0,0" Height="31" Width="32" />
-                <Label Content="Gender:" HorizontalAlignment="Left" Margin="524,114,0,0" VerticalAlignment="Top" Height="26" Width="73" FontSize="16"/>
-                <TextBox
-                    HorizontalAlignment="Left" Height="34" Margin="655,230,0,0"  VerticalAlignment="Top" Width="195" materialDesign:HintAssist.Hint="Place of birth" TextWrapping="Wrap" FontSize="16" Text="{Binding PlaceOfBirth, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBox Name="IdH" 
-                    HorizontalAlignment="Left" Height="34" Margin="614,158,0,0"  VerticalAlignment="Top" Width="236" materialDesign:HintAssist.Hint="HouseholdId" TextWrapping="Wrap" FontSize="16" Text="{Binding HouseholdId, UpdateSourceTrigger=PropertyChanged}">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="TextChanged">
-                            <i:InvokeCommandAction Command="{Binding HouseholdIDChangeCommand}" CommandParameter="{Binding ElementName=IdH}"/>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                </TextBox>
+                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="167,91,611,472.2" Height="44" FontSize="16" />
+                    <TextBox
+                     materialDesign:HintAssist.Foreground="Black"
+                            materialDesign:TextFieldAssist.UnderlineBrush="Black"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                    HorizontalAlignment="Left" Height="49" Margin="167,225,0,0"  VerticalAlignment="Top" Width="425" materialDesign:HintAssist.Hint="Address" TextWrapping="Wrap" FontSize="16" Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}"/>
+                    <materialDesign:PackIcon Kind="MapMarker" Margin="115,243,0,0" Height="31" Width="32" />
+                    <Label Content="Gender:" HorizontalAlignment="Left" Margin="479,109,0,0" VerticalAlignment="Top" Height="26" Width="73" FontSize="16"/>
+                    <TextBox
+                     materialDesign:HintAssist.Foreground="Black"
+                            materialDesign:TextFieldAssist.UnderlineBrush="Black"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                    HorizontalAlignment="Left" Height="49" Margin="645,225,0,0"  VerticalAlignment="Top" Width="254" materialDesign:HintAssist.Hint="Place of birth" TextWrapping="Wrap" FontSize="16" Text="{Binding PlaceOfBirth, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox Name="IdH" 
+                          materialDesign:HintAssist.Foreground="Black"
+                            materialDesign:TextFieldAssist.UnderlineBrush="Black"
+                          
+                    HorizontalAlignment="Left" Height="34" Margin="569,163,0,0"  VerticalAlignment="Top" Width="236" materialDesign:HintAssist.Hint="HouseholdId" TextWrapping="Wrap" FontSize="16" Text="{Binding HouseholdId, UpdateSourceTrigger=PropertyChanged}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="TextChanged">
+                                <i:InvokeCommandAction Command="{Binding HouseholdIDChangeCommand}" CommandParameter="{Binding ElementName=IdH}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBox>
 
-                <TextBox
-                    HorizontalAlignment="Left" Height="34" Margin="212,387,0,0"  VerticalAlignment="Top" Width="128" materialDesign:HintAssist.Hint="Religon" TextWrapping="Wrap" FontSize="16" Text="{Binding Religion, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
-                <materialDesign:PackIcon Kind="Cross" Margin="160,390,0,0" Height="31" Width="32" RenderTransformOrigin="0.825,-1.055" />
-                <materialDesign:PackIcon Kind="Briefcase" Margin="160,447,0,88.2" Height="Auto" Width="32" RenderTransformOrigin="0.412,1.303" VerticalAlignment="Stretch" />
-                <TextBox
-                    HorizontalAlignment="Left" Height="34" Margin="212,460,0,0"  VerticalAlignment="Top" Width="220" materialDesign:HintAssist.Hint="Career" TextWrapping="Wrap" FontSize="16" Text="{Binding Carrer, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBox
-                    HorizontalAlignment="Left" Height="34" Margin="212,321,0,0"  VerticalAlignment="Top" Width="391" 
+                    <TextBox
+                     materialDesign:HintAssist.Foreground="Black"
+                            materialDesign:TextFieldAssist.UnderlineBrush="Black"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                    HorizontalAlignment="Left" Height="49" Margin="167,379,0,0"  VerticalAlignment="Top" Width="128" materialDesign:HintAssist.Hint="Religon" TextWrapping="Wrap" FontSize="16" Text="{Binding Religion, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                    <materialDesign:PackIcon Kind="Cross" Margin="115,397,0,0" Height="31" Width="32" RenderTransformOrigin="0.825,-1.055" />
+                    <materialDesign:PackIcon Kind="Briefcase" Margin="115,458,0,109.2" Height="Auto" Width="32" RenderTransformOrigin="0.412,1.303" VerticalAlignment="Stretch" />
+                    <TextBox
+                     materialDesign:HintAssist.Foreground="Black"
+                            materialDesign:TextFieldAssist.UnderlineBrush="Black"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                    HorizontalAlignment="Left" Height="49" Margin="167,449,0,0"  VerticalAlignment="Top" Width="220" materialDesign:HintAssist.Hint="Career" TextWrapping="Wrap" FontSize="16" Text="{Binding Carrer, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox
+                     materialDesign:HintAssist.Foreground="Black"
+                            materialDesign:TextFieldAssist.UnderlineBrush="Black"
+                          
+                    HorizontalAlignment="Left" Height="34" Margin="167,330,0,0"  VerticalAlignment="Top" Width="425" 
                     materialDesign:HintAssist.Hint="HouseHold Adress" TextWrapping="Wrap" FontSize="16" 
                     Text="{Binding HouseholdAddress, UpdateSourceTrigger=PropertyChanged}"
                     IsReadOnly="True"/>
-                <Button Command="{Binding AddingCommand}" Content="Add" Margin="257,533,0,0" Height="44" 
+                    <Button Command="{Binding AddingCommand}" Content="Add" Margin="260,524,0,0" Height="44" 
                         Background="#FF4D60C0" HorizontalAlignment="Left" Width="123" VerticalAlignment="Top" 
-                        Name="AddButton" CommandParameter="{Binding ElementName=AddButton}"/>
-                <Label Content="Household Address" HorizontalAlignment="Left" VerticalAlignment="Top" 
-                       Margin="212,286,0,0" Height="31" Width="232" FontSize="16" Padding="0,4,4,4"/>
-                <Label Content="Household Id:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="471,171,0,0" Height="21" Width="126" FontSize="16" Padding="0"/>
-                <materialDesign:PackIcon Kind="HomeMapMarker" Margin="160,325,0,0" Height="31" Width="32" />
-                <materialDesign:PackIcon Kind="Present" Margin="160,109,0,0" Height="31" Width="32" />
-                <materialDesign:PackIcon Kind="HospitalMarker" Margin="605,230,0,0" Height="31" Width="32" />
-                <Button Content="Done" HorizontalAlignment="Left" Margin="605,533,0,0" 
+                        Name="AddButton" CommandParameter="{Binding ElementName=AddButton}" Foreground="#FFFCFCFD"/>
+                    <Label Content="Household Address" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                       Margin="167,294,0,0" Height="31" Width="232" FontSize="16" Padding="0,4,4,4"/>
+                    <Label Content="Household Id:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="426,166,0,0" Height="21" Width="126" FontSize="16" Padding="0" FontWeight="Bold" FontStyle="Italic"/>
+                    <materialDesign:PackIcon Kind="HomeMapMarker" Margin="115,330,0,0" Height="31" Width="32" />
+                    <materialDesign:PackIcon Kind="Present" Margin="115,104,0,0" Height="31" Width="32" />
+                    <materialDesign:PackIcon Kind="HospitalMarker" Margin="608,243,0,0" Height="31" Width="32" />
+                    <Button Content="Done" HorizontalAlignment="Left" Margin="608,524,0,0" 
                         VerticalAlignment="Top" Width="128" Height="44" Background="#FF4D60C0" 
-                        Command="{Binding DoneCommand}" CommandParameter="{Binding ElementName=FamilyWindowX}" />
-                <Button Content="Clear" HorizontalAlignment="Left" Margin="433,533,0,0" 
+                        Command="{Binding DoneCommand}" CommandParameter="{Binding ElementName=FamilyWindowX}" Foreground="#FFF4F5FA" />
+                    <Button Content="Clear" HorizontalAlignment="Left" Margin="436,524,0,0" 
                         VerticalAlignment="Top" Width="122" Height="44" Background="#FF4D60C0" 
-                        Command="{Binding ClearCommand}" CommandParameter="{Binding ElementName=FamilyWindowX}"/>
+                        Command="{Binding ClearCommand}" CommandParameter="{Binding ElementName=FamilyWindowX}" Foreground="White"/>
 
 
+                </Grid>
             </Grid>
         </Grid>
-    </Grid>
     </Border>
 </Window>
