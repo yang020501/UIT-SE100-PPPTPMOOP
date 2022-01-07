@@ -41,6 +41,24 @@ namespace household_management.ViewModel
         private bool _reportSelected;
         public bool ReportSelected { get => _reportSelected;set { _reportSelected = value; OnPropertyChanged(); openReportForm(); } }
 
+<<<<<<< Updated upstream
+=======
+        private bool _populationsForm;
+        public bool PopulationsForm { get => _populationsForm; set { _populationsForm = value; OnPropertyChanged(); openPopulationsForm(); } }
+
+        private bool _householdForm;
+        public bool HouseholdForm { get => _householdForm; set { _householdForm = value; OnPropertyChanged(); openHouseholdForm(); } }
+
+        private bool _transferForm;
+        public bool TransferForm { get => _transferForm; set { _transferForm = value; OnPropertyChanged(); openTransferForm(); } }
+
+        private bool _absenceForm;
+        public bool absenceForm { get => _absenceForm; set { _absenceForm = value; OnPropertyChanged(); openAbsenceForm(); } }
+
+        private bool _residenceForm;
+        public bool ResidenceForm { get => _residenceForm; set { _residenceForm = value; OnPropertyChanged(); openResidenceForm(); } }  
+
+>>>>>>> Stashed changes
         private bool _addSelected;
         public bool AddSelected { get => _addSelected;set {  _addSelected = value;OnPropertyChanged();  openAddPage(); ; } }
         
