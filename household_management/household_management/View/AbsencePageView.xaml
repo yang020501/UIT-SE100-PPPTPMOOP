@@ -20,36 +20,52 @@
                 <Grid >
 
                     <materialDesign:PackIcon Kind="Account" Margin="124,56,0,0" Height="31" Width="32" />
-                    <TextBox x:Name="tbFullName" HorizontalAlignment="Left" Height="48" Margin="177,36,0,0"  VerticalAlignment="Top" Width="415" materialDesign:HintAssist.Hint="Full Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" TextWrapping="Wrap" FontSize="16"  Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" />
-                    <materialDesign:PackIcon Kind="CardAccountDetails" Margin="124,123,0,0" Height="31" Width="32" />
                     <TextBox 
-                HorizontalAlignment="Left" Height="34" Margin="177,120,0,0"  VerticalAlignment="Top" Width="220" materialDesign:HintAssist.Hint="Id" TextWrapping="Wrap" FontSize="16" Text="{Binding IdOwner, UpdateSourceTrigger=PropertyChanged}"  materialDesign:HintAssist.HelperText="12 digits numbers" />
-                    <RadioButton Content="Female" HorizontalAlignment="Left" Margin="944,51,0,0" VerticalAlignment="Top"  Height="28" RenderTransformOrigin="0.615,0.157" IsChecked="{Binding FemaleChoice}" />
-                    <RadioButton Content="Male" HorizontalAlignment="Left" Margin="872,51,0,0" VerticalAlignment="Top"  Height="28" RenderTransformOrigin="0.615,0.157" IsChecked="{Binding MaleChoice}"/>
+                         materialDesign:HintAssist.Foreground="Black"
+                            materialDesign:TextFieldAssist.UnderlineBrush="Black"
+                           
+                        x:Name="tbFullName" HorizontalAlignment="Left" Height="49" Margin="177,36,0,0"  VerticalAlignment="Top" Width="415" materialDesign:HintAssist.Hint="Full Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" TextWrapping="Wrap" FontSize="16"  Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Padding="0,6,0,0" />
+                    <materialDesign:PackIcon Kind="CardAccountDetails" Margin="124,138,0,0" Height="31" Width="32" />
+                    <TextBox 
+                         materialDesign:HintAssist.Foreground="Black"
+                            materialDesign:TextFieldAssist.UnderlineBrush="Black"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                HorizontalAlignment="Left" Height="49" Margin="177,120,0,0"  VerticalAlignment="Top" Width="220" materialDesign:HintAssist.Hint="Id" TextWrapping="Wrap" FontSize="16" Text="{Binding IdOwner, UpdateSourceTrigger=PropertyChanged}"  materialDesign:HintAssist.HelperText="12 digits numbers" Padding="0,6,0,0" />
+                    <RadioButton Content="Female" HorizontalAlignment="Left" Margin="944,51,0,0" VerticalAlignment="Top"  Height="28" RenderTransformOrigin="0.615,0.157" IsChecked="{Binding FemaleChoice}" BorderBrush="#FF4D60C0" Background="#FF4D60C0" />
+                    <RadioButton Content="Male" HorizontalAlignment="Left" Margin="872,51,0,0" VerticalAlignment="Top"  Height="28" RenderTransformOrigin="0.615,0.157" IsChecked="{Binding MaleChoice}" Background="#FF4D60C0" BorderBrush="#FF4D60C0"/>
                     <Label Content="Gender:" HorizontalAlignment="Left" Margin="794,53,0,0" VerticalAlignment="Top" Height="26" Width="73" FontSize="16"/>
                     <TextBox x:Name="txtHId"  IsReadOnly="True"
+                              materialDesign:HintAssist.Foreground="Black"
+                            materialDesign:TextFieldAssist.UnderlineBrush="Black"
+                        
                 Text="{Binding Id_Household, UpdateSourceTrigger=PropertyChanged}"
                 HorizontalAlignment="Left" Height="34" Margin="269,206,0,0"  VerticalAlignment="Top" Width="236" materialDesign:HintAssist.Hint="HouseholdId" TextWrapping="Wrap" FontSize="16" />
                     <Label Content="Household Id:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="124,214,0,0" Height="26" Width="126" FontSize="16" Padding="0" FontWeight="Bold" FontStyle="Italic"/>
                     <TextBox
+                         materialDesign:HintAssist.Foreground="Black"
+                            materialDesign:TextFieldAssist.UnderlineBrush="Black"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                 IsReadOnly="True"
-                x:Name="tbFullName_Copy" HorizontalAlignment="Left" Height="34" Margin="178,270,0,0"  VerticalAlignment="Top" Width="415" materialDesign:HintAssist.Hint="Full Name" TextWrapping="Wrap" FontSize="16"  Text="{Binding HName, UpdateSourceTrigger=PropertyChanged}" />
-                    <materialDesign:PackIcon Kind="HomeAccount" Margin="124,273,0,0" Height="31" Width="32" />
-                    <materialDesign:PackIcon Kind="CalendarRange" Margin="794,115,0,0" Height="31" Width="32" RenderTransformOrigin="0.444,1.213" />
-                    <Label Content="Expire Date:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="794,228,0,0" Height="21" Width="126" FontSize="16" Padding="0"/>
-                    <Label Content="Create Date:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="794,174,0,0" Height="21" Width="126" FontSize="16" Padding="0"/>
+                x:Name="tbFullName_Copy" HorizontalAlignment="Left" Height="49" Margin="177,252,0,0"  VerticalAlignment="Top" Width="415" materialDesign:HintAssist.Hint="Full Name" TextWrapping="Wrap" FontSize="16"  Text="{Binding HName, UpdateSourceTrigger=PropertyChanged}" Padding="0,6,0,0" />
+                    <materialDesign:PackIcon Kind="HomeAccount" Margin="115,258,0,0" Height="43" Width="48" />
+                    <materialDesign:PackIcon Kind="CalendarRange" Margin="794,97,0,0" Height="31" Width="32" RenderTransformOrigin="0.444,1.213" />
+                    <Label Content="Expire Date:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="794,206,0,0" Height="21" Width="126" FontSize="16" Padding="0"/>
+                    <Label Content="Create Date:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="794,152,0,0" Height="21" Width="126" FontSize="16" Padding="0"/>
                     <TextBox IsReadOnly="True"
-                 HorizontalAlignment="Left" Height="34" Margin="925,161,0,0"  VerticalAlignment="Top" Width="180" materialDesign:HintAssist.Hint="Day leave" TextWrapping="Wrap" FontSize="16"  Text="{Binding CreateDate, UpdateSourceTrigger=PropertyChanged}" />
+                 HorizontalAlignment="Left" Height="34" Margin="925,139,0,0"  VerticalAlignment="Top" Width="180" materialDesign:HintAssist.Hint="Day leave" TextWrapping="Wrap" FontSize="16"  Text="{Binding CreateDate, UpdateSourceTrigger=PropertyChanged}" />
 
                     <TextBox
-        HorizontalAlignment="Left" Height="34" Margin="848,270,0,0"  IsReadOnly="True"
+                         materialDesign:HintAssist.Foreground="Black"
+                            materialDesign:TextFieldAssist.UnderlineBrush="Black"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+        HorizontalAlignment="Left" Height="49" Margin="848,252,0,0"  IsReadOnly="True"
         VerticalAlignment="Top" Width="426" materialDesign:HintAssist.Hint="Absence Address" 
         TextWrapping="Wrap" FontSize="16" 
-        Text="{Binding AbAddress,UpdateSourceTrigger=PropertyChanged}">
+        Text="{Binding AbAddress,UpdateSourceTrigger=PropertyChanged}" Padding="0,6,0,0">
                     </TextBox>
-                    <materialDesign:PackIcon Kind="HomeMapMarker" Margin="794,273,0,0" Height="31" Width="32" />
+                    <materialDesign:PackIcon Kind="HomeMapMarker" Margin="784,258,0,0" Height="46" Width="49" />
                     <TextBox IsReadOnly="True"
-                HorizontalAlignment="Left" Height="34" Margin="925,219,0,0"  VerticalAlignment="Top" Width="180" materialDesign:HintAssist.Hint="Day back" TextWrapping="Wrap" FontSize="16"  Text="{Binding CreateDate, UpdateSourceTrigger=PropertyChanged}" />
+                HorizontalAlignment="Left" Height="34" Margin="925,197,0,0"  VerticalAlignment="Top" Width="180" materialDesign:HintAssist.Hint="Day back" TextWrapping="Wrap" FontSize="16"  Text="{Binding CreateDate, UpdateSourceTrigger=PropertyChanged}" />
                     <Label Content="ID:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontStyle="Italic"/>
                     <Label Content="{Binding Id,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="32,14,0,0" VerticalAlignment="Top" Width="59" Height="20" Padding="0"/>
 
@@ -83,7 +99,7 @@
                 </Border>
                 <Border CornerRadius="0,0,4,0" Grid.Column="1" BorderBrush="LightGray" BorderThickness="0,0,2,2">
                     <Grid >
-                        <Button Command="{Binding Deletebtn}" Content="Remove"  Height="79" Background="#FF4D60C0" HorizontalAlignment="Left" Width="140" VerticalAlignment="Top" Margin="40,110,0,0" />
+                        <Button Command="{Binding Deletebtn}" Content="Remove"  Height="79" Background="#FF4D60C0" HorizontalAlignment="Left" Width="140" VerticalAlignment="Top" Margin="40,110,0,0" Foreground="#FFF6F6F7" FontSize="18" />
                     </Grid>
                 </Border>
             </Grid>

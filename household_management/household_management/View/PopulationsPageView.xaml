@@ -11,82 +11,119 @@
       DataContext="{StaticResource PPV_VM}"
       Title="PopulationsPageView" Height="661.6" Width="1325.6">
     <Border Background="White" CornerRadius="5">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1.4*"></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.2*"></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Border Grid.Column="1" BorderBrush="LightGray" BorderThickness="0,2,2,0">
-                <Grid  >
-                    <TextBox 
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.4*"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="1" BorderBrush="LightGray" BorderThickness="0,2,2,0">
+                    <Grid  >
+                        <TextBox 
+                         materialDesign:HintAssist.Foreground="Black"
+                            materialDesign:TextFieldAssist.UnderlineBrush="Black"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                     x:Name="txtName"
                     Text="{Binding Name,UpdateSourceTrigger=PropertyChanged}"
-                    HorizontalAlignment="Left" Height="34" Margin="90,23,0,0"  VerticalAlignment="Top" Width="369" materialDesign:HintAssist.Hint="Name"  FontSize="16" />
-                    <materialDesign:PackIcon Kind="Account" Margin="30,26,0,0" Height="31" Width="32" />
-                    <TextBox x:Name="txtId" Text="{Binding Id,UpdateSourceTrigger=PropertyChanged}"
-            HorizontalAlignment="Left" Height="34" Margin="90,69,0,0"  VerticalAlignment="Top" Width="220" materialDesign:HintAssist.Hint="Id" TextWrapping="Wrap" FontSize="16"  materialDesign:HintAssist.HelperText="12 digits numbers" />
-                    <materialDesign:PackIcon Kind="CardAccountDetails" Margin="30,75,0,0" Height="31" Width="32" RenderTransformOrigin="0.438,1.342" />
-                    <TextBox x:Name="txtAddress" Text="{Binding Address,UpdateSourceTrigger=PropertyChanged}"
-            HorizontalAlignment="Left" Height="34" Margin="90,135,0,0"  VerticalAlignment="Top" Width="391" materialDesign:HintAssist.Hint="Address" TextWrapping="Wrap" FontSize="16" />
-                    <materialDesign:PackIcon Kind="MapMarker" Margin="30,138,0,0" Height="31" Width="32" RenderTransformOrigin="-1.562,-2.452" />
-                    <TextBox x:Name="txtPBirth" Text="{Binding PlaceOfBirth}"
-            HorizontalAlignment="Left" Height="34" Margin="625,135,0,0"  VerticalAlignment="Top" Width="195" materialDesign:HintAssist.Hint="Place of birth" TextWrapping="Wrap" FontSize="16" />
-                    <TextBox x:Name="txtRelegion" Text="{Binding Relegion}"
-            HorizontalAlignment="Left" Height="34" Margin="90,266,0,0"  VerticalAlignment="Top" Width="128" materialDesign:HintAssist.Hint="Religon" TextWrapping="Wrap" FontSize="16" />
-                    <materialDesign:PackIcon Kind="Cross" Margin="30,269,0,0" Height="31" Width="32" RenderTransformOrigin="0.825,-1.055" />
-                    <TextBox x:Name="txtCareer" Text="{Binding Career}"
-            HorizontalAlignment="Left" Height="34" Margin="90,326,0,0"  VerticalAlignment="Top" Width="220" materialDesign:HintAssist.Hint="Career" TextWrapping="Wrap" FontSize="16" />
-                    <TextBox IsReadOnly="True" Text="{Binding HAddress,UpdateSourceTrigger=PropertyChanged}"
-            HorizontalAlignment="Left" Height="34" Margin="90,210,0,0"  VerticalAlignment="Top" Width="391" materialDesign:HintAssist.Hint="HouseHold Adress" TextWrapping="Wrap" FontSize="16" />
-                    <Label Content="Household Address" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="90,174,0,0" Height="31" Width="232" FontSize="16" Padding="0,4,4,4"/>
-                    <materialDesign:PackIcon Kind="HomeMapMarker" Margin="30,213,0,0" Height="31" Width="32" />
+                    HorizontalAlignment="Left" Height="49" Margin="90,16,0,0"  VerticalAlignment="Top" Width="391" materialDesign:HintAssist.Hint="Name"  FontSize="16" Padding="0,6,0,0" />
+                        <materialDesign:PackIcon Kind="Account" Margin="30,33,0,0" Height="31" Width="32" />
+                        <TextBox 
+                         materialDesign:HintAssist.Foreground="Black"
+                            materialDesign:TextFieldAssist.UnderlineBrush="Black"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        x:Name="txtId" Text="{Binding Id,UpdateSourceTrigger=PropertyChanged}"
+            HorizontalAlignment="Left" Height="49" Margin="90,74,0,0"  VerticalAlignment="Top" Width="220" materialDesign:HintAssist.Hint="Id" TextWrapping="Wrap" FontSize="16"  materialDesign:HintAssist.HelperText="12 digits numbers" />
+                        <materialDesign:PackIcon Kind="CardAccountDetails" Margin="30,92,0,0" Height="31" Width="32" RenderTransformOrigin="0.438,1.342" />
+                        <TextBox 
+                        
+                         materialDesign:HintAssist.Foreground="Black"
+                            materialDesign:TextFieldAssist.UnderlineBrush="Black"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        x:Name="txtAddress" Text="{Binding Address,UpdateSourceTrigger=PropertyChanged}"
+            HorizontalAlignment="Left" Height="49" Margin="90,139,0,0"  VerticalAlignment="Top" Width="391" materialDesign:HintAssist.Hint="Address" TextWrapping="Wrap" FontSize="16" />
+                        <materialDesign:PackIcon Kind="MapMarker" Margin="30,157,0,0" Height="31" Width="32" RenderTransformOrigin="-1.562,-2.452" />
+                        <TextBox
+                             materialDesign:HintAssist.Foreground="Black"
+                            materialDesign:TextFieldAssist.UnderlineBrush="Black"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            x:Name="txtPBirth" Text="{Binding PlaceOfBirth}"
+            HorizontalAlignment="Left" Height="49" Margin="625,135,0,0"  VerticalAlignment="Top" Width="249" materialDesign:HintAssist.Hint="Place of birth" TextWrapping="Wrap" FontSize="16" Padding="0,6,0,0" />
+                        <TextBox 
+                             materialDesign:HintAssist.Foreground="Black"
+                            materialDesign:TextFieldAssist.UnderlineBrush="Black"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            x:Name="txtRelegion" Text="{Binding Relegion}"
+            HorizontalAlignment="Left" Height="49" Margin="90,310,0,0"  VerticalAlignment="Top" Width="128" materialDesign:HintAssist.Hint="Religon" TextWrapping="Wrap" FontSize="16" Padding="0,6,0,0" />
+                        <materialDesign:PackIcon Kind="Cross" Margin="30,328,0,0" Height="31" Width="32" RenderTransformOrigin="0.825,-1.055" />
+                        <TextBox
+                             materialDesign:HintAssist.Foreground="Black"
+                            materialDesign:TextFieldAssist.UnderlineBrush="Black"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            x:Name="txtCareer" Text="{Binding Career}"
+            HorizontalAlignment="Left" Height="49" Margin="625,236,0,0"  VerticalAlignment="Top" Width="249" materialDesign:HintAssist.Hint="Career" TextWrapping="Wrap" FontSize="16" Padding="0,6,0,0" />
+                        <TextBox 
+                             materialDesign:HintAssist.Foreground="Black"
+                            materialDesign:TextFieldAssist.UnderlineBrush="Black"
+                   
+                            IsReadOnly="True" Text="{Binding HAddress,UpdateSourceTrigger=PropertyChanged}"
+            HorizontalAlignment="Left" Height="34" Margin="90,254,0,0"  VerticalAlignment="Top" Width="391" materialDesign:HintAssist.Hint="HouseHold Adress" TextWrapping="Wrap" FontSize="16" />
+                        <Label Content="Household Address" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="90,208,0,0" Height="31" Width="232" FontSize="16" Padding="0,4,4,4"/>
+                        <materialDesign:PackIcon Kind="HomeMapMarker" Margin="30,254,0,0" Height="34" Width="39" />
 
-                    <RadioButton x:Name="FemaleChoise" VerticalAlignment="Top" RenderTransformOrigin="0.615,0.157" Margin="666,36,0,0"  Height="28" HorizontalAlignment="Left" GroupName="Gender" Content="Female" Width="66" IsChecked="{Binding FemaleChoice}"/>
-                    <RadioButton x:Name="MaleChoise" VerticalAlignment="Top" RenderTransformOrigin="0.615,0.157" Margin="599,37,0,0"  Height="28" HorizontalAlignment="Left" GroupName="Gender"  Content="Male" IsChecked="{Binding MaleChoice}"/>
-                    <Label Width="73" VerticalAlignment="Top" Margin="511,36,0,0" Height="26" HorizontalAlignment="Left" FontSize="16" Content="Gender:"/>
-                    <TextBox  IsReadOnly="True" Visibility="Hidden" IsEnabled="False"
+                        <RadioButton x:Name="FemaleChoise" VerticalAlignment="Top" RenderTransformOrigin="0.615,0.157" Margin="666,36,0,0"  Height="28" HorizontalAlignment="Left" GroupName="Gender" Content="Female" Width="66" IsChecked="{Binding FemaleChoice}" BorderBrush="#FF4D60C0" Background="#FF4D60C0"/>
+                        <RadioButton x:Name="MaleChoise" VerticalAlignment="Top" RenderTransformOrigin="0.615,0.157" Margin="599,37,0,0"  Height="28" HorizontalAlignment="Left" GroupName="Gender"  Content="Male" IsChecked="{Binding MaleChoice}" Background="#FF4D60C0" BorderBrush="#FF4D60C0"/>
+                        <Label Width="73" VerticalAlignment="Top" Margin="511,36,0,0" Height="26" HorizontalAlignment="Left" FontSize="16" Content="Gender:"/>
+                        <TextBox  IsReadOnly="True" Visibility="Hidden" IsEnabled="False"
                          Text="{Binding Id_Household,UpdateSourceTrigger=PropertyChanged}"
                     HorizontalAlignment="Left" Height="34" Margin="869,81,0,0"  VerticalAlignment="Top" Width="154" materialDesign:HintAssist.Hint="HouseholdId" TextWrapping="Wrap" FontSize="16" >
-                    </TextBox>
+                        </TextBox>
 
-                    <Label Content="Household Id:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="511,85,0,0" Height="21" Width="126" FontSize="16" Padding="0"/>
-                    <DatePicker x:Name="dpBirth" SelectedDate ="{Binding DB,UpdateSourceTrigger=PropertyChanged}"
+                        <Label Content="Household Id:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="511,85,0,0" Height="21" Width="126" FontSize="16" Padding="0" FontWeight="Bold" FontStyle="Italic"/>
+                        <DatePicker
+                             materialDesign:HintAssist.Foreground="Black"
+                            materialDesign:TextFieldAssist.UnderlineBrush="Black"
+                       
+                            x:Name="dpBirth" SelectedDate ="{Binding DB,UpdateSourceTrigger=PropertyChanged}"
                     Text="{Binding DateOfBirth,UpdateSourceTrigger=PropertyChanged}"
                          
                     materialDesign:HintAssist.Hint="Date of birth"
-                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="869,13,27.8,328.6" Height="44" FontSize="16" />
-                    <materialDesign:PackIcon Kind="Present" Margin="812,26,0,0" Height="31" Width="32" />
-                    <materialDesign:PackIcon Kind="HospitalMarker" Margin="571,138,0,0" Height="31" Width="32" RenderTransformOrigin="-1.562,-2.452" />
-                    <materialDesign:PackIcon Kind="Briefcase" Margin="30,329,0,0" Height="31" Width="32" RenderTransformOrigin="0.825,-1.055" />
-                    <ComboBox  SelectedValue="{Binding SelectedCb,UpdateSourceTrigger=PropertyChanged}"  SelectedIndex="{Binding SelectedIndex,UpdateSourceTrigger=PropertyChanged}"  ItemsSource="{Binding DicList,UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Left" Margin="625,75,0,0" VerticalAlignment="Top" Width="195" Height="34" FontSize="16"/>
+                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="869,18,34.2,322" Height="44" FontSize="16" />
+                        <materialDesign:PackIcon Kind="Present" Margin="817,31,0,0" Height="31" Width="32" />
+                        <materialDesign:PackIcon Kind="HospitalMarker" Margin="571,157,0,0" Height="31" Width="32" RenderTransformOrigin="-1.562,-2.452" />
+                        <materialDesign:PackIcon Kind="Briefcase" Margin="571,254,0,0" Height="31" Width="32" RenderTransformOrigin="0.825,-1.055" />
+                        <TextBox
+                            materialDesign:HintAssist.Foreground="Black"
+                            materialDesign:TextFieldAssist.UnderlineBrush="Black"
+                     
+                           Text="{Binding Id_Household,UpdateSourceTrigger=PropertyChanged}"
+                            HorizontalAlignment="Left" Height="34" Margin="625,72,0,0"  VerticalAlignment="Top" Width="249" materialDesign:HintAssist.Hint="IdHousehold" TextWrapping="Wrap" FontSize="16" Padding="0,6,0,0" />
 
-                </Grid>
-            </Border>
-            <Border Grid.Column="0" BorderBrush="LightGray" BorderThickness="2,2,2,0">
-                <Grid>
-                    <Button CommandParameter="{Binding ElementName=imPic}" Command="{Binding Choosebtn}" Content="Choose" Height="39" Background="#FF4D60C0" HorizontalAlignment="Left" Width="88" VerticalAlignment="Top" Margin="65,288,0,0"  />
-                    <Border BorderBrush="#FF4D60C0" BorderThickness="2" Margin="40,88,39.6,116" >
-                        <Grid  >
-                            <Image  x:Name="imPic"  Height="177"  Source="{Binding SPhoto,UpdateSourceTrigger=PropertyChanged}" Stretch="Fill" Width="135.2"  />
-                        </Grid>
-                    </Border>
-                </Grid>
-            </Border>
+                    </Grid>
+                </Border>
+                <Border Grid.Column="0" BorderBrush="LightGray" BorderThickness="2,2,2,0">
+                    <Grid>
+                        <Button CommandParameter="{Binding ElementName=imPic}" Command="{Binding Choosebtn}" Content="Choose" Height="39" Background="#FF4D60C0" HorizontalAlignment="Left" Width="88" VerticalAlignment="Top" Margin="65,288,0,0" Foreground="#FFF9FAFD"  />
+                        <Border BorderBrush="#FF4D60C0" BorderThickness="2" Margin="40,88,39.6,116" >
+                            <Grid  >
+                                <Image  x:Name="imPic"  Height="177"  Source="{Binding SPhoto,UpdateSourceTrigger=PropertyChanged}" Stretch="Fill" Width="135.2"  />
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Border>
 
-        </Grid>
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition ></ColumnDefinition>
-                <ColumnDefinition Width="0.2*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Border CornerRadius="0,0,0,4" BorderBrush="LightGray" BorderThickness="2,2,0,2">
-                <Grid Grid.Column="0">
-                    <DataGrid 
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition ></ColumnDefinition>
+                    <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Border CornerRadius="0,0,0,4" BorderBrush="LightGray" BorderThickness="2,2,0,2">
+                    <Grid Grid.Column="0">
+                        <DataGrid 
                 
                 x:Name="dtg" 
                 IsReadOnly="True"
@@ -95,30 +132,30 @@
                 SelectedValue="{Binding Selected}" Margin="0,0,0.2,0.8"  
 
                 >
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Number" Binding="{Binding OrdinalNumber}"/>
-                            <DataGridTextColumn Header="Id_Household" Binding="{Binding Id_Household}"/>
-                            <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
-                            <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
-                            <DataGridTextColumn Header="Gender" Binding="{Binding Gender}"/>
-                            <DataGridTextColumn Header="DateOfBirth" Binding="{Binding DateOfBirth}"/>
-                            <DataGridTextColumn Header="PlaceOfBirth" Binding="{Binding PlaceOfBirth}"/>
-                            <DataGridTextColumn Header="Address" Binding="{Binding Address}"/>
-                            <DataGridTextColumn Header="Relegion" Binding="{Binding Relegion}"/>
-                            <DataGridTextColumn Header="Career" Binding="{Binding Career}"/>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </Grid>
-            </Border>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Number" Binding="{Binding OrdinalNumber}"/>
+                                <DataGridTextColumn Header="Id_Household" Binding="{Binding Id_Household}"/>
+                                <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                                <DataGridTextColumn Header="Gender" Binding="{Binding Gender}"/>
+                                <DataGridTextColumn Header="DateOfBirth" Binding="{Binding DateOfBirth}"/>
+                                <DataGridTextColumn Header="PlaceOfBirth" Binding="{Binding PlaceOfBirth}"/>
+                                <DataGridTextColumn Header="Address" Binding="{Binding Address}"/>
+                                <DataGridTextColumn Header="Relegion" Binding="{Binding Relegion}"/>
+                                <DataGridTextColumn Header="Career" Binding="{Binding Career}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Border>
 
-            <Border CornerRadius="0,0,4,0" Grid.Column="1"  BorderBrush="LightGray" BorderThickness="2">
-                <Grid Grid.Column="1">
-                    <Button Command="{Binding Updatebtn}" CommandParameter="{Binding ElementName=dtg}" Content="Update"  Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="123" VerticalAlignment="Top" Margin="49,68,0,0" />
-                    <Button Command="{Binding Deletebtn}" CommandParameter="{Binding ElementName=dtg}" Content="Remove"  Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="123" VerticalAlignment="Top" Margin="49,158,0,0"  />
+                <Border CornerRadius="0,0,4,0" Grid.Column="1"  BorderBrush="LightGray" BorderThickness="2">
+                    <Grid Grid.Column="1">
+                        <Button Command="{Binding Updatebtn}" CommandParameter="{Binding ElementName=dtg}" Content="Update"  Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="123" VerticalAlignment="Top" Margin="49,68,0,0" Foreground="#FFF3F4F6" />
+                        <Button Command="{Binding Deletebtn}" CommandParameter="{Binding ElementName=dtg}" Content="Remove"  Height="44" Background="#FF4D60C0" HorizontalAlignment="Left" Width="123" VerticalAlignment="Top" Margin="49,158,0,0" Foreground="#FFF6F6F7"  />
 
-                </Grid>
-            </Border>
+                    </Grid>
+                </Border>
+            </Grid>
         </Grid>
-    </Grid>
     </Border>
 </Page>

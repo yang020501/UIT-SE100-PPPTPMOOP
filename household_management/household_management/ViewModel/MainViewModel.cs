@@ -2,6 +2,7 @@
 using household_management.View;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,11 +30,15 @@ namespace household_management.ViewModel
         public string Photo { get => _Photo; set { _Photo = value; OnPropertyChanged(); } }
 
         public ICommand LoadWindowCommand{ get; set; }
-        public ICommand LoadPopuationWindowCommand { get; set; }
         public ICommand LogoutCommand { get; set; }
-        public ICommand LoadManageButtonCommand { get; set; }
         public ICommand LoadAccount { get; set; }
         public bool isLoad = false;
+
+        private ObservableCollection<Population> PopulationsList;
+        private ObservableCollection<Household_Registration> HouseholdList;
+        private ObservableCollection<Transfer_Household> TransferList;
+        private ObservableCollection<Temporary_Absence> AbsenceList;
+        private ObservableCollection<Temporary_Residence> ResidenceList;
 
         private Frame main = new Frame();
         public Frame Main { get => main; set { main = value; OnPropertyChanged(); } }
@@ -41,8 +46,7 @@ namespace household_management.ViewModel
         private bool _reportSelected;
         public bool ReportSelected { get => _reportSelected;set { _reportSelected = value; OnPropertyChanged(); openReportForm(); } }
 
-<<<<<<< Updated upstream
-=======
+
         private bool _populationsForm;
         public bool PopulationsForm { get => _populationsForm; set { _populationsForm = value; OnPropertyChanged(); openPopulationsForm(); } }
 
@@ -56,9 +60,11 @@ namespace household_management.ViewModel
         public bool absenceForm { get => _absenceForm; set { _absenceForm = value; OnPropertyChanged(); openAbsenceForm(); } }
 
         private bool _residenceForm;
+
         public bool ResidenceForm { get => _residenceForm; set { _residenceForm = value; OnPropertyChanged(); openResidenceForm(); } }  
 
->>>>>>> Stashed changes
+
+
         private bool _addSelected;
         public bool AddSelected { get => _addSelected;set {  _addSelected = value;OnPropertyChanged();  openAddPage(); ; } }
         
@@ -93,9 +99,8 @@ namespace household_management.ViewModel
                 AccountPage page = new AccountPage();
                 AccountManagerViewModel.Vm = data;              
                 main.Content = page;
-
             }
-            else
+            else if(LoginViewModel.Role != "Manager")
             {
                 MessageBox.Show("you do not have the authority to accsess");
             }
@@ -145,7 +150,22 @@ namespace household_management.ViewModel
                 // xu ly len form 
                 Reports wd = new Reports();
                 // gan nguon du lieu
-                report.SetParameterValue("slNK", 100);
+                setDataReport();
+
+                report.SetParameterValue("userName", Name);
+                report.SetParameterValue("userId", Id);
+                if (Role == "Manager")
+                {
+                    report.SetParameterValue("userRole", "Quản lý");
+                }
+                else
+                    report.SetParameterValue("userRole", "Nhân viên");
+                report.SetParameterValue("slNK", PopulationsList.Count);                
+                report.SetParameterValue("slHK", HouseholdList.Count);
+                report.SetParameterValue("slCK", TransferList.Count);
+                report.SetParameterValue("slTV", AbsenceList.Count);
+                report.SetParameterValue("slTT", ResidenceList.Count);
+
                 wd.reportViewer.ReportSource = report;
                 
                 // show
@@ -153,21 +173,62 @@ namespace household_management.ViewModel
 
             }
         }
+        private void openPopulationsForm()
+        {
+            if (PopulationsForm == true)
+            {
+                Report.formAddPopulations form = new Report.formAddPopulations();
+                //
+                CrystalDecisions.Shared.TableLogOnInfo info;
+                // dinh dang lai info
+                info = form.Database.Tables[0].LogOnInfo;
+                info.ConnectionInfo.ServerName = ".\\(local)";
+                info.ConnectionInfo.DatabaseName = "HoKhau";
+                info.ConnectionInfo.IntegratedSecurity = true;
+                form.Database.Tables[0].ApplyLogOnInfo(info);
+                // xu ly len form 
+                PopulationsForm wd = new PopulationsForm();
+                // gan nguon du lieu
+                wd.pViewer.ReportSource = form;
+
+                //show
+                wd.Show();
+            }
+        }
+        private void openHouseholdForm()
+        {
+        }
+        private void openTransferForm()
+        { 
+        }
+        private void openAbsenceForm()
+        {
+        }
+        private void openResidenceForm()
+        {
+        }
+        private void openAboutUs()
+        {
+            About wd = new About();
+            wd.ShowDialog();
+        }
+
+
+        private void setDataReport()
+        {
+            PopulationsList = new ObservableCollection<Population>(DataProvider.Ins.DB.Populations);
+            HouseholdList = new ObservableCollection<Household_Registration>(DataProvider.Ins.DB.Household_Registration);
+            TransferList = new ObservableCollection<Transfer_Household>(DataProvider.Ins.DB.Transfer_Household);
+            AbsenceList = new ObservableCollection<Temporary_Absence>(DataProvider.Ins.DB.Temporary_Absence);
+            ResidenceList = new ObservableCollection<Temporary_Residence>(DataProvider.Ins.DB.Temporary_Residence);
+        }
+
+
         public MainViewModel()
         {
 
-          
-            LoadManageButtonCommand = new RelayCommand<Button>((p) => { return true; }, (p) => 
-            { 
-                if(Role == "Manager")
-                {
-                    p.Visibility = Visibility.Visible;
-                }
-                else
-                {
-                    p.Visibility = Visibility.Hidden;
-                }
-            });
+
+            AddSelected = true;
 
             LoadWindowCommand = new RelayCommand<Window>((p) => { return true; }, (p) => {
                 isLoad = true;
@@ -201,12 +262,7 @@ namespace household_management.ViewModel
 
             });
 
-            LoadPopuationWindowCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
-            {
-                View.Populations wd = new View.Populations();
-                wd.DataContext = new PopulationViewModel();
-                wd.ShowDialog();              
-            });
+         
 
             LogoutCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {               
@@ -214,7 +270,10 @@ namespace household_management.ViewModel
                 wd.Show();                             
                 LoginViewModel.isLogin = false;
                 LoginViewModel.isReLogin = true;
+                main.Refresh();
+                main.Content = null;
                 p.Close();
+                
             });
            
            

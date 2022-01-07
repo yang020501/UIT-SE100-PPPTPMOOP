@@ -222,8 +222,7 @@ namespace household_management.ViewModel
             });
         }
 
-        private int _SelectedIndex;
-        public int SelectedIndex { get => _SelectedIndex; set { _SelectedIndex = value; OnPropertyChanged(); } }
+        
         private string _SelectedCb;
         public  string SelectedCb
         {
@@ -273,22 +272,22 @@ namespace household_management.ViewModel
                     HAddress = (string)Selected.Row["HAddress"];
                    
                     // get all idHousehold
-                    DicList = new ObservableCollection<string>();
-                    var tmp = DataProvider.Ins.DB.Household_Registration.Where(x => x.IdOfOwner == Id);
-                    if (tmp != null)
-                    {
-                        foreach (Household_Registration item in tmp)
-                        {
-                            string id;
+                    //DicList = new ObservableCollection<string>();
+                    //var tmp = DataProvider.Ins.DB.Household_Registration.Where(x => x.IdOfOwner == Id);
+                    //if (tmp != null)
+                    //{
+                    //    foreach (Household_Registration item in tmp)
+                    //    {
+                    //        string id;
                             
-                            id = (string)check(item.Id);
+                    //        id = (string)check(item.Id);
                        
-                            DicList.Add(id);
-                        }
-                    }
-                    else
-                        DicList.Add(Id_Household);
-                    SelectedIndex = 0;
+                    //        DicList.Add(id);
+                    //    }
+                    //}
+                    //else
+                    //    DicList.Add(Id_Household);
+              
 
                     if ((string)Selected.Row["Photo"] != null && (string)Selected.Row["Photo"] != "")
 
@@ -327,6 +326,7 @@ namespace household_management.ViewModel
             Id_Household = null;
             Address = null;
             HAddress = null;
+            PlaceOfBirth = null;
 
 
         }
@@ -367,6 +367,7 @@ namespace household_management.ViewModel
         {
 
             var link = DataProvider.Ins.DB.Household_Registration.Where(x => x.IdOfOwner == item.Id).ToArray();
+            var link2 = DataProvider.Ins.DB.Family_Household.Where(x => x.Id_Person == item.Id).SingleOrDefault();
             var change = DataProvider.Ins.DB.Populations.Where(x => x.Id == item.Id).SingleOrDefault();
 
             string[] list = new string[12];
@@ -377,17 +378,25 @@ namespace household_management.ViewModel
             list[4] = check(item.DateOfBirth);
             list[5] = check(item.PlaceOfBirth);
             if (item.Id_Household != null)
-                list[6] = item.Id_Household;
-            else if(link != null && item.Id_Household == null)
+                list[6] = check(item.Id_Household);
+            //else if(link != null && item.Id_Household == null)
+            //{
+            //    // update Id household if this popualtion Id_Household null but have Id household in HouseholdRegis in database
+            //    if (link.Length > 0)
+            //    {
+            //        change.Id_Household = link[0].Id;
+            //        list[6] = check(link[0].Id);
+            //        DataProvider.Ins.DB.SaveChanges();
+            //    }
+
+            //}
+
+            // update Id household if this popualtion Id_Household null but have Id household in HouseholdRegis in database
+            else if (link2 != null)
             {
-                // update Id household if this popualtion Id_Household null but have Id household in HouseholdRegis in database
-                if (link.Length > 0)
-                {
-                    change.Id_Household = link[0].Id;
-                    list[6] = check(link[0].Id);
-                    DataProvider.Ins.DB.SaveChanges();
-                }
-                else list[6] = "";
+                change.Id_Household = link2.Id_Household;
+                list[6] = check(link2.Id_Household);
+                DataProvider.Ins.DB.SaveChanges();
             }
             else  
                 list[6] = "";

@@ -64,7 +64,8 @@ namespace household_management.ViewModel
                 }
                 else if(Password != PasswordRepeat)
                 {
-                    MessageBox.Show("The repeat password is incorrect");
+                    MessageBox.Show("The repeat password is incorrect, try again");
+                    Console.WriteLine("aaaaaaaaaaaaaaaaaa");
                 }
                 else
                 {

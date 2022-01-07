@@ -24,7 +24,7 @@
             <ColumnDefinition Width="15*"/>
             <ColumnDefinition Width="379*"/>
         </Grid.ColumnDefinitions>
-        <materialDesign:Card Width="380" Height="200" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="7,35,6.6,35.4">
+        <materialDesign:Card Width="380" Height="210" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="7,35,6.6,25.4">
             <Grid>
                 <Grid.Resources>
                     <Style TargetType="Grid">
@@ -70,14 +70,14 @@
                     </Grid.ColumnDefinitions>
 
                     <Grid Grid.Column="0">
-                        <Button Background="Blue"
+                        <Button Background="Blue" 
                         IsDefault="True"
                         Style="{StaticResource MaterialDesignRaisedDarkButton}"
                         Width="100"
                         ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
                         Command="{Binding LoginCommand}"
                         CommandParameter="{Binding ElementName=LoginWindowX}"
-                        Content="Login" />
+                        Content="Login" BorderThickness="2" Margin="20,-7,10,9.6" BorderBrush="#DD343D32" />
                     </Grid>
 
                     <Grid Grid.Column="1">
@@ -87,7 +87,7 @@
                         ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
                         Command="{Binding ExistCommand}"
                         CommandParameter="{Binding ElementName=LoginWindowX}"
-                        Content="Exist" />
+                        Content="Exist" Margin="10,-7,19.2,9.6" BorderThickness="2" />
                     </Grid>
                 </Grid>
             </Grid>

@@ -70,14 +70,14 @@
                         VerticalAlignment="Top" Width="396" materialDesign:HintAssist.Hint="HouseHold New Adress" 
                         TextWrapping="Wrap" FontSize="16" Text="{Binding New_Address, UpdateSourceTrigger=PropertyChanged}"/>
                         
-                            <Button Content="Check" HorizontalAlignment="Left" Background="#FF4D60C0" Height="30"
-                            Margin="523,261,0,0" VerticalAlignment="Top" Width="95"
+                            <Button Content="Check" HorizontalAlignment="Left" Background="#FF4D60C0" Height="38"
+                            Margin="523,253,0,0" VerticalAlignment="Top" Width="95"
                             Command="{Binding CheckIdHouseholdCommand}" 
                                 CommandParameter="{Binding ElementName=HouseholdIdBox}" Foreground="White"/>
 
 
-                        <Button Content="Check" HorizontalAlignment="Left" Background="#FF4D60C0" Height="30"
-                            Margin="523,367,0,0" VerticalAlignment="Top" Width="95"
+                        <Button Content="Check" HorizontalAlignment="Left" Background="#FF4D60C0" Height="38"
+                            Margin="523,359,0,0" VerticalAlignment="Top" Width="95"
                             Command="{Binding CheckIdHouseholdCommand}" CommandParameter="{Binding ElementName=HouseholdIdBox_New}" 
                                     Foreground="White"/>
 
@@ -107,7 +107,7 @@
 
                     Command="{Binding AddCommand}" CommandParameter="{Binding ElementName=AddButton}" Foreground="White"/>
                 <Button Content="Clear"  Height="38" Width="95" Background="#FF4D60C0" 
-                    Margin="459,522,270,0" VerticalAlignment="Top" x:Name="ClearButton"
+                    Margin="450,522,279,0" VerticalAlignment="Top" x:Name="ClearButton"
                     Command="{Binding ClearCommand}" CommandParameter="{Binding ElementName=ClearButton}" Foreground="White"/>
             </Grid>
 
