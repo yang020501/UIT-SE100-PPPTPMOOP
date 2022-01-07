@@ -63,7 +63,11 @@ namespace household_management.ViewModel
 
         private bool _addSelected;
         public bool AddSelected { get => _addSelected;set {  _addSelected = value;OnPropertyChanged();  openAddPage(); ; } }
-        
+
+        private bool _statisticsSelected;
+        public bool StatisticsSelected { get => _statisticsSelected; set { _statisticsSelected = value; OnPropertyChanged(); openStatisticPage(); ; } }
+      
+
         private bool _searchSelected;
         public bool SearchSelected { get => _searchSelected; set { _searchSelected = value; OnPropertyChanged(); openSearchPage(); } }
 
@@ -83,6 +87,7 @@ namespace household_management.ViewModel
             {
                 ChangePassword wd = new ChangePassword();
                 wd.ShowDialog();
+                ChangePasswordSelected = false;
             }
         }
 
@@ -95,13 +100,29 @@ namespace household_management.ViewModel
                 AccountPage page = new AccountPage();
                 AccountManagerViewModel.Vm = data;              
                 main.Content = page;
+                ManageSelected = false;
             }
             else if(LoginViewModel.Role != "Manager")
             {
                 MessageBox.Show("you do not have the authority to accsess");
             }
         }
-        
+        private void openStatisticPage()
+        {
+            if(StatisticsSelected == true)
+            {
+                main.Refresh();
+                main.Content = null;
+                ChartPageViewModel vm = new ChartPageViewModel();
+                ChartPageView page = new ChartPageView();
+                page.DataContext = null;
+                page.DataContext = vm;
+                main.Content = page;
+                StatisticsSelected = false;
+
+            }    
+        }
+
         private void openAddPage()
         {            
             if(AddSelected == true)
@@ -113,6 +134,7 @@ namespace household_management.ViewModel
                 addPage.DataContext = null;
                 addPage.DataContext = vm;
                 main.Content = addPage;
+                AddSelected = false;
             }
           
         }
@@ -125,6 +147,7 @@ namespace household_management.ViewModel
                 Search wd = new Search();
                 wd.DataContext = vm;
                 wd.ShowDialog();
+                SearchSelected = false;
             }
         }
         private void openReportForm()
@@ -166,6 +189,7 @@ namespace household_management.ViewModel
                 
                 // show
                 wd.ShowDialog();
+                ReportSelected = false;
 
             }
         }
@@ -189,6 +213,7 @@ namespace household_management.ViewModel
 
                 //show
                 wd.Show();
+                PopulationsForm = false;
             }
         }
         private void openHouseholdForm()
@@ -211,6 +236,8 @@ namespace household_management.ViewModel
 
                 //show
                 wd.Show();
+
+                HouseholdForm = false;
             }
         }
         private void openTransferForm()
@@ -233,6 +260,7 @@ namespace household_management.ViewModel
 
                 //show
                 wd.Show();
+                TransferForm = false;
             }
         }
         private void openAbsenceForm()
@@ -255,6 +283,7 @@ namespace household_management.ViewModel
 
                 //show
                 wd.Show();
+                AbsenceForm = false;
             }
         }
         private void openResidenceForm()
@@ -277,6 +306,7 @@ namespace household_management.ViewModel
 
                 //show
                 wd.Show();
+                ResidenceForm = false;
             }
         }
 
@@ -293,13 +323,7 @@ namespace household_management.ViewModel
 
         public MainViewModel()
         {
-            main.Refresh();
-            main.Content = null;
-            ChartPageViewModel vm = new ChartPageViewModel();
-            ChartPageView page = new ChartPageView();
-            page.DataContext = null;
-            page.DataContext = vm;
-            main.Content = page;
+            StatisticsSelected = true;
 
 
             LoadWindowCommand = new RelayCommand<Window>((p) => { return true; }, (p) => {

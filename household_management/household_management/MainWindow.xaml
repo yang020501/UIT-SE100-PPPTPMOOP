@@ -113,6 +113,8 @@
                                         <TreeViewItem Header="TResidence"  IsSelected="{Binding ResidenceForm,UpdateSourceTrigger=PropertyChanged}" FontSize="14"></TreeViewItem>
                                     </TreeViewItem>
                                 </TreeViewItem>
+                                <TreeViewItem Header="Statistic" IsSelected="{Binding StatisticSelected,UpdateSourceTrigger=PropertyChanged}">
+                                </TreeViewItem>
 
                             </TreeView>
                         </Grid>
