@@ -13,7 +13,7 @@
     <Border Background="White" CornerRadius="0,0,4,0">
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <StackPanel >
-                <Label Height="60" Content="Statistics of the number of records" FontSize="24" FontWeight="Bold" Foreground="#DD37709F" FontFamily="Segoe UI Symbol" Padding="30,10,4,0.2"/>
+                <Label Height="60" Content="Statistics of the number of records" FontSize="24" FontWeight="Bold" Foreground="#FF3A404C" FontFamily="Segoe UI Symbol" Padding="30,10,4,0.2"/>
                 <lvc:CartesianChart Series="{Binding SeriesCollection,UpdateSourceTrigger=PropertyChanged}" Height="475" Width="795">
                     <lvc:CartesianChart.AxisX>
                         <lvc:Axis Title="Profile Type"  Labels="{Binding Labels}" Margin="50,0,0,0"/>
@@ -22,7 +22,7 @@
                         <lvc:Axis Title="Quantily" LabelFormatter="{Binding Formatter}"/>
                     </lvc:CartesianChart.AxisY>
                 </lvc:CartesianChart>
-                <Label Height="60"  Content="Statistics of the number of Populations have Household" FontSize="24" FontWeight="Bold" Foreground="#DD37709F" FontFamily="Segoe UI Symbol" Padding="30,10,4,0"/>
+                <Label Height="60"  Content="Statistics of the number of Populations have Household" FontSize="24" FontWeight="Bold" Foreground="#FF3A404C" FontFamily="Segoe UI Symbol" Padding="30,10,4,0"/>
                 <lvc:PieChart  Series="{Binding PieSeries,UpdateSourceTrigger=PropertyChanged}" LegendLocation="Bottom"  Hoverable="True"  Height="405" Width="679">
                     <lvc:PieChart.ChartLegend>
                         <lvc:DefaultLegend BulletSize="25" TextBlock.FontSize="8"></lvc:DefaultLegend>
@@ -31,7 +31,7 @@
                         <lvc:DefaultTooltip BulletSize="20"></lvc:DefaultTooltip>
                     </lvc:PieChart.DataTooltip>
                 </lvc:PieChart>
-                <Label Height="60" Content="Statistics of the number of Population is Household Owner" FontSize="24" FontWeight="Bold" Foreground="#DD37709F" FontFamily="Segoe UI Symbol" Padding="30,10,4,0"/>
+                <Label Height="60" Content="Statistics of the number of Population is Household Owner" FontSize="24" FontWeight="Bold" Foreground="#FF3A404C" FontFamily="Segoe UI Symbol" Padding="30,10,4,0" Background="#00000000"/>
                 <lvc:PieChart Series="{Binding PieSeries2,UpdateSourceTrigger=PropertyChanged}" LegendLocation="Bottom"  Hoverable="True"  Height="405" Width="679">
                     <lvc:PieChart.ChartLegend>
                         <lvc:DefaultLegend BulletSize="25" TextBlock.FontSize="8"></lvc:DefaultLegend>

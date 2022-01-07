@@ -11,61 +11,62 @@
         DataContext="{StaticResource SearchVM}"
         Title="Search" Height="761.2" Width="1325.6" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}">
     <Border CornerRadius="5.3" Background="White">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="0.06*"></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
-        <Border Grid.Row="0" Background="#FF4D60C0" CornerRadius="4,4,0,0">
-        <Grid  HorizontalAlignment="Right" >
-            <Image  Source="/household_management;component/Resources/search.jpg" Stretch="Fill" Margin="19,6,1263.6,4.2"/>
-
-
-            <Button x:Name="btnExit"   Cursor="Hand" Click="btnExit_Click" Margin="1285,6,9.6,7.8" Height="Auto" RenderTransformOrigin="0.5,0.515">
-                <Button.Background>
-                    <ImageBrush ImageSource="/household_management;component/Resources/exite.jpg"/>
-                </Button.Background>
-            </Button>
-            <Label Content="Search"  FontWeight="Bold" FontSize="14" Foreground="#DDE1E6F3" Margin="67,6,802.6,8"/>
-
-        </Grid>
-        </Border>
-        <Grid Grid.Row="1">
+        <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.12*"></RowDefinition>
-                <RowDefinition Height="1.4*"></RowDefinition>
+                <RowDefinition Height="0.06*"></RowDefinition>
+                <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
+            <Border Grid.Row="0" Background="#FF4D60C0" CornerRadius="4,4,0,0">
+                <Grid  HorizontalAlignment="Right" >
+                    <Image  Source="/household_management;component/Resources/search.jpg" Stretch="Fill" Margin="19,6,1263.6,4.2"/>
 
-            <Grid Background="#FF303030" Grid.Row="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition   Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <ComboBox x:Name="selected"
+
+                    <Button x:Name="btnExit"   Cursor="Hand" Click="btnExit_Click" Margin="1285,6,9.6,7.8" Height="Auto" RenderTransformOrigin="0.5,0.515">
+                        <Button.Background>
+                            <ImageBrush ImageSource="/household_management;component/Resources/exite.jpg"/>
+                        </Button.Background>
+                    </Button>
+                    <Label Content="Search"  FontWeight="Bold" FontSize="14" Foreground="#DDE1E6F3" Margin="67,6,802.6,8"/>
+                    <Button x:Name="btnMini"   Cursor="Hand" Click="btnMini_Click" Margin="1250,20,49.6,18.2" Height="Auto" RenderTransformOrigin="0.5,0.515" Background="White"/>
+
+                </Grid>
+            </Border>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.12*"></RowDefinition>
+                    <RowDefinition Height="1.4*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid Background="#FF303030" Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition   Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <ComboBox x:Name="selected"
                          SelectedIndex="{Binding SelectedIndex}"
 
                          BorderThickness="0"
                          materialDesign:ColorZoneAssist.Mode="Dark"
                          materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource MaterialDesignPaper}"
                          BorderBrush="White" Padding="0,19,0,12" Margin="42,0,549.2,0" Foreground="White" FontSize="14">
-                    <ComboBoxItem
+                        <ComboBoxItem
                              Content="Popualtions" />
-                    <ComboBoxItem
+                        <ComboBoxItem
                              Content="Household" />
-                    <ComboBoxItem
+                        <ComboBoxItem
                              Content="Transfer" />
-                    <ComboBoxItem
+                        <ComboBoxItem
                              Content="Absencce"  />
-                    <ComboBoxItem
+                        <ComboBoxItem
                              Content="Residence"  />
-                </ComboBox>
-                <Button Grid.Column="0"
+                    </ComboBox>
+                    <Button Grid.Column="0"
                     Style="{DynamicResource MaterialDesignToolButton}" Margin="195,0,475,-0.2" Height="Auto">
-                    <materialDesign:PackIcon 
+                        <materialDesign:PackIcon 
                          Kind="Search"
                          Opacity="1" Height="23" Width="36" Foreground="#FFF6E9E9"/>
-                </Button>
-                <TextBox
+                    </Button>
+                    <TextBox
                      x:Name="txtSearch"
                      Background="White"
                      Grid.Column="0"
@@ -76,22 +77,22 @@
                      MinWidth="200"
                      VerticalAlignment="Center" Foreground="#FF0C0B0B" Height="35" FontSize="16" Padding="8,6,0,8"
                      Text="{Binding txtSearch,UpdateSourceTrigger=PropertyChanged,Mode=OneWayToSource}">
-                     
-                </TextBox>
-                <RadioButton IsChecked="{Binding rdName,UpdateSourceTrigger=PropertyChanged}" x:Name="rdName" Content="Name" Foreground="#FFF6E9E9" BorderBrush="#FFF6E9E9"  BorderThickness="4" Background="#FFF6E9E9" FontSize="16" FontWeight="Bold" Margin="48.8,0,-146.4,-0.2" Grid.Column="1" Padding="4,0,0,2" />
-                <RadioButton IsChecked="{Binding rdOrdinalNumber,UpdateSourceTrigger=PropertyChanged}" x:Name="rdOrdinalNumber" Content="Ordinalnumber" Foreground="#FFF6E9E9" BorderBrush="#FFF6E9E9"  BorderThickness="4" Background="#FFF6E9E9" FontSize="16" FontWeight="Bold" Margin="155.8,0,-254.4,-0.2" Grid.Column="1" Padding="4,0,0,2"/>
-                <RadioButton IsChecked="{Binding rdId,UpdateSourceTrigger=PropertyChanged}" x:Name="rdId" Content="Id" Foreground="#FFF6E9E9" BorderBrush="#FFF6E9E9"  BorderThickness="4" Background="#FFF6E9E9" FontSize="16" FontWeight="Bold" Margin="349.8,0,-376.4,-0.2" Grid.Column="1" Padding="4,0,0,2"/>
-                <RadioButton IsChecked="{Binding rdId_Household,UpdateSourceTrigger=PropertyChanged}" x:Name="rdId_Household" Content="Id_Household" Foreground="#FFF6E9E9" BorderBrush="#FFF6E9E9"  BorderThickness="4" Background="#FFF6E9E9" FontSize="16" FontWeight="Bold" Margin="449.8,2,-548,-2.2" Grid.Column="1" Padding="4,0,0,2"/>
 
-            </Grid>
-            <Grid Grid.Row="1">
-                <Frame
+                    </TextBox>
+                    <RadioButton IsChecked="{Binding rdName,UpdateSourceTrigger=PropertyChanged}" x:Name="rdName" Content="Name" Foreground="#FFF6E9E9" BorderBrush="#FFF6E9E9"  BorderThickness="4" Background="#FFF6E9E9" FontSize="16" FontWeight="Bold" Margin="48.8,0,-146.4,-0.2" Grid.Column="1" Padding="4,0,0,2" />
+                    <RadioButton IsChecked="{Binding rdOrdinalNumber,UpdateSourceTrigger=PropertyChanged}" x:Name="rdOrdinalNumber" Content="Ordinalnumber" Foreground="#FFF6E9E9" BorderBrush="#FFF6E9E9"  BorderThickness="4" Background="#FFF6E9E9" FontSize="16" FontWeight="Bold" Margin="155.8,0,-254.4,-0.2" Grid.Column="1" Padding="4,0,0,2"/>
+                    <RadioButton IsChecked="{Binding rdId,UpdateSourceTrigger=PropertyChanged}" x:Name="rdId" Content="Id" Foreground="#FFF6E9E9" BorderBrush="#FFF6E9E9"  BorderThickness="4" Background="#FFF6E9E9" FontSize="16" FontWeight="Bold" Margin="349.8,0,-376.4,-0.2" Grid.Column="1" Padding="4,0,0,2"/>
+                    <RadioButton IsChecked="{Binding rdId_Household,UpdateSourceTrigger=PropertyChanged}" x:Name="rdId_Household" Content="Id_Household" Foreground="#FFF6E9E9" BorderBrush="#FFF6E9E9"  BorderThickness="4" Background="#FFF6E9E9" FontSize="16" FontWeight="Bold" Margin="449.8,2,-548,-2.2" Grid.Column="1" Padding="4,0,0,2"/>
+
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Frame
                     x:Name="Main" Content="{Binding Main,UpdateSourceTrigger=PropertyChanged}"   Grid.Column="0" NavigationUIVisibility="Hidden" >
-                </Frame>
-               
-            </Grid>
-        </Grid>
+                    </Frame>
 
-    </Grid>
+                </Grid>
+            </Grid>
+
+        </Grid>
     </Border>
 </Window>

@@ -17,7 +17,7 @@
             </i:InvokeCommandAction>
         </i:EventTrigger>
     </i:Interaction.Triggers>
-  
+
 
     <Border Background="White" CornerRadius="5.3">
         <Grid>
@@ -38,6 +38,7 @@
                                 <ImageBrush ImageSource="Resources/exite.jpg"/>
                             </Button.Background>
                         </Button>
+                        <Button x:Name="btnMini" Content="" Height="Auto" Margin="885,20,50,18.2" Click="btnMini_Click" Cursor="Hand" Background="White"/>
                     </Grid>
                 </Border>
                 <Border Grid.Column="0" CornerRadius="4,0,0,0" Background="#FF3C3E71" Margin="0,0,3.6,0" >
@@ -56,12 +57,12 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Border  Grid.Column="1" CornerRadius="0,0,0,4">
-                <Grid>
-                    <Frame NavigationUIVisibility="Hidden" Content="{Binding Main,UpdateSourceTrigger=PropertyChanged}">
-                        
-                    </Frame>
-                   
-                </Grid>
+                    <Grid>
+                        <Frame NavigationUIVisibility="Hidden" Content="{Binding Main,UpdateSourceTrigger=PropertyChanged}">
+
+                        </Frame>
+
+                    </Grid>
                 </Border>
                 <Border Grid.Column="0" CornerRadius="0,0,0,4" Background="#FF3A404C"     >
 
@@ -88,18 +89,18 @@
                                 </Button.Background>
                             </Button>
 
-                           
-                          
+
+
                             <TreeView x:Name="tvMenu" Margin="0,0,-0.2,199.2" Foreground="White" FontSize="18"                                      
                                       >
-                               
-                                
+
+
                                 <TreeViewItem Header="Profile" >
                                     <TreeViewItem Header="New" IsSelected="{Binding AddSelected,UpdateSourceTrigger=PropertyChanged}" FontSize="14"></TreeViewItem>
                                     <TreeViewItem Header="Search" FontSize="14" IsSelected="{Binding SearchSelected,UpdateSourceTrigger=PropertyChanged}" ></TreeViewItem>
                                 </TreeViewItem>
                                 <TreeViewItem Header="Account" >
-                                    
+
                                     <TreeViewItem Header="Change Password" FontSize="14" IsSelected="{Binding ChangePasswordSelected, UpdateSourceTrigger=PropertyChanged}"></TreeViewItem>
                                     <TreeViewItem x:Name="tvItemManage" Header="Manage" IsSelected="{Binding ManageSelected,UpdateSourceTrigger=PropertyChanged}" FontSize="14"></TreeViewItem>
                                 </TreeViewItem>
@@ -113,7 +114,7 @@
                                         <TreeViewItem Header="TResidence"  IsSelected="{Binding ResidenceForm,UpdateSourceTrigger=PropertyChanged}" FontSize="14"></TreeViewItem>
                                     </TreeViewItem>
                                 </TreeViewItem>
-                                <TreeViewItem Header="Statistic" IsSelected="{Binding StatisticSelected,UpdateSourceTrigger=PropertyChanged}">
+                                <TreeViewItem Header="Statistic" IsSelected="{Binding StatisticsSelected,UpdateSourceTrigger=PropertyChanged}">
                                 </TreeViewItem>
 
                             </TreeView>

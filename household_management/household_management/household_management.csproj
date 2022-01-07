@@ -216,12 +216,6 @@
       <DependentUpon>formAddTransfer.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Report\PopulationsReport.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PopulationsReport.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Report\Report.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -468,10 +462,6 @@
     <EmbeddedResource Include="Report\formAddTransfer.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>formAddTransfer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Report\PopulationsReport.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>PopulationsReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\Report.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

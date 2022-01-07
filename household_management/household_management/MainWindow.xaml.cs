@@ -70,8 +70,9 @@ namespace household_management
 
         }
 
-       
-
-       
+        private void btnMini_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
     }
 }

@@ -184,6 +184,8 @@ namespace household_management.ViewModel
                 report.SetParameterValue("slCK", TransferList.Count);
                 report.SetParameterValue("slTV", AbsenceList.Count);
                 report.SetParameterValue("slTT", ResidenceList.Count);
+                report.SetParameterValue("slNHK", getCount(PopulationsList, 0));
+                report.SetParameterValue("slNCHK", HouseholdList.Count);
 
                 wd.reportViewer.ReportSource = report;
                 
@@ -192,6 +194,22 @@ namespace household_management.ViewModel
                 ReportSelected = false;
 
             }
+        }
+        private int getCount(ObservableCollection<Population> PopulationsList, int type)
+        {
+
+            int count = 0;
+            foreach (Population item in PopulationsList)
+            {
+                if (item.Id_Household != null)
+                {
+                    count++;
+                }
+            }
+            if (type == 0)
+                return count;
+            else
+                return PopulationsList.Count - count;
         }
         private void openPopulationsForm()
         {
