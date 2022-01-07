@@ -46,7 +46,6 @@ namespace household_management.ViewModel
         private bool _reportSelected;
         public bool ReportSelected { get => _reportSelected;set { _reportSelected = value; OnPropertyChanged(); openReportForm(); } }
 
-
         private bool _populationsForm;
         public bool PopulationsForm { get => _populationsForm; set { _populationsForm = value; OnPropertyChanged(); openPopulationsForm(); } }
 
@@ -57,13 +56,10 @@ namespace household_management.ViewModel
         public bool TransferForm { get => _transferForm; set { _transferForm = value; OnPropertyChanged(); openTransferForm(); } }
 
         private bool _absenceForm;
-        public bool absenceForm { get => _absenceForm; set { _absenceForm = value; OnPropertyChanged(); openAbsenceForm(); } }
+        public bool AbsenceForm { get => _absenceForm; set { _absenceForm = value; OnPropertyChanged(); openAbsenceForm(); } }
 
         private bool _residenceForm;
-
         public bool ResidenceForm { get => _residenceForm; set { _residenceForm = value; OnPropertyChanged(); openResidenceForm(); } }  
-
-
 
         private bool _addSelected;
         public bool AddSelected { get => _addSelected;set {  _addSelected = value;OnPropertyChanged();  openAddPage(); ; } }
@@ -140,13 +136,13 @@ namespace household_management.ViewModel
                 // 
                 Report.Report report = new Report.Report();
                 //
-                CrystalDecisions.Shared.TableLogOnInfo info;
-                // dinh dang lai info
-                info = report.Database.Tables[0].LogOnInfo;
-                info.ConnectionInfo.ServerName = ".\\(local)";
-                info.ConnectionInfo.DatabaseName = "HoKhau";
-                info.ConnectionInfo.IntegratedSecurity = true;
-                report.Database.Tables[0].ApplyLogOnInfo(info);
+                //CrystalDecisions.Shared.TableLogOnInfo info;
+                //// dinh dang lai info
+                //info = report.Database.Tables[0].LogOnInfo;
+                //info.ConnectionInfo.ServerName = ".\\(local)";
+                //info.ConnectionInfo.DatabaseName = "HoKhau";
+                //info.ConnectionInfo.IntegratedSecurity = true;
+                //report.Database.Tables[0].ApplyLogOnInfo(info);
                 // xu ly len form 
                 Reports wd = new Reports();
                 // gan nguon du lieu
@@ -179,14 +175,14 @@ namespace household_management.ViewModel
             {
                 Report.formAddPopulations form = new Report.formAddPopulations();
                 //
-                CrystalDecisions.Shared.TableLogOnInfo info;
-                // dinh dang lai info
-                info = form.Database.Tables[0].LogOnInfo;
-                info.ConnectionInfo.ServerName = ".\\(local)";
-                info.ConnectionInfo.DatabaseName = "HoKhau";
-                info.ConnectionInfo.IntegratedSecurity = true;
-                form.Database.Tables[0].ApplyLogOnInfo(info);
-                // xu ly len form 
+                //CrystalDecisions.Shared.TableLogOnInfo info;
+                //// dinh dang lai info
+                //info = form.Database.Tables[0].LogOnInfo;
+                //info.ConnectionInfo.ServerName = ".\\(local)";
+                //info.ConnectionInfo.DatabaseName = "HoKhau";
+                //info.ConnectionInfo.IntegratedSecurity = true;
+                //form.Database.Tables[0].ApplyLogOnInfo(info);
+                //// xu ly len form 
                 PopulationsForm wd = new PopulationsForm();
                 // gan nguon du lieu
                 wd.pViewer.ReportSource = form;
@@ -197,20 +193,91 @@ namespace household_management.ViewModel
         }
         private void openHouseholdForm()
         {
+            if (HouseholdForm == true)
+            {
+                Report.formAddHousehold form = new Report.formAddHousehold();
+                //
+                //CrystalDecisions.Shared.TableLogOnInfo info;
+                //// dinh dang lai info
+                //info = form.Database.Tables[0].LogOnInfo;
+                //info.ConnectionInfo.ServerName = ".\\(local)";
+                //info.ConnectionInfo.DatabaseName = "HoKhau";
+                //info.ConnectionInfo.IntegratedSecurity = true;
+                //form.Database.Tables[0].ApplyLogOnInfo(info);
+                //// xu ly len form 
+                HouseholdForm wd = new HouseholdForm();
+                // gan nguon du lieu
+                wd.hViewer.ReportSource = form;
+
+                //show
+                wd.Show();
+            }
         }
         private void openTransferForm()
-        { 
+        {
+            if (TransferForm == true)
+            {
+                Report.formAddTransfer form = new Report.formAddTransfer();
+                //
+                //CrystalDecisions.Shared.TableLogOnInfo info;
+                //// dinh dang lai info
+                //info = form.Database.Tables[0].LogOnInfo;
+                //info.ConnectionInfo.ServerName = ".\\(local)";
+                //info.ConnectionInfo.DatabaseName = "HoKhau";
+                //info.ConnectionInfo.IntegratedSecurity = true;
+                //form.Database.Tables[0].ApplyLogOnInfo(info);
+                // xu ly len form 
+                TransferForm wd = new TransferForm();
+                // gan nguon du lieu
+                wd.tViewer.ReportSource = form;
+
+                //show
+                wd.Show();
+            }
         }
         private void openAbsenceForm()
         {
+            if (AbsenceForm == true)
+            {
+                Report.formAddAbsence form = new Report.formAddAbsence();
+                //
+                //CrystalDecisions.Shared.TableLogOnInfo info = new CrystalDecisions.Shared.TableLogOnInfo();
+                //// dinh dang lai info
+                //info = form.Database.Tables[0].LogOnInfo;
+                //info.ConnectionInfo.ServerName = ".\\(local)";
+                //info.ConnectionInfo.DatabaseName = "HoKhau";
+                //info.ConnectionInfo.IntegratedSecurity = true;
+                //form.Database.Tables[0].ApplyLogOnInfo(info);
+                // xu ly len form 
+                AbsenceForm wd = new AbsenceForm();
+                // gan nguon du lieu
+                wd.aViewer.ReportSource = form;
+
+                //show
+                wd.Show();
+            }
         }
         private void openResidenceForm()
         {
-        }
-        private void openAboutUs()
-        {
-            About wd = new About();
-            wd.ShowDialog();
+            if (ResidenceForm == true)
+            {
+                Report.formAddResidence form = new Report.formAddResidence();
+                //
+                //CrystalDecisions.Shared.TableLogOnInfo info = new CrystalDecisions.Shared.TableLogOnInfo();
+                //// dinh dang lai info
+                //info = form.Database.Tables[0].LogOnInfo;
+                //info.ConnectionInfo.ServerName = ".\\(local)";
+                //info.ConnectionInfo.DatabaseName = "HoKhau";
+                //info.ConnectionInfo.IntegratedSecurity = true;
+                //form.Database.Tables[0].ApplyLogOnInfo(info);
+                // xu ly len form 
+                ResidenceForm wd = new ResidenceForm();
+                // gan nguon du lieu
+                wd.rViewer.ReportSource = form;
+
+                //show
+                wd.Show();
+            }
         }
 
 

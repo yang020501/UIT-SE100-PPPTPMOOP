@@ -242,8 +242,11 @@
     <Compile Include="ViewModel\SearchViewModel.cs" />
     <Compile Include="ViewModel\TPVViewModel.cs" />
     <Compile Include="ViewModel\TransferViewModel.cs" />
-    <Compile Include="View\About.xaml.cs">
-      <DependentUpon>About.xaml</DependentUpon>
+    <Compile Include="View\AbsenceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AbsenceForm.Designer.cs">
+      <DependentUpon>AbsenceForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\AbsencePage.xaml.cs">
       <DependentUpon>AbsencePage.xaml</DependentUpon>
@@ -268,6 +271,12 @@
     </Compile>
     <Compile Include="View\FamilyMem.xaml.cs">
       <DependentUpon>FamilyMem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HouseholdForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\HouseholdForm.Designer.cs">
+      <DependentUpon>HouseholdForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\HouseholdPage.xaml.cs">
       <DependentUpon>HouseholdPage.xaml</DependentUpon>
@@ -300,6 +309,12 @@
     <Compile Include="View\Reports.Designer.cs">
       <DependentUpon>Reports.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ResidenceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ResidenceForm.Designer.cs">
+      <DependentUpon>ResidenceForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\ResidencePage.xaml.cs">
       <DependentUpon>ResidencePage.xaml</DependentUpon>
     </Compile>
@@ -308,6 +323,12 @@
     </Compile>
     <Compile Include="View\Search.xaml.cs">
       <DependentUpon>Search.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TransferForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\TransferForm.Designer.cs">
+      <DependentUpon>TransferForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\TransferPage.xaml.cs">
       <DependentUpon>TransferPage.xaml</DependentUpon>
@@ -320,10 +341,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ResourcesXAML\MainResources.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\About.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -442,11 +459,23 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Report.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\AbsenceForm.resx">
+      <DependentUpon>AbsenceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\HouseholdForm.resx">
+      <DependentUpon>HouseholdForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\PopulationsForm.resx">
       <DependentUpon>PopulationsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Reports.resx">
       <DependentUpon>Reports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ResidenceForm.resx">
+      <DependentUpon>ResidenceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\TransferForm.resx">
+      <DependentUpon>TransferForm.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Model\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

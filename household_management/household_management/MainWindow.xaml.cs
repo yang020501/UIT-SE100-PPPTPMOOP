@@ -70,11 +70,7 @@ namespace household_management
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            About wd = new About();
-            wd.ShowDialog();
-        }
+       
 
        
     }
