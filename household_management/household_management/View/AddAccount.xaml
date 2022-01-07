@@ -9,30 +9,31 @@
         mc:Ignorable="d"
         Name="AddAccountX"
         DataContext="{StaticResource AddAccountVM}"
-        Title="AddAccount" Height="320" Width="450" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
+        Title="AddAccount" Height="320" Width="450" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}">
+    <Border BorderThickness="2" BorderBrush="#FF4D60C0" CornerRadius="5.3" Background="White" >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
 
-        </Grid.RowDefinitions>
+            </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.2*"></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
 
-            <Grid Grid.Column="0">
-                <materialDesign:PackIcon Kind="User" HorizontalAlignment="Center" 
+                <Grid Grid.Column="0">
+                    <materialDesign:PackIcon Kind="User" HorizontalAlignment="Center" 
                                          VerticalAlignment="Center" Width="25" Height="25" Margin="20,20,30.2,19"/>
-            </Grid>
+                </Grid>
 
 
-            <TextBox
+                <TextBox
                  materialDesign:HintAssist.Foreground="Black"
                             materialDesign:TextFieldAssist.UnderlineBrush="Black"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
@@ -40,22 +41,22 @@
                      FontSize="16" VerticalAlignment="Center"  Height="49" Margin="68,6,21.6,10" Grid.ColumnSpan="2" Padding="0,6,0,0"
                      />
 
-        </Grid>
-
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.2*"></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-
-            <Grid Grid.Column="0">
-                <materialDesign:PackIcon Kind="UserAdd" HorizontalAlignment="Center" 
-                                         VerticalAlignment="Center" Width="25" Height="25" RenderTransformOrigin="-0.024,0.472" Margin="15,10,35.2,29"/>
             </Grid>
 
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+                    <materialDesign:PackIcon Kind="UserAdd" HorizontalAlignment="Center" 
+                                         VerticalAlignment="Center" Width="25" Height="25" RenderTransformOrigin="-0.024,0.472" Margin="15,10,35.2,29"/>
+                </Grid>
 
 
-            <TextBox
+
+                <TextBox
                  materialDesign:HintAssist.Foreground="Black"
                             materialDesign:TextFieldAssist.UnderlineBrush="Black"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
@@ -63,25 +64,25 @@
                       Width="358"  FontSize="16" materialDesign:HintAssist.Hint="User name" Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2" Padding="0,6,0,0"/>
 
 
-        </Grid>
-
-        <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.2*"></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-
-            <Grid Grid.Column="0">
-                <materialDesign:PackIcon Kind="lock" HorizontalAlignment="Center" 
-                                         VerticalAlignment="Center" Width="25" Height="25" Margin="15,10,35.2,29"/>
             </Grid>
 
-            <Grid Grid.Column="1">
+            <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="37*"/>
-                    <ColumnDefinition Width="72*"/>
+                    <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <PasswordBox 
+
+                <Grid Grid.Column="0">
+                    <materialDesign:PackIcon Kind="lock" HorizontalAlignment="Center" 
+                                         VerticalAlignment="Center" Width="25" Height="25" Margin="15,10,35.2,29"/>
+                </Grid>
+
+                <Grid Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="37*"/>
+                        <ColumnDefinition Width="72*"/>
+                    </Grid.ColumnDefinitions>
+                    <PasswordBox 
                     Name="PasswordBox"
                     materialDesign:HintAssist.Hint="Password"
                     materialDesign:HintAssist.Foreground="Black"
@@ -89,30 +90,30 @@
                     Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
                     Margin="-10,0,25.4,20" Grid.ColumnSpan="2">
 
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="PasswordChanged">
-                            <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}" 
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="PasswordChanged">
+                                <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}" 
                                                        CommandParameter="{Binding ElementName=PasswordBox}"/>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
 
-                </PasswordBox>
+                    </PasswordBox>
+                </Grid>
             </Grid>
-        </Grid>
 
-        <Grid Grid.Row="3">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.2*"></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
 
-            <Grid Grid.Column="0">
-                <materialDesign:PackIcon Kind="lock" HorizontalAlignment="Center" 
+                <Grid Grid.Column="0">
+                    <materialDesign:PackIcon Kind="lock" HorizontalAlignment="Center" 
                                          VerticalAlignment="Center" Width="25" Height="25" Margin="15,13,35.2,26"/>
-            </Grid>
+                </Grid>
 
-            <Grid Grid.Column="1">
-                <PasswordBox 
+                <Grid Grid.Column="1">
+                    <PasswordBox 
                     x:Name="PasswordBoxRepeat"
                     materialDesign:HintAssist.Hint="Reapet Password"
                     materialDesign:HintAssist.Foreground="Black"
@@ -120,27 +121,28 @@
                     Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
                     Margin="-10,0,30.4,20">
 
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="PasswordChanged">
-                            <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}" 
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="PasswordChanged">
+                                <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}" 
                                                        CommandParameter="{Binding ElementName=PasswordBoxRepeat}"/>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
 
-                </PasswordBox>
+                    </PasswordBox>
+                </Grid>
             </Grid>
-        </Grid>
 
-        <Grid Grid.Row="4">
-            <Button Content="OK" HorizontalAlignment="Left" Margin="85,10,0,0" 
+            <Grid Grid.Row="4">
+                <Button Content="OK" HorizontalAlignment="Left" Margin="85,10,0,0" 
                     VerticalAlignment="Top" Width="118" Background="#FF4D60C0"
                     Command="{Binding ConformCommand}" Foreground="#FFFCFBFA" Height="44"
                     CommandParameter="{Binding ElementName=AddAccountX}"/>
-            <Button Content="Cancel" HorizontalAlignment="Left" Margin="252,10,0,0" 
+                <Button Content="Cancel" HorizontalAlignment="Left" Margin="252,10,0,0" 
                 VerticalAlignment="Top" Width="118" Background="#FF4D60C0"
                 Foreground="#FFFCFBFA" Height="44"
                 CommandParameter="{Binding ElementName=AddAccountX}" Click="Button_Click"/>
 
+            </Grid>
         </Grid>
-    </Grid>
+    </Border>
 </Window>

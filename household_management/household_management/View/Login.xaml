@@ -14,83 +14,85 @@
         TextElement.FontSize="12"
         TextOptions.TextRenderingMode="Auto"
         TextOptions.TextFormattingMode="Ideal"
-        Background="{DynamicResource MaterialDesignPaper}"
+        Background="{x:Null}"
         FontFamily="{DynamicResource MaterialDesignFont}"
 
-        Title="Login" Height="300" Width="400" WindowStartupLocation="CenterScreen" Icon="/household_management;component/Resources/house sysmbo1.png">
+        Title="Login" Height="300" Width="400" WindowStartupLocation="CenterScreen" Icon="/household_management;component/Resources/house sysmbo1.png" AllowsTransparency="True" WindowStyle="None">
+    <Border BorderThickness="2"  CornerRadius="5.3" Margin="0,0,0,20" BorderBrush="#FF1697D1" >
+        <Border.Background>
+            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <GradientStop Color="#FFA9E7D2" Offset="0.401"/>
+                <GradientStop Color="#FF70C8F6" Offset="0.891"/>
+            </LinearGradientBrush>
+        </Border.Background>
+        <Grid>
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="15*"/>
-            <ColumnDefinition Width="379*"/>
-        </Grid.ColumnDefinitions>
-        <materialDesign:Card Width="380" Height="210" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="7,35,6.6,25.4">
-            <Grid>
-                <Grid.Resources>
-                    <Style TargetType="Grid">
-                        <Setter Property="Margin" Value="15 15 15 0"></Setter>
-                    </Style>
-                </Grid.Resources>
-                <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="0" Margin="15">
-                    <TextBox 
+            <materialDesign:Card Height="205" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,48,9.8,3.8" Width="377" Background="{x:Null}">
+                <Grid>
+                    <Grid.Resources>
+                        <Style TargetType="Grid">
+                            <Setter Property="Margin" Value="15 15 15 0"></Setter>
+                        </Style>
+                    </Grid.Resources>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Margin="15">
+                        <TextBox 
                         materialDesign:HintAssist.Hint="User name" 
                          materialDesign:HintAssist.Foreground="Black"
                             materialDesign:TextFieldAssist.UnderlineBrush="Black"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                         Text="{Binding UserName}">
 
-                    </TextBox>
-                </Grid>
+                        </TextBox>
+                    </Grid>
 
-                <Grid Grid.Row="1" Margin="15">
-                    <PasswordBox 
+                    <Grid Grid.Row="1" Margin="15">
+                        <PasswordBox 
                     x:Name="FloatingPasswordBox"
                     materialDesign:HintAssist.Hint="Password"
                     materialDesign:HintAssist.Foreground="Black"
                     materialDesign:TextFieldAssist.UnderlineBrush="Black"
                     Style="{StaticResource MaterialDesignFloatingHintPasswordBox}">
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="PasswordChanged">
-                                <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}" 
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="PasswordChanged">
+                                    <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}" 
                                                        CommandParameter="{Binding ElementName=FloatingPasswordBox}"/>
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                    </PasswordBox>
-                </Grid>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </PasswordBox>
+                    </Grid>
 
-                <Grid Grid.Row="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Column="0">
-                        <Button Background="Blue" 
+                        <Grid >
+                            <Button Background="#FF7575F4" 
                         IsDefault="True"
                         Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                        Width="100"
                         ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
                         Command="{Binding LoginCommand}"
                         CommandParameter="{Binding ElementName=LoginWindowX}"
-                        Content="Login" BorderThickness="2" Margin="20,-7,10,9.6" BorderBrush="#DD343D32" />
-                    </Grid>
+                        Content="Login" BorderThickness="2" Margin="18,-21,10.4,22" />
+                        </Grid>
 
-                    <Grid Grid.Column="1">
-                        <Button Background="Red"
+                        <Grid Grid.Column="1"/>
+                    </Grid>
+                    <Button Background="#FFF16666"
                         Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                        Width="100"
                         ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
                         Command="{Binding ExistCommand}"
                         CommandParameter="{Binding ElementName=LoginWindowX}"
-                        Content="Exist" Margin="10,-7,19.2,9.6" BorderThickness="2" />
-                    </Grid>
+                        Content="Exist"  BorderThickness="2" Margin="194,9.6,47.8,21.6" Grid.Row="2" />
                 </Grid>
-            </Grid>
-        </materialDesign:Card>
-    </Grid>
+            </materialDesign:Card>
+            <Image HorizontalAlignment="Left" Height="58" Margin="158,0,0,0" VerticalAlignment="Top" Width="65" Source="/household_management;component/Resources/house sysmbo1.png" Stretch="Fill"/>
+        </Grid>
+    </Border>
 </Window>
