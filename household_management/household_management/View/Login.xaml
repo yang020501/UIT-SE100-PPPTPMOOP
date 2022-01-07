@@ -18,7 +18,7 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
 
         Title="Login" Height="300" Width="400" WindowStartupLocation="CenterScreen" Icon="/household_management;component/Resources/house sysmbo1.png" AllowsTransparency="True" WindowStyle="None">
-    <Border BorderThickness="2"  CornerRadius="5.3" Margin="0,0,0,20" BorderBrush="#FF1697D1" >
+    <Border   CornerRadius="5.3" Margin="0,0,0,20" BorderBrush="#FF1697D1" >
         <Border.Background>
             <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                 <GradientStop Color="#FFA9E7D2" Offset="0.401"/>
@@ -73,26 +73,44 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid >
-                            <Button Background="#FF7575F4" 
+                            <Button Background="{x:Null}" 
                         IsDefault="True"
                         Style="{StaticResource MaterialDesignRaisedDarkButton}"
                         ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
                         Command="{Binding LoginCommand}"
                         CommandParameter="{Binding ElementName=LoginWindowX}"
-                        Content="Login" BorderThickness="2" Margin="18,-21,10.4,22" />
+                        Content="Login" BorderThickness="0.5" Margin="19,-9,10.4,10" Foreground="#FFA9E7D2">
+                                <Button.BorderBrush>
+                                    <RadialGradientBrush>
+                                        <GradientStop Color="#FFA9E7D2" Offset="0.387"/>
+                                        <GradientStop Color="#FF70C8F6" Offset="0.16"/>
+                                    </RadialGradientBrush>
+
+                                </Button.BorderBrush>
+                            </Button>
+
                         </Grid>
 
                         <Grid Grid.Column="1"/>
-                    </Grid>
-                    <Button Background="#FFF16666"
+                        <Button Background="{x:Null}"
                         Style="{StaticResource MaterialDesignRaisedDarkButton}"
                         ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
                         Command="{Binding ExistCommand}"
                         CommandParameter="{Binding ElementName=LoginWindowX}"
-                        Content="Exist"  BorderThickness="2" Margin="194,9.6,47.8,21.6" Grid.Row="2" />
+                        Content="Exist"  BorderThickness="0.5" Margin="15.4,6,39,10.2" Foreground="#FFA9E7D2" Grid.Column="1" >
+                            <Button.BorderBrush>
+
+                                <RadialGradientBrush>
+                                    <GradientStop Color="#FFA9E7D2" Offset="0.341"/>
+                                    <GradientStop Color="#FF70C8F6" Offset="0.16"/>
+                                </RadialGradientBrush>
+
+                            </Button.BorderBrush>
+                        </Button>
+                    </Grid>
                 </Grid>
             </materialDesign:Card>
-            <Image HorizontalAlignment="Left" Height="58" Margin="158,0,0,0" VerticalAlignment="Top" Width="65" Source="/household_management;component/Resources/house sysmbo1.png" Stretch="Fill"/>
+            <Image HorizontalAlignment="Left" Height="55" Margin="165,0,0,0" VerticalAlignment="Top" Width="57" Source="/household_management;component/Resources/house sysmbo1.png" Stretch="Fill"/>
         </Grid>
     </Border>
 </Window>
