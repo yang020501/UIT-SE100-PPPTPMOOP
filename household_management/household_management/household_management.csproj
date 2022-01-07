@@ -216,6 +216,12 @@
       <DependentUpon>formAddTransfer.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Report\PopulationsReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PopulationsReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Report\Report.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -229,6 +235,7 @@
     <Compile Include="ViewModel\APVViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\ChangePasswordViewModel.cs" />
+    <Compile Include="ViewModel\ChartPageViewModel.cs" />
     <Compile Include="ViewModel\FamilyViewModel.cs" />
     <Compile Include="ViewModel\FMLViewModel.cs" />
     <Compile Include="ViewModel\HouseholdViewModel.cs" />
@@ -265,6 +272,9 @@
     </Compile>
     <Compile Include="View\ChangePassword.xaml.cs">
       <DependentUpon>ChangePassword.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ChartPageView.xaml.cs">
+      <DependentUpon>ChartPageView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\FamilyList.xaml.cs">
       <DependentUpon>FamilyList.xaml</DependentUpon>
@@ -368,6 +378,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\ChartPageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\FamilyList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -454,6 +468,10 @@
     <EmbeddedResource Include="Report\formAddTransfer.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>formAddTransfer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\PopulationsReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PopulationsReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\Report.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

@@ -293,9 +293,14 @@ namespace household_management.ViewModel
 
         public MainViewModel()
         {
+            main.Refresh();
+            main.Content = null;
+            ChartPageViewModel vm = new ChartPageViewModel();
+            ChartPageView page = new ChartPageView();
+            page.DataContext = null;
+            page.DataContext = vm;
+            main.Content = page;
 
-
-            AddSelected = true;
 
             LoadWindowCommand = new RelayCommand<Window>((p) => { return true; }, (p) => {
                 isLoad = true;
