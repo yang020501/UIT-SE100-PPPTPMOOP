@@ -107,11 +107,11 @@
                                 <TreeViewItem Header="Print">
                                     <TreeViewItem Header="Report"  >
                                         <TreeViewItem Header="Overview" IsSelected="{Binding ReportSelected,UpdateSourceTrigger=PropertyChanged}" FontSize="14" ></TreeViewItem>
-                                        <TreeViewItem Header="Populations" IsSelected="{Binding PopualtionsReport,UpdateSourceTrigger=PropertyChanged}" FontSize="14" ></TreeViewItem>
+                                        <TreeViewItem Header="Populations" IsSelected="{Binding PopulationsReport,UpdateSourceTrigger=PropertyChanged}" FontSize="14" ></TreeViewItem>
                                         <TreeViewItem Header="Household"  IsSelected="{Binding HouseholdReport,UpdateSourceTrigger=PropertyChanged}" FontSize="14" ></TreeViewItem>
-                                        <TreeViewItem Header="Transfer"  IsSelected="{Binding TransferForm,UpdateSourceTrigger=PropertyChanged}" FontSize="14"></TreeViewItem>
-                                        <TreeViewItem Header="TAbsence"  IsSelected="{Binding AbsenceForm,UpdateSourceTrigger=PropertyChanged}" FontSize="14"></TreeViewItem>
-                                        <TreeViewItem Header="TResidence"  IsSelected="{Binding ResidenceForm,UpdateSourceTrigger=PropertyChanged}" FontSize="14"></TreeViewItem>
+                                        <TreeViewItem Header="Transfer"  IsSelected="{Binding TransferReport,UpdateSourceTrigger=PropertyChanged}" FontSize="14"></TreeViewItem>
+                                        <TreeViewItem Header="TAbsence"  IsSelected="{Binding AbsenceReport,UpdateSourceTrigger=PropertyChanged}" FontSize="14"></TreeViewItem>
+                                        <TreeViewItem Header="TResidence"  IsSelected="{Binding ResidenceReport,UpdateSourceTrigger=PropertyChanged}" FontSize="14"></TreeViewItem>
                                     </TreeViewItem>
                                     
                                     <TreeViewItem Header="Form"  >

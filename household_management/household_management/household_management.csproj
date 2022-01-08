@@ -186,6 +186,12 @@
     <Compile Include="Model\UserRole.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Report\AbsenceReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AbsenceReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Report\formAddAbsence.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -232,6 +238,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Report.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\TransferReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TransferReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ViewModel\AbsenceViewModel.cs" />
@@ -364,6 +376,12 @@
     <Compile Include="View\TransferPageView.xaml.cs">
       <DependentUpon>TransferPageView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\TransferReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\TransferReport.Designer.cs">
+      <DependentUpon>TransferReport.cs</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -467,6 +485,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\AbsenceReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>AbsenceReport.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\formAddAbsence.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>formAddAbsence.cs</LastGenOutput>
@@ -499,6 +521,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Report.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\TransferReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TransferReport.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\AbsenceForm.resx">
       <DependentUpon>AbsenceForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -522,6 +548,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\TransferForm.resx">
       <DependentUpon>TransferForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\TransferReport.resx">
+      <DependentUpon>TransferReport.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Model\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
