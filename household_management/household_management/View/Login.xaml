@@ -21,8 +21,8 @@
     <Border   CornerRadius="5.3" Margin="0,0,0,20" BorderBrush="#FF1697D1" >
         <Border.Background>
             <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                <GradientStop Color="#FFA9E7D2" Offset="0.401"/>
-                <GradientStop Color="#FF70C8F6" Offset="0.891"/>
+                <GradientStop Color="#FFAEB0F3"/>
+                <GradientStop Color="#FF4561EE" Offset="0.768"/>
             </LinearGradientBrush>
         </Border.Background>
         <Grid>
@@ -79,15 +79,7 @@
                         ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
                         Command="{Binding LoginCommand}"
                         CommandParameter="{Binding ElementName=LoginWindowX}"
-                        Content="Login" BorderThickness="0.5" Margin="19,-9,10.4,10" Foreground="#FFA9E7D2">
-                                <Button.BorderBrush>
-                                    <RadialGradientBrush>
-                                        <GradientStop Color="#FFA9E7D2" Offset="0.387"/>
-                                        <GradientStop Color="#FF70C8F6" Offset="0.16"/>
-                                    </RadialGradientBrush>
-
-                                </Button.BorderBrush>
-                            </Button>
+                        Content="Login" BorderThickness="0.5" Margin="19,-9,10.4,10" Foreground="White" BorderBrush="White"/>
 
                         </Grid>
 
@@ -97,16 +89,7 @@
                         ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
                         Command="{Binding ExistCommand}"
                         CommandParameter="{Binding ElementName=LoginWindowX}"
-                        Content="Exist"  BorderThickness="0.5" Margin="15.4,6,39,10.2" Foreground="#FFA9E7D2" Grid.Column="1" >
-                            <Button.BorderBrush>
-
-                                <RadialGradientBrush>
-                                    <GradientStop Color="#FFA9E7D2" Offset="0.341"/>
-                                    <GradientStop Color="#FF70C8F6" Offset="0.16"/>
-                                </RadialGradientBrush>
-
-                            </Button.BorderBrush>
-                        </Button>
+                        Content="Exist"  BorderThickness="0.5" Margin="15.4,6,39,10.2" Foreground="White" Grid.Column="1" BorderBrush="White" />
                     </Grid>
                 </Grid>
             </materialDesign:Card>

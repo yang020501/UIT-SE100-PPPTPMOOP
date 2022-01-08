@@ -14,7 +14,7 @@
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <StackPanel >
                 <Label Height="60" Content="Statistics of the number of records" FontSize="24" FontWeight="Bold" Foreground="#FF3A404C" FontFamily="Segoe UI Symbol" Padding="30,10,4,0.2"/>
-                <lvc:CartesianChart Series="{Binding SeriesCollection,UpdateSourceTrigger=PropertyChanged}" Height="475" Width="795">
+                <lvc:CartesianChart Series="{Binding SeriesCollection,UpdateSourceTrigger=PropertyChanged}" Height="535" Width="761">
                     <lvc:CartesianChart.AxisX>
                         <lvc:Axis Title="Profile Type"  Labels="{Binding Labels}" Margin="50,0,0,0"/>
                     </lvc:CartesianChart.AxisX>

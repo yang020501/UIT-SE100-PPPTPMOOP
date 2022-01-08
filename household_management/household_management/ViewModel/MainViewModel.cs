@@ -46,6 +46,22 @@ namespace household_management.ViewModel
         private bool _reportSelected;
         public bool ReportSelected { get => _reportSelected;set { _reportSelected = value; OnPropertyChanged(); openReportForm(); } }
 
+        private bool _householdReport;
+        public bool HouseholdReport { get => _householdReport;set { _householdReport = value;OnPropertyChanged(); openHouseholdReport(); } }
+
+        private bool _populationsReport;
+        public bool PopulationsReport { get => _populationsReport; set { _populationsReport = value; OnPropertyChanged(); openPopulationsReport(); } }
+
+        private bool _transferReport;
+        public bool TransferReport { get => _transferReport; set { _transferReport = value; OnPropertyChanged(); openTransferReport(); } }
+
+       
+        private bool _absenceReport;
+        public bool AbsenceReport { get => _absenceReport; set { _absenceReport = value; OnPropertyChanged(); openAbsenceReport(); } }
+   
+        private bool _residenceReport;
+        public bool ResidenceReport { get => _residenceReport; set { _residenceReport = value; OnPropertyChanged(); openResidenceReport(); } }      
+
         private bool _populationsForm;
         public bool PopulationsForm { get => _populationsForm; set { _populationsForm = value; OnPropertyChanged(); openPopulationsForm(); } }
 
@@ -162,6 +178,131 @@ namespace household_management.ViewModel
                 SearchSelected = false;
             }
         }
+
+        private void openTransferReport()
+        {
+            if (TransferReport == true)
+            {
+                main.Refresh();
+                Report.TransferReport report = new Report.TransferReport();
+
+                CrystalDecisions.Shared.TableLogOnInfo info;
+                // dinh dang lai info
+                info = report.Database.Tables[0].LogOnInfo;
+                info.ConnectionInfo.ServerName = ".\\(local)";
+                info.ConnectionInfo.DatabaseName = "HoKhau";
+                info.ConnectionInfo.IntegratedSecurity = true;
+                report.Database.Tables[0].ApplyLogOnInfo(info);
+                //xu ly len form
+                TransferReport wd = new TransferReport();
+                // gan du lieu
+
+                wd.tRViewer.ReportSource = report;
+
+                wd.ShowDialog();
+                HouseholdReport = false;
+            }
+        }
+
+        private void openResidenceReport()
+        {
+            if (ResidenceReport == true)
+            {
+                main.Refresh();
+                Report.ResidenceReport report = new Report.ResidenceReport();
+
+                CrystalDecisions.Shared.TableLogOnInfo info;
+                // dinh dang lai info
+                info = report.Database.Tables[0].LogOnInfo;
+                info.ConnectionInfo.ServerName = ".\\(local)";
+                info.ConnectionInfo.DatabaseName = "HoKhau";
+                info.ConnectionInfo.IntegratedSecurity = true;
+                report.Database.Tables[0].ApplyLogOnInfo(info);
+                //xu ly len form
+                ResidenceReport wd = new ResidenceReport();
+                // gan du lieu
+
+                wd.rRViewer.ReportSource = report;
+
+                wd.ShowDialog();
+                HouseholdReport = false;
+            }
+        }
+        private void openAbsenceReport()
+        {
+            if (AbsenceReport == true)
+            {
+                main.Refresh();
+                Report.AbsenceReport report = new Report.AbsenceReport();
+
+                CrystalDecisions.Shared.TableLogOnInfo info;
+                // dinh dang lai info
+                info = report.Database.Tables[0].LogOnInfo;
+                info.ConnectionInfo.ServerName = ".\\(local)";
+                info.ConnectionInfo.DatabaseName = "HoKhau";
+                info.ConnectionInfo.IntegratedSecurity = true;
+                report.Database.Tables[0].ApplyLogOnInfo(info);
+                //xu ly len form
+                AbsenceReport wd = new AbsenceReport();
+                // gan du lieu
+
+                wd.aRViewer.ReportSource = report;
+
+                wd.ShowDialog();
+                HouseholdReport = false;
+            }
+        }
+
+
+        private void openHouseholdReport()
+        {
+            if(HouseholdReport == true)
+            {
+                main.Refresh();
+                Report.HouseholdReport report = new Report.HouseholdReport();
+
+                CrystalDecisions.Shared.TableLogOnInfo info;
+                // dinh dang lai info
+                info = report.Database.Tables[0].LogOnInfo;
+                info.ConnectionInfo.ServerName = ".\\(local)";
+                info.ConnectionInfo.DatabaseName = "HoKhau";
+                info.ConnectionInfo.IntegratedSecurity = true;
+                report.Database.Tables[0].ApplyLogOnInfo(info);
+                //xu ly len form
+                HouseholdReport wd = new HouseholdReport();
+                // gan du lieu
+
+                wd.hRViewer.ReportSource = report;
+
+                wd.ShowDialog();
+                HouseholdReport = false;
+            }
+        }
+        private void openPopulationsReport()
+        {
+            if (PopulationsReport == true)
+            {
+                main.Refresh();
+                Report.PopulationsReport report = new Report.PopulationsReport();
+
+                CrystalDecisions.Shared.TableLogOnInfo info;
+                // dinh dang lai info
+                info = report.Database.Tables[0].LogOnInfo;
+                info.ConnectionInfo.ServerName = ".\\(local)";
+                info.ConnectionInfo.DatabaseName = "HoKhau";
+                info.ConnectionInfo.IntegratedSecurity = true;
+                report.Database.Tables[0].ApplyLogOnInfo(info);
+                //xu ly len form
+                PopulationsReport wd = new PopulationsReport();
+                // gan du lieu
+
+                wd.pRViewer.ReportSource = report;
+
+                wd.ShowDialog();
+                PopulationsReport = false;
+            }
+        }
+
         private void openReportForm()
         {
             if(ReportSelected == true)
