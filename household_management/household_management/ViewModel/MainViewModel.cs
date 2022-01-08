@@ -46,8 +46,11 @@ namespace household_management.ViewModel
         private bool _reportSelected;
         public bool ReportSelected { get => _reportSelected;set { _reportSelected = value; OnPropertyChanged(); openReportForm(); } }
 
-        private bool _householdreport;
-        public bool HouseholdReport { get => _householdreport;set { _householdreport = value;OnPropertyChanged();openHouseholdReport(); } }
+        private bool _householdReport;
+        public bool HouseholdReport { get => _householdReport;set { _householdReport = value;OnPropertyChanged();openHouseholdReport(); } }
+
+        private bool _populationsReport;
+        public bool PopulationsReport { get => _populationsReport; set { _populationsReport = value; OnPropertyChanged(); openPopulationsReport(); } }
 
         private bool _populationsForm;
         public bool PopulationsForm { get => _populationsForm; set { _populationsForm = value; OnPropertyChanged(); openPopulationsForm(); } }
@@ -177,6 +180,30 @@ namespace household_management.ViewModel
 
                 wd.ShowDialog();
                 HouseholdReport = false;
+            }
+        }
+        private void openPopulationsReport()
+        {
+            if (PopulationsReport == true)
+            {
+                main.Refresh();
+                Report.PopulationsReport report = new Report.PopulationsReport();
+
+                CrystalDecisions.Shared.TableLogOnInfo info;
+                // dinh dang lai info
+                info = report.Database.Tables[0].LogOnInfo;
+                info.ConnectionInfo.ServerName = ".\\(local)";
+                info.ConnectionInfo.DatabaseName = "HoKhau";
+                info.ConnectionInfo.IntegratedSecurity = true;
+                report.Database.Tables[0].ApplyLogOnInfo(info);
+                //xu ly len form
+                PopulationsReport wd = new PopulationsReport();
+                // gan du lieu
+
+                wd.pRViewer.ReportSource = report;
+
+                wd.ShowDialog();
+                PopulationsReport = false;
             }
         }
 

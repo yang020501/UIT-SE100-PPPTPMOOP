@@ -107,6 +107,7 @@
                                 <TreeViewItem Header="Print">
                                     <TreeViewItem Header="Report"  >
                                         <TreeViewItem Header="Overview" IsSelected="{Binding ReportSelected,UpdateSourceTrigger=PropertyChanged}" FontSize="14" ></TreeViewItem>
+                                        <TreeViewItem Header="Populations" IsSelected="{Binding PopualtionsReport,UpdateSourceTrigger=PropertyChanged}" FontSize="14" ></TreeViewItem>
                                         <TreeViewItem Header="Household"  IsSelected="{Binding HouseholdReport,UpdateSourceTrigger=PropertyChanged}" FontSize="14" ></TreeViewItem>
                                         <TreeViewItem Header="Transfer"  IsSelected="{Binding TransferForm,UpdateSourceTrigger=PropertyChanged}" FontSize="14"></TreeViewItem>
                                         <TreeViewItem Header="TAbsence"  IsSelected="{Binding AbsenceForm,UpdateSourceTrigger=PropertyChanged}" FontSize="14"></TreeViewItem>

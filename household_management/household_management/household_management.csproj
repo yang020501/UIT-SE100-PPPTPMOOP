@@ -222,6 +222,12 @@
       <DependentUpon>HouseholdReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Report\PopulationsReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PopulationsReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Report\Report.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -318,6 +324,12 @@
     </Compile>
     <Compile Include="View\PopulationsPageView.xaml.cs">
       <DependentUpon>PopulationsPageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PopulationsReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\PopulationsReport.Designer.cs">
+      <DependentUpon>PopulationsReport.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Reports.cs">
       <SubType>Form</SubType>
@@ -479,6 +491,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>HouseholdReport.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\PopulationsReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PopulationsReport.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\Report.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Report.cs</LastGenOutput>
@@ -494,6 +510,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\PopulationsForm.resx">
       <DependentUpon>PopulationsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\PopulationsReport.resx">
+      <DependentUpon>PopulationsReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Reports.resx">
       <DependentUpon>Reports.cs</DependentUpon>
