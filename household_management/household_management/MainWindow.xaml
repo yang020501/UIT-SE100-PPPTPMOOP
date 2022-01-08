@@ -105,7 +105,14 @@
                                     <TreeViewItem x:Name="tvItemManage" Header="Manage" IsSelected="{Binding ManageSelected,UpdateSourceTrigger=PropertyChanged}" FontSize="14"></TreeViewItem>
                                 </TreeViewItem>
                                 <TreeViewItem Header="Print">
-                                    <TreeViewItem Header="Report" IsSelected="{Binding ReportSelected,UpdateSourceTrigger=PropertyChanged}" ></TreeViewItem>
+                                    <TreeViewItem Header="Report"  >
+                                        <TreeViewItem Header="Overview" IsSelected="{Binding ReportSelected,UpdateSourceTrigger=PropertyChanged}" FontSize="14" ></TreeViewItem>
+                                        <TreeViewItem Header="Household"  IsSelected="{Binding HouseholdReport,UpdateSourceTrigger=PropertyChanged}" FontSize="14" ></TreeViewItem>
+                                        <TreeViewItem Header="Transfer"  IsSelected="{Binding TransferForm,UpdateSourceTrigger=PropertyChanged}" FontSize="14"></TreeViewItem>
+                                        <TreeViewItem Header="TAbsence"  IsSelected="{Binding AbsenceForm,UpdateSourceTrigger=PropertyChanged}" FontSize="14"></TreeViewItem>
+                                        <TreeViewItem Header="TResidence"  IsSelected="{Binding ResidenceForm,UpdateSourceTrigger=PropertyChanged}" FontSize="14"></TreeViewItem>
+                                    </TreeViewItem>
+                                    
                                     <TreeViewItem Header="Form"  >
                                         <TreeViewItem Header="Populations" IsSelected="{Binding PopulationsForm,UpdateSourceTrigger=PropertyChanged}" FontSize="14" ></TreeViewItem>
                                         <TreeViewItem Header="Household"  IsSelected="{Binding HouseholdForm,UpdateSourceTrigger=PropertyChanged}" FontSize="14" ></TreeViewItem>

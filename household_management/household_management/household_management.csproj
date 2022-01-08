@@ -216,6 +216,12 @@
       <DependentUpon>formAddTransfer.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Report\HouseholdReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HouseholdReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Report\Report.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -287,6 +293,12 @@
     </Compile>
     <Compile Include="View\HouseholdPageView.xaml.cs">
       <DependentUpon>HouseholdPageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HouseholdReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\HouseholdReport.Designer.cs">
+      <DependentUpon>HouseholdReport.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
@@ -463,6 +475,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>formAddTransfer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\HouseholdReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>HouseholdReport.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\Report.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Report.cs</LastGenOutput>
@@ -472,6 +488,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\HouseholdForm.resx">
       <DependentUpon>HouseholdForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\HouseholdReport.resx">
+      <DependentUpon>HouseholdReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\PopulationsForm.resx">
       <DependentUpon>PopulationsForm.cs</DependentUpon>

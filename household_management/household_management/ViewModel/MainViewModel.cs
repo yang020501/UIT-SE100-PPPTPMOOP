@@ -46,6 +46,9 @@ namespace household_management.ViewModel
         private bool _reportSelected;
         public bool ReportSelected { get => _reportSelected;set { _reportSelected = value; OnPropertyChanged(); openReportForm(); } }
 
+        private bool _householdreport;
+        public bool HouseholdReport { get => _householdreport;set { _householdreport = value;OnPropertyChanged();openHouseholdReport(); } }
+
         private bool _populationsForm;
         public bool PopulationsForm { get => _populationsForm; set { _populationsForm = value; OnPropertyChanged(); openPopulationsForm(); } }
 
@@ -150,6 +153,33 @@ namespace household_management.ViewModel
                 SearchSelected = false;
             }
         }
+
+
+        private void openHouseholdReport()
+        {
+            if(HouseholdReport == true)
+            {
+                main.Refresh();
+                Report.HouseholdReport report = new Report.HouseholdReport();
+
+                CrystalDecisions.Shared.TableLogOnInfo info;
+                // dinh dang lai info
+                info = report.Database.Tables[0].LogOnInfo;
+                info.ConnectionInfo.ServerName = ".\\(local)";
+                info.ConnectionInfo.DatabaseName = "HoKhau";
+                info.ConnectionInfo.IntegratedSecurity = true;
+                report.Database.Tables[0].ApplyLogOnInfo(info);
+                //xu ly len form
+                HouseholdReport wd = new HouseholdReport();
+                // gan du lieu
+
+                wd.hRViewer.ReportSource = report;
+
+                wd.ShowDialog();
+                HouseholdReport = false;
+            }
+        }
+
         private void openReportForm()
         {
             if(ReportSelected == true)
