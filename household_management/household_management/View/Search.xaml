@@ -9,7 +9,7 @@
         Name="search"
         
         DataContext="{StaticResource SearchVM}"
-        Title="Search" Height="761.2" Width="1325.6" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}">
+        Title="Search" Height="761.2" Width="1325.6" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}" Icon="/household_management;component/Resources/search.jpg">
     <Border CornerRadius="5.3" Background="White">
         <Grid>
             <Grid.RowDefinitions>
