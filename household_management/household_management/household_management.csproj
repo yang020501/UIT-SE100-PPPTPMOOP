@@ -240,6 +240,12 @@
       <DependentUpon>Report.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Report\ResidenceReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResidenceReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Report\TransferReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -278,6 +284,12 @@
     </Compile>
     <Compile Include="View\AbsencePageView.xaml.cs">
       <DependentUpon>AbsencePageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AbsenceReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AbsenceReport.Designer.cs">
+      <DependentUpon>AbsenceReport.cs</DependentUpon>
     </Compile>
     <Compile Include="View\AccountPage.xaml.cs">
       <DependentUpon>AccountPage.xaml</DependentUpon>
@@ -360,6 +372,12 @@
     </Compile>
     <Compile Include="View\ResidencePageView.xaml.cs">
       <DependentUpon>ResidencePageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ResidenceReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ResidenceReport.Designer.cs">
+      <DependentUpon>ResidenceReport.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Search.xaml.cs">
       <DependentUpon>Search.xaml</DependentUpon>
@@ -521,12 +539,19 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Report.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\ResidenceReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ResidenceReport.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\TransferReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>TransferReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="View\AbsenceForm.resx">
       <DependentUpon>AbsenceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AbsenceReport.resx">
+      <DependentUpon>AbsenceReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\HouseholdForm.resx">
       <DependentUpon>HouseholdForm.cs</DependentUpon>
@@ -545,6 +570,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\ResidenceForm.resx">
       <DependentUpon>ResidenceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ResidenceReport.resx">
+      <DependentUpon>ResidenceReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\TransferForm.resx">
       <DependentUpon>TransferForm.cs</DependentUpon>
