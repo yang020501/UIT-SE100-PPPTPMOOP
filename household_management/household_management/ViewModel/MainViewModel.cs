@@ -76,10 +76,21 @@ namespace household_management.ViewModel
 
         private bool _changePasswordSelected;
         public bool ChangePasswordSelected { get => _changePasswordSelected; set { _changePasswordSelected = value; OnPropertyChanged(); openPasswordChange(); } }
-
+        private bool _infoSelected;
+        public bool InfoSelected { get => _infoSelected; set { _infoSelected = value; OnPropertyChanged(); openInformChange(); } }
         public static MainViewModel data { get; set; }
 
         AddPage aView = new AddPage();
+
+        private void openInformChange()
+        {
+            if(InfoSelected == true)
+            {
+                Info wd = new Info();
+                wd.ShowDialog();
+                InfoSelected = false;
+            }
+        }
 
         private void openPasswordChange()
         {
@@ -102,9 +113,10 @@ namespace household_management.ViewModel
                 main.Content = page;
                 ManageSelected = false;
             }
-            else if(LoginViewModel.Role != "Manager")
+            else if(ManageSelected == true && LoginViewModel.Role != "Manager")
             {
                 MessageBox.Show("you do not have the authority to accsess");
+                ManageSelected = false;
             }
         }
         private void openStatisticPage()

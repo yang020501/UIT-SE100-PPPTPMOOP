@@ -15,9 +15,12 @@ namespace household_management.ViewModel
         public static string passwordX;
         public static bool isReLogin = false;
         public static bool isLogin = false;
+        public static string Identity;
         public static string Name;
         public static string Id;
         public static string Role;
+        public static DateTime Dateofbirth;
+        public static bool Sex;
         private string _UserName;
         public string UserName { get => _UserName; set { _UserName = value; OnPropertyChanged(); } }
         private string _Password;
@@ -48,7 +51,10 @@ namespace household_management.ViewModel
             {
                 var accCountInfo = DataProvider.Ins.DB.Users.Where(x => x.Username == UserName && x.Password == passEncode).SingleOrDefault();
                 Name = accCountInfo.Name;
+                Identity = accCountInfo.IdentityNum;
                 Id = accCountInfo.Id.ToString();
+                Dateofbirth = (DateTime)accCountInfo.DateOfBirth;
+                Sex = (bool)accCountInfo.Sex;
                 int type = (int)accCountInfo.Tier;
                 var userRole = DataProvider.Ins.DB.UserRoles.Where(x => x.Id == type).SingleOrDefault();
                 Role = userRole.NameRole;

@@ -21,4 +21,5 @@
     <viewmodel:ChangePasswordViewModel x:Key="ChangePassVM"></viewmodel:ChangePasswordViewModel>
     <viewmodel:AddAccountViewModel x:Key="AddAccountVM"></viewmodel:AddAccountViewModel>
     <viewmodel:ChartPageViewModel x:Key="ChartPageVM"></viewmodel:ChartPageViewModel>
+    <viewmodel:InfomationViewModel x:Key="InfoVM"></viewmodel:InfomationViewModel>
 </ResourceDictionary>

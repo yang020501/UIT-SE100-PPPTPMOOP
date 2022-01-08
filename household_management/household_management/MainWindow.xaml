@@ -100,7 +100,7 @@
                                     <TreeViewItem Header="Search" FontSize="14" IsSelected="{Binding SearchSelected,UpdateSourceTrigger=PropertyChanged}" ></TreeViewItem>
                                 </TreeViewItem>
                                 <TreeViewItem Header="Account" >
-
+                                    <TreeViewItem Header="Infomation" FontSize="14" IsSelected="{Binding InfoSelected, UpdateSourceTrigger=PropertyChanged}"></TreeViewItem>
                                     <TreeViewItem Header="Change Password" FontSize="14" IsSelected="{Binding ChangePasswordSelected, UpdateSourceTrigger=PropertyChanged}"></TreeViewItem>
                                     <TreeViewItem x:Name="tvItemManage" Header="Manage" IsSelected="{Binding ManageSelected,UpdateSourceTrigger=PropertyChanged}" FontSize="14"></TreeViewItem>
                                 </TreeViewItem>
