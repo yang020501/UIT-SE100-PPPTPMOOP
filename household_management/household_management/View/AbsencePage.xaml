@@ -22,7 +22,7 @@
                             <Label Content="Independent - Freedom - Happpiness" HorizontalAlignment="Left" Margin="240,38,0,0" VerticalAlignment="Top" Width="273" FontSize="16"/>
                             <Label Content="Temporary Absence Form" Margin="223,73,239.8,363" FontWeight="Bold" FontFamily="Trebuchet MS" FontSize="24" Padding="8,4,4,4" Foreground="#DDED1D1D"/>
                             <TextBox 
-                                  materialDesign:HintAssist.Foreground="Black"
+                                  materialDesign:HintAssist.Foreground="Black" x:Name="NameUser"
                             materialDesign:TextFieldAssist.UnderlineBrush="Black"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="77,137,335.8,295.8" materialDesign:HintAssist.Hint="Full Name" 
                              TextWrapping="Wrap" FontSize="16" Text="{Binding Name_User, UpdateSourceTrigger=PropertyChanged}" Padding="0,6,0,0" >
@@ -37,6 +37,13 @@
                         VerticalAlignment="Top" Width="270" materialDesign:HintAssist.Hint="Id" 
                         TextWrapping="Wrap" FontSize="16" Text="{Binding Id_User, UpdateSourceTrigger=PropertyChanged}"  
                         materialDesign:HintAssist.HelperText="12 digits numbers" Padding="0,6,0,0">
+
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="TextChanged">
+                                        <i:InvokeCommandAction Command="{Binding IdChangeCommand}" 
+                                                   CommandParameter="{Binding ElementName=NameUser}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
                             </TextBox>
                             <Label Content="Household Owner Name" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="77,278,0,0" Height="31" Width="232" FontSize="16" Padding="0,4,4,4"/>
                             <materialDesign:PackIcon Kind="CardAccountDetails" Margin="24,208,0,0" Height="31" Width="32" />

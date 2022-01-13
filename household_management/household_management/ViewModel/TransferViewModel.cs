@@ -34,8 +34,34 @@ namespace household_management.ViewModel
         public ICommand ClearCommand { get; set; }
         public ICommand CheckIdHouseholdCommand { get; set; }
         public ICommand HouseholdIdChangeCommand { get; set; }
+        public ICommand IdChangeCommand { get; set; }
         public TransferViewModel()
         {
+            IdChangeCommand = new RelayCommand<TextBox>((p) => { return true; }, (p) =>
+            {
+                bool ok = false;
+                List<Model.Population> list_pop_with_no_h = Model.DataProvider.Ins.DB.Populations.ToList<Model.Population>();
+                if (list_pop_with_no_h.Count() != 0)
+                {
+                    foreach (Model.Population x in list_pop_with_no_h)
+                    {
+                        if (x.Id == Id_User)
+                        {
+                            p.Text = x.Name;
+                            ok = true;
+                            p.IsReadOnly = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (ok == false)
+                {
+                    p.IsReadOnly = false;
+                    p.Text = null;
+                }
+            });
+
             HouseholdIdChangeCommand = new RelayCommand<TextBox>((p) => { return true; }, (p) =>
             {
                 if(p.Name == "HouseholdIdBox")

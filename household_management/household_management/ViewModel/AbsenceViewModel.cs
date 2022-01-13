@@ -29,11 +29,37 @@ namespace household_management.ViewModel
         public DateTime ExpireDate { get => _ExpireDate; set { _ExpireDate = value; OnPropertyChanged(); } }
         public ICommand AddCommand { get; set; }
         public ICommand CheckIdHouseholdCommand { get; set; }
+        public ICommand IdChangeCommand { get; set; }
         private bool checkIdHousehold = false;
         public AbsenceViewModel()
         {
             CreateDate = DateTime.Now;
             ExpireDate = DateTime.Now;
+
+            IdChangeCommand = new RelayCommand<TextBox>((p) => { return true; }, (p) =>
+            {
+                bool ok = false;
+                List<Model.Population> list_pop_with_no_h = Model.DataProvider.Ins.DB.Populations.ToList<Model.Population>();
+                if (list_pop_with_no_h.Count() != 0)
+                {
+                    foreach (Model.Population x in list_pop_with_no_h)
+                    {
+                        if (x.Id == Id_User)
+                        {
+                            p.Text = x.Name;
+                            ok = true;
+                            p.IsReadOnly = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (ok == false)
+                {
+                    p.IsReadOnly = false;
+                    p.Text = null;
+                }
+            });
 
             CheckIdHouseholdCommand = new RelayCommand<TextBox>((p) =>
             {
