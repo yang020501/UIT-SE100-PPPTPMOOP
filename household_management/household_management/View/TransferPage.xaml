@@ -21,12 +21,11 @@
                     <Grid  >
                         <Label Content="Household Transfer Form" Margin="206,68,256.4,369" FontWeight="Bold" FontFamily="Trebuchet MS" FontSize="24" Padding="8,4,4,4" Foreground="#DDED1D1D"/>
                         <materialDesign:PackIcon Kind="HomeAccount" Margin="47,146,0,0" Height="31" Width="32" RenderTransformOrigin="0.597,-2.323" />
-                        <TextBox 
-
+                        <TextBox                         
                          materialDesign:HintAssist.Foreground="Black"
                             materialDesign:TextFieldAssist.UnderlineBrush="Black"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                        Height="49" Margin="96,128,210.4,0"  VerticalAlignment="Top" 
+                        Height="49" Margin="96,128,210.4,0"  VerticalAlignment="Top" Name="NameUser"
                              materialDesign:HintAssist.Hint="Full Name Of User" TextWrapping="Wrap" 
                              FontSize="16" Text="{Binding Name_User, UpdateSourceTrigger=PropertyChanged}" Padding="0,6,0,0"/>
                         <TextBox
@@ -36,7 +35,15 @@
                         HorizontalAlignment="Left" Height="49" Margin="96,187,0,0"  
                         VerticalAlignment="Top" Width="208" materialDesign:HintAssist.Hint="Id"
                         TextWrapping="Wrap" FontSize="16" Text="{Binding Id_User, UpdateSourceTrigger=PropertyChanged}"  
-                        materialDesign:HintAssist.HelperText="12 digits numbers" Padding="0,6,0,0" />
+                        materialDesign:HintAssist.HelperText="12 digits numbers" Padding="0,6,0,0">
+
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="TextChanged">
+                                    <i:InvokeCommandAction Command="{Binding IdChangeCommand}" 
+                                                   CommandParameter="{Binding ElementName=NameUser}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
                         <materialDesign:PackIcon Kind="CardAccountDetails" Margin="47,205,0,0" Height="31" Width="32" />
                         <materialDesign:PackIcon Kind="HomeMapMarker" Margin="47,317,0,0" Height="31" Width="32" />
                         <TextBox

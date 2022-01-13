@@ -325,9 +325,11 @@
     <Compile Include="View\HouseholdPageView.xaml.cs">
       <DependentUpon>HouseholdPageView.xaml</DependentUpon>
     </Compile>
+
     <Compile Include="View\Info.xaml.cs">
       <DependentUpon>Info.xaml</DependentUpon>
     </Compile>
+
     <Compile Include="View\HouseholdReport.cs">
       <SubType>Form</SubType>
     </Compile>
