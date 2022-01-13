@@ -35,7 +35,7 @@
                     <materialDesign:PackIcon Kind="CardAccountDetails" Margin="61,68,-84.2,0" Height="31" Width="32" RenderTransformOrigin="0.438,1.342" />
 
                     <Button Command="{Binding Exitbtn}" CommandParameter="{Binding ElementName=window}" Content="Cancel"  Height="44" Background="#FF4D60C0" Margin="316,174,-422.2,23.6" Foreground="#FFF5F5F9"   />
-                    <Button Command="{Binding Addbtn}" CommandParameter="{Binding ElementName=dtgFamily}" Content="Add"  Height="44" Background="#FF4D60C0" Margin="39,174,-145.2,23.6" Foreground="#FFF5F5F9"   />
+                    <Button Command="{Binding Addbtn}" CommandParameter="{Binding ElementName=dtgFamily}" Content="Ok"  Height="44" Background="#FF4D60C0" Margin="39,174,-145.2,23.6" Foreground="#FFF5F5F9"   />
                     <Button Command="{Binding Deletebtn}" CommandParameter="{Binding ElementName=dtgFamily}" Content="Remove"  Height="44" Background="#FF4D60C0" Margin="179,174,-284.2,23.6" Foreground="#FFF5F5F9"   />
                 </Grid>
             </Border>
