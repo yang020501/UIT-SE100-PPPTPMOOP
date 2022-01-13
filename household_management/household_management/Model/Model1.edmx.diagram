@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
 
-      <Diagram DiagramId="e7bdf60a53ce47588c159957741ef0c4" Name="Diagram1" ZoomLevel="74">
+      <Diagram DiagramId="e7bdf60a53ce47588c159957741ef0c4" Name="Diagram1" ZoomLevel="51">
 
         <EntityTypeShape EntityType="HoKhauModel.Family_Household" Width="1.5" PointX="5.25" PointY="12.5" IsExpanded="true" />
         <EntityTypeShape EntityType="HoKhauModel.Household_Registration" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
@@ -13,8 +13,8 @@
         <EntityTypeShape EntityType="HoKhauModel.Temporary_Absence" Width="1.5" PointX="8.25" PointY="12.25" IsExpanded="true" />
         <EntityTypeShape EntityType="HoKhauModel.Temporary_Residence" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
         <EntityTypeShape EntityType="HoKhauModel.Transfer_Household" Width="1.5" PointX="5.25" PointY="16.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="HoKhauModel.UserRole" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="HoKhauModel.User" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="HoKhauModel.UserRole" Width="1.5" PointX="10.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HoKhauModel.User" Width="1.5" PointX="13" PointY="8.625" IsExpanded="true" />
 
         <AssociationConnector Association="HoKhauModel.FK__Family_Ho__Id_Ho__33D4B598" ManuallyRouted="false" />
         <AssociationConnector Association="HoKhauModel.FK__Family_Ho__Id_Ow__34C8D9D1" ManuallyRouted="false" />
