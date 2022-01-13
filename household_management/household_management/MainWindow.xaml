@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         Name="MainWindowX"
         DataContext="{StaticResource MainVM}"
-        Title="MainWindow" Height="654.8" Width="1030" Background="{x:Null}" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" ShowInTaskbar="True" AllowsTransparency="True" WindowStyle="None">
+        Title="MainWindow" Height="654.8" Width="1030" Background="{x:Null}" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" ShowInTaskbar="True" AllowsTransparency="True" WindowStyle="None" Icon="Resources/house sysmbo1.png">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadWindowCommand}" 
