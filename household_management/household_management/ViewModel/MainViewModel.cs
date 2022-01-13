@@ -103,6 +103,9 @@ namespace household_management.ViewModel
             if(InfoSelected == true)
             {
                 Info wd = new Info();
+                InfomationViewModel vm = new InfomationViewModel();
+                InfomationViewModel.Vm = data;
+                wd.DataContext = vm;
                 wd.ShowDialog();
                 InfoSelected = false;
             }

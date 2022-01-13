@@ -1,4 +1,5 @@
-﻿using System;
+﻿using household_management.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,13 +25,16 @@ namespace household_management.ViewModel
         private ImageSource _SPhoto;
         public ImageSource SPhoto { get => _SPhoto; set { _SPhoto = value; OnPropertyChanged(); } }
 
+
         private string _Photo;
         public string Photo { get => _Photo; set { _Photo = value; OnPropertyChanged(); } }
 
         public ICommand Choosebtn { get; set; }
+        public static MainViewModel Vm { get; set; }
 
         public InfomationViewModel()
         {
+           
             try
             {
                 Name = LoginViewModel.Name;
@@ -78,10 +82,59 @@ namespace household_management.ViewModel
                 }
 
                 Model.DataProvider.Ins.DB.SaveChanges();
+                var linktemp = DataProvider.Ins.DB.Users.Where(x => x.IdentityNum == Identity).SingleOrDefault();
+                Vm.loadPic(check(linktemp.Id));
+
             });
+            var link = DataProvider.Ins.DB.Users.Where(x => x.IdentityNum == Identity).SingleOrDefault();
+            loadPic(check(link.Id));
 
 
         }
+        public void loadPic(string Id = "0000")
+        {
+            if (Id == null)
+                return;
+            int tmp = int.Parse(Id);
+            var link = DataProvider.Ins.DB.Users.Where(x => x.Id == tmp).SingleOrDefault();
+            if (link != null)
+            {
+
+                Photo = check(link.PhotoUser);
+                try
+                {
+                    SPhoto = BitmapFromUri(new Uri(System.IO.Path.GetFullPath("../../userhinhthe/" + Photo))); // get picture
+                }
+                catch (Exception e)
+                {
+                    SPhoto = BitmapFromUri(new Uri(System.IO.Path.GetFullPath("../../userhinhthe/" + Photo)));
+                }
+
+
+            }
+
+        }
+        private string check(object txt)
+        {
+            DateTime dateTime = new DateTime();
+            bool gender = new bool();
+            if (txt == null)
+                return "";
+            else if (txt.GetType() == dateTime.GetType())
+            {
+                dateTime = (DateTime)txt;
+                return dateTime.ToString("dd/MM/yyyy");
+            }
+            else if (txt.GetType() == gender.GetType())
+            {
+                gender = (bool)txt;
+                if (gender == true)
+                    return "Male";
+                else return "Female";
+            }
+            return txt.ToString();
+        }
+
 
         private ImageSource BitmapFromUri(Uri source)
         {
