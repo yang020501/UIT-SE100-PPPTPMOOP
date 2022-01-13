@@ -86,7 +86,7 @@
                         <DatePicker
                              materialDesign:HintAssist.Foreground="Black"
                             materialDesign:TextFieldAssist.UnderlineBrush="Black"
-                       
+                            
                             x:Name="dpBirth" SelectedDate ="{Binding DB,UpdateSourceTrigger=PropertyChanged}"
                     Text="{Binding DateOfBirth,UpdateSourceTrigger=PropertyChanged}"
                          
